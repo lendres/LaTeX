@@ -58,10 +58,9 @@ del *.vpl
 
 REM MOVE THE WINFONTS FILE TO THE PROPER LOCATION.
 move /Y winfonts.map ..\pdftex\base\winfonts.map
-REM This is not necessary anymore, TDBD uses the same files as my defaults and no longer maintains a separte copy.
-REM copy %styfile% "..\..\..\TDBD Main Directory\TDBD\Documentation\"
 
 
+
 echo.
 echo.
 echo.
@@ -69,7 +68,6 @@ echo.
 echo.
 echo.
 echo.
-echo STEP 1) IS FOR MIKTEX 2.4 AND BELOW ONLY (2.5 AND ABOVE DO NOT SEEM TO REQUIRE THIS STEP):
 echo STEP 1) IS FOR MIKTEX 2.4 AND BELOW ONLY (2.5 AND ABOVE DO NOT SEEM TO REQUIRE THIS STEP):
 echo.
 echo 1) Edit the file "...\miktex\config\miktex.ini" 
@@ -78,8 +76,7 @@ echo    find the line which starts with "TTFPath=" and add windows fonts directo
 echo.
 echo    "TTFPath=.;%R\fonts\truetype//;c:\windows\fonts"
 echo.
-echo STEP 1) IS FOR MIKTEX 2.4 AND BELOW ONLY (2.5 AND ABOVE DO NOT SEEM TO REQUIRE THIS STEP):
-echo STEP 1) IS FOR MIKTEX 2.4 AND BELOW ONLY (2.5 AND ABOVE DO NOT SEEM TO REQUIRE THIS STEP):
+echo STEP 2) IS FOR MIKTEX 2.5 (2.9 AND ABOVE DO NOT SEEM TO REQUIRE THIS STEP):
 echo.
 echo 2) Copy the contents of "ttfonts.map" (from the "TTF 2 TFM Work" directory) to
 echo    "C:\Program Files\MiKTeX 2.6\ttf2tfm\base\ttfonts.map"
