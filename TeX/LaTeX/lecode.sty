@@ -1,0 +1,573 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lecode}[2006/02/07 Provides commands for printing
+programming source code.]
+
+\usepackage{color}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{lelists}
+\usepackage{lefonts}
+
+% CODE FONT.
+\newcommand{\@codefonttype}{\CourierNewBold{}}
+\newcommand{\codefonttype}[1]{\renewcommand{\@codefonttype}{#1}}
+\newcommand{\@codefontsize}{\Small}
+\newcommand{\codefontsize}[1]{\renewcommand{\@codefontsize}{#1}}
+\newcommand{\codefont}[1]{{\@codefonttype#1}}
+\newcommand{\codesize}[1]{{\@codefontsize#1}}
+
+% CLASS NAME, ABSTRACT CLASS NAME, AND DIRECTORY.
+\newcommand*{\class}[1]{\codefont{#1}}
+\newcommand*{\abstractclass}[1]{\class{\emph{#1}}}
+\newcommand*{\directory}[1]{\class{#1}}
+
+
+
+% XML.
+
+% Commands of the form \xmlwrite* do all the do not write themselves on a new line.  They do handle
+% and indenting (stepcodelevel/prevcodelevel).
+%
+% Commands of the form \xml*text only write text, indenting and new line information is not written.
+%
+\newcommand*{\code@xmllabelprefix}{}
+\newcommand*{\xmllabelprefix}[1]{\renewcommand*{\code@xmllabelprefix}{#1}}
+\newcommand*{\makexmllabel}[2]{\label{\code@xmllabelprefix #1#2}}
+
+% Command used to produce XML for text content (like for documentation).  This command differs from
+% the command \xmlstartelement in that it does not include the formatting commands used within the code
+% environment.
+%
+% Example:
+% XML: <purchaseorder>
+% Command: \xmlelement{purchaseorder}
+% Result: <purchaseorder>
+\newcommand*{\xmlelement}[1]{\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{>}}
+
+% Start an element that does not contain attributes, but will contain other elements (it's not short).
+%
+% Example:
+% XML: <purchaseorder> <item>pen</item> </purchaseorder>
+% Command: \xmlstartelement{purchaseorder}
+% Result: <purchaseorder>
+\newcommand*{\xmlstartelement}[1]{\codeitem\makexmllabel{#1}{start}\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{>}\stepcodelevel{}}
+
+% Write an element that does not contain attributes or elements.
+%
+% Example:
+% XML: <today/>
+% Command: \xmlshortelement{today}
+% Result: <today/>
+\newcommand*{\xmlshortelement}[1]{\codeitem\makexmllabel{#1}{}\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{/>}}
+
+% Start an element that will contain attributes.  Since at least one attributes is required, it takes the name
+% and value of the first attribute as the second and third arguments.
+%
+% Example:
+% XML: <purchaseorder id="1234"> <item>pen</item> </purchaseorder>
+% Command: \xmlopenelement{purchaseorder}{id}{1234}
+% Result: <purchaseorder id="1234"
+\newcommand*{\xmlopenelement}[3]{\codeitem\makexmllabel{#1}{start}\makexmllabel{#1}{start}\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1} \xmlwriteattribute{#2}{#3}\stepcodelevel{}}
+
+% Closes and open start element tag (one created with the \xmlopenelement command) for an element that contains
+% both attributes and elements.
+%
+% Example:
+% XML: <purchaseorder id="1234"> <item>pen</item> </purchaseorder>
+% Commands: \xmlopenelement{purchaseorder}{id}{1234}\xmlcloseelement{}
+% Result: <purchaseorder id="1234">
+% Command: \xmlcloseelement{}
+% Result: >
+\newcommand*{\xmlcloseelement}{\textcolor{xmlbracket}{>}}
+
+% Closes and open start element tag (one created with the \xmlopenelement command) for an element that contains
+% attributes but not elements.
+%
+% Example:
+% XML: <pen scew="1234"/>
+% Commands: \xmlopenelement{pen}{scew}{1234}\xmlcloseshortelement{}
+% Result: <pen scew="1234"/>
+% Command: \xmlcloseshortelement{}
+% Result: />
+\newcommand*{\xmlendshortelement}{\textcolor{xmlbracket}{/>}\prevcodelevel{}}
+
+% End an element.  There are two ways to end an element, on a new line (\xmlendelement) or on
+% the current line (\xmlwriteendelement).
+%
+% \xmlendelement and \xmlwriteendelement differ only in the formatting (which line the text is
+% written to.  Both use \xmlendelementtext to actually write the text.
+%
+% Example:
+% XML: <purchaseorder> <item>pen</item> </purchaseorder>
+% Commands: \xmlelement{purchaseorder}\xmlelement{item}pen\xmlwriteendelement{}\xmlendelement{}
+% Result:
+% <purchaseorder>
+%     <item>pen</item>
+% </purchaseorder>
+\newcommand*{\xmlendelement}[1]{\prevcodelevel{}\codeitem\makexmllabel{#1}{end}\xmlendelementtext{#1}}
+\newcommand*{\xmlwriteendelement}[1]{\prevcodelevel{}\xmlendelementtext{#1}}
+\newcommand*{\xmlendelementtext}[1]{\textcolor{xmlbracket}{</}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{>}}
+
+% Write attributes.  The command \xmlattribute writes an attribute on a new line and the command \xmlwriteattribute
+% writes the attribute by itself.
+%
+% Example:
+% XML: <purchaseorder id="1234" status="inprogress"> <item>pen</item> </purchaseorder>
+% Commands:
+% \xmlopenelement{purchaseorder}{id}{1234}\xmlattribute{status}{inprogress}\xmlcloseelement{}
+% \xmlelement{item}pen\xmlwriteendelement{item}\xmlendelement{purchaseorder}
+% Result:
+% <purchaseorder id="1234"
+%     status="inprogress">
+%     <item>pen</item>
+% </purchaseorder>
+\newcommand*{\xmlattribute}[2]{\codeitem\xmlwriteattribute{#1}{#2}}
+\newcommand*{\xmlwriteattribute}[2]{\textcolor{xmlattribute}{#1}="\textcolor{xmlattributevalue}{#2}"\makexmllabel{#1}{attribute}}
+
+% Default color scheme.  All colors of elements, attributes, and syntax are black.
+\newcommand*{\allblackxmlcolors}
+{
+    \definecolor{xmlbracket}{rgb}{0,0,0}
+    \definecolor{xmlelement}{rgb}{0,0,0}
+    \definecolor{xmlattribute}{rgb}{0,0,0}
+    \definecolor{xmlattributevalue}{rgb}{0,0,0}
+}
+
+% Issue default color command to generate defined colors.
+\allblackxmlcolors{}
+
+% Colors are defaulted to black.  Colors similar to those used by Microsoft (Internet Explorer / Visual Studio)
+% can be generated by using this command.
+% Example:
+% \msxmlcolors{}
+% \begin{code}[\codenumbering]{\tightcodeitemsep}
+%     \xmlelement{Configuration}
+%     \xmlendelement{Configuration}
+% \end{code}
+% The command can be issued anywhere in the code.  Individual colors can be changed as required using a command
+% similar to the structure below (the \definecolor command).
+\newcommand*{\msxmlcolors}
+{
+    \definecolor{xmlbracket}{rgb}{0,0,1.0}
+    \definecolor{xmlelement}{rgb}{0.5,0,0}
+    \definecolor{xmlattribute}{rgb}{1.0,0,0}
+    \definecolor{xmlattributevalue}{rgb}{0,0,0.9}
+}
+
+
+
+
+
+% AN UNDERLINE.
+\newcommand*{\ul}{\_}
+
+% An alternate.  Doesn't allow words to break across lines (by hyphenating).
+%\newcommand*{\ul}{{\protect\raisebox{2pt}{\_}}}
+
+% An old version that is not recommended.  Font does not match and prevents words from naturally
+% breaking across lines.
+%\usepackage{fancyvrb}
+%\DefineShortVerb{\|} \SaveVerb{underline}|_| \UndefineShortVerb{\|}
+%\newcommand*{\ul}{\protect\UseVerb{underline}}
+
+% SQUARE BRACKETS.
+% This command prints the square brackets [] with a small space between them
+% so that the brackets do not touch, producing a square.
+\newlength{\bracketspace}
+\setlength{\bracketspace}{2.0pt}
+\newlength{\storebracketspace}
+\newcommand*{\pushbracketspace}{\setlength{\storebracketspace}{\bracketspace}}
+\newcommand*{\popbracketspace}{\setlength{\bracketspace}{\storebracketspace}}
+\newcommand*{\brackets}{[\hspace*{\bracketspace}]}
+
+% KEYWORDS.
+% Allow for code specific keywords that can be changed color to standout like in most development
+% environments / debuggers used to produce code.
+%
+% See environment "simplecodemembers" for an example.
+%
+\definecolor{keywordcolor}{rgb}{0,0,1.0}
+
+\newcommand*{\codekeyword}[1]{\textcolor{keywordcolor}{#1}}
+
+\newcommand*{\codeabstract}{\codekeyword{abstract}}
+
+\newcommand*{\codebase}{\codekeyword{base}}
+\newcommand*{\codebool}{\codekeyword{bool}}
+\newcommand*{\codebreak}{\codekeyword{break}}
+
+\newcommand*{\codecatch}{\codekeyword{catch}}
+\newcommand*{\codechar}{\codekeyword{char}}
+\newcommand*{\codeconst}{\codekeyword{const}}
+\newcommand*{\codeconstcast}{\codekeyword{const\ul{}cast}}
+
+\newcommand*{\codedefault}{\codekeyword{default}}
+\newcommand*{\codedefine}{\codekeyword{\#define}}
+\newcommand*{\codedelegate}{\codekeyword{delegate}}
+\newcommand*{\codedouble}{\codekeyword{double}}
+
+\newcommand*{\codeelse}{\codekeyword{else}}
+\newcommand*{\codeendif}{\codekeyword{\#endif}}
+\newcommand*{\codeenum}{\codekeyword{enum}}
+\newcommand*{\codeextern}{\codekeyword{extern}}
+
+\newcommand*{\codefalse}{\codekeyword{false}}
+\newcommand*{\codefor}{\codekeyword{for}}
+\newcommand*{\codeforeach}{\codekeyword{foreach}}
+\newcommand*{\codefunction}{\codekeyword{function}}
+
+\newcommand*{\codeif}{\codekeyword{if}}
+\newcommand*{\codeifdef}{\codekeyword{\#ifdef}}
+\newcommand*{\codeifndef}{\codekeyword{\#ifndef}}
+\newcommand*{\codeinclude}{\codekeyword{\#include}}
+\newcommand*{\codeinline}{\codekeyword{inline}}
+\newcommand*{\codeint}{\codekeyword{int}}
+\newcommand*{\codeinternal}{\codekeyword{internal}}
+
+\newcommand*{\codelong}{\codekeyword{long}}
+
+\newcommand*{\codemessage}{\codekeyword{message}}
+
+\newcommand*{\codenew}{\codekeyword{new}}
+
+\newcommand*{\codeoperator}{\codekeyword{operator}}
+\newcommand*{\codeoverride}{\codekeyword{override}}
+
+\newcommand*{\codepragma}{\codekeyword{\#pragma}}
+\newcommand*{\codeprivate}{\codekeyword{private}}
+\newcommand*{\codeprotected}{\codekeyword{protected}}
+\newcommand*{\codepublic}{\codekeyword{public}}
+
+\newcommand*{\codereadonly}{\codekeyword{readonly}}
+\newcommand*{\coderegister}{\codekeyword{register}}
+\newcommand*{\codereinterpretcast}{\codekeyword{reinterpret\ul{}cast}}
+\newcommand*{\codereturn}{\codekeyword{return}}
+
+\newcommand*{\codeshort}{\codekeyword{short}}
+\newcommand*{\codestatic}{\codekeyword{static}}
+\newcommand*{\codestaticcast}{\codekeyword{static\ul{}cast}}
+\newcommand*{\codestring}{\codekeyword{string}}
+\newcommand*{\codestruct}{\codekeyword{struct}}
+\newcommand*{\codeswitch}{\codekeyword{switch}}
+
+\newcommand*{\codethis}{\codekeyword{this}}
+\newcommand*{\codethrow}{\codekeyword{throw}}
+\newcommand*{\codetrue}{\codekeyword{true}}
+\newcommand*{\codetry}{\codekeyword{try}}
+\newcommand*{\codetypeof}{\codekeyword{typeof}}
+
+\newcommand*{\codeundefine}{\codekeyword{\#undef}}
+\newcommand*{\codeunsigned}{\codekeyword{unsigned}}
+\newcommand*{\codeusing}{\codekeyword{using}}
+
+\newcommand*{\codevirtual}{\codekeyword{virtual}}
+\newcommand*{\codevoid}{\codekeyword{void}}
+
+\newcommand*{\codewhile}{\codekeyword{while}}
+
+
+
+\newcommand*{\keywordmember}[2]{#1\>#2 \\}
+\newcommand*{\intmember}[1]{\keywordmember{\codeint{}}{#1}}
+\newcommand*{\doublemember}[1]{\keywordmember{\codedouble{}}{#1}}
+\newcommand*{\voidmember}[1]{\keywordmember{\codevoid{}}{#1}}
+\newcommand*{\boolmember}[1]{\keywordmember{\codebool{}}{#1}}
+\newcommand*{\stringmember}[1]{\keywordmember{\codestring{}}{#1}}
+
+
+% STRINGS.
+% Allow for strings that are colored to standout like in most development
+% environments / debuggers used to produce code.
+\definecolor{stringcolor}{rgb}{1.0,0,0}
+\newcommand*{\codeisstring}[1]{\textcolor{stringcolor}{"#1"}}
+
+
+% NUMBER.
+% Allow for strings that are colored to standout like in most development
+% environments / debuggers used to produce code.
+\definecolor{numbercolor}{rgb}{0,0.502,0}
+\newcommand*{\codeisnumber}[1]{\textcolor{numbercolor}{#1}}
+
+
+% COMMENT.
+% Allow for strings that are colored to standout like in most development
+% environments / debuggers used to produce code.
+\definecolor{commentcolor}{rgb}{0,0.502,0}
+\newcommand*{\codeiscomment}[1]{\textcolor{commentcolor}{#1}}
+
+
+
+% CREATE A SIMPLE CODE MEMBER ENVIRONMENT TO LIST CLASS MEMBERS OR VARIABLES.
+% NOTE: THIS WILL NOT BREAK ACROSS PAGES, SO IT SHOULD NOT BE USED FOR LONG LISTS.
+% Example:
+%    \begin{simplecodemembers}
+%        \intmember{points;}
+%        \doublemember{size;}
+%        \voidmember{**entitiesfound;}
+%    \end{simplecodemembers}
+
+\newlength{\simplecodememberindent}
+\setlength{\simplecodememberindent}{0.5in}
+
+% FIX THIS: THIS NEEDS TO BE IMPLEMENTED MORE LIKE THE "WHERE" ENVIRONMENT IN THE MATH.STY.  WHEN THIS IS USED AND %THERE IS NOT A BLANK % LINE BEFORE AND AFTER THE \begin{}...\end{}.
+% FIX THIS: THIS NEEDS TO BE IMPLEMENTED MORE LIKE THE "WHERE" ENVIRONMENT IN THE MATH.STY.  WHEN THIS IS USED AND %THERE IS NOT A BLANK % LINE BEFORE AND AFTER THE \begin{}...\end{}.
+% FIX THIS: THIS NEEDS TO BE IMPLEMENTED MORE LIKE THE "WHERE" ENVIRONMENT IN THE MATH.STY.  WHEN THIS IS USED AND %THERE IS NOT A BLANK % LINE BEFORE AND AFTER THE \begin{}...\end{}.
+
+\newenvironment{simplecodemembers}
+{
+    \noindent
+    \vspace*{1.0ex plus0.2ex minus0.1ex}
+    \noindent\hspace*{\parindent}\noindent\begin{minipage}[t]{\textwidth-\parindent}\ttfamily
+    \noindent
+    \begin{tabbing} \pushtabs \hspace*{\simplecodememberindent} \= \kill
+}
+{
+    \poptabs
+    \end{tabbing}
+    \end{minipage}
+    \vspace*{1.0ex plus0.2ex minus0.1ex}
+}
+
+
+% CODE ENVIRONMENT.
+%
+% Example:
+%    \begin{code}[\codenumbering]
+%        \codeitem \FOR n=1 to n=5
+%        \stepcodelevel
+%            \codeitem i=i+n
+%            \prevcodelevel
+%        \codeitem \DONEFOR
+%    \end{code}
+
+\newlength{\standardcodeindent}
+\setlength{\standardcodeindent}{10mm}
+\newlength{\initialcodeindent}
+\setlength{\initialcodeindent}{\parindent}
+\newlength{\codeindent}
+\newlength{\codeindentstore}
+
+% This can be used to create areas where the code is not indented.
+% Example:
+%     % Create a region where the code environment is not indented.
+%     \pushinitialcodeindent{0in}
+%     \begin{code}
+%         ...
+%     \end{code}
+%     \popinitialcodeindent{}
+\newlength{\@initialcodeindentstore}
+\newcommand*{\pushinitialcodeindent}[1]
+{
+    \setlength{\@initialcodeindentstore}{\initialcodeindent}
+    \setlength{\initialcodeindent}{#1}
+}
+\newcommand*{\popinitialcodeindent}
+{
+    \setlength{\initialcodeindent}{\@initialcodeindentstore}
+}
+
+\newcounter{codeline}
+\newcounter{codesolveline}
+
+\newcommand{\stepcodelevel}{\setlength{\codeindent}{\codeindent+\standardcodeindent}}
+\newcommand{\prevcodelevel}{\setlength{\codeindent}{\codeindent-\standardcodeindent}}
+
+% Don't separate this to multiple lines, do so seems to create some extra horizontal space between
+% the label and the text.
+% Old version: %\newcommand{\codeitem}{\item \hspace*{\codeindent}}
+\newcommand{\codeitem}[1][notused]{\ifthenelse{\equal{#1}{notused}}{\item \hspace*{\codeindent}}{\item[#1] \hspace*{\codeindent}}}
+
+
+
+\newcommand*{\FOR}{\textbf{\sffamily for}}
+\newcommand*{\DONEFOR}{\textbf{\sffamily done for}}
+\newcommand*{\WHILE}{\textbf{\sffamily while}}
+\newcommand*{\DONEWHILE}{\textbf{\sffamily done while}}
+\newcommand*{\EXP}[1]{\mbox{\sffamily exp} \mbox{$\left[ #1 \right]$}}
+\newcommand*{\solve}{\textbf{\sffamily Solve: }}
+\newcommand*{\IF}{\textbf{\sffamily if}}
+\newcommand*{\DONEIF}{\textbf{\sffamily done if}}
+\newcommand*{\BREAK}{\textbf{\sffamily exit do loop}}
+\newcommand*{\MAX}{\textbf{\sffamily max}}
+
+
+
+% Standard code numbering format, see above for example.
+\newcommand*{\codenumbering}{\arabic{codeline}:\hfill}
+\newcommand*{\codesolvenumbering}{}
+
+% Standard
+\newlength{\standardcodeitemsep}
+\setlength{\standardcodeitemsep}{0ex plus0.2ex}
+\newlength{\codeitemsep}
+\setlength{\codeitemsep}{\standardcodeitemsep}
+\newlength{\tightcodeitemsep}
+\setlength{\tightcodeitemsep}{-3pt}
+\newlength{\codehangingindent}
+\setlength{\codehangingindent}{0in}
+\setlength{\listtopsep}{0in}
+
+\newlength{\adjustforflushleft}
+\setlength{\adjustforflushleft}{-7pt}
+
+% The environment.  The optional argument is the numbering format.
+% Use \codenumbering for a standard format.
+\newenvironment{code}[2][]
+{
+    \pushbracketspace{}
+    \setlength{\bracketspace}{0pt}
+    \setlength{\codeindent}{0in}
+    \ifthenelse{\equal{#2}{}}
+    {
+        \setlength{\codeitemsep}{\standardcodeitemsep}
+    }
+    {
+        \setlength{\codeitemsep}{#2}
+    }
+    %
+    % If we were given a numbering sequence then we will number the solve items as well.  Otherwise
+    % we will clear the command so nothing happens.
+    \ifthenelse{\equal{#1}{}}
+    {
+        \renewcommand*{\codesolvenumbering}{}
+    }
+    {
+        \renewcommand*{\codesolvenumbering}{\arabic{codeline}.\arabic{codesolveline}:\hfill}
+    }
+    \begin{flushleft}
+    \vspace*{\adjustforflushleft}
+    \begin{list}
+    {#1}
+    {
+        \@codefonttype
+        \@codefontsize
+        % Counter to use (or not use if numbering was not specified).
+        \usecounter{codeline}
+        \codestandardlistparams{#1}
+    }
+}
+{
+    \end{list}
+    \vspace*{\adjustforflushleft}
+    \end{flushleft}
+    \popbracketspace
+}
+
+\newlength{\labelnegwidth}
+\newcommand{\codestandardlistparams}[1]
+{
+    % Start by setting up the standard list parameters and the override as necessary.
+    \standardlistparams{}
+    % If we don't have a numbering system, don't use a
+    % label width, otherwise set it.
+    \ifthenelse{\equal{#1}{}}
+    {
+        \setlength{\labelwidth}{0in}
+    }
+    {
+        \setlength{\labelwidth}{0.30in}
+    }
+    \setlength{\labelsep}{0in}
+    \setlength{\leftmargin}{\initialcodeindent+\labelsep+\labelwidth+\codehangingindent}
+    \setlength{\rightmargin}{0in}
+    \setlength{\listparindent}{\initialcodeindent}
+    \setlength{\itemindent}{-\codehangingindent}
+    \setlength{\parsep}{0.25ex plus0.2ex minus0.1ex}
+    \setlength{\itemsep}{\codeitemsep}
+    \setlength{\labelnegwidth}{-\leftmargin-\itemindent}
+}
+
+\newcommand{\codesolve}[1]
+{
+    \setlength{\codeindentstore}{\codeindent}
+    \setlength{\codeindent}{0in}
+    \codeitem  \framebox[0.85pt][l]
+    {
+        % Don't know why this is needed, but it is.
+        \ifthenelse{\equal{\codesolvenumbering}{}}
+        {
+            \relax \hspace*{-22pt}
+        }
+        {
+            \relax
+        }
+        \begin{minipage}{\textwidth}
+            \begin{list}
+            {\codesolvenumbering}
+            {
+                % Counter to use (or not use if numbering was not specified).
+                \usecounter{codesolveline}
+                \codestandardlistparams{\codesolvenumbering}
+                \ifthenelse{\equal{\codesolvenumbering}{}}
+                {
+                    \setlength{\labelwidth}{\labelwidth}
+                }
+                {
+                    \setlength{\labelwidth}{\labelwidth+0.2in}
+                }
+                \setlength{\labelnegwidth}{-\labelwidth-\labelsep}
+            }
+            % Print "Solve:" at the top.  Use a negative space when numbering so that the beginning
+            % of the text is aligned with the beginning of the numbering.
+            \codeitem[]\hspace*{\labelnegwidth}\solve
+            #1
+            \end{list}
+        \end{minipage}
+    }
+    \setlength{\codeindent}{\codeindentstore}
+}
+
+%\renewcommand{\codesolve}[1]
+%{
+%    \setlength{\codeindentstore}{\codeindent}
+%    \setlength{\codeindent}{0in}
+%%    \codeitem  \framebox[0.85pt][l]
+%%    {
+%%        % Don't know why this is needed, but it is.
+%%        \ifthenelse{\equal{\codesolvenumbering}{}}
+%%        {
+%%            \relax \hspace*{-22pt}
+%%        }
+%%        {
+%%            \relax
+%%        }
+%%        \begin{minipage}{\textwidth}
+%            \codeitem \solve
+%            \begin{list}
+%            {\codesolvenumbering}
+%            {
+%                % Counter to use (or not use if numbering was not specified).
+%                \usecounter{codesolveline}
+%                \codestandardlistparams{\codesolvenumbering}
+%                \ifthenelse{\equal{\codesolvenumbering}{}}
+%                {
+%                    \setlength{\labelwidth}{\labelwidth}
+%                }
+%                {
+%                    \setlength{\labelwidth}{\labelwidth+0.2in}
+%                }
+%                \setlength{\labelnegwidth}{-\labelwidth-\labelsep}
+%            }
+%            #1
+%            \end{list}
+%%        \end{minipage}
+%%    }
+%    \setlength{\codeindent}{\codeindentstore}
+%}
+
+
+\renewcommand{\codesolve}[1]
+{
+    \setlength{\codeindentstore}{\codeindent}
+    \setlength{\codeindent}{0in}
+    \codeitem \solve
+    \begin{list}{\codesolvenumbering}
+    {
+        \usecounter{codesolveline}\codestandardlistparams{\codesolvenumbering}
+        \ifthenelse{\equal{\codesolvenumbering}{}}{\setlength{\labelwidth}{\labelwidth}}{\setlength{\labelwidth}{\labelwidth+0.2in}}\setlength{\labelnegwidth}{-\labelwidth-\labelsep}}
+        #1
+        \end{list}
+        \setlength{\codeindent}{\codeindentstore}
+}
+
+% Add some text without numbering it.
+\newcommand*{\codeitemnonumber}[1]{\codeitem[]\hspace*{\labelnegwidth}#1} 

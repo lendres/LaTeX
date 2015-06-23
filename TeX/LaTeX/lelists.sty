@@ -1,0 +1,298 @@
+% lelists.sty
+%
+% Sets up standard lists.
+% Provided lists are:
+%   Plain list - no labels are used.
+%   Bulleted list - labels are bullets.
+%   Numbered list - labels are numbered.
+%   Outline list - labels are outline style, see below.
+%
+% For all list styles, use of label and ref is valid and the lists
+% can be nested (similar to outline example above).
+%
+% An initial indent (e.g. the list can be indented a little to make
+% it stand out from the rest of the text) is provided by the length
+% \listindent.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lelists}[2005/07/08 Custom Lists Package]
+
+\usepackage{ifthen}
+
+% Used to calculated lengths.
+\usepackage{calc}
+
+% Controls the spacing of the left margin of the top most list level.
+\newlength{\listindent}
+\setlength{\listindent}{\parindent}
+
+% Controls the spacing between the list and the preceding and following text.
+\newlength{\listtopsep}
+\setlength{\listtopsep}{6pt}
+
+\newcounter{listlevel}
+
+% Standardized list parameters used by all lists.  Individual lists can
+% override the commands if needed.
+\newcommand{\standardlistparams}
+{
+    \setlength{\labelsep}{0.0cm}
+    \setlength{\leftmargin}{\labelsep+\labelwidth}
+    \setlength{\rightmargin}{\listindent}
+    \setlength{\listparindent}{\parindent}
+    \setlength{\itemindent}{0cm}
+    \setlength{\topsep}{\listtopsep}
+    \setlength{\partopsep}{0pt}
+    \ifthenelse{\equal{\value{listlevel}}{1}}
+    {
+        \setlength{\leftmargin}{\leftmargin+\listindent}
+    }
+    {
+        \setlength{\topsep}{0cm}
+        \setlength{\parskip}{0cm}
+    }
+    \setlength{\parsep}{0.25ex plus0.2ex minus0.1ex}
+    \setlength{\itemsep}{0.25ex plus0.2ex}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PLAIN LIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{plainlist}
+{
+    \stepcounter{listlevel}
+    \begin{list}
+    {}
+    {
+        \setlength{\labelwidth}{0.0cm}
+        \standardlistparams{}
+    }
+}
+{
+    \end{list}
+    \setcounter{listlevel}{\value{listlevel}-1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NUMBERED LIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{thenumberedlist}
+\newenvironment{numberedlist}
+{
+    \stepcounter{listlevel}
+    \begin{list}
+    {\arabic{thenumberedlist}.\hfill}               % Label used is our counter.
+    {
+        \usecounter{thenumberedlist}
+        \setlength{\labelwidth}{0.75cm}
+        \standardlistparams{}
+    }
+}
+{
+    \end{list}
+    \setcounter{listlevel}{\value{listlevel}-1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COUNT DOWN LIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{thecountdownlist}
+\newenvironment{countdownlist}[1]
+{
+    \stepcounter{listlevel}
+    \begin{list}
+    {\addtocounter{thecountdownlist}{-1} \hfill \arabic{thecountdownlist}. \addtocounter{thecountdownlist}{-1}}              % Label used is our counter.
+    {
+        \usecounter{thecountdownlist}
+        \setlength{\labelwidth}{0.80cm}
+        \standardlistparams{}
+%        \renewcommand{\makelabel}{
+        \setcounter{thecountdownlist}{#1}
+    }
+}
+{
+    \end{list}
+    \setcounter{listlevel}{\value{listlevel}-1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BULLETED LIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{bulletedlist}
+{
+    \stepcounter{listlevel}
+    \begin{list}
+    {$\bullet$\hfill}
+    {
+        \setlength{\labelwidth}{0.50cm}
+        \standardlistparams{}
+    }
+}
+{
+    \end{list}
+    \setcounter{listlevel}{\value{listlevel}-1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OUTLINE LIST
+%
+% Works by using a general functions to reference a specific command that
+% is different for each level.  The level functions set of the required lengths
+% and reassign the general functions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Outline List:
+% Creates a six-level outline environment based on a list for making outlines.
+% Use:
+% \begin{outline}
+% \item Line 1
+% \item Line 2
+%     \begin{outline}
+%     \item Line 2.1
+%     \item Line 2.2
+%     \end{outline}
+% \item Line 3
+% \end{outline}
+%
+% Result:
+% 1 Line 1
+% 2 Line 2
+%   2.1 Line 2.1
+%   2.2 Line 2.2
+% 3 Line 3
+
+% Outline counters.  Each counter resets when the parent counter is incremented.
+\newcounter{outlinei}
+\newcounter{outlineii}[outlinei]
+\newcounter{outlineiii}[outlineii]
+\newcounter{outlineiv}[outlineiii]
+\newcounter{outlinev}[outlineiv]
+\newcounter{outlinevi}[outlinev]
+
+% Labels used by outline list.
+\renewcommand*{\theoutlinei}{\arabic{outlinei}}
+\renewcommand*{\theoutlineii}{\arabic{outlinei}.\arabic{outlineii}}
+\renewcommand*{\theoutlineiii}{\arabic{outlinei}.\arabic{outlineii}.\arabic{outlineiii}}
+\renewcommand*{\theoutlineiv}{\arabic{outlinei}.\arabic{outlineii}.\arabic{outlineiii}.\arabic{outlineiv}}
+\renewcommand*{\theoutlinev}{\arabic{outlinei}.\arabic{outlineii}.\arabic{outlineiii}.\arabic{outlineiv}.\arabic{outlinev}}
+\renewcommand*{\theoutlinevi}{\arabic{outlinei}.\arabic{outlineii}.\arabic{outlineiii}.\arabic{outlineiv}.\arabic{outlinev}.\arabic{outlinevi}}
+
+% Lengths used to control the left margin and the width of the label for the current level.
+\newlength{\outlineindent}
+\newlength{\outlinelabelwidth}
+
+% Change this length to alter the spacing between the end of the previous entry and the beginning
+% of the next main entry.  E.g. increasing the size of the spacing something akin to the following
+% can be achieved.
+\newlength{\outlinemainitemparsep}
+\setlength{\outlinemainitemparsep}{2.5ex plus0.2ex minus0.1ex}
+
+\newenvironment{outline}
+{
+    \nextoutlinefunction{}
+    \stepcounter{listlevel}
+    \begin{list}
+    {\currentoutlinelabel\hfill}
+    {
+        \usecounter{\currentoutlinecounter}
+        \standardlistparams{}
+        \ifthenelse{\equal{\value{listlevel}}{1}}
+        {
+            \setlength{\parsep}{\outlinemainitemparsep}
+        }
+        {}
+        \setlength{\labelwidth}{\outlinelabelwidth}
+        \setlength{\leftmargin}{\outlineindent}
+    }
+}
+{
+    \end{list}
+    \previousoutlinefunction{}
+    \setcounter{listlevel}{\value{listlevel}-1}
+}
+
+% General commands.
+\newcommand*{\currentoutlinelabel}{\theoutlinei}
+\newcommand*{\currentoutlinecounter}{outlinei}
+
+\newcommand*{\previousoutlinefunction}{}
+\newcommand*{\nextoutlinefunction}{\setleveli}
+
+% Formats.
+\newcommand*{\formati}{\large \bfseries} %\normalsize \normalfont} \large \bfseries}
+\newcommand*{\formatii}{\normalsize \normalfont}
+\newcommand*{\formatiii}{\normalsize \normalfont}
+\newcommand*{\formativ}{\normalsize \normalfont}
+\newcommand*{\formatv}{\normalsize \normalfont}
+\newcommand*{\formatvi}{\normalsize \normalfont}
+
+% Commands specific to each level.
+\newcommand{\setleveli}
+{
+    \setlength{\outlinelabelwidth}{0.60cm}
+    \setlength{\outlineindent}{\listindent+\outlinelabelwidth}
+    \renewcommand*{\currentoutlinelabel}{\theoutlinei}
+    \renewcommand*{\currentoutlinecounter}{outlinei}
+    \renewcommand*{\nextoutlinefunction}{\setlevelii}
+    \renewcommand*{\previousoutlinefunction}{\setleveli}
+    \formati{}
+}
+
+\newcommand{\setlevelii}
+{
+    \setlength{\outlinelabelwidth}{0.85cm}
+    \setlength{\outlineindent}{\outlinelabelwidth}
+    \renewcommand*{\currentoutlinelabel}{\theoutlineii}
+    \renewcommand*{\currentoutlinecounter}{outlineii}
+    \renewcommand*{\nextoutlinefunction}{\setleveliii}
+    \renewcommand*{\previousoutlinefunction}{\setleveli}
+    \formatii{}
+}
+
+\newcommand{\setleveliii}
+{
+    \setlength{\outlinelabelwidth}{1.15cm}
+    \setlength{\outlineindent}{\outlinelabelwidth}
+    \renewcommand*{\currentoutlinelabel}{\theoutlineiii}
+    \renewcommand*{\currentoutlinecounter}{outlineiii}
+    \renewcommand*{\nextoutlinefunction}{\setleveliv}
+    \renewcommand*{\previousoutlinefunction}{\setlevelii}
+    \formatiii{}
+}
+
+\newcommand{\setleveliv}
+{
+    \setlength{\outlinelabelwidth}{1.50cm}
+    \setlength{\outlineindent}{\outlinelabelwidth}
+    \renewcommand*{\currentoutlinelabel}{\theoutlineiv}
+    \renewcommand*{\currentoutlinecounter}{outlineiv}
+    \renewcommand*{\nextoutlinefunction}{\setlevelv}
+    \renewcommand*{\previousoutlinefunction}{\setleveliii}
+    \formativ{}
+}
+
+\newcommand{\setlevelv}
+{
+    \setlength{\outlinelabelwidth}{1.85cm}
+    \setlength{\outlineindent}{\outlinelabelwidth}
+    \renewcommand*{\currentoutlinelabel}{\theoutlinev}
+    \renewcommand*{\currentoutlinecounter}{outlinev}
+    \renewcommand*{\nextoutlinefunction}{\setlevelvi}
+    \renewcommand*{\previousoutlinefunction}{\setleveliv}
+    \formatv{}
+}
+
+\newcommand{\setlevelvi}
+{
+    \setlength{\outlinelabelwidth}{2.15cm}
+    \setlength{\outlineindent}{\outlinelabelwidth}
+    \renewcommand*{\currentoutlinelabel}{\theoutlinevi}
+    \renewcommand*{\currentoutlinecounter}{outlinevi}
+    \renewcommand*{\nextoutlinefunction}{\setlevelvi}
+    \renewcommand*{\previousoutlinefunction}{\setlevelv}
+    \formatvi{}
+} 

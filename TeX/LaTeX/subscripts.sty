@@ -1,0 +1,10 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{subscripts}[2005/07/18 Provides a Subscript and Superscript]
+
+\usepackage{lefontsizes}
+
+% Superscript and subscript for use in normal text (i.e. not in math mode).
+% The optional second argument is a horizontal space can be used to keep the superscript / subscript from running into the text
+% before it.
+\newcommand*{\supscript}[2][0.0em]{\hspace*{#1}$^{\mbox{\scriptsize{}#2}}$}
+\newcommand*{\subscript}[2][0.0em]{\hspace*{#1}$_{\mbox{\scriptsize{}#2}}$} 

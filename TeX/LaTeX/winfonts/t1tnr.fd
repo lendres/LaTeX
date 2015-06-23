@@ -1,0 +1,12 @@
+\ProvidesFile{t1tnr.fd}[TimesNR TTF] 
+\DeclareFontFamily{T1}{tnr}{} 
+\DeclareFontShape{T1}{tnr}{b}{n}{<->ec timesbd}{} 
+\DeclareFontShape{T1}{tnr}{b}{sl}{<-> ectimesbdo}{} 
+\DeclareFontShape{T1}{tnr}{b}{it}{<-> ectimesbi}{} 
+\DeclareFontShape{T1}{tnr}{m}{n}{<-> ectimes}{} 
+\DeclareFontShape{T1}{tnr}{m}{sl}{<-> ectimeso}{} 
+\DeclareFontShape{T1}{tnr}{m}{it}{<-> ectimesi}{} 
+\DeclareFontShape{T1}{tnr}{bx}{n}{<->ssub * tnr/b/n}{} 
+\DeclareFontShape{T1}{tnr}{bx}{sl}{<->ssub * tnr/b/sl}{} 
+\DeclareFontShape{T1}{tnr}{bx}{it}{<->ssub * tnr/b/it}{} 
+\endinput 

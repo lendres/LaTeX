@@ -1,0 +1,119 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lehyperlink}[2005/07/31 Standard hyperlink settings.]
+
+%\RequirePackage{keyval}[1997/11/10]
+\RequirePackage{kvoptions}[2006/08/17]
+
+
+\newcommand*{\baseoptions}
+{
+	letterpaper=true,
+	final=true,
+	breaklinks=false,
+	colorlinks=true,
+	hyperfootnotes=false
+}
+
+\newcommand*{\coloroptions}
+{
+	linkcolor=black,
+	citecolor=black,
+	urlcolor=black,
+	filecolor=black,
+	pagecolor=black
+}
+
+\newcommand*{\tocoptions}
+{
+	linktocpage=false
+}
+
+\SetupKeyvalOptions{
+	family=lehyp,
+	prefix=lehyp@
+}
+
+\newcommand*{\lehyp@colorlinks}
+{
+	\renewcommand*{\coloroptions}
+	{
+		linkcolor=blue,
+		citecolor=blue,
+		urlcolor=red,
+		filecolor=magenta,
+		pagecolor=blue
+	}
+}
+
+% Create colored links.
+%\DeclareVoidOption{lecolorlinks}{\lehyp@colorlinks}
+\DeclareVoidOption{lecolorlinks}{\lehyp@colorlinks}
+
+%\newcommand*{\colorlinks}
+%{
+%	 \renewcommand*{\lehyp@coloroptions}
+%	 {
+%		 linkcolor=blue,
+%		 citecolor=green,
+%		 urlcolor=red,
+%		 filecolor=magenta,
+%		 pagecolor=blue
+%	 }
+%}
+%
+%\newcommand*{\lehyp@baseoptions}
+%{
+%	 letterpaper=true,
+%	 final=true,
+%	 breaklinks=false,
+%	 colorlinks=true,
+%	 hyperfootnotes=false
+%}
+%
+%\newcommand*{\lehyp@coloroptions}
+%{
+%	 linkcolor=black,
+%	 citecolor=black,
+%	 urlcolor=black,
+%	 filecolor=black,
+%	 pagecolor=black
+%}
+%
+%\newcommand*{\lehyp@tocoptions}
+%{
+%	 linktocpage=false
+%}
+
+% PDF author and title.	 To use macros (commands) use \hypersetup{} after \usepackage{hyperlink} instead.
+%\DeclareStringOption{pdfauthor}[Lance A. Endres]
+%\DeclareStringOption{pdftitle}[]
+\newcommand*{\lehyp@pdfauthor}{Lance A. Endres}
+\newcommand*{\lepdfauthor}[1]{\renewcommand*{\lehyp@pdfauthor}{#1}}
+\newcommand*{\lehyp@pdftitle}{}
+\newcommand*{\lepdftitle}[1]{\renewcommand*{\lehyp@pdftitle}{#1}}
+
+\ProcessKeyvalOptions*
+
+% Package to decide if we are creating a dvi or a pdf.
+\usepackage{ifpdf}
+
+% Be able to use hypertext references.
+\ifpdf
+	% Options for a pdf.
+	\usepackage[\baseoptions,\coloroptions,\tocoptions,pdftex,pdfauthor={\lehyp@pdfauthor},pdftitle={\lehyp@pdftitle}]{hyperref}
+	%\usepackage{hyperref}
+\else
+	% Options for a dvi.
+	% We have to use the hypertex driver with MikTeX 2.5+ for some reason.	That driver
+	% underlines the links for dvi output.	To keep the table of contents from being to
+	% messy we are going to override the linktocpage option at all times.  This will force
+	% the links to occur as the numbers and prevent the entire title from being underlined.
+	\usepackage[hypertex,\baseoptions,\coloroptions,linktocpage=true]{hyperref}
+	%\usepackage{hyperref}
+\fi
+
+%\baseoptions,\coloroptions,\tocoptions,
+\ifpdf
+	\newcommand*{\lehypersetup}{\hypersetup{pdftex,\lehyp@baseoptions,\lehyp@coloroptions,\lehyp@tocoptions,pdfauthor={\lehyp@pdfauthor},pdftitle={\lehyp@pdftitle}}}
+\else
+	\newcommand*{\lehypersetup}{\hypersetup{hypertex,\lehyp@baseoptions,\lehyp@coloroptions,linktocpage=true}}
+\fi 

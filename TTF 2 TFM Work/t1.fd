@@ -1,0 +1,12 @@
+\ProvidesFile{t1.fd}[ TTF] 
+\DeclareFontFamily{T1}{}{} 
+\DeclareFontShape{T1}{}{b}{n}{<->ec bd}{} 
+\DeclareFontShape{T1}{}{b}{sl}{<-> ecbdo}{} 
+\DeclareFontShape{T1}{}{b}{it}{<-> ecbi}{} 
+\DeclareFontShape{T1}{}{m}{n}{<-> ec}{} 
+\DeclareFontShape{T1}{}{m}{sl}{<-> eco}{} 
+\DeclareFontShape{T1}{}{m}{it}{<-> eci}{} 
+\DeclareFontShape{T1}{}{bx}{n}{<->ssub * /b/n}{} 
+\DeclareFontShape{T1}{}{bx}{sl}{<->ssub * /b/sl}{} 
+\DeclareFontShape{T1}{}{bx}{it}{<->ssub * /b/it}{} 
+\endinput 

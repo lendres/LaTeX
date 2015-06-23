@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lenote}[2009/09/22 Provides a simple environment which allows a note to
+be written inside of a box.]
+
+% PROVIDE SOME USEFUL FORMATTING MACROS.
+% \parindent is set to zero in a minipage by latex so we want to override this so that we can use
+% multiple paragraphs in our "note" command.  Create a new MiniPage PARINDENT length.
+\newlength{\mpparindent}
+\setlength{\mpparindent}{\parindent}
+
+% Create a boxed "note" environment.
+% First \noindent prevents the entire box from being indented.  The \framebox, \parbox creates a framed paragraph.
+% The tabbing gets the spacing correct and the minipage is used to wrap the input text into the correctly sized
+% space.  The size of the minipage is calculated as the textwidth minus the tab spacing used (0.2 on left and
+% right plus 0.5 between "note:" and text = 0.9) minus the size of the frame on each side (2\fboxrule) minus the
+% separation of the boxes (left and right of \framebox, plus left and right of \parbox = 4\fboxsep).
+\newcommand{\note}[1]
+{
+    \noindent
+    \framebox[\textwidth][t]
+    {
+        \parbox[t]{\textwidth}
+        {
+            \begin{tabbing}
+                \hspace*{0.2in}\=\hspace*{0.5in}\=\kill
+                \>Note: \> \begin{minipage}[t]{\textwidth-0.9in-2\fboxrule-4\fboxsep}
+                \setlength{\parindent}{\mpparindent}\noindent #1 \end{minipage}
+            \end{tabbing}
+        }
+    }
+}
+\newcommand*{\notett}[1]{\textnormal{\texttt{#1}}}

@@ -1,0 +1,443 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0038)http://www.radamir.com/tex/ttf-tex.htm -->
+<HTML><HEAD><TITLE>Using TrueType fonts with TeX and pdfTeX</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META 
+content="This note describes how to add TrueType fonts support to TeX (pdfTeX) and LaTeX (pdfLaTeX)." 
+name=description>
+<META 
+content="pdfTeX, pdftex, pdf, TeX, LaTeX, latex, pdflatex, pdfLaTeX, truetype, TrueType, True Type, true type, font, MiKTeX, Acrobat, Adobe Acrobat" 
+name=keywords>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY vLink=#800080 link=#0000ff 
+background="Using TrueType fonts with TeX and pdfTeX_files/tech.gif">
+<CENTER><A href="http://www.radamir.com/Translator/">
+<IMG 
+src="Using TrueType fonts with TeX and pdfTeX_files/translator1.gif" 
+border=0 width="468" height="60"></A></CENTER>
+<H2 align=center><FONT color=#0000ff>Using TrueType fonts with TeX 
+(LaTeX)<BR>and<BR>pdfTeX (pdfLaTeX)</FONT></H2>
+<P align=center>Damir Rakityansky,<BR><A 
+href="mailto:radamir@technologist.com">radamir@technologist.com</A></P>
+<P align=center><FONT size=2><EM>This note describes how to add TrueType fonts 
+support to TeX and LaTeX. This information is provided for educational purpose 
+only. I do not know if procedures described here violate any copywrite/license 
+agreement. Also, names ectimes</EM></FONT> <EM>and </EM><FONT 
+color=#800000><EM><TT>winfonts</TT></EM></FONT> <EM>are used just for example. I 
+do not know how they should be named correctly. </EM></P>
+<DIV align=center>
+<CENTER>
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TD align=right width="5%">1 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Before we begin (TeX)">Before 
+      we begin (TeX)</A></TD>
+    <TD align=right width="5%">7 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Using new fonts in LaTeX">Using 
+      new fonts in LaTeX</A></TD></TR>
+  <TR>
+    <TD align=right width="5%">2 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Creating TeX Font Metrics (tfm)">Creating 
+      TeX Font Metrics (tfm)</A></TD>
+    <TD align=right width="5%">8 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Before we begin (pdfTeX)">Before 
+      we begin (pdfTeX)</A></TD></TR>
+  <TR>
+    <TD align=right width="5%">3 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Creating Virtual Fonts (vf)">Creating 
+      Virtual Fonts (vf)</A></TD>
+    <TD align=right width="5%">9 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Creating Adobe Font Metrics (afm)">Creating 
+      Adobe Font Metrics (afm)</A></TD></TR>
+  <TR>
+    <TD align=right width="5%">4 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Installation of fonts for TeX and LaTeX">Installation 
+      of fonts for TeX and LaTeX</A></TD>
+    <TD align=right width="5%">10 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Gathering map file">Gathering 
+      map file</A></TD></TR>
+  <TR>
+    <TD align=right width="5%">5 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Testing the installation in TeX">Testing 
+      the installation in TeX</A></TD>
+    <TD align=right width="5%">11 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Installation of fonts for pdfTeX and pdfLaTeX">Installation 
+      of fonts for pdfTeX and pdfLaTeX</A></TD></TR>
+  <TR>
+    <TD align=right width="5%">6 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Using new fonts in TeX">Using 
+      new fonts in TeX</A></TD>
+    <TD align=right width="5%">12 </TD>
+    <TD><A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Testing the installation in pdfTeX">Testing 
+      the installation in pdfTeX</A></TD></TR>
+  <TR>
+    <TD align=middle colSpan=4>13 <A 
+      href="http://www.radamir.com/tex/ttf-tex.htm#Acrobat Bug Note">Acrobat Bug 
+      Note</A></TD></TR></TBODY></TABLE></CENTER></DIV>
+<H3><A name="Before we begin (TeX)"><FONT color=#0000ff>Before we begin 
+(TeX)</FONT></A></H3>
+<P>Base configuration, used in this document, is <A 
+href="http://www.miktex.de/">MiKTeX 1.11 (complete.exe) + Update Three</A> and 
+Ghostscript+GSview 5.50. </P>
+<P><FONT color=#ff0000><I>Adobe Acrobat users, please read a </I></FONT><A 
+href="http://www.radamir.com/tex/ttf-tex.htm#Acrobat Bug Note"><FONT 
+color=#ff0000><B>Bug Note</B></FONT></A><FONT color=#ff0000><I> at the end of 
+the document.</I></FONT></P>
+<P>Suppose, we want to typeset in Times New Roman instead of Computer Modern 
+Roman (cmr). Times New Roman in Windows 9x/NT 4 is a Unicode font which has 
+almost all symbols from Computer Modern. Certainly, they are in different 
+places. To use these fonts in TeX (LaTeX) and PDF documents, it is necessary to 
+create two more fonts: raw tex font, containing necessary characters but without 
+kerning information, and virtual tex font with kerns and ligatures. For 
+simplicity, we’ll use the rule that if TrueType font file has a name <FONT 
+color=#800000><TT>foo.ttf</TT></FONT>, than virtual tex font in T1 encoding will 
+be named <FONT color=#800000><TT>ecfoo</TT></FONT> and raw tex font will be 
+named <FONT color=#800000><TT>recfoo</TT></FONT>. Times New Roman family of 
+fonts is presented by the files <FONT color=#800000><TT>times.ttf</TT>, 
+<TT>timesi.ttf</TT>, <TT>timesbd.ttf</TT></FONT> and <FONT 
+color=#800000><TT>timesbi.ttf</TT></FONT>, found in <FONT 
+color=#800000><TT>c:\windows\fonts</TT></FONT> directory in Windows 9x or <FONT 
+color=#800000><TT>c:\winnt\fonts</TT></FONT> in Windows NT. The family has 
+Regular, Italic, Bold and BoldItalic members. We’ll also create oblique 
+(slanted) versions of Regular and Bold members, which will be marked by letter 
+“o” at the end of the name. The above is summarized in a table:</P>
+<TABLE border=1>
+  <TBODY>
+  <TR>
+    <TD width="25%">&nbsp;</TD>
+    <TD width="25%">TrueType File Name (.ttf)</TD>
+    <TD width="25%">TeX Name (virtual font; .vf, .tfm)</TD>
+    <TD width="25%">Raw TeX Name (.tfm, .afm, .pk)</TD></TR>
+  <TR>
+    <TD width="25%">Regular</TD>
+    <TD width="25%"><FONT color=#800000><TT>times</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000>ectimes</FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>rectimes</TT></FONT></TD></TR>
+  <TR>
+    <TD width="25%">Italic</TD>
+    <TD width="25%"><FONT color=#800000><TT>timesi</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>ectimesi</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>rectimesi</TT></FONT></TD></TR>
+  <TR>
+    <TD width="25%">Bold</TD>
+    <TD width="25%"><FONT color=#800000><TT>timesbd</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>ectimesbd</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>rectimesbd</TT></FONT></TD></TR>
+  <TR>
+    <TD width="25%">BoldItalic</TD>
+    <TD width="25%"><FONT color=#800000><TT>timesbi</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>ectimesbi</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>rectimesbi</TT></FONT></TD></TR>
+  <TR>
+    <TD width="25%">Oblique</TD>
+    <TD width="25%"><FONT color=#800000><TT>-</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>ectimeso</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>rectimeso</TT></FONT></TD></TR>
+  <TR>
+    <TD width="25%">BoldOblique</TD>
+    <TD width="25%"><FONT color=#800000><TT>-</TT></FONT></TD>
+    <TD width="25%"><FONT color=#800000><TT>ectimesbdo</TT></FONT></TD>
+    <TD width="25%"><FONT 
+  color=#800000><TT>rectimesbdo</TT></FONT></TD></TR></TBODY></TABLE>
+<P>Also we’ll need an encoding vector—a file which determines characters 
+positions in a new fonts. We’ll use a file <TT><A 
+href="http://www.radamir.com/tex/T1-WGL4.enc">T1-WGL4.enc</A></TT></FONT> which 
+corresponds to T1 encoding. </P>
+<BLOCKQUOTE>
+  <P><EM>To be able to typeset with Cyrillic characters, you should use 
+  </EM><FONT color=#800000><EM><TT>T2A-mod0.enc</TT></EM></FONT><EM> file or 
+  similar, found in T2 package. </EM></P></BLOCKQUOTE>
+<P>Create a temporary working directory and copy font files (<FONT 
+color=#800000><TT>times.ttf, timesbd.ttf, timesbi.ttf, timesi.ttf</TT></FONT> 
+from <FONT color=#800000><TT>c:\windows\fonts</TT></FONT> [Attention! Directory 
+is hidden.]) and encoding file (<TT><A 
+href="http://www.radamir.com/tex/T1-WGL4.enc">T1-WGL4.enc</A></TT></FONT>) 
+there. Now we are ready for actual work.</P>
+<H3><A name="Creating TeX Font Metrics (tfm)"><FONT color=#0000ff>Creating TeX 
+Font Metrics (tfm)</FONT></A></H3>
+<P>Run commands:</P><PRE><FONT color=#800000>ttf2tfm times.ttf -q -T T1-WGL4.enc -v ectimes.vpl rectimes.tfm &gt;&gt; ttfonts.map
+ttf2tfm timesi.ttf -q -T T1-WGL4.enc -v ectimesi.vpl rectimesi.tfm &gt;&gt; ttfonts.map
+ttf2tfm timesbd.ttf -q -T T1-WGL4.enc -v ectimesbd.vpl rectimesbd.tfm &gt;&gt; ttfonts.map
+ttf2tfm timesbi.ttf -q -T T1-WGL4.enc -v ectimesbi.vpl rectimesbi.tfm &gt;&gt; ttfonts.map</FONT></PRE>
+<P>This will create a tfm files of raw fonts and vpl files of virtual fonts. To 
+generate slanted versions of regular and bold font, command should be extended 
+like this:</P><PRE><FONT color=#800000>ttf2tfm times.ttf -q -T T1-WGL4.enc -s .167 -v ectimeso.vpl rectimeso.tfm &gt;&gt; ttfonts.map
+ttf2tfm timesbd.ttf -q -T T1-WGL4.enc -s .167 -v ectimesbdo.vpl rectimesbdo.tfm &gt;&gt; ttfonts.map
+</FONT></PRE>
+<H3><A name="Creating Virtual Fonts (vf)"><FONT color=#0000ff>Creating Virtual 
+Fonts (vf)</FONT></A></H3>
+<P>Run commands:</P><PRE><FONT color=#800000>vptovf ectimes.vpl ectimes.vf ectimes.tfm
+vptovf ectimesi.vpl ectimesi.vf ectimesi.tfm
+vptovf ectimesbd.vpl ectimesbd.vf ectimesbd.tfm
+vptovf ectimesbi.vpl ectimesbi.vf ectimesbi.tfm
+vptovf ectimeso.vpl ectimeso.vf ectimeso.tfm
+vptovf ectimesbdo.vpl ectimesbdo.vf ectimesbdo.tfm</FONT></PRE>
+<P>This creates vf and tfm files for virtual fonts. After that you can delete 
+vpl files:</P><PRE><FONT color=#800000>del *.vpl</FONT></PRE>
+<H3><A name="Installation of fonts for TeX and LaTeX"><FONT 
+color=#0000ff>Installation of fonts for TeX and LaTeX</FONT></A></H3>
+<P>Now vf and tfm files should be moved to the place where MiKTeX can find them. 
+Move all vf files to <FONT 
+color=#800000><TT>c:\localtexmf\fonts\vf\ms\times\</TT></FONT>, and all tfm 
+files to <FONT color=#800000><TT>c:\localtexmf\fonts\tfm\ms\times\</TT></FONT>. 
+The directories <FONT color=#800000><TT>ms\times</TT></FONT> are not mandatory, 
+you can leave the files even in parent dirs, but this way it is easier to 
+maintain them and it corresponds to the general rule of placement: <FONT 
+color=#800000><TT>&lt;supplier&gt;\&lt;family&gt;</TT></FONT>. </P>
+<P>Open the file <FONT color=#800000><TT>ttfonts.map</TT></FONT> in a temporary 
+working directory with your favorite text editor (notepad :) and copy its 
+contents to clipboard. Now open a file <FONT 
+color=#800000><TT>c:\texmf\ttf2tfm\base\ttfonts.map</TT></FONT> with the same 
+editor and paste the lines from clipboard. Beware that your editor does not wrap 
+long lines automatically. Save the file.</P>
+<P>This is sufficient for generating DVI file, but to view or print it, there 
+should be a raster (pk) font. MiKTeX will attempt to generate it automatically 
+with new utility: ttf2pk. For successful generation ttf2pk should find both 
+TrueType font and encoding file. It happens that ttf2pk can find ttf files, if 
+they are installed and are in a system fonts directory, and it looks for 
+encoding files in a directory <FONT 
+color=#800000><TT>c:\texmf\pdftex\base\</TT></FONT> (among others).Therefore you 
+have to copy T1-WGL4.enc to <FONT 
+color=#800000><TT>c:\texmf\pdftex\base\</TT></FONT>.</P>
+<P>Now we have to update databases:</P><PRE><FONT color=#800000>Start=&gt;Programs=&gt;MiKTeX=&gt;Maintenance=&gt;Refresh Filename Database</FONT></PRE>
+<H3><A name="Testing the installation in TeX"><FONT color=#0000ff>Testing the 
+installation in TeX</FONT></A></H3>
+<P>Change current directory from temporary working to some other where there are 
+no files related to fonts creation. To have a look at our brand new fonts, run a 
+command </P><PRE><FONT color=#800000>tex testfont</FONT></PRE>
+<P>It will ask about a font to test. Enter "<FONT color=#800000>ectimes</FONT>". 
+It will ask about a command. Enter "<FONT 
+color=#800000><TT>\table\eject\init</TT></FONT>". This time enter "<FONT 
+color=#800000>ectimes<TT>o</TT></FONT>", then "<FONT 
+color=#800000>ectimes<TT>bd</TT></FONT>" and so on. After all fonts are tested, 
+enter a command "<FONT color=#800000><TT>\bye</TT></FONT>". This will create a 
+file <FONT color=#800000><TT>testfont.dvi</TT></FONT> in current directory. </P>
+<BLOCKQUOTE>
+  <P><I>If you have problems at this stage, it is either wrong font names or 
+  tfm, vf files placement. </I></P></BLOCKQUOTE>
+<P>But do not hurry to open <FONT color=#800000><TT>testfont.dvi</TT></FONT> 
+with YAP. If something goes wrong, it is quite hard to trace the problem in YAP. 
+Better try converting dvi to PostScript:</P><PRE><FONT color=#800000>dvips testfont.dvi</FONT></PRE>
+<P>Here you will have plenty of messages about what is happening. In particular, 
+the generation of pk for TrueType will look like this:</P><PRE><FONT color=#800000>- make_pk_font (rectimes, 600, 600, ljfour)
+name: rectimes, dpi=600, bdpi=600, mag=magstep(0.0), mode=ljfour
+C:\texmf\miktex\bin\makemf.exe --verbose rectimes
+Cannot find rectimes source file.
+C:\texmf\miktex\bin\ttf2pk.exe -q -n rectimes 600
+ttf2pk: WARNING: Cannot map character `compwordmark'.
+ttf2pk: WARNING: Cannot map character `perthousandzero'.
+ttf2pk: WARNING: Cannot map character `dotlessj'.
+ttf2pk: WARNING: Cannot map character `ff'.
+ttf2pk: WARNING: Cannot map character `ffi'.
+ttf2pk: WARNING: Cannot map character `ffl'.
+ttf2pk: WARNING: Cannot map character `visualspace'.
+ttf2pk: WARNING: Cannot map character `Germandbls'.
+Creating rectimes.pk...
+move rectimes.pk
+C:\localtexmf\fonts\pk\modeless\ms\times\dpi600\rectimes.pk</FONT></PRE>
+<P>As you can see, Times New Roman is missing several characters, most notably 
+ff, ffi and ffl ligatures.</P>
+<H3><A name="Using new fonts in TeX"><FONT color=#0000ff>Using new fonts in 
+TeX</FONT></A></H3>
+<P>To use new fonts in TeX, you can issue a commands like:</P><PRE><FONT color=#800000>\font\myfont=ectimes
+\font\mybigfont=ectimes at 36pt
+\myfont Hello, I am being typeset in Times New Roman 
+
+\mybigfont Me too...</FONT></PRE>
+<H3><A name="Using new fonts in LaTeX"><FONT color=#0000ff>Using new fonts in 
+LaTeX</FONT></A></H3>
+<P>LaTeX requires some additional efforts. Create a font definition file <FONT 
+color=#800000><TT>t1tnr.fd</TT></FONT> in <FONT 
+color=#800000><TT>c:\localtexmf\tex\latex\winfonts</TT> </FONT>directory with 
+the following contents:</P><PRE><FONT color=#800000>\ProvidesFile{t1tnr.fd}[Put your description of font here]
+
+\DeclareFontFamily{T1}{tnr}{}
+
+\DeclareFontShape{T1}{tnr}{b}{n}{&lt;-&gt;ectimesbd}{}
+\DeclareFontShape{T1}{tnr}{b}{sl}{&lt;-&gt; ectimesbdo}{}
+\DeclareFontShape{T1}{tnr}{b}{it}{&lt;-&gt; ectimesbi}{}
+
+\DeclareFontShape{T1}{tnr}{m}{n}{&lt;-&gt; ectimes}{}
+\DeclareFontShape{T1}{tnr}{m}{sl}{&lt;-&gt; ectimeso}{}
+\DeclareFontShape{T1}{tnr}{m}{it}{&lt;-&gt; ectimesi}{}
+
+\DeclareFontShape{T1}{tnr}{bx}{n}{&lt;-&gt;ssub * tnr/b/n}{}
+\DeclareFontShape{T1}{tnr}{bx}{sl}{&lt;-&gt;ssub * tnr/b/sl}{}
+\DeclareFontShape{T1}{tnr}{bx}{it}{&lt;-&gt;ssub * tnr/b/it}{}
+
+\endinput</FONT></PRE>
+<P>Now you can use new fonts in LaTeX like the following:</P><PRE><FONT color=#800000>\documentclass{article}
+\begin{document}
+\usefont{T1}{tnr}{m}{sl} 
+
+Hello, I am being typeset in Times New Roman Slanted 
+
+\end{document}
+</FONT></PRE>
+<P>Finally, if you want to use Times New Roman as you default roman font, put 
+two <FONT color=#800000><TT>\renewcommand</TT></FONT> command in preamble:</P><PRE><FONT color=#800000>\documentclass{article}
+
+\renewcommand{\encodingdefault}{T1}
+\renewcommand{\rmdefault}{tnr}
+
+\begin{document}
+
+Hello, I am being typeset in \textsl{Times New Roman Slanted} 
+
+\end{document}</FONT></PRE>
+<P>Now you can try use pdftex and pdflatex to create PDF documents but new fonts 
+will be embeded as bitmaps which makes the whole pdf-story half useless. Let's 
+see how to embed TrueType fonts in PDF documents in native format.</P>
+<H3><A name="Before we begin (pdfTeX)"><FONT color=#0000ff>Before we begin 
+(pdfTeX)</FONT></A></H3>
+<P>First you shoulld check that your pdfTeX is up and running. A command</P>
+<DIV align=left><PRE><FONT color=#800000>pdftex story</FONT></PRE></DIV>
+<P>will give the following screen messages:</P>
+<DIV align=left><PRE><FONT color=#800000>C:\texmf&gt;pdftex story
+This is pdfTeX, Version 3.14159-12r (MiKTeX 1.11c)
+</FONT><FONT color=#ff0000>(pdftex.cfg)</FONT><FONT color=#800000> (story.tex [1</FONT><FONT color=#ff0000>&lt;cm.map&gt;</FONT><FONT color=#800000>])
+*</FONT></PRE></DIV>
+<P align=left>Enter a command <FONT color=#800000><TT>\bye</TT></FONT> and you 
+should get</P>
+<DIV align=left><PRE><FONT color=#800000>*\bye
+</FONT><FONT color=#ff0000>&lt;cmtext.enc&gt;&lt;cmr10.pfb&gt;&lt;cmsl10.pfb&gt;&lt;cmbx10.pfb&gt;</FONT><FONT color=#800000>
+Output written on story.pdf (1 page, 31672 bytes).
+Transcript written on story.log.</FONT></PRE></DIV>
+<P>There are two important things in these lines. First is <FONT 
+color=#ff0000><TT>(pdftex.cfg)</TT></FONT> and <FONT 
+color=#ff0000><TT>&lt;cm.map&gt;</TT></FONT>, which means that pdftex has found 
+its configuration file and loaded the Computer Modern fonts map. Second is <FONT 
+color=#ff0000><TT>&lt;cmtext.enc&gt;&lt;cmr10.pfb&gt;</TT></FONT>..., which 
+means that Type 1 PostScript fonts CMR10, CMSL10 and CMBX10 were included in 
+document along with encoding file.</P>
+<H3><A name="Creating Adobe Font Metrics (afm)"><FONT color=#0000ff>Creating 
+Adobe Font Metrics (afm)</FONT></A></H3>
+<P>To create afm files, go back to temporary working directory and run the 
+following commands:</P><PRE><FONT color=#800000>ttf2afm -e T1-WGL4.enc -o rectimes.afm times.ttf
+ttf2afm -e T1-WGL4.enc -o rectimesi.afm timesi.ttf
+ttf2afm -e T1-WGL4.enc -o rectimesbd.afm timesbd.ttf
+ttf2afm -e T1-WGL4.enc -o rectimesbi.afm timesbi.ttf</FONT></PRE>
+<P>The program will complain it can not find few characters but will create 
+desired afm files.</P>
+<H3><A name="Gathering map file"><FONT color=#0000ff>Gathering map 
+file</FONT></A></H3>
+<P>Now we have to create a map file whiich will map raw tex font names to actual 
+TrueType names. Though this can be done by copying necessary strings from afm 
+files, it also can be accomplished by afm2tfm program. As the name implies, it 
+creates tfm files whcih we already have. But a side effect of this proram is 
+outputting a string which is necessary for map file. Run the following 
+commands:</P><PRE><FONT color=#800000>afm2tfm rectimes.afm -T T1-WGL4.enc rectimes.tfm &gt;&gt;winfonts.map
+afm2tfm rectimesi.afm -T T1-WGL4.enc rectimesi.tfm &gt;&gt;winfonts.map
+afm2tfm rectimesbd.afm -T T1-WGL4.enc rectimesbd.tfm &gt;&gt;winfonts.map
+afm2tfm rectimesbi.afm -T T1-WGL4.enc rectimesbi.tfm &gt;&gt;winfonts.map
+afm2tfm rectimes.afm -T T1-WGL4.enc -s .167 rectimeso.tfm &gt;&gt;winfonts.map
+afm2tfm rectimesbd.afm -T T1-WGL4.enc -s .167 rectimesbdo.tfm &gt;&gt;winfonts.map</FONT></PRE>
+<P>Open winfonts.map file for editing and add near the end of each line a name 
+of the corresponding ttf file :</P><PRE><FONT color=#800000>rectimes TimesNewRomanPSMT " T1Encoding ReEncodeFont " &lt;</FONT><FONT color=#ff0000>times.ttf</FONT><FONT color=#800000> T1-WGL4.enc
+rectimesi TimesNewRomanPS-ItalicMT " T1Encoding ReEncodeFont " &lt;</FONT><FONT color=#ff0000>timesi.ttf</FONT><FONT color=#800000> T1-WGL4.enc
+rectimesbd TimesNewRomanPS-BoldMT " T1Encoding ReEncodeFont " &lt;</FONT><FONT color=#ff0000>timesbd.ttf</FONT><FONT color=#800000> T1-WGL4.enc
+rectimesbi TimesNewRomanPS-BoldItalicMT " T1Encoding ReEncodeFont " &lt;</FONT><FONT color=#ff0000>timesbi.ttf</FONT><FONT color=#800000> T1-WGL4.enc
+rectimeso TimesNewRomanPSMT " .167 SlantFont T1Encoding ReEncodeFont " &lt;</FONT><FONT color=#ff0000>times.ttf</FONT><FONT color=#800000> T1-WGL4.enc
+rectimesbdo TimesNewRomanPS-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " &lt;</FONT><FONT color=#ff0000>timesbd.ttf</FONT><FONT color=#800000> T1-WGL4.enc</FONT></PRE>
+<H3><A name="Installation of fonts for pdfTeX and pdfLaTeX"><FONT 
+color=#0000ff>Installation of fonts for pdfTeX and pdfLaTeX</FONT></A></H3>
+<P>Create a directory in localtexmf tree <FONT 
+color=#800000><TT>c:\localtexmf\fonts\afm\ms\times</TT></FONT> and move all afm 
+files there.</P>
+<P>Create a directory in localtexmf tree <FONT 
+color=#804040><TT>c:\localtexmf\pdftex\base</TT></FONT> and move <FONT 
+color=#800000>winfonts.map</FONT> file there. </P>
+<P>Edit the file<FONT 
+color=#800000><TT> c:\texmf\miktex\config\miktex.ini</TT></FONT>: find the line 
+which starts with "<FONT color=#800000>TTFPath=</FONT>" and add 
+windows fonts directory:</P><PRE><font color="#800000">TTFPath=.;%R\fonts\truetype//;c:\windows\fonts</font></PRE>
+<P>Open <FONT color=#800000><TT>c:\texmf\pdftex\base\pdftex.cfg</TT></FONT> file 
+for editing and add the following line:</P><PRE><FONT color=#800000>map +winfonts.map</FONT></PRE>
+<P>As you can see, there are a lot of other map files available in this dir, but 
+most of them require that you additionally purchase font files.</P>
+<P>Now we have to update databases:</P><PRE><FONT color=#800000>Start=&gt;Programs=&gt;MiKTeX=&gt;Refresh databases</FONT></PRE>
+<H3><A name="Testing the installation in pdfTeX"><FONT color=#0000ff>Testing the 
+installation in pdfTeX</FONT></A></H3>
+<P>Change current directory from temporary working to some other where there are 
+no files related to fonts creation and run a command </P><PRE><FONT color=#800000>pdftex testfont</FONT></PRE>
+<P>It will ask about a font to test. Enter "<FONT color=#800000>ectimes</FONT>". 
+It will ask about a command. Enter "<FONT 
+color=#800000><TT>\table\eject\init</TT></FONT>". This time enter "<FONT 
+color=#800000>ectimes<TT>o</TT></FONT>", then "<FONT 
+color=#800000>ectimes<TT>bd</TT></FONT>" and so on. After all fonts are tested, 
+enter a command "<FONT color=#800000><TT>\bye</TT></FONT>". Screen output will 
+be like this:</P><PRE><FONT color=#800000>pdftex testfont
+This is pdfTeX, Version 3.14159-12r (MiKTeX 1.11c)
+(pdftex.cfg) (testfont.tex
+Name of the font to test = ectimes
+Now type a test command (\help for help):)
+*\table\eject\init
+[1&lt;cm.map&gt;</FONT><FONT color=#ff0000>&lt;winfonts.map&gt;</FONT><FONT color=#800000>]
+Name of the font to test = ectimesbdo
+Now type a test command (\help for help):
+*\table\bye
+[2]</FONT><FONT color=#ff0000>&lt;T1-WGL4.enc&gt;&lt;timesbd.ttf&gt;</FONT><FONT color=#800000>&lt;cmttext.enc&gt;&lt;cmtt10.pfb&gt;</FONT><FONT color=#ff0000>&lt;times.ttf&gt;</FONT><FONT color=#800000>&lt;cmitext.enc&gt;&lt;
+cmti10.pfb&gt;&lt;T1-WGL4.enc&gt;&lt;cmr10.pfb&gt;&lt;cmr7.pfb&gt;
+Output written on testfont.pdf (2 pages, 195888 bytes).
+Transcript written on testfont.log. </FONT></PRE>
+<P>As you can see, this time pdftex has found <FONT face="Times New Roman" 
+color=#800000><TT>winfonts.map</TT></FONT> and embeded encodingg file 
+T1-WGL4.enc and TrueType fonts <FONT face="Times New Roman" 
+color=#800000><TT>times.ttf</TT></FONT> and <FONT 
+color=#800000><TT>timesbd.ttf</TT></FONT> into resulting PDF document. Open 
+<FONT color=#800000><TT>testfont.pdf</TT></FONT> with GSview and you will 
+see:</P>
+<P><FONT color=#ff0000><I>Adobe Acrobat users, please read a </I><B>Bug 
+Note</B><I> at the end of the document.</I></FONT></P>
+<P><IMG height=576 
+src="Using TrueType fonts with TeX and pdfTeX_files/gsview.gif" width=800></P>
+<P>Using new fonts with pdfTeX and pdfLaTeX is the same as with plain TeX and 
+LaTeX respectively.</P>
+<P>We are done...</P>
+<H3><A name="Acrobat Bug Note"><FONT color=#ff0000>Acrobat Bug 
+Note</FONT></A></H3>
+<P>PDF files are easier to work with in Adobe Acrobat Reader than in GSview but 
+Acrobat has a "feature": it can not correctly display document with embeded 
+TrueType fonts which are already installed in Windows. If you open the same pdf 
+file with Acrobat Reader 3.01 you will see</P>
+<P><IMG height=576 
+src="Using TrueType fonts with TeX and pdfTeX_files/acrobat.gif" width=800></P>
+<P>Acrobat displays only characters, which was not touched by reencoding! If you 
+try to uninstall the font from Windows (NOT RECOMMENDED with Times New Roman), 
+Acrobat will show the same file just fine:</P>
+<P><IMG height=576 
+src="Using TrueType fonts with TeX and pdfTeX_files/acrobat1.gif" width=800></P><!-- BEGIN CANADA HYPERBANNER CODE -->
+<CENTER>
+<TABLE cellSpacing=3 cellPadding=3 bgColor=black border=3>
+  <TBODY>
+  <TR>
+    <TD align=middle>
+      <TABLE cellSpacing=1 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#0000ff><A 
+            href="http://ads05.hyperbanner.net/url.cfm/ID=3029&amp;Page=100&amp;Ver=28&amp;Pos=" 
+            target=_top><IMG height=60 alt="Member of Canada HyperBanner" isMap 
+            hspace=0 
+            src="Using TrueType fonts with TeX and pdfTeX_files/12818-38.gif" 
+            width=468 border=1></A></TD></TR>
+        <TR>
+          <TD><A 
+            href="http://ads05.hyperbanner.net/barurl.dll/ID=3029&amp;Page=100&amp;Ver=28&amp;barpos=" 
+            target=_top><IMG height=16 isMap 
+            src="Using TrueType fonts with TeX and pdfTeX_files/bar.gif" 
+            width=470 
+border=0></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></CENTER><!-- END CANADA HYPERBANNER CODE --></BODY></HTML>

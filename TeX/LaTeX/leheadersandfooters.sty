@@ -1,0 +1,296 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{leheadersandfooters}[2006/08/16 Provides sets of headers
+and footers.]
+
+\RequirePackage{lastpage}
+
+% HEADERS AND FOOTERS (pg. 345)
+
+% HEADER
+% Chapter name and title on left, page number one right.  An underline stretches the width of the page.
+%
+% Chapter 1: Title of Chapter                               2
+% -----------------------------------------------------------
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@lemainheader}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}\bfseries
+                \chaptername\ \protect\thechapter : \chaptertitle\ \hfill \thepage
+                 \vspace{-10pt} \rule{\textwidth}{0.6pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
+}
+
+
+% HEADER
+% Chapter title on left, page number on the right.  An underline stretches the width of the page.
+%
+% Chapter Title                                             2
+% -----------------------------------------------------------
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@leplainheader}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}\bfseries
+                    \chaptertitle\ \hfill  \thepage
+                 \vspace{-10pt} \rule{\textwidth}{0.6pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
+%    \setlength{\footskip}{0pt}
+%    \calctextheight{}
+}
+
+
+% HEADER
+% Page number on the right.  An underline stretches the width of the page.
+%
+%                                                           2
+% -----------------------------------------------------------
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@lepagenumberandhorizontalline}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}\bfseries
+                 \hfill  \thepage
+                 \vspace{-10pt} \rule{\textwidth}{0.6pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
+%    \setlength{\footskip}{0pt}
+%    \calctextheight{}
+}
+
+
+% HEADER
+% Empty (blank).
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@leempty}
+{
+    \renewcommand*{\@oddhead}{}
+    \renewcommand*{\@evenhead}{}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
+}
+
+
+% HEADER
+% Page number at the top right (even and odd pages).
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@lepagenumbertopright}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+            \bfseries \hspace*{\fill} \thepage
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
+}
+
+
+
+% HEADER
+% Page number at the top left for even pages and top right for odd pages.
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@lepagenumbertoptwoside}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+            \bfseries \hspace*{\fill} \thepage
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}
+    {
+        \begin{minipage}{\textwidth}
+            \bfseries \thepage \hspace*{\fill}
+        \end{minipage}
+    }
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
+}
+
+
+
+% HEADER
+% Empty (blank).
+%
+% FOOTER
+% ???????????????????
+%
+\newcommand*{\ps@pagenumbercenteredinfooter}
+{
+    \renewcommand*{\@oddhead}{}
+    \renewcommand*{\@evenhead}{}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+            \bfseries \center{\thepage}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+
+% HEADER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+% FOOTER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@lehorizontalline}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+
+% HEADER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+% FOOTER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@lehorizontallinewpagenumber}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+             L a n c e \ A. \ E n d r e s \hfill {Page \thepage}\vspace*{-10pt}
+             \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+
+% HEADER
+% Empty (blank).
+%
+% FOOTER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@lefooterhorizontalline}
+{
+    \renewcommand*{\@oddhead}{}
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+
+% HEADER
+% HCC technology logo in the left, the text "HCC Technology" on the right.
+%
+% LOGO                                                                       HCC Technology
+%
+% FOOTER
+% Two lines of text.  On the first line a copyright notice on the left, the page number in
+% the middle, and Hughes Christensen on the right.  On the second line is the confidential
+% notice on the left and report revision notice on the right.
+%
+% (C)2009 Baker Hughes, Inc                 Page 1 of 23                 Hughes Christensen
+% Company Confidential -- For Internal Use Only          Technology Research Report Rev 0.1
+%
+
+\newcommand*{\lecopyrightyear}{2010}
+\newcommand*{\copyrightyear}[1]{\renewcommand*{\lecopyrightyear}{#1}}
+\newcommand*{\ps@hccreportpagestyle}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
+                \hfill \ArialBold HCC Technology
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+            \small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill Hughes Christensen \\ Company Confidential -- For Internal Use Only \hfill Technology Research Report Rev 0.1
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+\newcommand*{\ps@hccpagestyle}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
+                \hfill % \ArialBold HCC Technology
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+            \small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill  Company Confidential \\ Drilling \& Evaluation $|$ Research \hfill For Internal Use Only
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+} 

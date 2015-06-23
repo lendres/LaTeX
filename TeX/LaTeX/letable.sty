@@ -1,0 +1,65 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{letable}[2005/07/08 Additional Table Commands]
+
+% Table title.
+% 1st argument specifies number of columns in the table.
+% 2nd argument is the title of the table.
+\newcommand*{\tabletitle}[2]{\multicolumn{#1}{|c|}{\rule[-6pt]{0pt}{20pt} \bfseries #2}}
+
+% Table row height spacer.
+% Issue within a row to space the row so that the text is centered within the row.
+%
+% The length \tablerowheight allows the spacing to be adjusted if desired by
+% using \setlength{\tablerowheight}{newheight}
+%
+% Example:
+% \tablerow First column test & Second column text \\ \hline
+%
+\newlength{\tablerowheight}
+\setlength{\tablerowheight}{14pt}
+\newcommand*{\tablerow}{\rule[0pt]{0pt}{\tablerowheight}}
+
+% Table double horizontal line commands.
+% Produces double horizontal lines in a table without the gap in the outside border.
+%
+% tabledoubleline: Creates double horizontal lines in a table.
+%
+% tabledoublelinedc: Creates double horizontal lines in a table with double vertical
+%    columns on the outside of the table.
+%
+% tabledoublelinewd: Creates double horizontal lines in a table where the line width can be specified.
+%
+% 1st argument specifies the number of columns in the table.
+% 2nd argument (tabledoublelinewd only) specifies the width of the line.
+\newlength{\tabledoublelinespace}
+\setlength{\tabledoublelinespace}{-13pt}
+
+\newcommand*{\tabledoubleline}[1]{\hline \multicolumn{#1}{|c|}{\vspace*{\tabledoublelinespace}} \\ \hline}
+\newcommand*{\tabledoublelinedc}[1]{\hline \multicolumn{#1}{||c||}{\vspace*{\tabledoublelinespace}} \\ \hline}
+\newcommand*{\tabledoublelinewd}[2]{\hlinewd{#2} \multicolumn{#1}{|c|}{\vspace*{\tabledoublelinespace}} \\ \hlinewd{#2}}
+
+\newcommand*{\tabledoublecline}[2]{\cline{#1-#2} \multicolumn{#2}{c}{\vspace*{\tabledoublelinespace}} \\ \cline{#1-#2}}
+
+% Environment to allow the vertical spacing between the caption and the table to be the same as between
+% the caption in a float when the caption for the table is placed above the table and the caption for
+% the float is placed below the float.
+%
+\newlength{\abovecaptionskipstore}
+\newenvironment{topcaptiontable}[1][]
+{
+    \setlength{\abovecaptionskipstore}{\abovecaptionskip}
+    \setlength{\belowcaptionskip}{\abovecaptionskip}
+    \setlength{\abovecaptionskip}{0pt}
+    \begin{table}[#1]
+}
+{
+    \end{table}
+    \setlength{\abovecaptionskip}{\abovecaptionskipstore}
+    \setlength{\belowcaptionskip}{0pt}
+}
+
+% Used to create a variable width horizontal line.
+\makeatletter
+\def\hlinewd#1{%
+\noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
+\reserved@a\@xhline}
+\makeatother

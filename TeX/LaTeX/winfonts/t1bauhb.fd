@@ -1,0 +1,5 @@
+\ProvidesFile{t1bauhb.fd}[BauhHeavy TTF] 
+\DeclareFontFamily{T1}{bauhb}{} 
+\DeclareFontShape{T1}{bauhb}{m}{n}{<-> ecBau_hb}{} 
+\DeclareFontShape{T1}{bauhb}{m}{sl}{<-> ecBau_hbo}{} 
+\endinput 

@@ -1,0 +1,16 @@
+rectimes TimesNewRomanPSMT " T1Encoding ReEncodeFont " <times.ttf T1-WGL4.enc
+rectimesi TimesNewRomanPS-ItalicMT " T1Encoding ReEncodeFont " <timesi.ttf T1-WGL4.enc
+rectimesbd TimesNewRomanPS-BoldMT " T1Encoding ReEncodeFont " <timesbd.ttf T1-WGL4.enc
+rectimesbi TimesNewRomanPS-BoldItalicMT " T1Encoding ReEncodeFont " <timesbi.ttf T1-WGL4.enc
+rectimeso TimesNewRomanPSMT " .167 SlantFont T1Encoding ReEncodeFont " <times.ttf T1-WGL4.enc
+rectimesbdo TimesNewRomanPS-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " <timesbd.ttf T1-WGL4.enc
+recarial ArialMT " T1Encoding ReEncodeFont " <arial.ttf T1-WGL4.enc
+recariali Arial-ItalicMT " T1Encoding ReEncodeFont " <ariali.ttf T1-WGL4.enc
+recarialbd Arial-BoldMT " T1Encoding ReEncodeFont " <arialbd.ttf T1-WGL4.enc
+recarialbi Arial-BoldItalicMT " T1Encoding ReEncodeFont " <arialbi.ttf T1-WGL4.enc
+recarialo ArialMT " .167 SlantFont T1Encoding ReEncodeFont " <arial.ttf T1-WGL4.enc
+recarialbdo Arial-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " <arialbd.ttf T1-WGL4.enc
+rechandgotn HandelGothicBT-Regular " T1Encoding ReEncodeFont " <handgotn.ttf T1-WGL4.enc
+rechandgotno HandelGothicBT-Regular " .167 SlantFont T1Encoding ReEncodeFont " <handgotn.ttf T1-WGL4.enc
+recBau_hb Bauhaus-Heavy-Bold " T1Encoding ReEncodeFont " <Bau_hb.ttf T1-WGL4.enc
+recBau_hbo Bauhaus-Heavy-Bold " .167 SlantFont T1Encoding ReEncodeFont " <Bau_hb.ttf T1-WGL4.enc
