@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lefloats}[2006/05/09 Provides commands to modify how floats are displayed.]
+
+% Spacing between lines of an eqnarray.
+\setlength{\jot}{6pt}
+
+% FLOATS.
+% From: http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#figplacement
+% LaTeX's figure placement algorithm is quite biased in favor of putting figures on a page by themselves,
+% instead of on the top of a page with some text below it. Often, I find the result aesthetically unappealing
+% (to be polite). Fortunately, the parameters of the algorithm can be changed. The main problem is that LaTeX
+% per default only allows a part of the top of a text-page (70%) to contain figures, and requires at least 20%
+% of a page to be text when text and figures share a page. These parameters should be set to more reasonable
+% values, for example 85% and 10%.
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.1} 

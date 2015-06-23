@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{graphicextensions}[2005/07/31 My graphic extension settings.]
+
+\usepackage{ifpdf}
+\ifpdf
+	\usepackage[pdftex]{graphicx}
+	\pdfcompresslevel=9
+	\DeclareGraphicsExtensions{.pdf, .jpg, .png}
+\else
+	\usepackage[dvips]{graphicx}
+	\DeclareGraphicsExtensions{.eps, .bmp, .jpg, .gif}
+\fi 

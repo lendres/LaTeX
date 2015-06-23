@@ -1,0 +1,9 @@
+INSTALLATION:
+
+1) To enable MiKTeX to use the files in this directory, install the "C:\Custom Program Files\LaTeX" 
+   directory as a TEXMF directory.  Choose "MiKTeX Options" from the program files directory and 
+   then choose the tab "roots."
+
+   
+2) Follow the instructions that are printed at the end of the "Make TT Fonts.bat" file in the "TTF 2 TFM Work" directory.
+   It shouldn't be necessary to run the file, but it will not hurt anything to run it.

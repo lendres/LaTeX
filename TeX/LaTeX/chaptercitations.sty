@@ -1,0 +1,43 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chaptercitations}[2005/07/18 Provides a Subscript and Superscript]
+
+\usepackage{natbib}
+
+% Lists citations in index.
+\citeindextrue{}
+
+% Punctuation of bibliography.
+% 1: Opening bracket.  Default is [.
+% 2: Closing bracket.  Default is ].
+% 3: Multiple citation divider.  Default is ;.
+% 4: "n" for numerical, "s" for numerical superscript, or anything else for author-date style.  Default is author-date.
+% 5: Author, year divider (parenthetical case only <- I have no idea what that means).  Default is ,.
+% 6: Punctuation divider for multiple repeated authors.  Default is ,.
+%   \bibpunct{(}{)}{;}{}{,}{,}
+
+% NEW MACROS.
+% Macros of any project directories.  All references to project directories are done here with macros (even if there is only
+% one occurrence of that directory or file).  That way if any of the project directories or files change they can all be check here.
+
+
+%\newcommand*{\newarticle}[2]{}
+
+\newcommand*{\chapcite@currentauthor}{author}
+\newcommand*{\chapcite@currenttitle}{title}
+
+\newcommand*{\makearticlesectiontitle}{\citet*{\chapcite@currentauthor}: \emph{\chapcite@currenttitle}}
+
+\newcommand*{\newarticle}[2]
+{
+    \renewcommand*{\chapcite@currentauthor}{#1}
+    \renewcommand*{\chapcite@currenttitle}{#2}
+    \section{\makearticlesectiontitle{}}
+%        \newchapter{\makesectiontitle{}}
+}
+
+\newcommand*{\nopdf}[2]
+{
+    \renewcommand*{\chapcite@currentauthor}{#1}
+    \renewcommand*{\chapcite@currenttitle}{#2}
+    \makearticlesectiontitle{}
+} 

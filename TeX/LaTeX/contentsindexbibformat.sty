@@ -1,0 +1,297 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{contentsindexbibformat}[2006/08/16 Provides additional
+formatting for the table of contents, bibliography, list of figures, list of tables, list of notations, glossary, index, and captions.]
+
+\usepackage{lecaptions}
+
+\newlength{\lofskip}
+\setlength{\lofskip}{0pt}
+\providecommand*{\chaptertitle}{}
+
+% Remove the spacing between chapters in the list of figures and the list of tables.
+% Only works with the usechapterstylbeb style.
+%
+% I.e. do EITHER
+%
+% \usepackage[usechapterstyleb, addofchapterds]{lesections}
+% \usepackage[addofchapterds]{contentsindexbibformat}
+%
+% OR
+%
+% \usepackage[usechapterstyleb]{lesections}
+% \usepackage{contentsindexbibformat}
+%
+% OR
+%
+% \usepackage{lesections}
+% \usepackage{contentsindexbibformat}
+\DeclareOption{addlofchapterds}
+{
+    \setlength{\lofskip}{-10pt}
+}
+
+\newcommand*{\lotleftlabel}{Table}
+\DeclareOption{lotnoleftlabel}
+{
+    \renewcommand*{\lotleftlabel}{}
+}
+
+\newcommand*{\lofleftlabel}{Figure}
+\DeclareOption{lofnoleftlabel}
+{
+    \renewcommand*{\lofleftlabel}{}
+}
+
+% This option allows references in the bibliography to contain hyperlinks.  Otherwise
+% the hyperlines are defined to only print the text in the display text argument of
+% the \href command.
+\newcommand*{\lehrefbib}[2]{#2}
+\DeclareOption{hrefbib}
+{
+    \renewcommand*{\lehrefbib}[2]{\href{#1}{#2}}
+}
+
+\ProcessOptions
+
+
+% USED TO STORE INFORMATION.
+% Temporarily store the base line stretch.  The base line stretched is store in sort of a push/pop type
+% way, but only 1 push/pop is supported so do not overlap/embed environments that use this.  Moreover,
+% other packages may use this command (hence providecommand instead of newcommand).
+\providecommand*{\@storebaselinestretch}{\baselinestretch}
+
+\newcommand*{\newbaselinestretch}[1]
+{
+    \let\@storebaselinestretch=\baselinestretch
+    \renewcommand*{\baselinestretch}{\@bibbaselinestretch}
+    \small{}
+    \normalsize{}
+}
+
+\newcommand*{\restorebaselinestretch}
+{
+    \let\baselinestretch=\@storebaselinestretch
+    \small{}
+    \normalsize{}
+}
+
+% Table of Contents base line stretch storage.
+\newcommand*{\@tocbaselinestretch}{1.0}
+\newcommand*{\tocbaselinestretch}[1]{\renewcommand*{\@tocbaselinestretch}{#1}}
+
+% Bibliography base line stretch storage.
+\newcommand*{\@bibbaselinestretch}{1.0}
+\newcommand*{\bibbaselinestretch}[1]{\renewcommand*{\@bibbaselinestretch}{#1}}
+
+% List of Figures base line stretch storage.
+\newcommand*{\@lofbaselinestretch}{1.0}
+\newcommand*{\lofbaselinestretch}[1]{\renewcommand*{\@lofbaselinestretch}{#1}}
+
+% List of Tables base line stretch storage.
+\newcommand*{\@lotbaselinestretch}{1.0}
+\newcommand*{\lotbaselinestretch}[1]{\renewcommand*{\@lotbaselinestretch}{#1}}
+
+% List of Notations / Nomenclature base line stretch storage.
+\newcommand*{\@lonbaselinestretch}{1.0}
+\newcommand*{\lonbaselinestretch}[1]{\renewcommand*{\@lonbaselinestretch}{#1}}
+
+% Index base line stretch storage.
+\newcommand*{\@idxbaselinestretch}{1.0}
+\newcommand*{\idxbaselinestretch}[1]{\renewcommand*{\@idxbaselinestretch}{#1}}
+
+% Glossary base line stretch storage.
+\newcommand*{\@glossarybaselinestretch}{1.0}
+\newcommand*{\glossarybaselinestretch}[1]{\renewcommand*{\@glossarybaselinestretch}{#1}}
+
+% Caption base line stretch storage.
+\newcommand*{\@captionbaselinestretch}{1.0}
+\newcommand*{\captionbaselinestretch}[1]{\renewcommand*{\@captionbaselinestretch}{#1}}
+
+% NUMBER OF ENTRIES IN THE TABLE OF CONTENTS.
+\setcounter{tocdepth}{4} % Number of entries in Table of Contents.
+
+% OVERRIDE SOME COMMANDS AND PROVIDE SOME NEW COMMANDS SO THAT WE CAN SETUP THE HEADERS
+% THE WAY WE WANT THEM.  WE HAVE TO STORE THE TITLE TO PUT IT IN THE RUNNING HEADER.
+% NOTE: YOU HAVE TO USE THE COMMAND \newchapter INSTEAD OF \chapter TO MAKE THE HEADINGS WORK.
+% We have to override these set the chapter titles.
+
+% TABLE OF CONTENTS.
+\let\le@tableofcontents=\tableofcontents
+\renewcommand*{\tableofcontents}
+{
+    \clearpage{}
+    \renewcommand*{\chaptertitle}{\contentsname}
+    \addcontentsline{toc}{chapter}{\contentsname}
+    \newbaselinestretch{\@tocbaselinestretch}
+    \le@tableofcontents
+    \restorebaselinestretch{}
+}
+
+% BIBLIOGRAPHY.
+\let\le@bibliography=\bibliography
+\renewcommand*{\bibliography}
+{
+     \clearpage{}
+     \renewcommand*{\chaptertitle}{\bibname}
+     \addcontentsline{toc}{chapter}{\bibname}
+     \newbaselinestretch{\@bibbaselinestretch}
+     \le@bibliography
+     % Don't seem to be able to call any commands here (after \le@bibliography) without screwing up bibliography.
+}
+
+% LIST OF FIGURES.
+\let\le@listoffigures=\listoffigures
+\renewcommand*{\listoffigures}
+{
+    \clearpage{}
+    \renewcommand*{\chaptertitle}{\listfigurename}
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \newbaselinestretch{\@lofbaselinestretch}
+    \le@listoffigures
+    \restorebaselinestretch{}
+}
+
+% LIST OF TABLES.
+\let\le@listoftables=\listoftables
+\renewcommand*{\listoftables}
+{
+    \clearpage{}
+    \renewcommand*{\chaptertitle}{\listtablename}
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \newbaselinestretch{\@lotbaselinestretch}
+    \le@listoftables
+    \restorebaselinestretch{}
+}
+
+% LIST OF NOTATIONS.
+% First argument is a text/tex file containing lines in the form of:
+% \addnotation{Variable}{Meaning of variable.}
+%
+% Second argument is any information to print at top of page.
+\newcommand{\printlistofnotations}[2]
+{
+    \chapter*{\notationsname}
+    \addcontentsline{toc}{chapter}{\notationsname}
+
+    % Leave a blank line after this to signal a new paragraph.
+    \ifthenelse{ \equal{#2}{} }
+    {}
+    {
+        \let\addnotationtitleone=\addnotationtitle
+        #2
+    }
+
+    % Leave a blank line before this line to signal a new paragraph.
+    \begin{listofnotations}
+        \input{#1}
+    \end{listofnotations}
+}
+
+\newlength{\notationwidthdefault}
+\setlength{\notationwidthdefault}{1in}
+\newlength{\notationwidth}
+\setlength{\notationwidth}{\notationwidthdefault}
+
+\newenvironment{listofnotations}[1][\notationwidthdefault]
+{
+    \newbaselinestretch{\@lonbaselinestretch}
+    \setlength{\notationwidth}{#1}
+    \begin{tabbing} \pushtabs \hspace*{\notationwidth}\=\kill
+}
+{
+    \poptabs \end{tabbing}
+    \restorebaselinestretch{}
+    \setlength{\notationwidth}{\notationwidthdefault}
+}
+
+% Commands to add notations.
+%
+% 1st argument specifies the notation.
+% 2nd argument specifies the definition of the notation in the first argument.
+%
+% \addnotion: Adds a notation where the first argument is in math mode, the second argument is in normal text.
+% \addnotationmathdesc: Both notation and description are in math mode.
+% \addnotationtext: Both the notation and the description are in normal text.
+%
+\newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth} #2. \end{minipage} \\ \> \\}
+\newcommand*{\addnotationml}[2]{\addnotation{#1}{#2}[\mathdefspacelength]}
+\newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth} $#2$. \end{minipage} \\ \> \\}
+\newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth} #2. \end{minipage} \\ \> \\}
+
+% Commands to add notations titles (groups).  Separates different notation types (e.g. Latin verses Greek symbols).
+%
+% Use \addnotationtitleone for the first group (doesn't add space before the title).
+% Use \addnotationtitle for everything else.  The [length] at the end of line puts
+% extra spacing after the title heading.  The star form prevents a page break.  See
+% section 3.5.2 on pg 48.
+\newcommand*{\addnotationtitleone}[1]{\large \textbf{#1} \> \\*[2pt]}
+\newcommand*{\addnotationtitle}[1]{\> \\ \large \textbf{#1} \> \\*[2pt]}
+
+
+
+% CHANGE THE INDEX FORMAT.
+% This overrides the default index environment.  The multicol format can then be set
+% up in the document and issue \printindex between \begin{multicol} and \end{multicol}
+% to print the index entries into the multicol format.
+%
+% This is done because the standard \twocolumn format will not let you print a title in
+% the center of the page and then begin the columns (it automatically issues a page return).
+% We also have to override these set the headers.
+\usepackage{makeidx}
+\usepackage{multicol}
+\renewenvironment{theindex}{\let\item\@idxitem}{}
+
+\let\le@printindex=\printindex
+\renewcommand*{\printindex}
+{
+    \chapter*{\indexname}
+    \addcontentsline{toc}{chapter}{\indexname}
+    \newbaselinestretch{\@idxbaselinestretch}
+    \begin{multicols}{2}
+    \le@printindex
+    \end{multicols}
+    \restorebaselinestretch{}
+}
+
+% CAPTION COMMAND.
+% Use this caption command instead of the original caption command to allow for
+% switching the base line stretch for the caption.
+%\newcommand*{\lecaption}[2][]
+%{
+%    \newbaselinestretch{\@captionbaselinestretch}
+%    \ifthenelse{ \equal{}{#1} }
+%    {
+%        \caption{#2}
+%    }
+%    {
+%        \caption[#1]{#2}
+%    }
+%    \restorebaselinestretch{}
+%}
+\newcommand*{\lecaption}[2][]{\ifthenelse{\equal{}{#1}}{\caption{#2}}{\caption[#1]{#2}}}
+\newenvironment{lefigure}[1][]
+{
+    \begin{figure}[#1]
+    \newbaselinestretch{1.0}
+}
+{
+    \restorebaselinestretch{}
+    \end{figure}
+}
+
+% TABLE OF CONTENTS DOTTED LEADERS.
+% Specify that the table of contents should have dotted leaders
+% for the chapters also.
+\usepackage[titles]{tocloft}
+\providecommand{\cftchapleader}{\cftsecleader}
+\providecommand{\cftchapdotsep}{\cftsecdotsep}
+
+% SETUP TABLE OF CONTENTS, LIST OF FIGURES, LIST OF TABLES.
+% This adds a first line to the contents, list of figures, and list of tables pages.
+%
+% The first entry in the toc is a chapter and there is an extra space before the
+% beginning of a chapter entry so do a hack to get rid of it for the first one.
+\addtocontents{toc}{\hfill Page\vspace*{-10pt}\endgraf}
+
+\addtocontents{lof}{\noindent{}\lofleftlabel{} \hfill Page\vspace*{\lofskip}\endgraf}
+
+\addtocontents{lot}{\noindent{}\lotleftlabel{} \hfill Page\vspace*{\lofskip}\endgraf} 

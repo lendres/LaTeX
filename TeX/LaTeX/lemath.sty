@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lemath}[2006/02/01 Useful math commands.]
+
+% COMMANDS.
+% Determinate command.
+\renewcommand*{\det}[1]{\mbox{\sffamily det}\left(#1\right)}
+
+% Projection command.
+\newcommand*{\proj}[1]{\mbox{\sffamily proj}_{\,#1}}
+
+
+% CREATE A "WHERE" ENVIRONMENT FOR DEFINING VARIABLES USED IN EQUATIONS.  PROVIDE SOME MACROS TO AID IN THE USE.
+% Optional argument allows for the spacing between the item being defined (i.e. the first item) and the equal sign.
+
+% Example:
+%    \begin{equation}
+%        \frac{x-x_0}{a} = \frac{y-y_0}{b} = \frac{z-z_0}{c}.
+%    \end{equation}
+%    \begin{mathwhere}[0.75in]
+%        \mathdefitem{(x_0,y_0,z_0)}{a point on the line;}
+%        \mathdefitem{(\langle a,b,c\rangle )}{a vector parallel to the line.}
+%    \end{mathwhere}
+
+\newlength{\mathwhereindent}
+\setlength{\mathwhereindent}{\parindent}
+
+\newlength{\mathwhererightmargin}
+\setlength{\mathwhererightmargin}{2pc}
+
+%                             Initial indent   -     Size of notation      -     Size of =
+% Auto-print the "where" and give a line return.  The *[0pt] is used to keep the "where" on the same page
+% as the first definition item.
+%
+% The "\setlength{\mathwhereindent}{#1}\begin{tabbing}" appears to have to be exactly as printed.  Adding any space
+% between the {#1}\begin seems to result in an extra line spacing in the document.
+\newenvironment{mathwhere}[1][\parindent]
+{
+    \setlength{\mathwhereindent}{#1}\begin{tabbing} \pushtabs{} \hspace*{\parindent}\= \hspace*{\mathwhereindent}\= \hspace*{1.75pc}\= \kill
+    where \\*[0pt]
+}
+{
+    \poptabs{} \end{tabbing}
+    \vspace*{-\baselineskip}
+    \setlength{\mathwhereindent}{\parindent}
+}
+
+%\newcommand*{\mathdefitem}[2]{\>$#1$ \> = \> %\begin{minipage}[t]{\textwidth-\mathwhereindent-\parindent-1.75pc-\mathwhererightmargin} %#2 \end{minipage} \\}
+% If you want both the items being defined and the entire definition to be in math mode use this.  I.e. the items to
+% the left and to the right of the "=" are in math mode.
+\newcommand*{\mathdefitemtoo}[2]{\>$#1$ \> = \> \begin{minipage}[t]{\textwidth-\mathwhereindent-\parindent-1.75pc-\mathwhererightmargin} $#2$ \end{minipage} \\}
+
+\newcommand*{\mathdefitem}[2]{\> \begin{minipage}[t]{\mathwhereindent} $#1$ \end{minipage} \> \begin{minipage}[t]{1.75pc} = \end{minipage} \> \begin{minipage}[t]{\textwidth-\mathwhereindent-\parindent-1.75pc-\mathwhererightmargin} #2 \end{minipage} \\}
+
+\newcommand*{\mathdefitemml}[2]{\mathdefitem{#1}{#2}[\mathdefspacelength]}
+
+\newlength{\mathdefspacelength}
+\setlength{\mathdefspacelength}{4.5pt}
+
+
+
+% OBSOLETE - REPLACED BY USING ALIGN(ED) AND GATHER(ED) COMMANDS.  IF NEEDED IN THE FUTURE THE IMPLEMENTATION
+% SHOULD PROBABLY USE COMBINATIONS OF THOSE COMMANDS.
+% CREATE A DOUBLE EQUATION ARRAY ENVIRONMENT AND SUPPLY SOME MACROS TO AID IN THE USE OF THE ENVIRONMENT.
+\newenvironment{doubleeqarray}[1][\doubleeqspaceval]
+{
+%    \renewcommand*{\@doubleeqspacestore}{\doubleeqspaceval}
+%    \renewcommand*{\doubleeqspaceval}{#1}
+%    \begin{equation}
+    \begin{align}
+}
+{
+    \end{align}
+%    \end{equation}
+%   \renewcommand*{\doubleeqspaceval}{\@doubleeqspacestore}
+}
+
+\newcommand*{\doubleeqspaceval}{}
+%\newcommand*{\@doubleeqspacestore}{\doubleeqspaceval}
+%\newcommand*{\doubleeqspace}[1]{\renewcommand*{\doubleeqspaceval}{#1}}
+\newcommand*{\firstdeq}[2]{#1 & = #2 &}
+\newcommand*{\seconddeq}[2]{\doubleeqspaceval #1 & = #2}
+\newcommand*{\doubleeqitem}[4]{\firstdeq{#1}{#2} \seconddeq{#3}{#4}} 

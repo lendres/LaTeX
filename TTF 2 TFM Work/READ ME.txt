@@ -1,0 +1,31 @@
+I have simplified the rather convoluted method of converting true type fonts to tfm fonts for use in LaTeX.  To use the simplified method, follow the instructions below.
+
+1) Copy the desired TTF font files to this directory ("TTF 2 TFM Work").  Fonts that have italics, bold, and bold-italics et cetera will have multiple files.  For example to create the times font the following files were required:
+
+times.ttf
+timesbd.ttf
+timesbi.ttf
+timesi.ttf
+
+to make all combinations of normal, bold, slanted, and extended font shapes.  Not all fonts have all of these files available.  See below for information on how to handle the fonts based on which font files are available.
+
+2) Edit the "Make TT Fonts.bat" file.  Go to the lineS below:
+REM =======================================
+REM MAKE FONTS
+REM ADD NEW FONTS HERE!!
+REM =======================================
+
+and add another set of lines for the new font in the form of:
+    set name=times
+    set abbr=tnr
+    set desc=TimesNR
+    call "Make All Fonts.bat"
+but change the name times to the base name of the new font, the change the abbr and desc lines to match the new font name.
+
+NOTE: If your font only has the base font file ("times.ttf" in this example), then change the last line:
+    call "Make All Fonts.bat"
+to
+    call "Make Base Fonts.bat"
+and only the fonts that can be made from the base file will be generated.
+
+3) Save, close, and run the "Make TT Fonts.bat" file.  Follow the instructions that are printed to the command line from the end of the batch file to install the fonts.

@@ -1,0 +1,49 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lepageformat}[2006/08/16 Setup page size/margins/et
+cetera.]
+
+% PAGE FORMATTING COMMANDS (See pg. 35 for a diagram on page layout parameters).
+%\flushbottom{}
+
+% Horizontal spacing.
+% There is a 1 in space on the left and top margins that Latex measures from, so set the left margin to zero.
+\setlength{\hoffset}{0in}
+\setlength{\oddsidemargin}{0in}                         % Get a 1 inch left margin.
+\setlength{\evensidemargin}{0in}                        % Get a 1 inch left margin.
+\setlength{\textwidth}{6.5in}
+
+% VERTICAL SPACING.
+% Define a page height for convenience.
+\newlength{\pageheight}
+\setlength{\pageheight}{11in}
+
+\setlength{\voffset}{-12pt}                             % Pg. 546.  Reduce some of the 1 in standard margin.
+\setlength{\topmargin}{0pt}                             % There is already a 1 in space by default.
+\setlength{\headheight}{12pt}
+\setlength{\headsep}{20pt}
+\setlength{\topskip}{14pt}
+
+% Length from the bottom of the page to the bottom of the text (bottom of text inclosed in \textheight, not 
+% to the bottom of the footer).
+% Define a bottom margin because it is more normal to specify what you want the bottom and top margins to be and allow
+% the text height to be what ever is left over than to calculated the text height to get the desired bottom margin.
+\newlength{\bottommargin}
+\setlength{\bottommargin}{1in}
+
+% Call this command after changing any of the vertical spacing sizes.
+% We don't subtract the \footskip because that is part of the newly created \bottommargin length.
+\newcommand*{\calctextheight}
+{
+    \setlength{\textheight}{\pageheight-1.0in-\voffset-\topmargin-\headheight-\headsep-\bottommargin}
+}
+
+% Length from bottom of page to the bottom of the footer.
+\newlength{\footmargin}
+\setlength{\footmargin}{0.5in}
+\newcommand*{\calcfootskip}
+{
+    % Have to calculate the text height (\calctextheight) before calling this.
+    \setlength{\footskip}{\pageheight-1.0in-\voffset-\topmargin-\headheight-\headsep-\textheight-\footmargin}
+}
+
+\calctextheight{}
+\calcfootskip{}

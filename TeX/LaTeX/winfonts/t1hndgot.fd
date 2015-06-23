@@ -1,0 +1,5 @@
+\ProvidesFile{t1hndgot.fd}[HandelGothic TTF] 
+\DeclareFontFamily{T1}{hndgot}{} 
+\DeclareFontShape{T1}{hndgot}{m}{n}{<-> echandgotn}{} 
+\DeclareFontShape{T1}{hndgot}{m}{sl}{<-> echandgotno}{} 
+\endinput 

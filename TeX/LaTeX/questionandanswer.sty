@@ -1,0 +1,39 @@
+% Provides a question and answer format.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{questionandanswer}[2005/07/08 Question and Answer Package]
+
+\usepackage{calc}
+\usepackage{nameref}
+\usepackage{ifthen}
+
+\newcounter{questionnumber}
+
+\newlength{\qanumberspace}
+\setlength{\qanumberspace}{0.35in}
+
+\newlength{\qalabelspace}
+\setlength{\qalabelspace}{0.25in}
+
+\newcommand*{\qanda@questionlabel}{Q)}
+\newcommand*{\questiontext}[1]{\renewcommand*{\qanda@questionlabel}{#1}}
+
+\newcommand*{\qanda@answerlabel}{A)}
+\newcommand*{\answertext}[1]{\renewcommand*{\qanda@answerlabel}{#1}}
+
+\newcommand*{\qausenumbering}{1}
+\newcommand*{\noqandanumbering}{\setlength{\qanumberspace}{0in}\renewcommand*{\qausenumbering}{0}}
+\newcommand*{\useqandanumber}{\setlength{\qanumberspace}{0.35in}\renewcommand*{\qausenumbering}{1}}
+
+\newcommand{\question}[1]{\ifthenelse{\equal{\qausenumbering}{1}}{\thequestionnumber}{} .\>\qanda@questionlabel\>\begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1\end{minipage}\\}
+
+\newcommand{\answer}[1]{\>\qanda@answerlabel\>\begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1\end{minipage}}
+
+\newenvironment{qanda}
+{
+    \stepcounter{questionnumber}
+    \begin{tabbing}
+    \hspace*{\qanumberspace}\=\hspace*{\qalabelspace}\=\kill
+}
+{
+    \end{tabbing}
+}

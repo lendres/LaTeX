@@ -1,0 +1,22 @@
+rectimes TimesNewRomanPSMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+rectimesi TimesNewRomanPS-ItalicMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+rectimesbd TimesNewRomanPS-BoldMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+rectimesbi TimesNewRomanPS-BoldItalicMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+rectimeso TimesNewRomanPSMT " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+rectimesbdo TimesNewRomanPS-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+recarial ArialMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+recariali Arial-ItalicMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+recarialbd Arial-BoldMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+recarialbi Arial-BoldItalicMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+recarialo ArialMT " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+recarialbdo Arial-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+reccour CourierNewPSMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+reccouri CourierNewPS-ItalicMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+reccourbd CourierNewPS-BoldMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+reccourbi CourierNewPS-BoldItalicMT " T1Encoding ReEncodeFont " <T1-WGL4.enc
+reccouro CourierNewPSMT " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+reccourbdo CourierNewPS-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+rechandgotn HandelGothicBT-Regular " T1Encoding ReEncodeFont " <T1-WGL4.enc
+rechandgotno HandelGothicBT-Regular " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc
+recBau_hb Bauhaus-Heavy-Bold " T1Encoding ReEncodeFont " <T1-WGL4.enc
+recBau_hbo Bauhaus-Heavy-Bold " .167 SlantFont T1Encoding ReEncodeFont " <T1-WGL4.enc

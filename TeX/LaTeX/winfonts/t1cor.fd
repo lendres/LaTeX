@@ -1,0 +1,12 @@
+\ProvidesFile{t1cor.fd}[CourierNew TTF] 
+\DeclareFontFamily{T1}{cor}{} 
+\DeclareFontShape{T1}{cor}{b}{n}{<->ec courbd}{} 
+\DeclareFontShape{T1}{cor}{b}{sl}{<-> eccourbdo}{} 
+\DeclareFontShape{T1}{cor}{b}{it}{<-> eccourbi}{} 
+\DeclareFontShape{T1}{cor}{m}{n}{<-> eccour}{} 
+\DeclareFontShape{T1}{cor}{m}{sl}{<-> eccouro}{} 
+\DeclareFontShape{T1}{cor}{m}{it}{<-> eccouri}{} 
+\DeclareFontShape{T1}{cor}{bx}{n}{<->ssub * cor/b/n}{} 
+\DeclareFontShape{T1}{cor}{bx}{sl}{<->ssub * cor/b/sl}{} 
+\DeclareFontShape{T1}{cor}{bx}{it}{<->ssub * cor/b/it}{} 
+\endinput 

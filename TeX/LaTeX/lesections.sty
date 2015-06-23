@@ -1,0 +1,315 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lesections}[2006/05/09 Provides commands changing how the
+section headings are formatted.]
+
+\usepackage{lefonts}
+
+\newcommand*{\printsimplechapterheading}[1]
+{
+    \parindent \z@ \raggedright
+    \normalfont
+    \centering \LARGE \bfseries  #1\par\nobreak
+    \vskip 12\p@
+}
+
+\newcommand*{\printchapterstyleb}[1]
+{
+    \vspace*{50\p@}
+    \parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter % Bold font "Chapter ##" where ## is chapter number.
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \let\@storebaselinestretch=\baselinestretch
+    \renewcommand{\baselinestretch}{1}
+    \Huge \bfseries #1\par\nobreak
+    \let\baselinestretch=\@storebaselinestretch
+    \vskip 40\p@
+}
+
+\newcommand*{\printleftarialchapterheading}[1]
+{
+    \parindent \z@ \raggedright
+    \normalfont
+    \Large \ArialBold \thechapter\hspace*{12pt} #1\par\nobreak
+    \vskip 12\p@
+}
+
+\newcommand*{\printleftarialschapterheading}[1]
+{
+    \parindent \z@ \raggedright
+    \normalfont
+    \Large \ArialBold #1\par\nobreak
+    \vskip 12\p@
+}
+
+\newlength{\chapterstyleblofskip}
+\setlength{\chapterstyleblofskip}{-10pt}
+\newcommand*{\printchapterheading}[1]{\printsimplechapterheading{#1}}
+\newcommand*{\printschapterheading}[1]{\printsimplechapterheading{#1}}
+
+% If this option is used, the chapter titles in the main matter will print with a large "Chapter ##" where
+% the ## is the chapter number, followed by the name of the chapter (used as an argument to the \newchapter
+% command) printed below.
+\DeclareOption{usechapterstyleb}
+{
+    \renewcommand*{\printchapterheading}[1]{\printchapterstyleb{#1}}
+}
+
+% If this option is used, the chapter titles with be "Large" size, left justified, and of arial bold font.
+% The front, main, and back matter will all use the same style.
+\DeclareOption{useleftarialchapterstyle}
+{
+    % Starred.
+    \renewcommand*{\printchapterheading}[1]{\printleftarialchapterheading{#1}}
+
+    % Unstarred.
+    \renewcommand*{\printschapterheading}[1]{\printleftarialschapterheading{#1}}
+}
+
+% Remove the spacing between chapters in the list of figures and the list of tables.
+% Only works with the usechapterstylbeb style.
+%
+% I.e. do EITHER
+%
+% \usepackage[usechapterstyleb, addofchapterds]{lesections}
+% \usepackage[addofchapterds]{contentsindexbibformat}
+%
+% OR
+%
+% \usepackage[usechapterstyleb]{lesections}
+% \usepackage{contentsindexbibformat}
+%
+% OR
+%
+% \usepackage{lesections}
+% \usepackage{contentsindexbibformat}
+\DeclareOption{addlofchapterds}
+{
+    \setlength{\chapterstyleblofskip}{0pt}
+}
+
+\ProcessOptions
+
+\usepackage{ifthen}
+
+% ALLOW FOR CHANGING THE PAGE STYLE ON THE PAGES THE CHAPTER HEADINGS ARE ON.
+%
+% How it works:
+% To use separate chapter heading page style, use the command
+% \setchapterheadingpagestyle{??}
+% where
+%     "??" is a page style;
+% in the preamble.
+%
+% When the commands \mainmatter and \backmatter are issued, a flag is set that turns on the separate page style
+% (not for \frontmatter, in the front matter the standard style is used).
+%
+% If you want to override when the separate page style is used, set
+% \renewcommand*{\usechapterheader}{0}
+% where you want to turn if off and
+% \renewcommand*{\usechapterheader}{1}
+% to turn it on.
+%
+\newcommand*{\chapterheadingpagestyle}{0}
+\newcommand*{\setchapterheadingpagestyle}[1]
+{
+    \renewcommand*{\chapterheadingpagestyle}{#1}
+}
+
+% The following is used to capture when we are in the mainmatter so that the \newchapter command
+% knows when to print the page number in the top right (for main matter) or in bottom center (for
+% everything else.
+
+% Flag: 1 = use separate chapter headings, 0 = don't use separate chapter headings.
+\newcommand*{\usechapterheader}{0}
+
+\newcommand*{\usechapterheaderfront}{0}
+\newcommand*{\usechapterheadermain}{0}
+\newcommand*{\usechapterheaderback}{0}
+\newcommand*{\setusechapterheaderfront}[1]{\renewcommand*{\usechapterheaderfront}{#1}}
+\newcommand*{\setusechapterheadermain}[1]{\renewcommand*{\usechapterheadermain}{#1}}
+\newcommand*{\setusechapterheaderback}[1]{\renewcommand*{\usechapterheaderback}{#1}}
+
+% Capture switch to front matter.
+\let\le@frontmatter=\frontmatter
+\renewcommand*{\frontmatter}
+{
+    \le@frontmatter
+    \ifthenelse{ \equal{\usechapterheaderfront}{1} }
+    {
+        \renewcommand*{\usechapterheader}{1}
+    }
+    {
+        \renewcommand*{\usechapterheader}{0}
+    }
+}
+
+% Capture switch to main matter.
+\let\le@mainmatter=\mainmatter
+\renewcommand*{\mainmatter}
+{
+    \le@mainmatter
+    \ifthenelse{ \equal{\usechapterheadermain}{1} }
+    {
+        \renewcommand*{\usechapterheader}{1}
+    }
+    {
+        \renewcommand*{\usechapterheader}{0}
+    }
+}
+
+% Capture switch to back matter.
+\let\le@backmatter=\backmatter
+\renewcommand*{\backmatter}
+{
+    \le@backmatter
+    \ifthenelse{ \equal{\usechapterheaderback}{1} }
+    {
+        \renewcommand*{\usechapterheader}{1}
+    }
+    {
+        \renewcommand*{\usechapterheader}{0}
+    }
+}
+
+% Capture page style switch to store the standard value.
+\newcommand*{\standardpagestyle}{}
+\let\le@pagestyle=\pagestyle
+\renewcommand{\pagestyle}[1]
+{
+    \renewcommand*{\standardpagestyle}{#1}
+    \le@pagestyle{#1}
+}
+
+\newcommand{\newchapter}{\PackageError{lesections}{The {\protect\newchapter} command is no longer supported}{ Rename the {\protect\newchapter} command to {\protect\chapter} }}
+
+
+% Use this to store the current chapter title for use with the headers.
+\providecommand*{\chaptertitle}{}
+\newcommand*{\separatepagestyle}
+{
+    \ifthenelse{\not \equal{\chapterheadingpagestyle}{0}}
+    {
+        \ifthenelse{ \equal{\usechapterheader}{1} }
+        {
+            \thispagestyle{\chapterheadingpagestyle}
+        }
+        {
+            % A chapter heading page style was set, but flag to use it is false.
+            \thispagestyle{\standardpagestyle}
+        }
+    }
+    {
+        {
+            % A chapter heading page style was not set, so use the standard.
+            \thispagestyle{\standardpagestyle}
+        }
+    }
+}
+
+
+% REPROGRAMMING THE SECTIONING COMMANDS TO CHANGE SECTION FONTS AND SPACING (pg. 348).
+% Note: Don't move the last "}" to a new line in the \@startsection definitions, for some
+% reason this really screws things up.
+\setcounter{secnumdepth}{4}
+
+% Have to modify the chapter definition from book to perpend Chapter/Appendix to the toc line.  This
+% feature was originally used for dissertation, and currently there isn't an option to turn if off or on.
+% This is the chapter definition from book copied here and modified where indicated.  Probably a
+% better way to do this, but it works!
+%
+% Also, added the ability to capture the short name (in []) of the \chapter call to use in headers and
+% footers in the form of: \renewcommand*{\chaptertitle}{#1}.
+
+% Starred (numbered) version.
+\def\@chapter[#1]#2{
+    \ifthenelse{ \equal{}{#1} }
+    {
+        \renewcommand*{\chaptertitle}{#2}
+    }
+    {
+        \renewcommand*{\chaptertitle}{#1}
+    }
+    \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+            \refstepcounter{chapter}%
+            \typeout{\@chapapp\space\thechapter.}%
+            \addcontentsline{toc}{chapter}%
+                {\@chapapp\space \protect\numberline{\thechapter}#1}% Modified to prepend Chapter/Appendix to toc line.
+        \else
+            \addcontentsline{toc}{chapter}{#1}%
+        \fi
+    \else
+        \addcontentsline{toc}{chapter}{#1}%
+    \fi
+    \chaptermark{#1}%
+    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+    \if@twocolumn
+        \@topnewpage[\@makechapterhead{#2}]%
+    \else
+        \@makechapterhead{#2}%
+        \@afterheading
+    \fi}
+
+% Starred (no-number) version.
+\def\@schapter#1{
+    \renewcommand*{\chaptertitle}{#1}
+    \if@twocolumn
+        \@topnewpage[\@makeschapterhead{#1}]
+    \else
+        \@makeschapterhead{#1}
+        \@afterheading
+    \fi}
+
+
+% Non-starred (numbered) chapter heading.
+\providecommand*{\@baselinestretchstore}{}
+\renewcommand{\@makechapterhead}[1]
+{
+    {
+        \addtocontents{lof}{\protect\addvspace{\chapterstyleblofskip}}
+        \addtocontents{lot}{\protect\addvspace{\chapterstyleblofskip}}
+        \interlinepenalty\@M
+        \printchapterheading{#1}
+        \separatepagestyle{}
+    }
+}
+
+% Starred (no-number) chapter heading.
+\renewcommand{\@makeschapterhead}[1]
+{
+    {
+        \printschapterheading{#1}
+        \separatepagestyle{}
+    }
+}
+
+
+    \renewcommand{\section}{\@startsection%
+    {section}%                                           % The name.
+    {2}%                                                 % The level.
+    {\z@}%
+    {-12pt plus -2pt minus -1pt}%                        % The beforeskip.  Negative: 1st paragraph is not indented.
+    {+6pt plus -1pt minus -1pt}%                         % The afterskip.
+    {\Large \bfseries}}                                  % The s-t-y-l-e.
+
+    \renewcommand{\subsection}{\@startsection%
+    {subsection}%                                        % The name.
+    {3}%                                                 % The level.
+    {\z@}%
+    {-12pt plus -2pt minus -1pt}%                        % The beforeskip.
+    {+6pt plus -1pt minus -1pt}%                         % The afterskip.
+    {\large \bfseries}}                                  % The s-t-y-l-e.
+
+    \renewcommand{\subsubsection}{\@startsection%
+    {subsubsection}%                                     % The name.
+    {4}%                                                 % The level.
+    {\z@}%
+    {-12pt plus -2pt minus -1pt}%                        % The beforeskip.
+    {+6pt plus -1pt minus -1pt}%                         % The afterskip.
+    {\normalsize \bfseries}}                             % The s-t-y-l-e.
+
+% FORMATTING OF SECTION NUMBER.
+%\renewcommand{\@seccntformat}[1]{\@nameuse{the#1}\quad}

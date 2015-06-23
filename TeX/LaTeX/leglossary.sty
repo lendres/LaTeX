@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{leglossary}[2007/05/31 Provides additional formatting for 
+the glossary package.  Call usepackage with glossary argument before calling this package.]
+
+% USED TO STORE INFORMATION.
+% Temporarily store the base line stretch.  The base line stretched is store in sort of a push/pop type
+% way, but only 1 push/pop is supported so do not overlap/embed environments that use this.  Moreover,
+% other packages may use this command (hence providecommand instead of newcommand).
+\providecommand*{\@storebaselinestretch}{\baselinestretch}
+
+% Store the old definition of printglossary.
+\let\le@printglossary=\printglossary
+
+% Now make our own.
+\renewcommand*{\printglossary}
+{
+    \ifthenelse{ \not{\equal{\chapterheadingpagestyle}{0}} }
+    {
+        \ifthenelse{ \equal{\usechapterheader}{1} }
+        {
+            \thispagestyle{\chapterheadingpagestyle}
+        }
+        {}
+    }
+    {}
+    \let\@storebaselinestretch=\baselinestretch
+    \renewcommand{\baselinestretch}{\@glossarybaselinestretch}
+    \small{}
+    \normalsize{}
+    \le@printglossary
+    \let\baselinestretch=\@storebaselinestretch
+    \small{}
+    \normalsize{}
+}
