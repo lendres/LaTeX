@@ -527,6 +527,7 @@
 
 @article{ref:endres2015a,
 	author		  = {L. Endres},
+	title		  = {Signal Segmentation Algorithm of Radhakrishnan, et al. Ported to { C} and { C}\#},
 	journal		  = CODEPROJ,
 	volume		= {online article}
 	month		  = {June},
