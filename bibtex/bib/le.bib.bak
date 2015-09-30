@@ -1024,6 +1024,20 @@
 	author		  = {Lance A. Endres and Tyler R. Reynolds and Gregory C. Prevost},
 	title		  = {METHODS OF DESIGNING EARTH-BORING TOOLS USING A PLURALITY OF WEAR STATE VALUES AND RELATED METHODS OF FORMING EARTH-BORING TOOLS},
 	assignee	  = {Baker Hughes Incorporated},
+	number		  = {20130035902},
+	publisher	  = {U.S. Patent},
+	filedday	  = {5},
+	filedmonth	  = {August},
+	filedyear	  = {2011},
+	pubday		  = {July},
+	pubmonth	  = {2},
+	pubyear		  = {2013}
+}
+
+@patent{ref:endres2013b,
+	author		  = {Lance A. Endres and Tyler R. Reynolds and Gregory C. Prevost},
+	title		  = {METHODS OF DESIGNING EARTH-BORING TOOLS USING A PLURALITY OF WEAR STATE VALUES AND RELATED METHODS OF FORMING EARTH-BORING TOOLS},
+	assignee	  = {Baker Hughes Incorporated},
 	number		  = {201300835902},
 	publisher	  = {U.S. Patent},
 	pubday		  = {July},
