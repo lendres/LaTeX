@@ -24,9 +24,24 @@
 \newcommand*{\noqandanumbering}{\setlength{\qanumberspace}{0in}\renewcommand*{\qausenumbering}{0}}
 \newcommand*{\useqandanumber}{\setlength{\qanumberspace}{0.35in}\renewcommand*{\qausenumbering}{1}}
 
-\newcommand{\question}[1]{\ifthenelse{\equal{\qausenumbering}{1}}{\thequestionnumber}{} .\>\qanda@questionlabel\>\begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1\end{minipage}\\}
+\newcommand{\question}[1]
+{
+    \ifthenelse{\equal{\qausenumbering}{1}}{\thequestionnumber}{}\>\qanda@questionlabel\>
+    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1\strut\end{minipage}\\
+}
 
-\newcommand{\answer}[1]{\>\qanda@answerlabel\>\begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1\end{minipage}}
+%    \sbox0{#1}\vspace{\dp0}
+
+\newcommand{\answer}[1]
+{
+    \>\qanda@answerlabel\>
+    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1
+    \end{minipage}
+}
+
+%\newcommand{\bulletedlistsave}{\bulletedlist}
+%\renewcommand{\bulletedlist}{\bulletedlistsave\vspace*{-\baselineskip}}
+
 
 \newenvironment{qanda}
 {
