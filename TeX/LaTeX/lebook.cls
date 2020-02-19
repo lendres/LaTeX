@@ -61,3 +61,6 @@
 
 % PROVIDE STANDARD HEADERS AND FOOTERS.
 \usepackage{leheadersandfooters}
+
+% COMMANDS
+\newcommand*{\printtitlepage}[4]{\begin{center} \LARGE \textbf{#1} \vfill \Large \textbf{#2} \vfill \large \textbf{#3}\\ \normalsize \textbf{#4} \end{center} \normalsize}
