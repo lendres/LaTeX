@@ -1,0 +1,63 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lefonts}[2005/10/30 Provides easy access to true type
+fonts.  They have to be present and installed to use.  See "Read Me.txt" in "LaTeX" directory in
+"Custom Program Files" folder for information on installation.]
+
+\newcommand*{\TimesNR}{\usefont{T1}{utm}{m}{n}}
+\newcommand*{\TimesNRSlant}{\usefont{T1}{utm}{m}{sl}}
+\newcommand*{\TimesNRItalic}{\usefont{T1}{utm}{m}{it}}
+\newcommand*{\TimesNRBold}{\usefont{T1}{utm}{b}{n}}
+\newcommand*{\TimesNRBoldSlant}{\usefont{T1}{utm}{b}{sl}}
+\newcommand*{\TimesNRBoldItalic}{\usefont{T1}{utm}{b}{it}}
+\newcommand*{\TimesNRBoldEXt}{\usefont{T1}{utm}{bx}{n}}
+\newcommand*{\TimesNRBoldExtSlant}{\usefont{T1}{utm}{bx}{sl}}
+\newcommand*{\TimesNRBoldExtItalic}{\usefont{T1}{utm}{bx}{it}}
+
+% Used for Courier that was generated.  Switched to built in version above.
+%\newcommand*{\TimesNR}{\usefont{T1}{tnr}{m}{n}}
+%\newcommand*{\TimesNRSlant}{\usefont{T1}{tnr}{m}{sl}}
+%\newcommand*{\TimesNRItalic}{\usefont{T1}{tnr}{m}{it}}
+%\newcommand*{\TimesNRBold}{\usefont{T1}{tnr}{b}{n}}
+%\newcommand*{\TimesNRBoldSlant}{\usefont{T1}{tnr}{b}{sl}}
+%\newcommand*{\TimesNRBoldItalic}{\usefont{T1}{tnr}{b}{it}}
+%\newcommand*{\TimesNRBoldEXt}{\usefont{T1}{tnr}{bx}{n}}
+%\newcommand*{\TimesNRBoldExtSlant}{\usefont{T1}{tnr}{bx}{sl}}
+%\newcommand*{\TimesNRBoldExtItalic}{\usefont{T1}{tnr}{bx}{it}}
+
+\newcommand*{\Arial}{\usefont{T1}{arl}{m}{n}}
+\newcommand*{\ArialSlant}{\usefont{T1}{arl}{m}{sl}}
+\newcommand*{\ArialItalic}{\usefont{T1}{arl}{m}{it}}
+\newcommand*{\ArialBold}{\usefont{T1}{arl}{b}{n}}
+\newcommand*{\ArialBoldSlant}{\usefont{T1}{arl}{b}{sl}}
+\newcommand*{\ArialBoldItalic}{\usefont{T1}{arl}{b}{it}}
+\newcommand*{\ArialBoldEXt}{\usefont{T1}{arl}{bx}{n}}
+\newcommand*{\ArialBoldExtSlant}{\usefont{T1}{arl}{bx}{sl}}
+\newcommand*{\ArialBoldExtItalic}{\usefont{T1}{arl}{bx}{it}}
+
+
+\newcommand*{\CourierNew}{\usefont{T1}{ucr}{m}{n}}
+\newcommand*{\CourierNewSlant}{\usefont{T1}{ucr}{m}{sl}}
+\newcommand*{\CourierNewItalic}{\usefont{T1}{ucr}{m}{it}}
+\newcommand*{\CourierNewBold}{\usefont{T1}{ucr}{b}{n}}
+\newcommand*{\CourierNewBoldSlant}{\usefont{T1}{ucr}{b}{sl}}
+\newcommand*{\CourierNewBoldItalic}{\usefont{T1}{ucr}{b}{it}}
+\newcommand*{\CourierNewBoldEXt}{\usefont{T1}{ucr}{bx}{n}}
+\newcommand*{\CourierNewBoldExtSlant}{\usefont{T1}{ucr}{bx}{sl}}
+\newcommand*{\CourierNewBoldExtItalic}{\usefont{T1}{ucr}{bx}{it}}
+
+% Used for Courier that was generated.  Switched to built in version above.
+%\newcommand*{\CourierNew}{\usefont{T1}{cor}{m}{n}}
+%\newcommand*{\CourierNewSlant}{\usefont{T1}{cor}{m}{sl}}
+%\newcommand*{\CourierNewItalic}{\usefont{T1}{cor}{m}{it}}
+%\newcommand*{\CourierNewBold}{\usefont{T1}{cor}{b}{n}}
+%\newcommand*{\CourierNewBoldSlant}{\usefont{T1}{cor}{b}{sl}}
+%\newcommand*{\CourierNewBoldItalic}{\usefont{T1}{cor}{b}{it}}
+%\newcommand*{\CourierNewBoldEXt}{\usefont{T1}{cor}{bx}{n}}
+%\newcommand*{\CourierNewBoldExtSlant}{\usefont{T1}{cor}{bx}{sl}}
+%\newcommand*{\CourierNewBoldExtItalic}{\usefont{T1}{cor}{bx}{it}}
+
+\newcommand*{\HandelGothic}{\usefont{T1}{hndgot}{m}{n}}
+\newcommand*{\HandelGothicSlant}{\usefont{T1}{hndgot}{m}{sl}}
+
+\newcommand*{\BauhHeavy}{\usefont{T1}{bauhb}{m}{n}}
+\newcommand*{\BauhHeavySlant}{\usefont{T1}{bauhb}{m}{sl}}
+

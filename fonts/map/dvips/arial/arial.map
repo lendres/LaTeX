@@ -1,0 +1,6 @@
+recarial ArialMT " T1Encoding ReEncodeFont " <arial.ttf T1-WGL4.enc
+recariali Arial-ItalicMT " T1Encoding ReEncodeFont " <ariali.ttf T1-WGL4.enc
+recarialbd Arial-BoldMT " T1Encoding ReEncodeFont " <arialbd.ttf T1-WGL4.enc
+recarialbi Arial-BoldItalicMT " T1Encoding ReEncodeFont " <arialbi.ttf T1-WGL4.enc
+recarialo ArialMT " .167 SlantFont T1Encoding ReEncodeFont " <arial.ttf T1-WGL4.enc
+recarialbdo Arial-BoldMT " .167 SlantFont T1Encoding ReEncodeFont " <arialbd.ttf T1-WGL4.enc

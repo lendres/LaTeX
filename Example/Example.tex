@@ -1,0 +1,90 @@
+	\documentclass[scd]{lebook}
+	\usepackage{amsmath}
+    \usepackage{hyperref}
+    \usepackage{lecode}
+
+    % Note on YAK previewer and fonts not rendering.
+    % https://tex.stackexchange.com/questions/130414/error-viewing-dvi-file-postscript-specials-could-not-be-rendered
+
+	% Commands for titles.
+	\newcommand*{\tbs}{\textbackslash}
+    \newcommand*{\documentshorttitle}{ShortTitle}
+    \newcommand*{\documenttitle}{Document Title}
+
+	%INCLUDE A BIBLIOGRAPHY.
+	\bibliographystyle{leplain}
+
+	% INCLUDE AN INDEX.
+%	\makeindex
+
+	\begin{document}
+
+	% MAKE A TITLE PAGE.
+ 	\printtitlepage{Title}{Lance A. Endres\index{Endres, Lance A.}}{Organization}{February 202x}
+
+
+	\pagestyle{leplainheader}
+	\frontmatter{}
+
+The class file \class{lebook.cls} which contains common formatting.
+
+\Arial
+Arial font test.
+
+\CourierNew
+Courier New font test.
+
+\CourierNewBold
+Courier New Bold font test.
+
+\TimesNR
+Times New Roman font test.
+
+\TimesNRBold
+Times New Roman Bold font test.
+
+\BauhHeavy
+Bauh Heavy font test.
+
+	\input{"CH About This Document.tex"}
+
+	% GENERATE THE TABLE OF CONTENTS AND LIST OF FIGURES.
+
+	\tableofcontents{}
+
+	\listoffigures{}
+
+	\listoftables{}
+
+	\mainmatter
+	\pagestyle{lemainheader}
+
+	%INCLUDE CHAPTERS.
+    \input{"CH Introduction.tex"}
+
+%	\begin{figure}
+%		\centering \includegraphics[width=5.0in]{imagename}
+%		\caption{Caption.}
+%		\label{fig:imagename}
+%	\end{figure}
+%\editorsnote{Do we want this figure?  If not delete from figures directory.}
+
+
+	% Include Items in the bibliography that are not specifically cited.
+	\nocite{ref:ammeraal2000a}
+	\nocite{ref:hubbard2000a}
+
+	\backmatter{}
+	\pagestyle{leplainheader}
+
+	% BIBLIOGRAPHY INFO.
+    % Remove temp after moving its text into le.bib.
+	\bibliography{le,temp}
+
+
+	% INDEX CROSS REFERENCES.
+	%\index{Name|see{othername}}
+
+	\printindex{}
+
+	\end{document}

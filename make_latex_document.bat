@@ -95,6 +95,22 @@ rem call cleanup.bat
 del cleanup.bat
 
 
+REM (ALT) CLEAN UP!
+rem del *.aux
+rem del *.bbl
+rem del *.blg
+rem del *.idx
+rem del *.ilg
+rem del *.ind
+rem del *.log
+rem del *.toc
+rem del *.lof
+rem del *.out
+rem del *.lot
+del *.bak
+del *.sav
+
+
 echo.
 echo Done!
 

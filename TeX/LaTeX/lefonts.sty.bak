@@ -4,7 +4,6 @@ for fonts that were generated manually for LaTeX.]
 
 % Include these so that when this package is used, those commands are available as well.
 \usepackage{legeneratedfonts}
-\usepackage{helvet}
 
 % This now uses the built in version.  The old version that was generated used the "tnr" root.
 \newcommand*{\TimesNR}{\usefont{T1}{utm}{m}{n}}
@@ -27,21 +26,3 @@ for fonts that were generated manually for LaTeX.]
 \newcommand*{\CourierNewBoldEXt}{\usefont{T1}{ucr}{bx}{n}}
 \newcommand*{\CourierNewBoldExtSlant}{\usefont{T1}{ucr}{bx}{sl}}
 \newcommand*{\CourierNewBoldExtItalic}{\usefont{T1}{ucr}{bx}{it}}
-
-% The method of creating your own fonts for LaTeX seems to have changed and I have not gotten them to work
-% with the new method.  For now, use different fonts by overriding the commands.
-\renewcommand*{\Arial}{\usefont{T1}{phv}{m}{n}}
-\renewcommand*{\ArialSlant}{\usefont{T1}{phv}{m}{sl}}
-\renewcommand*{\ArialItalic}{\usefont{T1}{phv}{m}{it}}
-\renewcommand*{\ArialBold}{\usefont{T1}{phv}{b}{n}}
-\renewcommand*{\ArialBoldSlant}{\usefont{T1}{phv}{b}{sl}}
-\renewcommand*{\ArialBoldItalic}{\usefont{T1}{phv}{b}{it}}
-\renewcommand*{\ArialBoldEXt}{\usefont{T1}{phv}{bx}{n}}
-\renewcommand*{\ArialBoldExtSlant}{\usefont{T1}{phv}{bx}{sl}}
-\renewcommand*{\ArialBoldExtItalic}{\usefont{T1}{phv}{bx}{it}}
-
-\renewcommand*{\HandelGothic}{\Arial}
-\renewcommand*{\HandelGothicSlant}{\usefont{T1}{hndgot}{m}{sl}}
-
-\renewcommand*{\BauhHeavy}{\Arial}
-\renewcommand*{\BauhHeavySlant}{\usefont{T1}{bauhb}{m}{sl}} 
