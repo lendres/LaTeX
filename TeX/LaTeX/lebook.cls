@@ -63,4 +63,19 @@
 \usepackage{leheadersandfooters}
 
 % COMMANDS
-\newcommand*{\printtitlepage}[4]{\begin{center} \LARGE \textbf{#1} \vfill \Large \textbf{#2} \vfill \large \textbf{#3}\\ \normalsize \textbf{#4} \end{center} \normalsize}
+\newcommand*{\printtitlepage}[4]
+{
+	\begin{titlepage}
+		\begin{center}
+%			\includegraphics[width=\textwidth]{hccheader}\\
+			\vspace*{12pt}
+			\Huge \bfseries
+			#1 \\
+			\vfill \Large \bfseries
+			#2
+			\vfill \large
+            #3 \\
+			#4\footnote{Last updated: \today}
+		\end{center} \normalsize \mdseries
+	\end{titlepage}
+}

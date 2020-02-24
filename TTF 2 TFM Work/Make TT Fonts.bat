@@ -7,11 +7,11 @@ del winfonts.map
 del *.fd
 
 REM SETUP FONTS.STY
-    set styfile=..\TeX\LaTeX\lefonts.sty
+    set styfile=..\TeX\LaTeX\legeneratedfonts.sty
     del "%styfile%"
-    echo \NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lefonts}[2005/10/30 Provides easy access to true type >> "%styfile%"
-    echo fonts.  They have to be present and installed to use.  See "Read Me.txt" in "LaTeX" directory in >> "%styfile%"
-    echo "Custom Program Files" folder for information on installation.] >> "%styfile%"
+    echo \NeedsTeXFormat{LaTeX2e} \ProvidesPackage{legeneratedfonts}[2005/10/30 Provides easy access to true type >> "%styfile%"
+    echo fonts that were generated.  They have to be present and installed to use.  See "Read Me.txt" in "LaTeX" directory in >> "%styfile%"
+    echo "Custom Program Files" folder for information on installation.  See also, "lefonts.sty."] >> "%styfile%"
     echo. >> "%styfile%"
 
 
@@ -21,20 +21,22 @@ REM =======================================
 REM MAKE FONTS
 REM ADD NEW FONTS HERE!!
 REM =======================================
-    set name=times
-    set abbr=tnr
-    set desc=TimesNR
-    call "Make All Fonts.bat"
+rem No longer using the generated version, using the built in.
+rem    set name=times
+rem    set abbr=tnr
+rem    set desc=TimesNR
+rem    call "Make All Fonts.bat"
 
     set name=arial
     set abbr=arl
     set desc=Arial
     call "Make All Fonts.bat"
 
-    set name=cour
-    set abbr=cor
-    set desc=CourierNew
-    call "Make All Fonts.bat"
+rem No longer using the generated version, using the built in.
+rem    set name=cour
+rem    set abbr=cor
+rem    set desc=CourierNew
+rem    call "Make All Fonts.bat"
 
     set name=handgotn
     set abbr=hndgot
