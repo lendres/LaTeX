@@ -15,10 +15,11 @@ programming source code.]
 \newcommand{\codefont}[1]{{\@codefonttype#1}}
 \newcommand{\codesize}[1]{{\@codefontsize#1}}
 
-% CLASS NAME, ABSTRACT CLASS NAME, AND DIRECTORY.
-\newcommand*{\class}[1]{\codefont{#1}}
-\newcommand*{\abstractclass}[1]{\class{\emph{#1}}}
-\newcommand*{\directory}[1]{\class{#1}}
+% CLASS NAME, ABSTRACT CLASS NAME, DIRECTORY, and FILE.
+\newcommand*{\class}[1]{\codesize{\codefont{\codeisusertype{#1}}}}
+\newcommand*{\abstractclass}[1]{\class{\emph{\codeisusertype{#1}}}}
+\newcommand*{\directory}[1]{\codesize{\codefont{#1}}}
+\newcommand*{\filename}[1]{\codesize{\codefont{#1}}}
 
 
 
@@ -155,8 +156,6 @@ programming source code.]
 
 
 
-
-
 % AN UNDERLINE.
 \newcommand*{\ul}{\_}
 
@@ -273,6 +272,11 @@ programming source code.]
 \newcommand*{\boolmember}[1]{\keywordmember{\codebool{}}{#1}}
 \newcommand*{\stringmember}[1]{\keywordmember{\codestring{}}{#1}}
 
+% STRINGS.
+% Allow for user types that are colored to standout like in most development
+% environments / debuggers used to produce code.
+\definecolor{usertypecolor}{rgb}{0.16863,0.56863,0.68627}
+\newcommand*{\codeisusertype}[1]{\textcolor{usertypecolor}{#1}}
 
 % STRINGS.
 % Allow for strings that are colored to standout like in most development
