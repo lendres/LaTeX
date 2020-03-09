@@ -15,13 +15,6 @@ programming source code.]
 \newcommand{\codefont}[1]{{\@codefonttype#1}}
 \newcommand{\codesize}[1]{{\@codefontsize#1}}
 
-% CLASS NAME, ABSTRACT CLASS NAME, DIRECTORY, and FILE.
-\newcommand*{\class}[1]{\codesize{\codefont{\codeisusertype{#1}}}}
-\newcommand*{\abstractclass}[1]{\class{\emph{\codeisusertype{#1}}}}
-\newcommand*{\directory}[1]{\codesize{\codefont{#1}}}
-\newcommand*{\filename}[1]{\codesize{\codefont{#1}}}
-
-
 
 % XML.
 
@@ -178,6 +171,14 @@ programming source code.]
 \newcommand*{\popbracketspace}{\setlength{\bracketspace}{\storebracketspace}}
 \newcommand*{\brackets}{[\hspace*{\bracketspace}]}
 
+
+% CLASS NAME, ABSTRACT CLASS NAME, DIRECTORY, and FILE.
+\newcommand*{\class}[1]{\codesize{\codefont{\codeisusertype{#1}}}}
+\newcommand*{\abstractclass}[1]{\class{\emph{\codeisusertype{#1}}}}
+\newcommand*{\directory}[1]{\codesize{\codefont{#1}}}
+\newcommand*{\filename}[1]{\codesize{\codefont{#1}}}
+
+
 % KEYWORDS.
 % Allow for code specific keywords that can be changed color to standout like in most development
 % environments / debuggers used to produce code.
@@ -264,7 +265,7 @@ programming source code.]
 \newcommand*{\codewhile}{\codekeyword{while}}
 
 
-
+% COMMANDS FOR CREATING MEMBER LISTS.
 \newcommand*{\keywordmember}[2]{#1\>#2 \\}
 \newcommand*{\intmember}[1]{\keywordmember{\codeint{}}{#1}}
 \newcommand*{\doublemember}[1]{\keywordmember{\codedouble{}}{#1}}
@@ -272,7 +273,8 @@ programming source code.]
 \newcommand*{\boolmember}[1]{\keywordmember{\codebool{}}{#1}}
 \newcommand*{\stringmember}[1]{\keywordmember{\codestring{}}{#1}}
 
-% STRINGS.
+
+% USER TYPES.
 % Allow for user types that are colored to standout like in most development
 % environments / debuggers used to produce code.
 \definecolor{usertypecolor}{rgb}{0.16863,0.56863,0.68627}
