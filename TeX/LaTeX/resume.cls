@@ -33,6 +33,9 @@
 % Change the font usage to type 1 instead of type 3 (bitmapped)
 \RequirePackage{amsfonts,amssymb,amsbsy,amsmath}
 
+% My fonts.
+\usepackage{lefonts}
+
 % Set standard font sizes.
 \usepackage{lefontsizes}
 \newlength{\largefontsize}
@@ -54,9 +57,9 @@
 \usepackage{lepageformat}
 
 % Vertical spacing.
-\setlength{\voffset}{-0.15in}                           % Reduce some of the 1 in standard margin.
+\setlength{\voffset}{-0.15in}                       % Reduce some of the 1 in standard margin.
 \setlength{\topmargin}{0pt}                         % There is already a 1 in space by default (reduced by above).
-\setlength{\headheight}{18pt}
+\setlength{\headheight}{12pt}
 \setlength{\headsep}{0.15in}
 \setlength{\topskip}{0.15in}
 \setlength{\bottommargin}{1.0in}
@@ -106,12 +109,12 @@
 %\newcommand{\contactspace}{\hspace*{4pt}$\bullet$\hspace*{4pt}}
 \newcommand{\makeresumeheaderB}
 {
-    \vspace*{-50pt}
+    \vspace*{-44pt}
     \helveticbc
     \noindent \@name \mdseries \normalsize \vspace*{-9pt} \\
     \noindent \horline \vspace*{-5pt}\\
     \noindent{\normalsize \@email{} \contactspace{} \@website{} \contactspace{} \@phone{}}\\
-    \vspace*{-20pt}
+    \vspace*{-16pt}
 }
 
 %This command will defer commands until the call to begin document is made.
@@ -123,20 +126,29 @@
 \newcommand{\catagory}[1]{\section*{#1}}
 %{\vspace*{12pt}\noindent{\timesbc#1}}
 
-\usepackage{lefonts}
 \renewcommand{\section}{\@startsection%
 {section}%                                           % The name.
 {1}%                                                 % The level.
 {\z@}%
-{-0pt plus -6pt minus -1pt}%                        % The beforeskip.  Negative: 1st paragraph is not indented.
+{-0pt plus -14pt minus -1pt}%                         % The beforeskip.  Negative: 1st paragraph is not indented.
 {+1pt plus -1pt minus -1pt}%                         % The afterskip.
-{\center\large\ArialBold{}}}                         % The s-t-y-l-e.
+{\center\large\ArialBold{}}}%                        % The s-t-y-l-e.
 % {\timesbc}}                                          % The s-t-y-l-e.
 
 \newlength{\datewidth}
 \setlength{\datewidth}{2.0in}
 %\newcommand{\catentry}[3]{\noindent\begin{minipage}[t]{\textwidth}\begin{minipage}[t]{\datewidth}\emph{#1} \end{minipage} \begin{minipage}[t]{\textwidth-\datewidth} \emph{#2} \\ #3 \end{minipage} \end{minipage} \vspace{4pt}}
 
+% Experience
+% Arguments: Date, Position Tile, Company Name, Company Address
+\newcommand{\catentry}[4]
+{
+    \noindent\begin{minipage}[t]{\textwidth}
+        \begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}} - #4\hspace{0pt}\\ \emph{\textbf{#2}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+    \end{minipage}\vspace{4pt}%
+}
+
+% Education
 % Arguments: Date, Degree, University
 \newcommand{\catentryeducation}[3]
 {
@@ -145,23 +157,22 @@
     \end{minipage} \vspace{4pt}
 }
 
-% Arguments: Date, Position Tile, Company Name, Company Address
-\newcommand{\catentry}[4]
-{
-    \noindent\begin{minipage}[t]{\textwidth}
-        \begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}} - #4\hspace{0pt}\\ \emph{\textbf{#2}}  \end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
-    \end{minipage} \vspace{4pt}
-}
-
+% Certifications
 % Arguments: Date, Title, Address
 \newcommand{\catentrycertification}[3]
 {
-    \noindent{}#2 \hfill{} #1
+	\noindent\begin{minipage}[t]{\textwidth}
+    	\begin{minipage}[t]{\textwidth-\datewidth}#2, #3\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+	\end{minipage}%
 }
 
+% Memberships
+% Arguments: Date, Organization, Description/Title (optional)
 \newcommand{\catentrymembership}[3]
 {
-    \noindent{}\textbf{#2} \hfill{} #1\ifthenelse{\equal{#3}{}}{\\ \vspace*{-0.5\baselineskip}}{\\#3\vspace*{0.5\baselineskip}}
+	\noindent\begin{minipage}[t]{\textwidth}
+    	\begin{minipage}[t]{\textwidth-\datewidth}\textbf{#2} \ifthenelse{\equal{#3}{}}{\\ \vspace*{-0.5\baselineskip}}{\\#3\vspace*{0.5\baselineskip}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+	\end{minipage}%
 }
 
 \newcommand{\catentryshort}[3]
@@ -169,20 +180,10 @@
     \noindent\begin{minipage}[t]{\textwidth}
         \begin{minipage}[t]{\textwidth-\datewidth}#2\end{minipage}
         \begin{minipage}[t]{\datewidth}#1\end{minipage}
-    \end{minipage}
+    \end{minipage}%
 }
 
 % PUBLICATIONS
-% \newcounter{publications}
-% \renewcommand{\thepublications}{\stepcounter{publications}[\arabic{publications}]}
-% \newlength{\pubcountwidth}
-% \setlength{\pubcountwidth}{0.22in}
-% 
-% \newcommand{\publication}[2]{\noindent \begin{minipage}[t]{\textwidth}
-%     \begin{minipage}[t]{\pubcountwidth} #1 \end{minipage} \begin{minipage}[t]{\textwidth-\pubcountwidth} #2 \end{minipage} \end{minipage} }
-%     
-% \newcommand{\article}[4]{\publication{\thepublications}{#1.  ``#2.''  \emph{#3}. #4.}}
-
 \let\abstract@bibliography=\bibliography
 \renewcommand*{\bibliography}
 {
@@ -200,6 +201,8 @@
             \let\p@enumiv\@empty
             \renewcommand\theenumiv{\@arabic\c@enumiv}}%
       \sloppy
+      \setlength{\parskip}{0.5\parskip}
+	  \setlength{\itemsep}{0.5\itemsep}
       \clubpenalty4000
       \@clubpenalty \clubpenalty
       \widowpenalty4000%
