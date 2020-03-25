@@ -22,9 +22,11 @@
 % Used to calculated lengths.
 \usepackage{calc}
 
-% Controls the spacing of the left margin of the top most list level.
-\newlength{\listindent}
-\setlength{\listindent}{\parindent}
+% Controls the spacing of the text from the left and right edges.
+\newlength{\leftlistindent}
+\setlength{\leftlistindent}{\parindent}
+\newlength{\rightlistindent}
+\setlength{\rightlistindent}{\parindent}
 
 % Controls the spacing between the list and the preceding and following text.
 \newlength{\listtopsep}
@@ -32,20 +34,19 @@
 
 \newcounter{listlevel}
 
-% Standardized list parameters used by all lists.  Individual lists can
-% override the commands if needed.
+% Standardized list parameters used by all lists.  Individual lists can override the commands if needed.
 \newcommand{\standardlistparams}
 {
     \setlength{\labelsep}{0.0cm}
     \setlength{\leftmargin}{\labelsep+\labelwidth}
-    \setlength{\rightmargin}{\listindent}
+    \setlength{\rightmargin}{\rightlistindent}
     \setlength{\listparindent}{\parindent}
     \setlength{\itemindent}{0cm}
     \setlength{\topsep}{\listtopsep}
     \setlength{\partopsep}{0pt}
     \ifthenelse{\equal{\value{listlevel}}{1}}
     {
-        \setlength{\leftmargin}{\leftmargin+\listindent}
+        \setlength{\leftmargin}{\leftmargin+\leftlistindent}
     }
     {
         \setlength{\topsep}{0cm}
@@ -104,7 +105,7 @@
 {
     \stepcounter{listlevel}
     \begin{list}
-    {\addtocounter{thecountdownlist}{-1} \hfill \arabic{thecountdownlist}. \addtocounter{thecountdownlist}{-1}}              % Label used is our counter.
+    {\addtocounter{thecountdownlist}{-1} \hfill \arabic{thecountdownlist}. \addtocounter{thecountdownlist}{-1}}       % Label used is our counter.
     {
         \usecounter{thecountdownlist}
         \setlength{\labelwidth}{0.80cm}
@@ -128,7 +129,7 @@
     \begin{list}
     {$\bullet$\hfill}
     {
-        \setlength{\labelwidth}{0.50cm}
+        \setlength{\labelwidth}{0.40cm}
         \standardlistparams{}
     }
 }
@@ -234,7 +235,7 @@
 \newcommand{\setleveli}
 {
     \setlength{\outlinelabelwidth}{0.60cm}
-    \setlength{\outlineindent}{\listindent+\outlinelabelwidth}
+    \setlength{\outlineindent}{\leftlistindent+\outlinelabelwidth}
     \renewcommand*{\currentoutlinelabel}{\theoutlinei}
     \renewcommand*{\currentoutlinecounter}{outlinei}
     \renewcommand*{\nextoutlinefunction}{\setlevelii}
@@ -295,4 +296,4 @@
     \renewcommand*{\nextoutlinefunction}{\setlevelvi}
     \renewcommand*{\previousoutlinefunction}{\setlevelv}
     \formatvi{}
-} 
+}

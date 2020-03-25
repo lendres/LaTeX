@@ -54,7 +54,6 @@
 
 
 
-
 \newenvironment{figure}
                {\@float{figure}}
                {\end@float}
@@ -73,7 +72,8 @@
 \newcommand{\@senderemail}{\myemailone}
 \newcommand{\senderemail}[1]{\renewcommand{\@senderemail}{#1}}
 
-%renewcommand{\enclname}{enclosure:}
+\renewcommand{\enclname}{Enclosure}
+\newcommand{\encls}[1]{\renewcommand{\enclname}{Enclosures}\encl{#1}}
 
 
 \renewenvironment{letter}[1]
