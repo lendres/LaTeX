@@ -17,16 +17,32 @@
 \def\update{2004/01/23 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{businessletter}[\update\ Lance A. Endres]
-\newcommand*{\authorname}{Lance A. Endres}
-\DeclareOption{FullName}
+\ProvidesClass{businessletter}[]
+
+\usepackage{calc}
+
+% Option to shorten the space between the closing and name.
+\newlength{\signaturespace}
+\setlength{\signaturespace}{6\medskipamount}
+\DeclareOption{NoSignatureSpace}
 {
-    \renewcommand*{\authorname}{Lanson A. Endres}
+    \setlength{\signaturespace}{2\medskipamount}
 }
+\DeclareOption{SmallSignatureSpace}
+{
+    \setlength{\signaturespace}{4\medskipamount}
+}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{letter}} 
 \ProcessOptions \LoadClass[12pt, oneside, letterpaper]{letter} 
 
-\usepackage{calc}
+% CONTACT INFO
+\usepackage{lecontactinfo}
+\telephone{\phone{}}
+
+\usepackage{leheadersandfooters}
+\let\ps@empty\ps@leletterheada
+\let\ps@firstpage\ps@leletterheada
 
 % FONTS.
 \usepackage{lefontsizes}
@@ -35,25 +51,26 @@
 \renewcommand{\baselinestretch}{1}
 
 
-% Horizontal spacing.
-% There is a 1 in space on the left and top margins that Latex measures from, so set the left margin to zero.
-\setlength{\hoffset}{0in}
-\setlength{\oddsidemargin}{0in}                         % Get a 1 inch left margin.
-\setlength{\evensidemargin}{0in}                        % Get a 1 inch left margin.
-\setlength{\textwidth}{6.5in}
+% PAGE FORMATTING COMMANDS (See pg. 35 for a diagram on page layout parameters).
+\flushbottom
+\usepackage{lepageformat}
+
+% Address and date separation.
+\newlength{\addressskip}
+\setlength{\addressskip}{\parskip}
 
 % Vertical spacing.
-\setlength{\voffset}{0.00in}                            % Reduce some of the 1 in standard margin.
-\setlength{\topmargin}{0pt}                             % There is already a 1 in space by default (reduced by above).
-\setlength{\headheight}{0pt}
-\setlength{\headsep}{0pt}
-\setlength{\topskip}{0pt}
-\setlength{\footskip}{0pt}
-\setlength{\textheight}{11in-2in-\topskip-\voffset-\headheight-\headsep-\footskip}
+\setlength{\voffset}{-0.45in}                           % Reduce some of the 1 in standard margin.
+\setlength{\headheight}{24pt}
+\setlength{\headsep}{20pt+\addressskip}
+\setlength{\topskip}{12pt}
+\setlength{\bottommargin}{1.0in}
+\setlength{\footmargin}{\bottommargin-24pt}
+\calctextheight{}
+\calcfootskip{}
 
 
-
-
+% Figures
 \newenvironment{figure}
                {\@float{figure}}
                {\end@float}
@@ -61,16 +78,6 @@
                {\@dblfloat{figure}}
                {\end@dblfloat}
 
-
-
-\usepackage{leaddress}
-\name{\authorname}
-\address{\myaddresstwoline}
-\signature{\authorname}
-\telephone{\myphoneone}
-
-\newcommand{\@senderemail}{\myemailone}
-\newcommand{\senderemail}[1]{\renewcommand{\@senderemail}{#1}}
 
 \renewcommand{\enclname}{Enclosure}
 \newcommand{\encls}[1]{\renewcommand{\enclname}{Enclosures}\encl{#1}}
@@ -113,9 +120,9 @@
         \thispagestyle{empty}
         {\raggedright\fromaddress \par \@date\par}
     \fi
-    \vspace{2\parskip}
+    \vspace{\addressskip}
     {\raggedright \toname \\ \toaddress \par}
-    \vspace{2\parskip}
+    \vspace{\addressskip}
     #1\par\nobreak
 }
  
@@ -127,7 +134,7 @@
     \ifx\@empty\fromaddress\else
         %\hspace*{\longindentation}
     \fi
-    \parbox{\textwidth}{\raggedright \ignorespaces #1\\[6\medskipamount]
+    \parbox{\textwidth}{\raggedright \ignorespaces #1\\[\signaturespace]
         \ifx\@empty\fromsig
             \fromname
         \else \fromsig
@@ -136,3 +143,5 @@
     }
     \par
 }
+
+%6\medskipamount
