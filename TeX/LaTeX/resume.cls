@@ -28,6 +28,8 @@
 % Used for ifthenelse.
 \usepackage{ifthen}
 
+% CONTACT INFO
+\usepackage{lecontactinfo}
 
 % FONTS.
 % Change the font usage to type 1 instead of type 3 (bitmapped)
@@ -69,26 +71,6 @@
 
 
 % DEFINITIONS.
-\newcommand*{\@name}{Name}
-\newcommand*{\name}[1]{\renewcommand*{\@name}{#1}}
-
-\newcommand*{\@addresslinea}{Address Line 1}
-\newcommand*{\addresslinea}[1]{\renewcommand*{\@addresslinea}{#1}}
-\newcommand*{\@addresslineb}{Address Line 2}
-\newcommand*{\addresslineb}[1]{\renewcommand*{\@addresslineb}{#1}}
-
-\newcommand*{\phonename}{Phone:}
-\newcommand*{\@phone}{555-555-5555}
-\newcommand*{\phone}[1]{\renewcommand*{\@phone}{#1}}
-
-\newcommand*{\emailname}{Email:}
-\newcommand*{\@email}{name@place.org}
-\newcommand*{\email}[1]{\renewcommand*{\@email}{#1}}
-
-\newcommand*{\websitename}{Website:}
-\newcommand*{\@website}{www.linkedin.com}
-\newcommand*{\website}[1]{\renewcommand*{\@website}{#1}}
-
 \newcommand*{\horline}[1][0pt]{\rule[#1]{6.5in}{1pt}}
 \newcommand*{\makeresumeheaderA}
 {

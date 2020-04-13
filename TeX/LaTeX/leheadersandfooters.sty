@@ -2,6 +2,9 @@
 and footers.]
 
 \RequirePackage{lastpage}
+\usepackage{lecontactinfo}
+\usepackage{lefonts}
+\usepackage{lefontsizes}
 
 % HEADERS AND FOOTERS (pg. 345)
 
@@ -213,13 +216,8 @@ and footers.]
         \end{minipage}
     }
     \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{}
 }
 
 
@@ -234,6 +232,74 @@ and footers.]
 \newcommand*{\ps@lefooterhorizontalline}
 {
     \renewcommand*{\@oddhead}{}
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+% HEADER
+% Centered name
+% Single horizontal line.
+% address  *  phone  *  email
+% Single horizontal line.
+%
+%                    Lance A. Endres
+% --------------------------------------------------------------
+%  55 Some St., ST 55555  *  555-555-5555  *  email@example.com
+% --------------------------------------------------------------
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@leletterheada}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+             \center{\ArialBold\Normal\@name}\vspace*{-8pt}\\%
+             \rule{\textwidth}{1pt}\vspace*{-5pt}\\%
+             \small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
+             \rule{\textwidth}{1pt}%
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+% HEADER
+% Centered name
+% Single horizontal line.
+% address  *  phone  *  email
+% Single horizontal line.
+%
+%                    Lance A. Endres
+% --------------------------------------------------------------
+%  55 Some St., ST 55555  *  555-555-5555  *  email@example.com
+% --------------------------------------------------------------
+%
+% FOOTER
+% Single horizontal line.
+% --------------------------------------------------------------
+%
+\newcommand*{\ps@leletterheadb}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+             \center{\ArialBold\Normal\@name}\vspace*{-8pt}\\%
+             \rule{\textwidth}{1pt}\vspace*{-5pt}\\%
+             \small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
+             \rule{\textwidth}{1pt}%
+        \end{minipage}
+    }
     \renewcommand*{\@evenhead}{\@oddhead}
     \renewcommand*{\@oddfoot}
     {
