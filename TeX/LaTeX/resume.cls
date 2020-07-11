@@ -74,29 +74,39 @@
 \newcommand*{\horline}[1][0pt]{\rule[#1]{6.5in}{1pt}}
 \newcommand*{\makeresumeheaderA}
 {
-    \begin{center}
-    \horline \\
-    \bfseries \Large
-    \vspace{-2pt}   \@name \\
-    \mdseries \normalsize
-    \@addresslinea \\
-    \@addresslineb \\
-    Phone: \@phone    \hspace{1in}  Email: \href{mailto: \@email}{\@email} \\
-    \horline[6pt]
-    \end{center}
-    \vspace{-12pt}
+	\begin{center}
+	\horline \\
+	\bfseries \Large
+	\vspace{-2pt}   \@name \\
+	\mdseries \normalsize
+	\@addresslinea \\
+	\@addresslineb \\
+	Phone: \@phone    \hspace{1in}  Email: \href{mailto: \@email}{\@email} \\
+	\horline[6pt]
+	\end{center}
+	\vspace{-12pt}
 }
 
 \newcommand{\contactspace}{\hfill{}$\bullet$\hfill{}}
 %\newcommand{\contactspace}{\hspace*{4pt}$\bullet$\hspace*{4pt}}
 \newcommand{\makeresumeheaderB}
 {
-    \vspace*{-44pt}
-    \helveticbc
-    \noindent \@name \mdseries \normalsize \vspace*{-9pt} \\
-    \noindent \horline \vspace*{-5pt}\\
-    \noindent{\normalsize \@email{} \contactspace{} \@website{} \contactspace{} \@phone{}}\\
-    \vspace*{-16pt}
+	\vspace*{-44pt}
+	\helveticbc
+	\noindent \@name \mdseries \normalsize \vspace*{-9pt} \\
+	\noindent \horline \vspace*{-5pt}\\
+	\noindent{\normalsize \@email{} \contactspace{} \@website{} \contactspace{} \@phone{}}\\
+	\vspace*{-16pt}
+}
+
+\newcommand{\makeresumeheaderC}
+{
+	\vspace*{-44pt}
+	\helveticbc
+	\noindent \@name \mdseries \normalsize \vspace*{-9pt} \\
+	\noindent \horline \vspace*{-5pt}\\
+	\noindent{\normalsize \@email{} \contactspace{} \@website{} \contactspace{} \@websitetwo{} \contactspace{} \@phone{}}\\
+	\vspace*{-16pt}
 }
 
 %This command will defer commands until the call to begin document is made.
@@ -125,18 +135,18 @@
 % Arguments: Date, Position Tile, Company Name, Company Address
 \newcommand{\catentry}[4]
 {
-    \noindent\begin{minipage}[t]{\textwidth}
-        \begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}} - #4\hspace{0pt}\\ \emph{\textbf{#2}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
-    \end{minipage}\vspace{4pt}%
+	\noindent\begin{minipage}[t]{\textwidth}
+		\begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}} - #4\hspace{0pt}\\ \emph{\textbf{#2}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+	\end{minipage}\vspace{4pt}%
 }
 
 % Education
 % Arguments: Date, Degree, University
 \newcommand{\catentryeducation}[3]
 {
-    \noindent\begin{minipage}[t]{\textwidth}
-        \begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}}\\ \emph{\textbf{#2}} \end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
-    \end{minipage} \vspace{4pt}
+	\noindent\begin{minipage}[t]{\textwidth}
+		\begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}}\\ \emph{\textbf{#2}} \end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+	\end{minipage} \vspace{4pt}
 }
 
 % Certifications
@@ -144,7 +154,7 @@
 \newcommand{\catentrycertification}[3]
 {
 	\noindent\begin{minipage}[t]{\textwidth}
-    	\begin{minipage}[t]{\textwidth-\datewidth}#2, #3\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+		\begin{minipage}[t]{\textwidth-\datewidth}#2, #3\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
 	\end{minipage}%
 }
 
@@ -153,42 +163,42 @@
 \newcommand{\catentrymembership}[3]
 {
 	\noindent\begin{minipage}[t]{\textwidth}
-    	\begin{minipage}[t]{\textwidth-\datewidth}\textbf{#2} \ifthenelse{\equal{#3}{}}{\\ \vspace*{-0.5\baselineskip}}{\\#3\vspace*{0.5\baselineskip}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+		\begin{minipage}[t]{\textwidth-\datewidth}\textbf{#2} \ifthenelse{\equal{#3}{}}{\\ \vspace*{-0.5\baselineskip}}{\\#3\vspace*{0.5\baselineskip}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
 	\end{minipage}%
 }
 
 \newcommand{\catentryshort}[3]
 {
-    \noindent\begin{minipage}[t]{\textwidth}
-        \begin{minipage}[t]{\textwidth-\datewidth}#2\end{minipage}
-        \begin{minipage}[t]{\datewidth}#1\end{minipage}
-    \end{minipage}%
+	\noindent\begin{minipage}[t]{\textwidth}
+		\begin{minipage}[t]{\textwidth-\datewidth}#2\end{minipage}
+		\begin{minipage}[t]{\datewidth}#1\end{minipage}
+	\end{minipage}%
 }
 
 % PUBLICATIONS
 \let\abstract@bibliography=\bibliography
 \renewcommand*{\bibliography}
 {
-    \abstract@bibliography
-    % Don't seem to be able to call any commands here (after \le@bibliography) without screwing up bibliography.
+	\abstract@bibliography
+	% Don't seem to be able to call any commands here (after \le@bibliography) without screwing up bibliography.
 }
 
 \renewenvironment{thebibliography}[1]
-    {\list{\@biblabel{\@arabic\c@enumiv}}%
-           {\settowidth\labelwidth{\@biblabel{#1}}%
-            \leftmargin\labelwidth
-            \advance\leftmargin\labelsep
-            \@openbib@code
-            \usecounter{enumiv}%
-            \let\p@enumiv\@empty
-            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-      \sloppy
-      \setlength{\parskip}{0.5\parskip}
+	{\list{\@biblabel{\@arabic\c@enumiv}}%
+		   {\settowidth\labelwidth{\@biblabel{#1}}%
+			\leftmargin\labelwidth
+			\advance\leftmargin\labelsep
+			\@openbib@code
+			\usecounter{enumiv}%
+			\let\p@enumiv\@empty
+			\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+	  \sloppy
+	  \setlength{\parskip}{0.5\parskip}
 	  \setlength{\itemsep}{0.5\itemsep}
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \sfcode`\.\@m}
-     {\def\@noitemerr
-       {\@latex@warning{Empty `thebibliography' environment}}%
+	  \clubpenalty4000
+	  \@clubpenalty \clubpenalty
+	  \widowpenalty4000%
+	  \sfcode`\.\@m}
+	 {\def\@noitemerr
+	   {\@latex@warning{Empty `thebibliography' environment}}%
   \endlist}

@@ -74,7 +74,7 @@
 			\vfill \Large \bfseries
 			#2
 			\vfill \large
-            #3 \\
+			#3 \\
 			#4\footnote{Last updated: \today}
 		\end{center} \normalsize \mdseries
 	\end{titlepage}
