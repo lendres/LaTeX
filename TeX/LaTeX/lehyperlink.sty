@@ -107,13 +107,14 @@
 	% underlines the links for dvi output.	To keep the table of contents from being to
 	% messy we are going to override the linktocpage option at all times.  This will force
 	% the links to occur as the numbers and prevent the entire title from being underlined.
-	\usepackage[hypertex,\baseoptions,\coloroptions,linktocpage=true]{hyperref}
+%	\usepackage[hypertex,\baseoptions,\coloroptions,linktocpage=true]{hyperref}
+\usepackage[\baseoptions,\coloroptions,linktocpage=true]{hyperref}
 	%\usepackage{hyperref}
 \fi
 
 %\baseoptions,\coloroptions,\tocoptions,
 \ifpdf
-	\newcommand*{\lehypersetup}{\hypersetup{pdftex,\lehyp@baseoptions,\lehyp@coloroptions,\lehyp@tocoptions,pdfauthor={\lehyp@pdfauthor},pdftitle={\lehyp@pdftitle}}}
+	 \newcommand*{\lehypersetup}{\hypersetup{pdftex,\lehyp@baseoptions,\lehyp@coloroptions,\lehyp@tocoptions,pdfauthor={\lehyp@pdfauthor},pdftitle={\lehyp@pdftitle}}}
 \else
 	\newcommand*{\lehypersetup}{\hypersetup{hypertex,\lehyp@baseoptions,\lehyp@coloroptions,linktocpage=true}}
 \fi 
