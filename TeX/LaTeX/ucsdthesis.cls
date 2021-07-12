@@ -49,8 +49,6 @@
     \renewcommand*{\@abstractonly}{1}
 }
 
-
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions
 \LoadClass[12pt,titlepage,letterpaper]{book}
