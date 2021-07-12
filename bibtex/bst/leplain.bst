@@ -23,6 +23,7 @@ ENTRY
     institution
     journal
     key
+    day
     month
     note
     number
@@ -37,7 +38,6 @@ ENTRY
     year
     url
     websitename
-    number
   }
   {}
   { label }
@@ -626,10 +626,6 @@ FUNCTION {webhref}
   new.block
   note output
   fin.entry
-}
-
-FUNCTION {format.urlhref}
-{ "\textless" url * "\textgreater" *
 }
 
 FUNCTION {webplain}
