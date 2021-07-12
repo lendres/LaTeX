@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{tdbdappnames}[2006/08/16 Provides application names for
+the TDBD application.  Allows names to be redefined if required.]
+
+\usepackage{lecode}
+
+% TDBD standard names.
+% The short version requires a check for a "dot" after the name so that if it is
+% used at the end of a sentence we can force additional spacing between the sentences
+% by using the "\@" syntax.	 Otherwise, LaTeX takes a "dot" after a capitol letter to
+% mean that it is an abbreviation and the standard spacing is applied.
+%
+% The "nd" version are "no dot" version which do not use the "\protect\@ifnextchar"
+% commands.	 In some cases the "\protect" won't play well with others.	If this is
+% the case you can use the "nd" version and provide your own "dots" as required.
+\usepackage{xspace}
+\newcommand*{\apptitleshortnd}{TDBD}
+\def\apptitleshort{\protect\@ifnextchar.{\apptitleshortnd\@}{\apptitleshortnd\xspace}}
+\newcommand*{\apptitle}{Three Dimensional Bit Dynamics\xspace}
+
+% Generic names that do not reference proper name.
+\DeclareOption{genericnames}
+{
+	\def\apptitleshort{\protect\@ifnextchar.{the BDA\@}{the BDA\xspace}}
+	\newcommand*{\apptitle}{the bit dymanic application\xspace}
+}
+
+\newcommand*{\bennu}{Bennu\xspace}
+\newcommand*{\dedwen}{Dedwen\xspace}
+\newcommand*{\osiris}{Osiris\xspace}
+\newcommand*{\isightnd}{iSIGHT}
+\def\isight{\protect\@ifnextchar.{\isightnd\@}{\isightnd\xspace}}
+\newcommand*{\bdthreend}{BD3}
+\def\bdthree{\protect\@ifnextchar.{\bdthreend\@}{\bdthreend\xspace}}
+\newcommand*{\matlab}{Matlab\xspace}
+
+% Formatted versions of the above commands.
+\newcommand*{\Apptitleshort}{\codefont \apptitleshort\xspace}
+\newcommand*{\Apptitleshortnd}{\codefont \apptitleshortnd\xspace}
+\newcommand*{\Apptitle}{\codefont \apptitle\xspace}
+\newcommand*{\Bennu}{\codefont \bennu\xspace}
+\newcommand*{\Dedwen}{\codefont \dedwen\xspace}
+\newcommand*{\Osiris}{\codefont \osiris\xspace}
+\newcommand*{\Isightnd}{\codefont \isightnd\xspace}
+\newcommand*{\Isight}{\codefont \isight\xspace}
+\newcommand*{\Bdthree}{\codefont \bdthree\xspace}
+\newcommand*{\Bdthreend}{\codefont \bdthreend\xspace}
+\newcommand*{\Matlab}{\codefont \matlab\xspace}
+
+
+
+\ProcessOptions
+{"mode":"full","isActive":false}
