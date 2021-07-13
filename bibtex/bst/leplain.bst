@@ -628,6 +628,11 @@ FUNCTION {webhref}
   fin.entry
 }
 
+FUNCTION {format.url}
+{ "\textless" url * "\textgreater" *
+}
+
+
 FUNCTION {webplain}
 { output.bibitem
   format.authors "author" output.check
