@@ -219,7 +219,6 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 % \addnotationmathdesc: Both notation and description are in math mode.
 % \addnotationtext: Both the notation and the description are in normal text.
 \newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2.\strut\end{minipage} \\ \> \\*[\@notationentryreduction]}
-\newcommand*{\addnotationml}[2]{\addnotation{#1}{#2}[\mathdefspacelength]}
 \newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth} $#2$. \end{minipage} \\ \> \\}
 \newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth} #2. \end{minipage} \\ \> \\}
 
