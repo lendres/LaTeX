@@ -17,7 +17,7 @@
 \def\update{2004/01/23 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{resume}[\update\ Lance A. Endres]
+\ProvidesClass{leresume}[\update\ Lance A. Endres]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
 \LoadClass[12pt, oneside, notitlepage, letterpaper]{article}
