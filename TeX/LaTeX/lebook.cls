@@ -50,8 +50,8 @@
 \usepackage{lefloats}
 
 % TABLE OF CONTENTS, INDEX, AND BIBLIOGRAPHY.
-%\usepackage[hrefbib]{contentsindexbibformat}
-\usepackage{contentsindexbibformat}
+%\usepackage[hrefbib]{lecontentsindexbibformat}
+\usepackage{lecontentsindexbibformat}
 
 \tocbaselinestretch{1.0}
 \bibbaselinestretch{1.0}

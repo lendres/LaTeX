@@ -17,7 +17,7 @@
 \def\update{2004/01/23 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{businessletter}[]
+\ProvidesClass{lebusinessletter}[]
 
 \usepackage{calc}
 

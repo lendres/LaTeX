@@ -20,7 +20,7 @@
 \def\update{2004/10/15 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{UCSDThesis}[\update\ UCSD]
+\ProvidesClass{leucsdthesis}[\update\ UCSD]
 
 
 % PROVIDE STANDARD HEADERS AND FOOTERS.
@@ -96,9 +96,9 @@
 \setusechapterheaderback{1}
 
 
-% CONTENTS, INDEX, BIBLIOGRAPHY, 
-\usepackage[addlofchapterds,lofnoleftlabel,lotnoleftlabel]{contentsindexbibformat}
-%\usepackage{contentsindexbibformat}
+% CONTENTS, INDEX, BIBLIOGRAPHY 
+\usepackage[addlofchapterds,lofnoleftlabel,lotnoleftlabel]{lecontentsindexbibformat}
+%\usepackage{lecontentsindexbibformat}
 
 % CHANGE FORMAT FOR LIST OF FIGURES AND LIST OF TABLES.
 \let\ucsd@listoffigures\listoffigures
@@ -130,6 +130,9 @@
         \ucsd@listoftables
     \endgroup
 }
+
+% LIST OF NOTATIONS
+\usepackage{lelistofnotations}
 
 
 % BASELINESTRETCH - CONTROL LINE SPACING.

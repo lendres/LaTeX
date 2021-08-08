@@ -1,4 +1,4 @@
-\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{contentsindexbibformat}[2006/08/16 Provides additional
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lecontentsindexbibformat}[2006/08/16 Provides additional
 formatting for the table of contents, bibliography, list of figures, list of tables, list of notations, glossary, index, and captions.]
 
 \usepackage{lecaptions}
@@ -161,77 +161,6 @@ formatting for the table of contents, bibliography, list of figures, list of tab
     \le@listoftables
     \restorebaselinestretch{}
 }
-
-% LIST OF NOTATIONS.
-% First argument is a text/tex file containing lines in the form of:
-% \addnotation{Variable}{Meaning of variable.}
-%
-% Second argument is any information to print at top of page.
-\newcommand{\printlistofnotations}[2]
-{
-    \chapter*{\notationsname}
-    \addcontentsline{toc}{chapter}{\notationsname}
-
-    % Leave a blank line after this to signal a new paragraph.
-    \ifthenelse{ \equal{#2}{} }
-    {}
-    {
-        \let\addnotationtitleone=\addnotationtitle
-        #2
-    }
-
-    % Leave a blank line before this line to signal a new paragraph.
-    \begin{listofnotations}
-        \input{#1}
-    \end{listofnotations}
-}
-
-\newlength{\notationwidthdefault}
-\setlength{\notationwidthdefault}{1in}
-\newlength{\notationwidth}
-\setlength{\notationwidth}{\notationwidthdefault}
-\newlength{\@notationentryreduction}
-\setlength{\@notationentryreduction}{0pt}
-\newcommand*{\notationentryspacing}[1]{\setlength{\@notationentryreduction}{#1}}
-\newlength{\@lineskipstore}
-
-\newenvironment{listofnotations}[1][\notationwidthdefault]
-{
-    \newbaselinestretch{\@lonbaselinestretch}
-    \setlength{\notationwidth}{#1}
-    \setlength{\@lineskipstore}{\lineskip}
-	\setlength\lineskip{0pt}
-    \begin{tabbing} \pushtabs \hspace*{\notationwidth}\=\kill
-}
-{
-    \poptabs \end{tabbing}
-    \setlength\lineskip{\@lineskipstore}
-    \restorebaselinestretch{}
-    \setlength{\notationwidth}{\notationwidthdefault}
-}
-
-% Commands to add notations.
-%
-% 1st argument specifies the notation.
-% 2nd argument specifies the definition of the notation in the first argument.
-%
-% \addnotion: Adds a notation where the first argument is in math mode, the second argument is in normal text.
-% \addnotationmathdesc: Both notation and description are in math mode.
-% \addnotationtext: Both the notation and the description are in normal text.
-\newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2.\strut\end{minipage} \\ \> \\*[\@notationentryreduction]}
-\newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth} $#2$. \end{minipage} \\ \> \\}
-\newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth} #2. \end{minipage} \\ \> \\}
-
-% Commands to add notations titles (groups).  Separates different notation types (e.g. Latin verses Greek symbols).
-%
-% Use \addnotationtitleone for the first group (doesn't add space before the title).
-% Use \addnotationtitle for everything else.  The [length] at the end of line puts
-% extra spacing after the title heading.  The star form prevents a page break.  See
-% section 3.5.2 on pg 48.
-\newcommand*{\addnotationtitleone}[1]{\vspace*{12pt}\large \textbf{#1} \> \\*[2pt]}
-%\newcommand*{\addnotationtitle}[1]{\> \\ \large \textbf{#1} \> \\*[2pt]}
-\newcommand*{\addnotationtitle}[1]{\noindent{\large\textbf{#1}}\\}
-
 
 % CHANGE THE INDEX FORMAT.
 % This overrides the default index environment.  The multicol format can then be set
