@@ -52,27 +52,9 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 
 \ProcessOptions
 
+% Base line stretch commands.
+\usepackage{lebaseline}
 
-% USED TO STORE INFORMATION.
-% Temporarily store the base line stretch.  The base line stretched is store in sort of a push/pop type
-% way, but only 1 push/pop is supported so do not overlap/embed environments that use this.  Moreover,
-% other packages may use this command (hence providecommand instead of newcommand).
-\providecommand*{\@storebaselinestretch}{\baselinestretch}
-
-\newcommand*{\newbaselinestretch}[1]
-{
-    \let\@storebaselinestretch=\baselinestretch
-    \renewcommand*{\baselinestretch}{\@bibbaselinestretch}
-    \small{}
-    \normalsize{}
-}
-
-\newcommand*{\restorebaselinestretch}
-{
-    \let\baselinestretch=\@storebaselinestretch
-    \small{}
-    \normalsize{}
-}
 
 % Table of Contents base line stretch storage.
 \newcommand*{\@tocbaselinestretch}{1.0}
@@ -89,10 +71,6 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 % List of Tables base line stretch storage.
 \newcommand*{\@lotbaselinestretch}{1.0}
 \newcommand*{\lotbaselinestretch}[1]{\renewcommand*{\@lotbaselinestretch}{#1}}
-
-% List of Notations / Nomenclature base line stretch storage.
-\newcommand*{\@lonbaselinestretch}{1.0}
-\newcommand*{\lonbaselinestretch}[1]{\renewcommand*{\@lonbaselinestretch}{#1}}
 
 % Index base line stretch storage.
 \newcommand*{\@idxbaselinestretch}{1.0}
@@ -121,9 +99,9 @@ formatting for the table of contents, bibliography, list of figures, list of tab
     \clearpage{}
     \renewcommand*{\chaptertitle}{\contentsname}
     \addcontentsline{toc}{chapter}{\contentsname}
-    \newbaselinestretch{\@tocbaselinestretch}
+    \pushbaselinestretch{\@tocbaselinestretch}
     \le@tableofcontents
-    \restorebaselinestretch{}
+    \popbaselinestretch{}
 }
 
 % BIBLIOGRAPHY.
@@ -133,7 +111,7 @@ formatting for the table of contents, bibliography, list of figures, list of tab
      \clearpage{}
      \renewcommand*{\chaptertitle}{\bibname}
      \addcontentsline{toc}{chapter}{\bibname}
-     \newbaselinestretch{\@bibbaselinestretch}
+     \pushbaselinestretch{\@bibbaselinestretch}
      \le@bibliography
      % Don't seem to be able to call any commands here (after \le@bibliography) without screwing up bibliography.
 }
@@ -145,9 +123,9 @@ formatting for the table of contents, bibliography, list of figures, list of tab
     \clearpage{}
     \renewcommand*{\chaptertitle}{\listfigurename}
     \addcontentsline{toc}{chapter}{\listfigurename}
-    \newbaselinestretch{\@lofbaselinestretch}
+    \pushbaselinestretch{\@lofbaselinestretch}
     \le@listoffigures
-    \restorebaselinestretch{}
+    \popbaselinestretch{}
 }
 
 % LIST OF TABLES.
@@ -157,9 +135,9 @@ formatting for the table of contents, bibliography, list of figures, list of tab
     \clearpage{}
     \renewcommand*{\chaptertitle}{\listtablename}
     \addcontentsline{toc}{chapter}{\listtablename}
-    \newbaselinestretch{\@lotbaselinestretch}
+    \pushbaselinestretch{\@lotbaselinestretch}
     \le@listoftables
-    \restorebaselinestretch{}
+    \popbaselinestretch{}
 }
 
 % CHANGE THE INDEX FORMAT.
@@ -179,11 +157,11 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 {
     \chapter*{\indexname}
     \addcontentsline{toc}{chapter}{\indexname}
-    \newbaselinestretch{\@idxbaselinestretch}
+    \pushbaselinestretch{\@idxbaselinestretch}
     \begin{multicols}{2}
     \le@printindex
     \end{multicols}
-    \restorebaselinestretch{}
+    \popbaselinestretch{}
 }
 
 % CAPTION COMMAND.
@@ -191,7 +169,7 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 % switching the base line stretch for the caption.
 %\newcommand*{\lecaption}[2][]
 %{
-%    \newbaselinestretch{\@captionbaselinestretch}
+%    \pushbaselinestretch{\@captionbaselinestretch}
 %    \ifthenelse{ \equal{}{#1} }
 %    {
 %        \caption{#2}
@@ -199,16 +177,16 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 %    {
 %        \caption[#1]{#2}
 %    }
-%    \restorebaselinestretch{}
+%    \popbaselinestretch{}
 %}
 \newcommand*{\lecaption}[2][]{\ifthenelse{\equal{}{#1}}{\caption{#2}}{\caption[#1]{#2}}}
 \newenvironment{lefigure}[1][]
 {
     \begin{figure}[#1]
-    \newbaselinestretch{1.0}
+    \pushbaselinestretch{1.0}
 }
 {
-    \restorebaselinestretch{}
+    \popbaselinestretch{}
     \end{figure}
 }
 

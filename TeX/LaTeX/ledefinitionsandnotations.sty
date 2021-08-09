@@ -1,4 +1,4 @@
-\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lelistofnotations}[2021/08/08 Provides a list of notations or definitions in a two column format.]
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{ledefinitionsandnotations}[2021/08/08 Provides a list definitions and notations in a two column format.]
 
 % Base line stretch commands.
 \usepackage{lebaseline}
@@ -8,7 +8,7 @@
 % \addnotation{Variable}{Meaning of variable.}
 %
 % Second argument is any information to print at top of page.
-\newcommand{\printlistofnotations}[2]
+\newcommand{\printdefinitionsandnotations}[2]
 {
     \chapter*{\notationsname}
     \addcontentsline{toc}{chapter}{\notationsname}
@@ -22,12 +22,12 @@
     }
 
     % Leave a blank line before this line to signal a new paragraph.
-    \begin{listofnotations}
+    \begin{definitionsandnotations}
         \input{#1}
-    \end{listofnotations}
+    \end{definitionsandnotations}
 }
 
-% List of notations/nomenclature base line stretch storage.
+% List of Notations / Nomenclature base line stretch storage.
 \newcommand*{\@lonbaselinestretch}{1.0}
 \newcommand*{\lonbaselinestretch}[1]{\renewcommand*{\@lonbaselinestretch}{#1}}
 
@@ -36,18 +36,19 @@
 \setlength{\@notationspacing}{\baselineskip}
 \newcommand*{\notationbaselineskip}[1]{\setlength{\@notationspacing}{#1}}
 
-\newlength{\notationwidthdefault}
-\setlength{\notationwidthdefault}{1in}
+\newlength{\namewidth}
+\setlength{\namewidth}{1.5in}
 
 \newlength{\notationwidth}
-\setlength{\notationwidth}{\notationwidthdefault}
+\setlength{\notationwidth}{0.75in}
 
-\newlength{\@lineskipstore}
-
-\newenvironment{listofnotations}
+\newenvironment{definitionsandnotations}
 {
     \pushbaselinestretch{\@lonbaselinestretch}
-    \begin{tabbing} \pushtabs \hspace*{\notationwidth}\=\kill
+    \begin{tabbing} \pushtabs \hspace*{\namewidth}\=\hspace*{\notationwidth}\=\kill
+    \begin{minipage}[t]{\namewidth}\bfseries \centering Name\end{minipage} \> 
+    \begin{minipage}[t]{\notationwidth}\bfseries \centering Sym\end{minipage} \>
+    \begin{minipage}[t]{\textwidth-\namewidth-\notationwidth}\bfseries \centering Description\end{minipage} \\
 }
 {
     \poptabs \end{tabbing}
@@ -62,9 +63,7 @@
 % \addnotion: Adds a notation where the first argument is in math mode, the second argument is in normal text.
 % \addnotationmathdesc: Both notation and description are in math mode.
 % \addnotationtext: Both the notation and the description are in normal text.
-\newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\*[\@notationspacing]}
-\newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut $#2$\strut\end{minipage} \\*[\@notationspacing]}
-\newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\*[\@notationspacing]}
+\newcommand*{\addnotation}[3]{#1 \> \begin{minipage}[t]{\notationwidth}\centering #2\end{minipage} \> \begin{minipage}[t]{\textwidth-\namewidth-\notationwidth}\strut #3\strut\end{minipage} \\*[\@notationspacing] }
 
 % Commands to add notations titles (groups).  Separates different notation types (e.g. Latin verses Greek symbols).
 %
@@ -73,4 +72,4 @@
 % extra spacing after the title heading.  The star form prevents a page break.  See
 % section 3.5.2 on pg 48.
 \newcommand*{\addnotationtitleone}[1]{\vspace*{12pt}\addnotationtitle{#1}}
-\newcommand*{\addnotationtitle}[1]{\noindent{\large\textbf{#1}}\\*[4pt]} 
+\newcommand*{\addnotationtitle}[1]{\noindent{\large\textbf{#1}}\\*[2pt]}
