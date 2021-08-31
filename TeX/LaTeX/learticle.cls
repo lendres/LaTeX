@@ -66,7 +66,7 @@
 \usepackage{lecaptions}
 
 % TABLE OF CONTENTS, INDEX, AND BIBLIOGRAPHY.
-\usepackage{contentsindexbibformat}
+\usepackage{lecontentsindexbibformat}
 
 % PROVIDE STANDARD HEADERS AND FOOTERS.
 \usepackage{leheadersandfooters}

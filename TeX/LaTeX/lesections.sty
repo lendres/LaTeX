@@ -3,6 +3,7 @@ section headings are formatted.]
 
 \usepackage{lefonts}
 
+% Centered, large chapter title at top of page.
 \newcommand*{\printsimplechapterheading}[1]
 {
     \parindent \z@ \raggedright
@@ -11,6 +12,9 @@ section headings are formatted.]
     \vskip 12\p@
 }
 
+% Prints:
+% "Chapter #"
+% Chapter Title
 \newcommand*{\printchapterstyleb}[1]
 {
     \vspace*{50\p@}
@@ -27,6 +31,7 @@ section headings are formatted.]
     \vskip 40\p@
 }
 
+% Creates Arial chapter titles that are left justified.
 \newcommand*{\printleftarialchapterheading}[1]
 {
     \parindent \z@ \raggedright
@@ -43,6 +48,23 @@ section headings are formatted.]
     \vskip 12\p@
 }
 
+% Creates left justified chapter titles.
+\newcommand*{\printleftchapterheading}[1]
+{
+    \parindent \z@ \raggedright
+    \normalfont
+    \LARGE \bfseries \thechapter\hspace*{12pt} #1\par\nobreak
+    \vskip 12\p@
+}
+
+\newcommand*{\printleftstarchapterheading}[1]
+{
+    \parindent \z@ \raggedright
+    \normalfont
+    \LARGE \bfseries #1\par\nobreak
+    \vskip 12\p@
+}
+
 \newlength{\chapterstyleblofskip}
 \setlength{\chapterstyleblofskip}{-10pt}
 \newcommand*{\printchapterheading}[1]{\printsimplechapterheading{#1}}
@@ -54,17 +76,6 @@ section headings are formatted.]
 \DeclareOption{usechapterstyleb}
 {
     \renewcommand*{\printchapterheading}[1]{\printchapterstyleb{#1}}
-}
-
-% If this option is used, the chapter titles with be "Large" size, left justified, and of arial bold font.
-% The front, main, and back matter will all use the same style.
-\DeclareOption{useleftarialchapterstyle}
-{
-    % Starred.
-    \renewcommand*{\printchapterheading}[1]{\printleftarialchapterheading{#1}}
-
-    % Unstarred.
-    \renewcommand*{\printschapterheading}[1]{\printleftarialschapterheading{#1}}
 }
 
 % Remove the spacing between chapters in the list of figures and the list of tables.
@@ -87,6 +98,27 @@ section headings are formatted.]
 \DeclareOption{addlofchapterds}
 {
     \setlength{\chapterstyleblofskip}{0pt}
+}
+
+% If this option is used, the chapter titles with be "Large" size, left justified, and of arial bold font.
+% The front, main, and back matter will all use the same style.
+\DeclareOption{useleftarialchapterstyle}
+{
+    % Un-starred.
+    \renewcommand*{\printchapterheading}[1]{\printleftarialchapterheading{#1}}
+
+    % Starred.
+    \renewcommand*{\printschapterheading}[1]{\printleftarialschapterheading{#1}}
+}
+
+% If this option is used, the chapter titles with be "LARGE" size and left justified.
+\DeclareOption{useleftjustifiedchapterstyle}
+{
+    % Un-starred.
+    \renewcommand*{\printchapterheading}[1]{\printleftchapterheading{#1}}
+
+    % Starred.
+    \renewcommand*{\printschapterheading}[1]{\printleftstarchapterheading{#1}}
 }
 
 \ProcessOptions
