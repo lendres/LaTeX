@@ -20,12 +20,21 @@
 
 \ProvidesClass{lebook}[\update\ Lance A. Endres]
 
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+
+\newcommand*{\sectionoptions}{}
+\DeclareOption{useleftjustifiedchapterstyle}
+{
+	\renewcommand*{\sectionoptions}{useleftjustifiedchapterstyle}
+}
+
 \ProcessOptions
+
 \LoadClass[12pt, titlepage, oneside, letterpaper]{book}
 
 % SECTIONING COMMANDS.
-\usepackage{lesections}
+\usepackage[\sectionoptions]{lesections}
 
 % Can use this while writing to make sections that need to be completed.
 \newcommand*{\notfinished}{\large \begin{center} \textbf{********** N O T\ \ \ F I N I S H E D **********} \end{center} \normalsize}
