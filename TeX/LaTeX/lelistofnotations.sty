@@ -62,9 +62,9 @@
 % \addnotion: Adds a notation where the first argument is in math mode, the second argument is in normal text.
 % \addnotationmathdesc: Both notation and description are in math mode.
 % \addnotationtext: Both the notation and the description are in normal text.
-\newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\*[\@notationspacing]}
-\newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut $#2$\strut\end{minipage} \\*[\@notationspacing]}
-\newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\*[\@notationspacing]}
+\newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut $#2$\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
 
 % Commands to add notations titles (groups).  Separates different notation types (e.g. Latin verses Greek symbols).
 %
