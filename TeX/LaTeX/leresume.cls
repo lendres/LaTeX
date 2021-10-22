@@ -125,16 +125,24 @@
 {-0pt plus -14pt minus -1pt}%                         % The beforeskip.  Negative: 1st paragraph is not indented.
 {+1pt plus -1pt minus -1pt}%                         % The afterskip.
 {\center\large\ArialBold{}}}%                        % The s-t-y-l-e.
-% {\timesbc}}                                          % The s-t-y-l-e.
 
 \newlength{\datewidth}
 \setlength{\datewidth}{2.0in}
-%\newcommand{\catentry}[3]{\noindent\begin{minipage}[t]{\textwidth}\begin{minipage}[t]{\datewidth}\emph{#1} \end{minipage} \begin{minipage}[t]{\textwidth-\datewidth} \emph{#2} \\ #3 \end{minipage} \end{minipage} \vspace{4pt}}
 
 % Experience
 % Arguments: Date, Position Tile, Company Name, Company Address
+\newcounter{categoryentries}
 \newcommand{\catentry}[4]
 {
+	\stepcounter{categoryentries}
+	\ifthenelse{\equal{\value{categoryentries}}{1}}
+	{
+		% First entry, do nothing.
+	}
+	{
+		% Add a little space between the end of the last entry and the beginning of this one.
+		\vspace*{10pt}
+	}
 	\noindent\begin{minipage}[t]{\textwidth}
 		\begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}} - #4\hspace{0pt}\\ \emph{\textbf{#2}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
 	\end{minipage}\vspace{4pt}%

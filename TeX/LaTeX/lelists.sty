@@ -2,10 +2,10 @@
 %
 % Sets up standard lists.
 % Provided lists are:
-%   Plain list - no labels are used.
-%   Bulleted list - labels are bullets.
-%   Numbered list - labels are numbered.
-%   Outline list - labels are outline style, see below.
+% Plain list - no labels are used.
+% Bulleted list - labels are bullets.
+% Numbered list - labels are numbered.
+% Outline list - labels are outline style, see below.
 %
 % For all list styles, use of label and ref is valid and the lists
 % can be nested (similar to outline example above).
@@ -28,32 +28,46 @@
 \newlength{\rightlistindent}
 \setlength{\rightlistindent}{\parindent}
 
+% The \listlevelleftindent is used to indent sub lists a little more.
+\newlength{\listlevelleftindent}
+\setlength{\listlevelleftindent}{0pt}
+
 % Controls the spacing between the list and the preceding and following text.
 \newlength{\listtopsep}
 \setlength{\listtopsep}{6pt}
 
 \newcounter{listlevel}
 
-% Standardized list parameters used by all lists.  Individual lists can override the commands if needed.
+% Standardized list parameters used by all lists. Individual lists can override the commands if needed.
 \newcommand{\standardlistparams}
 {
-    \setlength{\labelsep}{0.0cm}
-    \setlength{\leftmargin}{\labelsep+\labelwidth}
-    \setlength{\rightmargin}{\rightlistindent}
-    \setlength{\listparindent}{\parindent}
-    \setlength{\itemindent}{0cm}
-    \setlength{\topsep}{\listtopsep}
-    \setlength{\partopsep}{0pt}
-    \ifthenelse{\equal{\value{listlevel}}{1}}
-    {
-        \setlength{\leftmargin}{\leftmargin+\leftlistindent}
-    }
-    {
-        \setlength{\topsep}{0cm}
-        \setlength{\parskip}{0cm}
-    }
-    \setlength{\parsep}{0.25ex plus0.2ex minus0.1ex}
-    \setlength{\itemsep}{0.25ex plus0.2ex}
+	\setlength{\labelsep}{0pt}
+	\setlength{\leftmargin}{\labelsep+\labelwidth}
+	\setlength{\rightmargin}{\rightlistindent}
+	\setlength{\listparindent}{\parindent}
+	\setlength{\itemindent}{0pt}
+	\setlength{\topsep}{\listtopsep}
+	\setlength{\partopsep}{0pt}
+
+    % Spacing between items and paragraphs within items.
+	\setlength{\itemsep}{0ex plus0.1ex minus0.1ex}
+	\setlength{\parsep}{0.25ex plus0.1ex minus0.1ex}
+
+	\ifthenelse{\equal{\value{listlevel}}{1}}
+	{
+		% Top level list.
+		\setlength{\leftmargin}{\leftmargin+\leftlistindent}
+	}
+	{
+		% Lists that are sub-lists of items on a higher level list.
+		% For sub-lists, the list is enclosed in a box that is already indented by \leftmargin. No need to further indent it.
+		% The \listlevelleftindent is used to indent sub lists a little more.
+		\setlength{\leftmargin}{\leftmargin+\listlevelleftindent}
+	
+		% Since we are starting a new list, we need to adjust the \topsep so it looks like the same spacing as between other list items.
+		\vspace*{\parsep}
+		\setlength{\parskip}{0pt}
+	}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,17 +76,17 @@
 
 \newenvironment{plainlist}
 {
-    \stepcounter{listlevel}
-    \begin{list}
-    {}
-    {
-        \setlength{\labelwidth}{0.0cm}
-        \standardlistparams{}
-    }
+	\stepcounter{listlevel}
+	\begin{list}
+	{}
+	{
+		\setlength{\labelwidth}{0pt}
+		\standardlistparams{}
+	}
 }
 {
-    \end{list}
-    \setcounter{listlevel}{\value{listlevel}-1}
+	\end{list}
+	\addtocounter{listlevel}{-1}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,18 +96,18 @@
 \newcounter{thenumberedlist}
 \newenvironment{numberedlist}
 {
-    \stepcounter{listlevel}
-    \begin{list}
-    {\arabic{thenumberedlist}.\hfill}               % Label used is our counter.
-    {
-        \usecounter{thenumberedlist}
-        \setlength{\labelwidth}{0.75cm}
-        \standardlistparams{}
-    }
+	\stepcounter{listlevel}
+	\begin{list}
+	{\arabic{thenumberedlist}.\hfill} % Label used is our counter.
+	{
+		\usecounter{thenumberedlist}
+		\setlength{\labelwidth}{0.75cm}
+		\standardlistparams{}
+	}
 }
 {
-    \end{list}
-    \setcounter{listlevel}{\value{listlevel}-1}
+	\end{list}
+	\addtocounter{listlevel}{-1}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,20 +117,19 @@
 \newcounter{thecountdownlist}
 \newenvironment{countdownlist}[1]
 {
-    \stepcounter{listlevel}
-    \begin{list}
-    {\addtocounter{thecountdownlist}{-1} \hfill \arabic{thecountdownlist}. \addtocounter{thecountdownlist}{-1}}       % Label used is our counter.
-    {
-        \usecounter{thecountdownlist}
-        \setlength{\labelwidth}{0.80cm}
-        \standardlistparams{}
-%        \renewcommand{\makelabel}{
-        \setcounter{thecountdownlist}{#1}
-    }
+	\stepcounter{listlevel}
+	\begin{list}
+	{\addtocounter{thecountdownlist}{-1} \hfill \arabic{thecountdownlist}. \addtocounter{thecountdownlist}{-1}} % Label used is our counter.
+	{
+		\usecounter{thecountdownlist}
+		\setlength{\labelwidth}{0.80cm}
+		\standardlistparams{}
+		\setcounter{thecountdownlist}{#1}
+	}
 }
 {
-    \end{list}
-    \setcounter{listlevel}{\value{listlevel}-1}
+	\end{list}
+	\addtocounter{listlevel}{-1}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,24 +138,24 @@
 
 \newenvironment{bulletedlist}
 {
-    \stepcounter{listlevel}
-    \begin{list}
-    {$\bullet$\hfill}
-    {
-        \setlength{\labelwidth}{0.40cm}
-        \standardlistparams{}
-    }
+	\stepcounter{listlevel}
+	\begin{list}
+	{$\bullet$\hfill}
+	{
+		\setlength{\labelwidth}{0.40cm}
+		\standardlistparams{}
+	}
 }
 {
-    \end{list}
-    \setcounter{listlevel}{\value{listlevel}-1}
+	\end{list}
+	\addtocounter{listlevel}{-1}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OUTLINE LIST
 %
 % Works by using a general functions to reference a specific command that
-% is different for each level.  The level functions set of the required lengths
+% is different for each level. The level functions set of the required lengths
 % and reassign the general functions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -152,21 +165,21 @@
 % \begin{outline}
 % \item Line 1
 % \item Line 2
-%     \begin{outline}
-%     \item Line 2.1
-%     \item Line 2.2
-%     \end{outline}
+% \begin{outline}
+% \item Line 2.1
+% \item Line 2.2
+% \end{outline}
 % \item Line 3
 % \end{outline}
 %
 % Result:
 % 1 Line 1
 % 2 Line 2
-%   2.1 Line 2.1
-%   2.2 Line 2.2
+% 2.1 Line 2.1
+% 2.2 Line 2.2
 % 3 Line 3
 
-% Outline counters.  Each counter resets when the parent counter is incremented.
+% Outline counters. Each counter resets when the parent counter is incremented.
 \newcounter{outlinei}
 \newcounter{outlineii}[outlinei]
 \newcounter{outlineiii}[outlineii]
@@ -187,33 +200,33 @@
 \newlength{\outlinelabelwidth}
 
 % Change this length to alter the spacing between the end of the previous entry and the beginning
-% of the next main entry.  E.g. increasing the size of the spacing something akin to the following
+% of the next main entry. E.g. increasing the size of the spacing something akin to the following
 % can be achieved.
 \newlength{\outlinemainitemparsep}
 \setlength{\outlinemainitemparsep}{2.5ex plus0.2ex minus0.1ex}
 
 \newenvironment{outline}
 {
-    \nextoutlinefunction{}
-    \stepcounter{listlevel}
-    \begin{list}
-    {\currentoutlinelabel\hfill}
-    {
-        \usecounter{\currentoutlinecounter}
-        \standardlistparams{}
-        \ifthenelse{\equal{\value{listlevel}}{1}}
-        {
-            \setlength{\parsep}{\outlinemainitemparsep}
-        }
-        {}
-        \setlength{\labelwidth}{\outlinelabelwidth}
-        \setlength{\leftmargin}{\outlineindent}
-    }
+	\nextoutlinefunction{}
+	\stepcounter{listlevel}
+	\begin{list}
+	{\currentoutlinelabel\hfill}
+	{
+		\usecounter{\currentoutlinecounter}
+		\standardlistparams{}
+		\ifthenelse{\equal{\value{listlevel}}{1}}
+		{
+			\setlength{\parsep}{\outlinemainitemparsep}
+		}
+		{}
+		\setlength{\labelwidth}{\outlinelabelwidth}
+		\setlength{\leftmargin}{\outlineindent}
+	}
 }
 {
-    \end{list}
-    \previousoutlinefunction{}
-    \setcounter{listlevel}{\value{listlevel}-1}
+	\end{list}
+	\previousoutlinefunction{}
+	\addtocounter{listlevel}{-1}
 }
 
 % General commands.
@@ -234,66 +247,66 @@
 % Commands specific to each level.
 \newcommand{\setleveli}
 {
-    \setlength{\outlinelabelwidth}{0.60cm}
-    \setlength{\outlineindent}{\leftlistindent+\outlinelabelwidth}
-    \renewcommand*{\currentoutlinelabel}{\theoutlinei}
-    \renewcommand*{\currentoutlinecounter}{outlinei}
-    \renewcommand*{\nextoutlinefunction}{\setlevelii}
-    \renewcommand*{\previousoutlinefunction}{\setleveli}
-    \formati{}
+	\setlength{\outlinelabelwidth}{0.60cm}
+	\setlength{\outlineindent}{\leftlistindent+\outlinelabelwidth}
+	\renewcommand*{\currentoutlinelabel}{\theoutlinei}
+	\renewcommand*{\currentoutlinecounter}{outlinei}
+	\renewcommand*{\nextoutlinefunction}{\setlevelii}
+	\renewcommand*{\previousoutlinefunction}{\setleveli}
+	\formati{}
 }
 
 \newcommand{\setlevelii}
 {
-    \setlength{\outlinelabelwidth}{0.85cm}
-    \setlength{\outlineindent}{\outlinelabelwidth}
-    \renewcommand*{\currentoutlinelabel}{\theoutlineii}
-    \renewcommand*{\currentoutlinecounter}{outlineii}
-    \renewcommand*{\nextoutlinefunction}{\setleveliii}
-    \renewcommand*{\previousoutlinefunction}{\setleveli}
-    \formatii{}
+	\setlength{\outlinelabelwidth}{0.85cm}
+	\setlength{\outlineindent}{\outlinelabelwidth}
+	\renewcommand*{\currentoutlinelabel}{\theoutlineii}
+	\renewcommand*{\currentoutlinecounter}{outlineii}
+	\renewcommand*{\nextoutlinefunction}{\setleveliii}
+	\renewcommand*{\previousoutlinefunction}{\setleveli}
+	\formatii{}
 }
 
 \newcommand{\setleveliii}
 {
-    \setlength{\outlinelabelwidth}{1.15cm}
-    \setlength{\outlineindent}{\outlinelabelwidth}
-    \renewcommand*{\currentoutlinelabel}{\theoutlineiii}
-    \renewcommand*{\currentoutlinecounter}{outlineiii}
-    \renewcommand*{\nextoutlinefunction}{\setleveliv}
-    \renewcommand*{\previousoutlinefunction}{\setlevelii}
-    \formatiii{}
+	\setlength{\outlinelabelwidth}{1.15cm}
+	\setlength{\outlineindent}{\outlinelabelwidth}
+	\renewcommand*{\currentoutlinelabel}{\theoutlineiii}
+	\renewcommand*{\currentoutlinecounter}{outlineiii}
+	\renewcommand*{\nextoutlinefunction}{\setleveliv}
+	\renewcommand*{\previousoutlinefunction}{\setlevelii}
+	\formatiii{}
 }
 
 \newcommand{\setleveliv}
 {
-    \setlength{\outlinelabelwidth}{1.50cm}
-    \setlength{\outlineindent}{\outlinelabelwidth}
-    \renewcommand*{\currentoutlinelabel}{\theoutlineiv}
-    \renewcommand*{\currentoutlinecounter}{outlineiv}
-    \renewcommand*{\nextoutlinefunction}{\setlevelv}
-    \renewcommand*{\previousoutlinefunction}{\setleveliii}
-    \formativ{}
+	\setlength{\outlinelabelwidth}{1.50cm}
+	\setlength{\outlineindent}{\outlinelabelwidth}
+	\renewcommand*{\currentoutlinelabel}{\theoutlineiv}
+	\renewcommand*{\currentoutlinecounter}{outlineiv}
+	\renewcommand*{\nextoutlinefunction}{\setlevelv}
+	\renewcommand*{\previousoutlinefunction}{\setleveliii}
+	\formativ{}
 }
 
 \newcommand{\setlevelv}
 {
-    \setlength{\outlinelabelwidth}{1.85cm}
-    \setlength{\outlineindent}{\outlinelabelwidth}
-    \renewcommand*{\currentoutlinelabel}{\theoutlinev}
-    \renewcommand*{\currentoutlinecounter}{outlinev}
-    \renewcommand*{\nextoutlinefunction}{\setlevelvi}
-    \renewcommand*{\previousoutlinefunction}{\setleveliv}
-    \formatv{}
+	\setlength{\outlinelabelwidth}{1.85cm}
+	\setlength{\outlineindent}{\outlinelabelwidth}
+	\renewcommand*{\currentoutlinelabel}{\theoutlinev}
+	\renewcommand*{\currentoutlinecounter}{outlinev}
+	\renewcommand*{\nextoutlinefunction}{\setlevelvi}
+	\renewcommand*{\previousoutlinefunction}{\setleveliv}
+	\formatv{}
 }
 
 \newcommand{\setlevelvi}
 {
-    \setlength{\outlinelabelwidth}{2.15cm}
-    \setlength{\outlineindent}{\outlinelabelwidth}
-    \renewcommand*{\currentoutlinelabel}{\theoutlinevi}
-    \renewcommand*{\currentoutlinecounter}{outlinevi}
-    \renewcommand*{\nextoutlinefunction}{\setlevelvi}
-    \renewcommand*{\previousoutlinefunction}{\setlevelv}
-    \formatvi{}
-}
+	\setlength{\outlinelabelwidth}{2.15cm}
+	\setlength{\outlineindent}{\outlinelabelwidth}
+	\renewcommand*{\currentoutlinelabel}{\theoutlinevi}
+	\renewcommand*{\currentoutlinecounter}{outlinevi}
+	\renewcommand*{\nextoutlinefunction}{\setlevelvi}
+	\renewcommand*{\previousoutlinefunction}{\setlevelv}
+	\formatvi{}
+} 
