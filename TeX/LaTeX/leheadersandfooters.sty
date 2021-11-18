@@ -310,6 +310,33 @@ and footers.]
     \renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
+% HEADER
+% Single horizontal line.
+% address  *  phone  *  email
+% Single horizontal line.
+%
+% --------------------------------------------------------------
+%  55 Some St., ST 55555  *  555-555-5555  *  email@example.com
+% --------------------------------------------------------------
+%
+% FOOTER
+% Empty (blank).
+%
+\newcommand*{\ps@leletterheadc}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth}
+             \rule{\textwidth}{1pt}\vspace*{-17pt}\\%
+             \small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
+             \rule{\textwidth}{1pt}%
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}{}
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
 
 
 % HEADER
