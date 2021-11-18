@@ -21,6 +21,7 @@
 
 \usepackage{calc}
 
+% SIGNITURE SPACE OPTIONS
 % Option to shorten the space between the closing and name.
 \newlength{\signaturespace}
 \setlength{\signaturespace}{6\medskipamount}
@@ -33,6 +34,21 @@
     \setlength{\signaturespace}{4\medskipamount}
 }
 
+% LETTER HEAD HEADERS AND FOOTERS
+\newcommand*{\bl@letterheadstyle}{\ps@leletterheada}
+\DeclareOption{HeaderStyleC}
+{
+	\renewcommand{\bl@letterheadstyle}{\ps@leletterheadc}
+}
+\DeclareOption{HorizontalLineHeaderFooter}
+{
+	\renewcommand{\bl@letterheadstyle}{\ps@lehorizontalline}
+}
+\DeclareOption{BlankLetterHead}
+{
+	\renewcommand{\bl@letterheadstyle}{\ps@leempty}
+}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{letter}} 
 \ProcessOptions \LoadClass[12pt, oneside, letterpaper]{letter} 
 
@@ -40,9 +56,10 @@
 \usepackage{lecontactinfo}
 \telephone{\phone{}}
 
+% PAGE FORMATTING
 \usepackage{leheadersandfooters}
-\let\ps@empty\ps@leletterheada
-\let\ps@firstpage\ps@leletterheada
+\let\ps@empty\bl@letterheadstyle
+\let\ps@firstpage\bl@letterheadstyle
 
 % FONTS.
 \usepackage{lefontsizes}
