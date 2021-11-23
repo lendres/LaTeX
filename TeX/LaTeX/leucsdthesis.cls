@@ -133,6 +133,8 @@
 
 % LIST OF NOTATIONS
 \usepackage{lelistofnotations}
+\spacingbetweennotations{\baselineskip}
+\notationheadinglinesize{0pt}
 
 
 % BASELINESTRETCH - CONTROL LINE SPACING.

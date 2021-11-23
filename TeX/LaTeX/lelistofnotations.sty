@@ -7,10 +7,7 @@
 \usepackage{lecaptions}
 
 % LIST OF NOTATIONS.
-% First argument is a text/tex file containing lines in the form of:
-% \addnotation{Variable}{Meaning of variable.}
-%
-% Second argument is any information to print at top of page.
+% Short cut to print chapter header, add a label, and add the chapter to the table of contents.
 \newcommand{\printlistofnotationschapterheader}
 {
     \chapter*{\notationsname}
@@ -18,29 +15,30 @@
     \addcontentsline{toc}{chapter}{\notationsname}
 }
 
+% IS THIS WORKING?  IT SEEMS NOT.
 % List of notations/nomenclature base line stretch storage.
 \newcommand*{\@lonbaselinestretch}{1.0}
 \newcommand*{\lonbaselinestretch}[1]{\renewcommand*{\@lonbaselinestretch}{#1}}
 
-% Line spacing between notations.
+% Width of the left hand column where the notation is.  The right hand column for the description takes up the remainder of the line.
+\newlength{\@notationwidth}
+\setlength{\@notationwidth}{1in}
+\newcommand*{\notationnamewidth}[1]{\setlength{\@notationwidth}{#1}}
+
+% Line spacing between consecutive notations.  The line spacing within a single notation (minipage) is different.
 \newlength{\@notationspacing}
 \setlength{\@notationspacing}{\baselineskip}
-\newcommand*{\notationbaselineskip}[1]{\setlength{\@notationspacing}{#1}}
+\newcommand*{\spacingbetweennotations}[1]{\setlength{\@notationspacing}{#1}}
 
-\newlength{\notationwidthdefault}
-\setlength{\notationwidthdefault}{1in}
-
-\newlength{\notationwidth}
-\setlength{\notationwidth}{\notationwidthdefault}
-
-\newlength{\@lineskipstore}
+% Heading line size.  Vertical space for the a heading line.  Use to add vertical padding in front of the heading entry.
+\newlength{\@headinglinesize}
+\setlength{\@headinglinesize}{0pt}
+\newcommand*{\notationheadinglinesize}[1]{\setlength{\@headinglinesize}{#1}}
 
 \newenvironment{listofnotations}
 {
-    \setlength{\parindent}{0em}
-    \setlength{\parskip}{0ex plus 0.5ex minus 0.5ex}
     \pushbaselinestretch{\@lonbaselinestretch}
-    \begin{tabbing} \pushtabs \hspace*{\notationwidth}\=\kill
+    \begin{tabbing} \pushtabs \hspace*{\@notationwidth}\=\kill
 }
 {
     \poptabs \end{tabbing}
@@ -55,13 +53,12 @@
 % \addnotion: Adds a notation where the first argument is in math mode, the second argument is in normal text.
 % \addnotationmathdesc: Both notation and description are in math mode.
 % \addnotationtext: Both the notation and the description are in normal text.
-\newcommand*{\addmathnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage}\\}
-%\newcommand*{\addmathnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
-\newcommand*{\addmathdescnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut $#2$\strut\end{minipage} \\[\@notationspacing]}
-\newcommand*{\addtextnotation}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addmathnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\@notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addmathdescnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\@notationwidth}\strut $#2$\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addtextnotation}[2]{#1 \> \begin{minipage}[t]{\textwidth-\@notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
 
 % Commands to add notations titles (groups).  Separates different notation types (e.g. Latin verses Greek symbols).
 %
 % The [length] at the end of line puts extra spacing after the title heading.  The star form prevents a page
 % break.  See section 3.5.2 on pg 48.
-\newcommand*{\addnotationtitle}[1]{\noindent{\large\textbf{#1}}\\*[4pt]} 
+\newcommand*{\addnotationtitle}[1]{\rule{0pt}{\@headinglinesize}\noindent{\large\textbf{#1}}\\*[4pt]} 
