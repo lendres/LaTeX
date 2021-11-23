@@ -6,10 +6,16 @@
 % other packages may use this command (hence providecommand instead of newcommand).
 \providecommand*{\@storebaselinestretch}{\baselinestretch}
 
+% It seems to require a switching of font size to activate.  Hence the use of
+%   \small{}
+%   \normalsize{}
+% in the commands below.  It is not known if this will have unintended consequences (like unexpectedly
+% changing the font size).
+
 \newcommand*{\pushbaselinestretch}[1]
 {
     \let\@storebaselinestretch=\baselinestretch
-    \renewcommand*{\baselinestretch}{\@bibbaselinestretch}
+    \renewcommand*{\baselinestretch}{#1}
     \small{}
     \normalsize{}
 }
@@ -19,4 +25,4 @@
     \let\baselinestretch=\@storebaselinestretch
     \small{}
     \normalsize{}
-}
+} 

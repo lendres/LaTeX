@@ -3,29 +3,19 @@
 % Base line stretch commands.
 \usepackage{lebaseline}
 
+% Notation chapter title is standardized in this package.
+\usepackage{lecaptions}
+
 % LIST OF NOTATIONS.
 % First argument is a text/tex file containing lines in the form of:
 % \addnotation{Variable}{Meaning of variable.}
 %
 % Second argument is any information to print at top of page.
-\newcommand{\printlistofnotations}[2]
+\newcommand{\printlistofnotationschapterheader}
 {
     \chapter*{\notationsname}
     \label{sec:listofnotations}
     \addcontentsline{toc}{chapter}{\notationsname}
-
-    % Leave a blank line after this to signal a new paragraph.
-    \ifthenelse{ \equal{#2}{} }
-    {}
-    {
-        \let\addnotationtitleone=\addnotationtitle
-        #2
-    }
-
-    % Leave a blank line before this line to signal a new paragraph.
-    \begin{listofnotations}
-        \input{#1}
-    \end{listofnotations}
 }
 
 % List of notations/nomenclature base line stretch storage.
@@ -47,6 +37,8 @@
 
 \newenvironment{listofnotations}
 {
+    \setlength{\parindent}{0em}
+    \setlength{\parskip}{0ex plus 0.5ex minus 0.5ex}
     \pushbaselinestretch{\@lonbaselinestretch}
     \begin{tabbing} \pushtabs \hspace*{\notationwidth}\=\kill
 }
@@ -63,15 +55,13 @@
 % \addnotion: Adds a notation where the first argument is in math mode, the second argument is in normal text.
 % \addnotationmathdesc: Both notation and description are in math mode.
 % \addnotationtext: Both the notation and the description are in normal text.
-\newcommand*{\addnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
-\newcommand*{\addnotationmathdesc}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut $#2$\strut\end{minipage} \\[\@notationspacing]}
-\newcommand*{\addnotationtext}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addmathnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage}\\}
+%\newcommand*{\addmathnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addmathdescnotation}[2]{$#1$ \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut $#2$\strut\end{minipage} \\[\@notationspacing]}
+\newcommand*{\addtextnotation}[2]{#1 \> \begin{minipage}[t]{\textwidth-\notationwidth}\strut #2\strut\end{minipage} \\[\@notationspacing]}
 
 % Commands to add notations titles (groups).  Separates different notation types (e.g. Latin verses Greek symbols).
 %
-% Use \addnotationtitleone for the first group (doesn't add space before the title).
-% Use \addnotationtitle for everything else.  The [length] at the end of line puts
-% extra spacing after the title heading.  The star form prevents a page break.  See
-% section 3.5.2 on pg 48.
-\newcommand*{\addnotationtitleone}[1]{\vspace*{12pt}\addnotationtitle{#1}}
+% The [length] at the end of line puts extra spacing after the title heading.  The star form prevents a page
+% break.  See section 3.5.2 on pg 48.
 \newcommand*{\addnotationtitle}[1]{\noindent{\large\textbf{#1}}\\*[4pt]} 
