@@ -1,0 +1,30 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{ikosyheadersandfooters}[2006/08/16 Provides sets of headers and footers.]
+
+\RequirePackage{lastpage}
+
+% HEADER
+% LOGO
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+% FOOTER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@ikosybusinessletterA}
+{
+    \renewcommand*{\@oddhead}
+    {
+        \begin{minipage}{\textwidth} \hfill \includegraphics[width=2.00in]{ikosylogo1} \hfill\vspace*{-6pt}\\%
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenhead}{\@oddhead}
+    \renewcommand*{\@oddfoot}
+    {
+        \begin{minipage}{\textwidth}
+                 \rule{\textwidth}{1pt}
+        \end{minipage}
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+} 
