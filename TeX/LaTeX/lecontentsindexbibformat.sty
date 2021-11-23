@@ -167,18 +167,6 @@ formatting for the table of contents, bibliography, list of figures, list of tab
 % CAPTION COMMAND.
 % Use this caption command instead of the original caption command to allow for
 % switching the base line stretch for the caption.
-%\newcommand*{\lecaption}[2][]
-%{
-%    \pushbaselinestretch{\@captionbaselinestretch}
-%    \ifthenelse{ \equal{}{#1} }
-%    {
-%        \caption{#2}
-%    }
-%    {
-%        \caption[#1]{#2}
-%    }
-%    \popbaselinestretch{}
-%}
 \newcommand*{\lecaption}[2][]{\ifthenelse{\equal{}{#1}}{\caption{#2}}{\caption[#1]{#2}}}
 \newenvironment{lefigure}[1][]
 {

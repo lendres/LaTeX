@@ -3,9 +3,8 @@ the glossary package.  Call usepackage with glossary argument before calling thi
 
 % USED TO STORE INFORMATION.
 % Temporarily store the base line stretch.  The base line stretched is store in sort of a push/pop type
-% way, but only 1 push/pop is supported so do not overlap/embed environments that use this.  Moreover,
-% other packages may use this command (hence providecommand instead of newcommand).
-\providecommand*{\@storebaselinestretch}{\baselinestretch}
+% way, but only 1 push/pop is supported so do not overlap/embed environments that use this.
+\usepackage{lebaseline}
 
 % Store the old definition of printglossary.
 \let\le@printglossary=\printglossary
@@ -22,12 +21,7 @@ the glossary package.  Call usepackage with glossary argument before calling thi
         {}
     }
     {}
-    \let\@storebaselinestretch=\baselinestretch
-    \renewcommand{\baselinestretch}{\@glossarybaselinestretch}
-    \small{}
-    \normalsize{}
+    \pushbaselinestretch{\@glossarybaselinestretch}
     \le@printglossary
-    \let\baselinestretch=\@storebaselinestretch
-    \small{}
-    \normalsize{}
+    \popbaselinestretch{}
 }
