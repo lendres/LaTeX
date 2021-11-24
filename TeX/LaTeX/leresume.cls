@@ -18,8 +18,10 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{leresume}[\update\ Lance A. Endres]
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
+
 \LoadClass[12pt, oneside, notitlepage, letterpaper]{article}
 \pagestyle{empty}
 

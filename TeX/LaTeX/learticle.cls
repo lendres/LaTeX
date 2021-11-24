@@ -19,8 +19,10 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{learticle}[\update\ Lance A. Endres]
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
+
 \LoadClass[12pt, letterpaper]{article}
 
 % Can use this while writing to make sections that need to be completed.
