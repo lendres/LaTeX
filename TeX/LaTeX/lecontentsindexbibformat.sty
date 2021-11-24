@@ -1,7 +1,11 @@
-\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{lecontentsindexbibformat}[2006/08/16 Provides additional
-formatting for the table of contents, bibliography, list of figures, list of tables, list of notations, glossary, index, and captions.]
+\NeedsTeXFormat{LaTeX2e}
 
+\ProvidesPackage{lecontentsindexbibformat}[2006/08/16 Provides additional formatting for the table of contents,
+bibliography, list of figures, list of tables, list of notations, glossary, index, and captions.]
+
+% Required packages, must be before using "\DeclareOption."
 \usepackage{lecaptions}
+\usepackage[titles]{tocloft}
 
 \newlength{\lofskip}
 \setlength{\lofskip}{0pt}
@@ -50,11 +54,18 @@ formatting for the table of contents, bibliography, list of figures, list of tab
     \renewcommand*{\lehrefbib}[2]{\href{#1}{#2}}
 }
 
+% TABLE OF CONTENTS DOTTED LEADERS.
+% Specify that the table of contents should have dotted leaders for the chapters also.
+\DeclareOption{chapterdottedleaders}
+{
+    \renewcommand{\cftchapleader}{\cftsecleader}
+    \renewcommand{\cftchapdotsep}{\cftsecdotsep}
+}
+
 \ProcessOptions
 
 % Base line stretch commands.
 \usepackage{lebaseline}
-
 
 % Table of Contents base line stretch storage.
 \newcommand*{\@tocbaselinestretch}{1.0}

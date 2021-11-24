@@ -60,7 +60,7 @@
 
 % TABLE OF CONTENTS, INDEX, AND BIBLIOGRAPHY.
 %\usepackage[hrefbib]{lecontentsindexbibformat}
-\usepackage{lecontentsindexbibformat}
+\usepackage[chapterdottedleaders]{lecontentsindexbibformat}
 
 \tocbaselinestretch{1.0}
 \bibbaselinestretch{1.0}

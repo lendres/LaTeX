@@ -1,13 +1,30 @@
-\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{leglossary}[2007/05/31 Provides additional formatting for 
-the glossary package.  Call usepackage with glossary argument before calling this package.]
+% Glossary support commands.
+%
+% EXAMPLE
+% \usepackage[number=none,toc=true,style=list]{glossary}
+% \usepackage{leglossary}
+%
+% EXAMPLE
+% \usepackage{glossaries}
+% \usepackage[glossaries]{leglossary}
+
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{leglossary}[2007/05/31 Provides additional formatting for the glossary package.  Call 
+"usepackage" with glossary argument before calling this package.]
+
+% Store the old definition of printglossary.
+\let\le@printglossary=\printglossary
+
+\DeclareOption{glossaries}
+{
+	\let\le@printglossary=\printglossaries
+}
 
 % USED TO STORE INFORMATION.
 % Temporarily store the base line stretch.  The base line stretched is store in sort of a push/pop type
 % way, but only 1 push/pop is supported so do not overlap/embed environments that use this.
 \usepackage{lebaseline}
-
-% Store the old definition of printglossary.
-\let\le@printglossary=\printglossary
 
 % Now make our own.
 \renewcommand*{\printglossary}
