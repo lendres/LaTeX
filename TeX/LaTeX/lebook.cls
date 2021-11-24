@@ -20,7 +20,6 @@
 
 \ProvidesClass{lebook}[\update\ Lance A. Endres]
 
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
 \newcommand*{\sectionoptions}{}
