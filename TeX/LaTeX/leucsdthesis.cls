@@ -36,12 +36,10 @@
     \let\ps@lepagenumbertopright=\ps@lepagenumbertoptwoside
 }
 
-
 \DeclareOption{altpagenumbers}
 {
     \let\ps@lepagenumbertopright=\ps@lepagenumbertoptwoside
 }
-
 
 \newcommand*{\@abstractonly}{0}
 \DeclareOption{abstractonly}
@@ -50,9 +48,8 @@
 }
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
-\ProcessOptions
+\ProcessOptions{}
 \LoadClass[12pt,titlepage,letterpaper]{book}
-
 
 
 % NOTES/EDITING.
@@ -70,13 +67,13 @@
 \usepackage{ifthen}
 
 
+% FONTS.
+\usepackage{lefontsizes}
+
+
 % GLOSSARY.
 \usepackage[number=none,toc=true,style=list]{glossary}
 \usepackage{leglossary}
-
-
-% FONTS.
-\usepackage{lefontsizes}
 
 
 % CAPTIONS - Chapter name, Equation name, et cetera.
