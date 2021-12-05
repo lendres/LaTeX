@@ -1,4 +1,7 @@
 @echo off
+echo.
+echo.
+echo MANUALMAKEDOCUMENT
 
 rem Use this file to process the document without WinEdt.
 rem It can be double clicked or run from the command line.
@@ -16,8 +19,6 @@ set FILEROOT="AUTO"
 
 rem If automatic mode is on, look for the project file and extract the root name.
 rem The "~n" syntax is used to extract the root file name by removing the path and file extension.
-echo.
-echo.
 if %FILEROOT%=="AUTO" (
 	echo File name mode set to automatic detection.
 	for %%F in (*.prj) do (set FILEROOT="%%~nF")
