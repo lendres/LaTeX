@@ -1,6 +1,8 @@
 @echo off
 title Make LaTeX Document
-
+echo.
+echo.
+echo MAKE DOCUMENT
 
 rem Calling signature: makedocument arg1 arg2
 rem arg1 - The root file name passed to this file (no directory or file extension).
