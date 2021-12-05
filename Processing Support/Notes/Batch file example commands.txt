@@ -1,0 +1,25 @@
+rem For newer "glossaries" package.
+rem Main Glossary.
+rem makeindex -s "%FILEROOTNAME%.ist" -t "%FILEROOTNAME%.glg" -o "%FILEROOTNAME%.gls" "%FILEROOTNAME%.glo"
+
+rem Statistic Glossary.
+rem makeindex -s "%FILEROOTNAME%.ist" -t "%FILEROOTNAME%.stg" -o "%FILEROOTNAME%.sts" "%FILEROOTNAME%.sto"
+
+rem Acronyms
+rem makeindex -s "%FILEROOTNAME%.ist" -t "%FILEROOTNAME%." -o "%FILEROOTNAME%."
+acn
+acr
+alg
+
+
+
+rem Close is an external executable "close.exe" located in the path.
+rem close "Adobe Reader - [%FILEROOTNAME%.pdf]"
+
+
+REM LAUNCH PDF.
+set file="%CD%\%FILEROOTNAME%.pdf"
+
+rem "pagemode" has to be the first open action.
+rem pagemode=bookmarks
+rem start "" /max "C:\Program Files\Adobe\Reader 9.0\Reader\AcroRd32.exe" /A "pagemode=thumbs&page=20&zoom=80&scrollbar=1=OpenActions" %file%
