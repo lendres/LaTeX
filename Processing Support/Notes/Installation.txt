@@ -1,0 +1,5 @@
+Add the this folder's parent folder ("..\") to the path to be able to run the commands there.
+
+System Properties->Advanced->Environment Variables->Path
+
+You can add it for the user.

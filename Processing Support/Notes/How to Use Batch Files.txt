@@ -1,0 +1,31 @@
+The "Processing Support" directory contains a series of files to help with processing LaTeX files.  It provides a few features that are not provided by WinEdt.  Mostly it works like "Texify" but allows for glossary suppport.  It also allows for additional customization like openning or closing files.
+
+These support files are designed to work with WinEdt or stand alone.  To use with WinEdt, custom buttons or menu items are needed.  See the "Custom Program Files\WinEdt" directory for information about how to do this.
+
+To use, copy the project files (found in the "Examples" directory) into the document working directory (with the LaTeX files).
+
+A short description of the files is below.  Additional comments and instructions can be found inside the individual files.
+
+File in this directory:
+ - makedocument.bat
+	Main processing file.  The root file name and additional arguments are passed to this file.
+
+ - clean*.bat
+	Clean up batch files used to delete temporary and output files.
+
+ - close.exe
+	A small app that can close a Window (running software application) based on its name in the title bar.
+	Useful for forcing Adobe Reader to close, for example.
+
+Project files:
+ - runmakedocument.bat
+	A small batch file used to call "makedocument.bat" with the specific arguments required for a specific document.
+	Used by WinEdt.  WinEdt passes the document name to this file.  That is passed along with the additional arguments to "makedocument."
+	This file must be edited to set the additional arguments.
+
+ - manualakedocument.bat
+	A small batch file used to manually call "makedocument.bat."  It passes the file name to "runmakedocument.bat."
+	This file has an option automatically detect the main LaTeX file.
+		To work, the LaTeX file must have the same root file name as WinEdt project.
+		If the file name is different, this file must be edited to manually enter the file name.
+	Technically, this file can actually be called anything as it is not externally referenced.
