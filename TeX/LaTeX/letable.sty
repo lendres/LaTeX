@@ -2,10 +2,22 @@
 
 \ProvidesPackage{letable}[2005/07/08 Additional Table Commands.]
 
+% Table fonts.
+\newcommand*{\table@titlefont}{\bfseries}
+\newcommand*{\tabletitlefont}[1]{\renewcommand*{\table@titlefont}{#1}}
+
+\newcommand*{\table@columnheaderfont}{\bfseries}
+\newcommand*{\tablecolumnheaderfont}[1]{\renewcommand*{\table@columnheaderfont}{#1}}
+
 % Table title.
 % 1st argument specifies number of columns in the table.
 % 2nd argument is the title of the table.
-\newcommand*{\tabletitle}[2]{\multicolumn{#1}{|c|}{\rule[-6pt]{0pt}{20pt} \bfseries #2}}
+\newcommand*{\tabletitle}[2]{\multicolumn{#1}{|c|}{\rule[-6pt]{0pt}{20pt} \table@titlefont #2}}
+
+% Column header.
+\newcommand*{\tablecolumnheadervlines}[1]{\multicolumn{1}{|c|}{\rule[-6pt]{0pt}{20pt} \table@columnheaderfont #1}}
+\newcommand*{\tablecolumnheader}[1]{\multicolumn{1}{c}{\rule[-6pt]{0pt}{20pt} \table@columnheaderfont #1}}
+%\newcommand*{\tablecolumnheader}[1]{\centering{\table@columnheaderfont #1}}
 
 % Table row height spacer.
 % Issue within a row to space the row so that the text is centered within the row.
@@ -14,7 +26,7 @@
 % using \setlength{\tablerowheight}{newheight}
 %
 % Example:
-% \tablerow First column test & Second column text \\ \hline
+% \tablerow First column text & Second column text \\ \hline
 %
 \newlength{\tablerowheight}
 \setlength{\tablerowheight}{14pt}
@@ -64,4 +76,4 @@
 \def\hlinewd#1{%
 \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
 \reserved@a\@xhline}
-\makeatother
+\makeatother 
