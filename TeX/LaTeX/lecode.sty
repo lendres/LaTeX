@@ -149,18 +149,9 @@
 }
 
 
-
 % AN UNDERLINE.
 \newcommand*{\ul}{\_}
 
-% An alternate. Doesn't allow words to break across lines (by hyphenating).
-%\newcommand*{\ul}{{\protect\raisebox{2pt}{\_}}}
-
-% An old version that is not recommended. Font does not match and prevents words from naturally
-% breaking across lines.
-%\usepackage{fancyvrb}
-%\DefineShortVerb{\|} \SaveVerb{underline}|_| \UndefineShortVerb{\|}
-%\newcommand*{\ul}{\protect\UseVerb{underline}}
 
 % SQUARE BRACKETS.
 % This command prints the square brackets [] with a small space between them
@@ -173,11 +164,14 @@
 \newcommand*{\brackets}{[\hspace*{\bracketspace}]}
 
 
-% CLASS NAME, ABSTRACT CLASS NAME, DIRECTORY, and FILE.
-\newcommand*{\class}[1]{\codesize{\codefont{\codeisusertype{#1}}}}
+% SIMPLE CODE FORMATTING.
+% Code formatting for short or inline text.
+% Special formatting for specific items like class names.
+\newcommand*{\codetext}[1]{\codesize{\codefont{#1}}}
+\newcommand*{\class}[1]{\codetext{\codeisusertype{#1}}}
 \newcommand*{\abstractclass}[1]{\class{\emph{\codeisusertype{#1}}}}
-\newcommand*{\directory}[1]{\codesize{\codefont{#1}}}
-\newcommand*{\filename}[1]{\codesize{\codefont{#1}}}
+\newcommand*{\directory}[1]{\codetext{#1}}
+\newcommand*{\filename}[1]{\codetext{#1}}
 
 
 % KEYWORDS.
@@ -338,11 +332,11 @@
 %
 % Example:
 % \begin{code}[\codenumbering]
-% \codeitem \FOR n=1 to n=5
+% \codeitem \pseudocodefor n=1 to n=5
 % \stepcodelevel
 % \codeitem i=i+n
 % \prevcodelevel
-% \codeitem \DONEFOR
+% \codeitem \pseudocodedonefor
 % \end{code}
 
 \newlength{\standardcodeindent}
@@ -382,22 +376,40 @@
 % Old version: %\newcommand{\codeitem}{\item \hspace*{\codeindent}}
 \newcommand{\codeitem}[1][notused]{\ifthenelse{\equal{#1}{notused}}{\item \hspace*{\codeindent}}{\item[#1] \hspace*{\codeindent}}}
 
-\newcommand*{\FOR}{\textbf{\sffamily for}}
-\newcommand*{\DONEFOR}{\textbf{\sffamily done for}}
-\newcommand*{\WHILE}{\textbf{\sffamily while}}
-\newcommand*{\DONEWHILE}{\textbf{\sffamily done while}}
-\newcommand*{\EXP}[1]{\mbox{\sffamily exp} \mbox{$\left[ #1 \right]$}}
-\newcommand*{\solve}{\textbf{\sffamily Solve: }}
-\newcommand*{\IF}{\textbf{\sffamily if}}
-\newcommand*{\DONEIF}{\textbf{\sffamily done if}}
-\newcommand*{\BREAK}{\textbf{\sffamily exit do loop}}
-\newcommand*{\MAX}{\textbf{\sffamily max}}
+% Add some text without numbering it.
+\newcommand*{\codeitemnonumber}[1]{\codeitem[]\hspace*{\labelnegwidth}#1} 
+
+% Algorithm / pseudo-code formatting commands.
+\newcommand*{\pseudocodefor}{\textbf{\sffamily for}}
+\newcommand*{\pseudocodedonefor}{\textbf{\sffamily done for}}
+\newcommand*{\pseudocodewhile}{\textbf{\sffamily while}}
+\newcommand*{\pseudocodedonewhile}{\textbf{\sffamily done while}}
+\newcommand*{\pseudocodeexp}[1]{\mbox{\sffamily exp} \mbox{$\left[ #1 \right]$}}
+\newcommand*{\pseudocodesolve}{\textbf{\sffamily Solve: }}
+\newcommand*{\pseudocodeif}{\textbf{\sffamily if}}
+\newcommand*{\pseudocodedoneif}{\textbf{\sffamily done if}}
+\newcommand*{\pseudocodebreak}{\textbf{\sffamily exit do loop}}
+\newcommand*{\pseudocodemax}{\textbf{\sffamily max}}
+
+% 2021-12 Changed commands so the style was inline with the rest of the commands and changed the names to make them more apparent what they are.
+% For now, throw errors to indicate that changes need to be made.  Remove at some future date when I'm sure no instances of these the old versions exist.
+\newcommand*{\FOR}{\PackageError{lecode}{The {\protect\FOR} command is no longer supported}{ Use {\protect\pseudocodefor} instead. }}
+\newcommand*{\DONEFOR}{\PackageError{lecode}{The {\protect\DONEFOR} command is no longer supported}{ Use {\protect\pseudocodedonefor} instead. }}
+\newcommand*{\WHILE}{\PackageError{lecode}{The {\protect\WHILE} command is no longer supported}{ Use {\protect\pseudocodewhile} instead. }}
+\newcommand*{\DONEWHILE}{\PackageError{lecode}{The {\protect\DONEWHILE} command is no longer supported}{ Use {\protect\pseudocodedonewhile} instead. }}
+\newcommand*{\EXP}[1]{\PackageError{lecode}{The {\protect\EXP} command is no longer supported}{ Use {\protect\pseudocodeexp} instead. }}
+\newcommand*{\solve}{\PackageError{lecode}{The {\protect\solve} command is no longer supported}{ Use {\protect\pseudocodesolve} instead. }}
+\newcommand*{\IF}{\PackageError{lecode}{The {\protect\IF} command is no longer supported}{ Use {\protect\pseudocodeif} instead. }}
+\newcommand*{\DONEIF}{\PackageError{lecode}{The {\protect\DONEIF} command is no longer supported}{ Use {\protect\pseudocodedoneif} instead. }}
+\newcommand*{\BREAK}{\PackageError{lecode}{The {\protect\BREAK} command is no longer supported}{ Use {\protect\pseudocodebreak} instead. }}
+\newcommand*{\MAX}{\PackageError{lecode}{The {\protect\MAX} command is no longer supported}{ Use {\protect\pseudocodemax} instead. }}
+
 
 % Standard code numbering format, see above for example.
 \newcommand*{\codenumbering}{\arabic{codeline}:\hfill}
 \newcommand*{\codesolvenumbering}{}
 
-% Standard
+% Standard.
 \newlength{\standardcodeitemsep}
 \setlength{\standardcodeitemsep}{0ex plus0.2ex}
 \newlength{\codeitemsep}
@@ -478,89 +490,12 @@
 	\setlength{\labelnegwidth}{-\leftmargin-\itemindent}
 }
 
+
 \newcommand{\codesolve}[1]
-{
-	\setlength{\codeindentstore}{\codeindent}
-	\setlength{\codeindent}{0in}
-	\codeitem \framebox[0.85pt][l]
-	{
-	    % Don't know why this is needed, but it is.
-	    \ifthenelse{\equal{\codesolvenumbering}{}}
-	    {
-			\relax \hspace*{-22pt}
-	    }
-	    {
-			\relax
-	    }
-	    \begin{minipage}{\textwidth}
-			\begin{list}
-				{\codesolvenumbering}
-				{
-					% Counter to use (or not use if numbering was not specified).
-					\usecounter{codesolveline}
-					\codestandardlistparams{\codesolvenumbering}
-					\ifthenelse{\equal{\codesolvenumbering}{}}
-					{
-						\setlength{\labelwidth}{\labelwidth}
-					}
-					{
-						\setlength{\labelwidth}{\labelwidth+0.2in}
-					}
-					\setlength{\labelnegwidth}{-\labelwidth-\labelsep}
-				}
-				% Print "Solve:" at the top. Use a negative space when numbering so that the beginning
-				% of the text is aligned with the beginning of the numbering.
-				\codeitem[]\hspace*{\labelnegwidth}\solve
-				#1
-			\end{list}
-		\end{minipage}
-	}
-	\setlength{\codeindent}{\codeindentstore}
-}
-
-%\renewcommand{\codesolve}[1]
-%{
-% \setlength{\codeindentstore}{\codeindent}
-% \setlength{\codeindent}{0in}
-%% \codeitem \framebox[0.85pt][l]
-%% {
-%% % Don't know why this is needed, but it is.
-%% \ifthenelse{\equal{\codesolvenumbering}{}}
-%% {
-%% \relax \hspace*{-22pt}
-%% }
-%% {
-%% \relax
-%% }
-%% \begin{minipage}{\textwidth}
-% \codeitem \solve
-% \begin{list}
-% {\codesolvenumbering}
-% {
-% % Counter to use (or not use if numbering was not specified).
-% \usecounter{codesolveline}
-% \codestandardlistparams{\codesolvenumbering}
-% \ifthenelse{\equal{\codesolvenumbering}{}}
-% {
-% \setlength{\labelwidth}{\labelwidth}
-% }
-% {
-% \setlength{\labelwidth}{\labelwidth+0.2in}
-% }
-% \setlength{\labelnegwidth}{-\labelwidth-\labelsep}
-% }
-% #1
-% \end{list}
-%% \end{minipage}
-%% }
-% \setlength{\codeindent}{\codeindentstore}
-%}
-
-\renewcommand{\codesolve}[1]
 {
     \setlength{\codeindentstore}{\codeindent}
     \setlength{\codeindent}{0in}
-    \codeitem \solve
+    \codeitem \pseudocodesolve
     \begin{list}{\codesolvenumbering}
     {
 		\usecounter{codesolveline}\codestandardlistparams{\codesolvenumbering}
@@ -577,6 +512,3 @@
 	\end{list}
 	\setlength{\codeindent}{\codeindentstore}
 }
-
-% Add some text without numbering it.
-\newcommand*{\codeitemnonumber}[1]{\codeitem[]\hspace*{\labelnegwidth}#1} 
