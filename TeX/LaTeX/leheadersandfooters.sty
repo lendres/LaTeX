@@ -44,18 +44,16 @@
 %
 \newcommand*{\ps@leplainheader}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}\bfseries
-                    \chaptertitle\ \hfill  \thepage
-                 \vspace{-10pt} \rule{\textwidth}{0.6pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{}
-%    \setlength{\footskip}{0pt}
-%    \calctextheight{}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}\bfseries
+			\chaptertitle\ \hfill  \thepage
+			\vspace{-10pt} \rule{\textwidth}{0.6pt}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{}
 }
 
 
@@ -70,18 +68,16 @@
 %
 \newcommand*{\ps@lepagenumberandhorizontalline}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}\bfseries
-                 \hfill  \thepage
-                 \vspace{-10pt} \rule{\textwidth}{0.6pt}
-        \end{minipage}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}\bfseries
+			\hfill  \thepage
+			\vspace{-10pt} \rule{\textwidth}{0.6pt}
+		\end{minipage}
     }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{}
-%    \setlength{\footskip}{0pt}
-%    \calctextheight{}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{}
 }
 
 
@@ -93,10 +89,10 @@
 %
 \newcommand*{\ps@leempty}
 {
-    \renewcommand*{\@oddhead}{}
-    \renewcommand*{\@evenhead}{}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{}
+	\renewcommand*{\@oddhead}{}
+	\renewcommand*{\@evenhead}{}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{}
 }
 
 
@@ -108,17 +104,16 @@
 %
 \newcommand*{\ps@lepagenumbertopright}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}
-            \bfseries \hspace*{\fill} \thepage
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}
+			\bfseries \hspace*{\fill} \thepage
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{}
 }
-
 
 
 % HEADER
@@ -129,22 +124,21 @@
 %
 \newcommand*{\ps@lepagenumbertoptwoside}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}
-            \bfseries \hspace*{\fill} \thepage
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}
-    {
-        \begin{minipage}{\textwidth}
-            \bfseries \thepage \hspace*{\fill}
-        \end{minipage}
-    }
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}
+			\bfseries \hspace*{\fill} \thepage
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}
+	{
+		\begin{minipage}{\textwidth}
+			\bfseries \thepage \hspace*{\fill}
+		\end{minipage}
+	}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{}
 }
-
 
 
 % HEADER
@@ -155,17 +149,16 @@
 %
 \newcommand*{\ps@pagenumbercenteredinfooter}
 {
-    \renewcommand*{\@oddhead}{}
-    \renewcommand*{\@evenhead}{}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-            \bfseries \center{\thepage}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+	\renewcommand*{\@oddhead}{}
+	\renewcommand*{\@evenhead}{}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\bfseries \center{\thepage}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
-
 
 
 % HEADER
@@ -178,22 +171,21 @@
 %
 \newcommand*{\ps@lehorizontalline}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}
+			\rule{\textwidth}{1pt}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\rule{\textwidth}{1pt}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
-
 
 
 % HEADER
@@ -209,18 +201,17 @@
 %
 \newcommand*{\ps@lehorizontallinewpagenumber}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}
-             L a n c e \ A. \ E n d r e s \hfill {Page \thepage}\vspace*{-10pt}
-             \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}
+			L a n c e \ A. \ E n d r e s \hfill {Page \thepage}\vspace*{-10pt}
+			\rule{\textwidth}{1pt}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{}
 }
-
 
 
 % HEADER
@@ -232,15 +223,15 @@
 %
 \newcommand*{\ps@lefooterhorizontalline}
 {
-    \renewcommand*{\@oddhead}{}
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+	\renewcommand*{\@oddhead}{}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\rule{\textwidth}{1pt}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
 
@@ -260,18 +251,40 @@
 %
 \newcommand*{\ps@leletterheada}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}
-             \center{\ArialBold\Normal\@name}\vspace*{-8pt}\\%
-             \rule{\textwidth}{1pt}\vspace*{-5pt}\\%
-             \small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
-             \rule{\textwidth}{1pt}%
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}
+			\center{\ArialBold\Normal\@name}\vspace*{-8pt}\\%
+			\rule{\textwidth}{1pt}\vspace*{-5pt}\\%
+			\small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
+			\rule{\textwidth}{1pt}%
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+% HEADER
+% Empty (blank).
+%
+% FOOTER
+% Single horizontal line with date.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@ledateinfooter}
+{
+	\renewcommand*{\@oddhead}{}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\Tiny\raggedleft
+			Compiled on \today{}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
 
@@ -292,24 +305,25 @@
 %
 \newcommand*{\ps@leletterheadb}
 {
-    \renewcommand*{\@oddhead}
-    {
+	\renewcommand*{\@oddhead}
+	{
         \begin{minipage}{\textwidth}
-             \center{\ArialBold\Normal\@name}\vspace*{-8pt}\\%
-             \rule{\textwidth}{1pt}\vspace*{-5pt}\\%
-             \small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
-             \rule{\textwidth}{1pt}%
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+			\center{\ArialBold\Normal\@name}\vspace*{-8pt}\\%
+			\rule{\textwidth}{1pt}\vspace*{-5pt}\\%
+			\small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
+			\rule{\textwidth}{1pt}%
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\rule{\textwidth}{1pt}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
+
 
 % HEADER
 % Single horizontal line.
@@ -325,18 +339,19 @@
 %
 \newcommand*{\ps@leletterheadc}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth}
-             \rule{\textwidth}{1pt}\vspace*{-17pt}\\%
-             \small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
-             \rule{\textwidth}{1pt}%
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}{}
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth}
+			\rule{\textwidth}{1pt}\vspace*{-17pt}\\%
+			\small \center{\@addresslinea, \@addresslineb \hspace*{12pt} $\bullet$ \hspace*{12pt} \@phone \hspace*{12pt} $\bullet$ \hspace*{12pt} \@email}\vspace*{-6pt}\\%
+			\rule{\textwidth}{1pt}%
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
+
 
 % HEADER
 % HCC technology logo in the left, the text "HCC Technology" on the right.
@@ -356,36 +371,36 @@
 \newcommand*{\copyrightyear}[1]{\renewcommand*{\lecopyrightyear}{#1}}
 \newcommand*{\ps@hccreportpagestyle}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
-                \hfill \ArialBold HCC Technology
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-            \small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill Hughes Christensen \\ Company Confidential -- For Internal Use Only \hfill Technology Research Report Rev 0.1
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
+		\hfill \ArialBold HCC Technology
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill Hughes Christensen \\ Company Confidential -- For Internal Use Only \hfill Technology Research Report Rev 0.1
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
 \newcommand*{\ps@hccpagestyle}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
-                \hfill % \ArialBold HCC Technology
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-            \small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill  Company Confidential \\ Drilling \& Evaluation $|$ Research \hfill For Internal Use Only
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
-} 
+	\renewcommand*{\@oddhead}
+	{
+		\begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
+			\hfill % \ArialBold HCC Technology
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{
+		\begin{minipage}{\textwidth}
+			\small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill  Company Confidential \\ Drilling \& Evaluation $|$ Research \hfill For Internal Use Only
+		\end{minipage}
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}
