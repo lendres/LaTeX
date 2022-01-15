@@ -21,12 +21,12 @@ echo.
 echo.
 echo.
 echo Make epss.
-for %%x in (.\JPG\*.jpg) do call :make_eps %%x
+for %%x in (.\JPG\*.jpg) do call :make_eps "%%x"
 goto :exit
 
 :make_eps
 set jpgfile=%1
-set epsfile=%jpgfile:~0,-4%.eps
+set epsfile="%jpgfile:~1,-5%.eps"
 echo.
 echo Input file: %jpgfile%
 echo Ouput file: %epsfile%
