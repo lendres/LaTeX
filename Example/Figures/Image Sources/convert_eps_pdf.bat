@@ -28,7 +28,7 @@ echo for %%%%x in (.\EPS\%%1\*.eps) do call process.bat %%%%x >> processdir.bat
 
 echo.
 echo.
-echo Process the eps files in the EPS subdirectory of this directory.
+echo Process the eps files in this directory.
 for %%x in (.\EPS\*.eps) do call process.bat %%x
 
 echo.

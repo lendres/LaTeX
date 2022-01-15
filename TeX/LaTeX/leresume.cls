@@ -124,12 +124,12 @@
 {section}%                                           % The name.
 {1}%                                                 % The level.
 {\z@}%
-{-0pt plus -14pt minus -1pt}%                         % The beforeskip.  Negative: 1st paragraph is not indented.
+{-0pt plus -14pt minus -1pt}%                        % The beforeskip.  Negative: 1st paragraph is not indented.
 {+1pt plus -1pt minus -1pt}%                         % The afterskip.
 {\center\large\ArialBold{}}}%                        % The s-t-y-l-e.
 
 \newlength{\datewidth}
-\setlength{\datewidth}{2.0in}
+\setlength{\datewidth}{1.6in}
 
 % Experience
 % Arguments: Date, Position Tile, Company Name, Company Address
