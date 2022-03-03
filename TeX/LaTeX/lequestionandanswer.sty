@@ -3,48 +3,100 @@
 
 \ProvidesPackage{lequestionandanswer}[2005/07/08 Question and Answer Package.]
 
+% EXAMPLE
+% Basic example:
+%    \begin{qanda}
+%		\question{What is the question?}
+%		\answer{State the answer.}
+%    \end{qanda}
+%
+%
+% Multi-line answer example:
+%    \begin{qanda}
+%		\question{What is the question?}
+%		\answer{Part of the answer.
+%\newline{}
+%
+% More of the answer.}
+%    \end{qanda}
+%
+%
+% Using lists in the question:
+%	\usepackage{lelists}
+%	\setlength{\listtopsep}{0pt}
+%	\begin{qanda}
+%		\question{What is the question?
+%			\begin{bulletedlist}
+%				\item Item 2?
+%				\item Item 1?
+%			\end{bulletedlist}
+%			\vspace*{-\baselineskip}}
+%		\answer{State the answer.}
+%    \end{qanda}
+
 \usepackage{calc}
 \usepackage{nameref}
 \usepackage{ifthen}
 
+% NUMBERING
+% Counter for numbering questions.
 \newcounter{questionnumber}
 \newcommand*{\resetquestioncounter}{\setcounter{questionnumber}{0}}
 
+% Space on the left used used for numbering questions.
 \newlength{\qanumberspace}
 \setlength{\qanumberspace}{0.35in}
 
+% Allow for questions to be automatically numbered or have no numbering.
+\newboolean{qanda@usenumbering}
+\setboolean{qanda@usenumbering}{true}
+\newcommand*{\noqandanumbering}{\setlength{\qanumberspace}{0in}\setboolean{qanda@usenumbering}{false}}
+\newcommand*{\useqandanumber}{\setlength{\qanumberspace}{0.35in}\setboolean{qanda@usenumbering}{true}}
+
+
+% LABELS
+% Space on the left side used for labeling the questions versus answers.  For example, "Q)" and "A)".
 \newlength{\qalabelspace}
 \setlength{\qalabelspace}{0.25in}
 
+% Default question and answer labels.
 \newcommand*{\qanda@questionlabel}{Q)}
 \newcommand*{\questiontext}[1]{\renewcommand*{\qanda@questionlabel}{#1}}
 
 \newcommand*{\qanda@answerlabel}{A)}
 \newcommand*{\answertext}[1]{\renewcommand*{\qanda@answerlabel}{#1}}
 
-\newcommand*{\qausenumbering}{1}
-\newcommand*{\noqandanumbering}{\setlength{\qanumberspace}{0in}\renewcommand*{\qausenumbering}{0}}
-\newcommand*{\useqandanumber}{\setlength{\qanumberspace}{0.35in}\renewcommand*{\qausenumbering}{1}}
 
+% ADDITIONAL FORMATTING COMMANDS
+% Double space between question and answer (default is single space).
+\newboolean{qanda@usedoublespacing}
+\setboolean{qanda@usedoublespacing}{false}
+\newcommand*{\useqandadoublespacing}{\setboolean{qanda@usedoublespacing}{true}}
+
+
+% QUESTION AND ANSWER COMMANDS
+% Question
 \newcommand{\question}[1]
 {
-    \ifthenelse{\equal{\qausenumbering}{1}}{\thequestionnumber}{}\>\qanda@questionlabel\>
-    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1\strut\end{minipage}\\
+    \ifthenelse{\boolean{qanda@usenumbering}}{\thequestionnumber}{}
+    \> \qanda@questionlabel \>
+    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
+    #1\strut
+    \end{minipage}\\
 }
 
-%    \sbox0{#1}\vspace{\dp0}
-
+% Answer
 \newcommand{\answer}[1]
 {
-    \>\qanda@answerlabel\>
-    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}#1
+	\ifthenelse{\boolean{qanda@usedoublespacing}}{\> \> \\}{}
+    \> \qanda@answerlabel \>
+    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
+    #1
     \end{minipage}
 }
 
-%\newcommand{\bulletedlistsave}{\bulletedlist}
-%\renewcommand{\bulletedlist}{\bulletedlistsave\vspace*{-\baselineskip}}
 
-
+% ENVIRONMENT
 \newenvironment{qanda}
 {
     \stepcounter{questionnumber}
