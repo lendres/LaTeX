@@ -15,6 +15,7 @@
 \newcommand{\codefontsize}[1]{\renewcommand{\@codefontsize}{#1}}
 \newcommand{\codefont}[1]{{\@codefonttype#1}}
 \newcommand{\codesize}[1]{{\@codefontsize#1}}
+\newcommand{\textcode}[1]{{\@codefonttype\@codefontsize#1}}
 
 
 % XML.
@@ -377,7 +378,7 @@
 \newcommand{\codeitem}[1][notused]{\ifthenelse{\equal{#1}{notused}}{\item \hspace*{\codeindent}}{\item[#1] \hspace*{\codeindent}}}
 
 % Add some text without numbering it.
-\newcommand*{\codeitemnonumber}[1]{\codeitem[]\hspace*{\labelnegwidth}#1} 
+\newcommand*{\codeitemnonumber}[1]{\codeitem[]\hspace*{\labelnegwidth}#1}
 
 % Algorithm / pseudo-code formatting commands.
 \newcommand*{\pseudocodefor}{\textbf{\sffamily for}}
@@ -511,4 +512,4 @@
     #1
 	\end{list}
 	\setlength{\codeindent}{\codeindentstore}
-}
+} 
