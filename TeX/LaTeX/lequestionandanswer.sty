@@ -50,8 +50,19 @@
 % Allow for questions to be automatically numbered or have no numbering.
 \newboolean{qanda@usenumbering}
 \setboolean{qanda@usenumbering}{true}
-\newcommand*{\noqandanumbering}{\setlength{\qanumberspace}{0in}\setboolean{qanda@usenumbering}{false}}
-\newcommand*{\useqandanumber}{\setlength{\qanumberspace}{0.35in}\setboolean{qanda@usenumbering}{true}}
+\newcommand*{\noqandanumbering}
+{
+	\setlength{\qanumberspace}{0in}
+	\setboolean{qanda@usenumbering}{false}
+	\qanda@settextwidth{}
+}
+
+\newcommand*{\useqandanumber}
+{
+	\setlength{\qanumberspace}{0.35in}
+	\setboolean{qanda@usenumbering}{true}
+	\qanda@settextwidth{}
+}
 
 
 % LABELS
@@ -72,6 +83,10 @@
 \newboolean{qanda@usedoublespacing}
 \setboolean{qanda@usedoublespacing}{false}
 \newcommand*{\useqandadoublespacing}{\setboolean{qanda@usedoublespacing}{true}}
+
+\newlength{\quandatextwidth}
+\newcommand*{\qanda@settextwidth}{\setlength{\quandatextwidth}{\textwidth-\qanumberspace-\qalabelspace}}
+\qanda@settextwidth{}
 
 
 % QUESTION AND ANSWER COMMANDS
