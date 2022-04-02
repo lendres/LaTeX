@@ -100,6 +100,17 @@
     \end{minipage}\\
 }
 
+\newenvironment{questione}
+{
+    \ifthenelse{\boolean{qanda@usenumbering}}{\thequestionnumber}{}
+%    \> \qanda@questionlabel \>
+    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
+}
+{
+%    \strut
+    \end{minipage}
+}
+
 % Answer
 \newcommand{\answer}[1]
 {
@@ -108,6 +119,16 @@
     \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
     #1
     \end{minipage}
+}
+
+\newenvironment{answere}
+{
+%	\ifthenelse{\boolean{qanda@usedoublespacing}}{\> \> \\}{}
+%    \> \qanda@answerlabel \>
+%    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
+}
+{
+%    \end{minipage}
 }
 
 
