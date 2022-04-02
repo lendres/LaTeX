@@ -44,22 +44,25 @@
 \newcommand*{\resetquestioncounter}{\setcounter{questionnumber}{0}}
 
 % Space on the left used used for numbering questions.
-\newlength{\qanumberspace}
-\setlength{\qanumberspace}{0.35in}
+\newlength{\qanda@numberwidth}
+\setlength{\qanda@numberwidth}{0.29in}
+\newcommand*{\qandanumberwidth}[1]
+{
+	\setlength{\qanda@numberwidth}{#1}
+	\qanda@settextwidth{}
+}
 
 % Allow for questions to be automatically numbered or have no numbering.
 \newboolean{qanda@usenumbering}
 \setboolean{qanda@usenumbering}{true}
 \newcommand*{\noqandanumbering}
 {
-	\setlength{\qanumberspace}{0in}
 	\setboolean{qanda@usenumbering}{false}
 	\qanda@settextwidth{}
 }
 
 \newcommand*{\useqandanumber}
 {
-	\setlength{\qanumberspace}{0.35in}
 	\setboolean{qanda@usenumbering}{true}
 	\qanda@settextwidth{}
 }
@@ -67,8 +70,13 @@
 
 % LABELS
 % Space on the left side used for labeling the questions versus answers.  For example, "Q)" and "A)".
-\newlength{\qalabelspace}
-\setlength{\qalabelspace}{0.25in}
+\newlength{\qanda@labelwidth}
+\setlength{\qanda@labelwidth}{0.25in}
+\newcommand*{\qandalabelwidth}[1]
+{
+	\setlength{\qanda@labelwidth}{#1}
+	\qanda@settextwidth{}
+}
 
 % Default question and answer labels.
 \newcommand*{\qanda@questionlabel}{Q)}
@@ -79,66 +87,84 @@
 
 
 % ADDITIONAL FORMATTING COMMANDS
-% Double space between question and answer (default is single space).
+% Double space before starting a new question.
 \newboolean{qanda@usedoublespacing}
 \setboolean{qanda@usedoublespacing}{false}
 \newcommand*{\useqandadoublespacing}{\setboolean{qanda@usedoublespacing}{true}}
 
-\newlength{\quandatextwidth}
-\newcommand*{\qanda@settextwidth}{\setlength{\quandatextwidth}{\textwidth-\qanumberspace-\qalabelspace}}
+% Spacing between the question and the answer.
+\newlength{\qaspacebetweenqanda}
+\setlength{\qaspacebetweenqanda}{4pt}
+
+% Provide the text width to use externally or internally.
+\newlength{\qandatextwidth}
+\newcommand*{\qanda@settextwidth}
+{
+	\ifthenelse{\boolean{qanda@usenumbering}}
+	{
+		\setlength{\qandatextwidth}{\textwidth-\qanda@numberwidth-\qanda@labelwidth}
+	}
+	{
+		\setlength{\qandatextwidth}{\textwidth-\qanda@labelwidth}
+	}
+}
+
+% Run the command on load to initialize the length.
 \qanda@settextwidth{}
 
 
 % QUESTION AND ANSWER COMMANDS
-% Question
-\newcommand{\question}[1]
+% Question.
+\newenvironment{question}
 {
-    \ifthenelse{\boolean{qanda@usenumbering}}{\thequestionnumber}{}
-    \> \qanda@questionlabel \>
-    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
-    #1\strut
-    \end{minipage}\\
+	\begin{minipage}[t]{\qanda@labelwidth}
+		\qanda@questionlabel
+	\end{minipage}
+    \begin{minipage}[t]{\qandatextwidth}
+	\setlength{\parindent}{\qaparindent}\noindent\ignorespaces
+}
+{%
+    \strut\end{minipage}%
 }
 
-\newenvironment{questione}
+% Answer.
+\newenvironment{answer}
 {
-    \ifthenelse{\boolean{qanda@usenumbering}}{\thequestionnumber}{}
-%    \> \qanda@questionlabel \>
-    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
+	\vspace{\qaspacebetweenqanda}
+	\begin{minipage}[t]{\qanda@labelwidth}
+		\qanda@answerlabel
+	\end{minipage}
+    \begin{minipage}[t]{\qandatextwidth}
+    \setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
 }
-{
-%    \strut
-    \end{minipage}
+{%
+    \strut\end{minipage}%
 }
-
-% Answer
-\newcommand{\answer}[1]
-{
-	\ifthenelse{\boolean{qanda@usedoublespacing}}{\> \> \\}{}
-    \> \qanda@answerlabel \>
-    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
-    #1
-    \end{minipage}
-}
-
-\newenvironment{answere}
-{
-%	\ifthenelse{\boolean{qanda@usedoublespacing}}{\> \> \\}{}
-%    \> \qanda@answerlabel \>
-%    \begin{minipage}[t]{\textwidth-\qanumberspace-\qalabelspace}
-}
-{
-%    \end{minipage}
-}
-
 
 % ENVIRONMENT
+\newlength{\qaparindent}
 \newenvironment{qanda}
 {
-    \stepcounter{questionnumber}
-    \begin{tabbing}
-    \hspace*{\qanumberspace}\=\hspace*{\qalabelspace}\=\kill
+	\setlength{\qaparindent}{\parindent}
+	\stepcounter{questionnumber}
+	\ifthenelse{\boolean{qanda@usedoublespacing}}
+	{
+		\vspace{\baselineskip}
+	}
+	{
+		\vspace{\qaspacebetweenqanda}
+	}
+	\ifthenelse{\boolean{qanda@usenumbering}}
+	{
+		\noindent\begin{minipage}[t]{\qanda@numberwidth}
+			\thequestionnumber
+		\end{minipage}
+		\noindent\begin{minipage}[t]{\textwidth-\qanda@numberwidth}
+	}
+	{
+		\noindent\begin{minipage}[t]{\textwidth}
+	}
 }
-{
-    \end{tabbing}
+{%
+	\end{minipage}%
 }
