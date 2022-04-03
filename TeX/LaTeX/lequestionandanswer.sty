@@ -2,19 +2,30 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesPackage{lequestionandanswer}[2005/07/08 Question and Answer Package.]
-
-% EXAMPLE
+% NOTES
+% If an extra line space is inserted at the end of a question, answer, or group, add the comment character "%" to
+% kill the extra white space.
+%
+% EXAMPLES
 % Basic example:
 %    \begin{qanda}
-%		\question{What is the question?}
-%		\answer{State the answer.}
+%		\begin{question}
+%			What is the question?
+%		\end{question}
+%		\begin{answer}
+%			State the answer.
+%		\end{answer}
 %    \end{qanda}
 %
 %
 % Multi-line answer example:
 %    \begin{qanda}
-%		\question{What is the question?}
-%		\answer{Part of the answer.
+%		\begin{question}
+%			What is the question?
+%		\end{question}
+%		\begin{answer}
+%			Part of the answer.
+%		\end{answer}
 %\newline{}
 %
 % More of the answer.}
@@ -25,18 +36,28 @@
 %	\usepackage{lelists}
 %	\setlength{\listtopsep}{0pt}
 %	\begin{qanda}
-%		\question{What is the question?
+%		\begin{question}
+%			What is the question?
 %			\begin{bulletedlist}
 %				\item Item 2?
 %				\item Item 1?
 %			\end{bulletedlist}
-%			\vspace*{-\baselineskip}}
-%		\answer{State the answer.}
+%			\vspace*{-\baselineskip}
+%		\end{question}
+%		\begin{answer}
+%			State the answer.
+%		\end{answer}
 %    \end{qanda}
+
 
 \usepackage{calc}
 \usepackage{nameref}
 \usepackage{ifthen}
+
+% Used to prevent LaTeX from trying to force stretch the last line of the paragraph to fill it.  When it does, it also adds a line return.
+\usepackage[parfill]{parskip}
+\setlength{\parfillskip}{8pt plus 4pt}
+
 
 % NUMBERING
 % Counter for numbering questions.
@@ -96,6 +117,10 @@
 \newlength{\qaspacebetweenqanda}
 \setlength{\qaspacebetweenqanda}{4pt}
 
+% Spacing between question and answer sets.
+\newlength{\qaspacebetweenquestions}
+\setlength{\qaspacebetweenquestions}{\baselineskip}
+
 % Provide the text width to use externally or internally.
 \newlength{\qandatextwidth}
 \newcommand*{\qanda@settextwidth}
@@ -125,7 +150,7 @@
 }
 {%
     \strut\end{minipage}%
-}
+}%
 
 % Answer.
 \newenvironment{answer}
@@ -135,11 +160,11 @@
 		\qanda@answerlabel
 	\end{minipage}
     \begin{minipage}[t]{\qandatextwidth}
-    \setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
+    \setlength{\parindent}{\qaparindent}\noindent\ignorespaces
 }
 {%
     \strut\end{minipage}%
-}
+}%
 
 % ENVIRONMENT
 \newlength{\qaparindent}
@@ -149,7 +174,7 @@
 	\stepcounter{questionnumber}
 	\ifthenelse{\boolean{qanda@usedoublespacing}}
 	{
-		\vspace{\baselineskip}
+		\vspace{\qaspacebetweenquestions}
 	}
 	{
 		\vspace{\qaspacebetweenqanda}
@@ -163,8 +188,8 @@
 	}
 	{
 		\noindent\begin{minipage}[t]{\textwidth}
-	}
-}
+	}%
+}%
 {%
 	\end{minipage}%
-}
+}%
