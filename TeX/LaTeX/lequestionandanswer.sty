@@ -55,8 +55,9 @@
 \usepackage{ifthen}
 
 % Used to prevent LaTeX from trying to force stretch the last line of the paragraph to fill it.  When it does, it also adds a line return.
-\usepackage[parfill]{parskip}
-\setlength{\parfillskip}{30pt plus 1fil}
+%\usepackage[skip=0pt, indent, parfill]{parskip}
+%\usepackage[parfill]{parskip}
+%\setlength{\parfillskip}{30pt plus 1fil}
 
 
 % NUMBERING
@@ -115,7 +116,7 @@
 
 % Spacing between the question and the answer.
 \newlength{\qaspacebetweenqanda}
-\setlength{\qaspacebetweenqanda}{4pt}
+\setlength{\qaspacebetweenqanda}{0pt}
 
 % Spacing between question and answer sets.
 \newlength{\qaspacebetweenquestions}
@@ -146,10 +147,10 @@
 		\qanda@questionlabel
 	\end{minipage}
     \begin{minipage}[t]{\qandatextwidth}
-	\setlength{\parindent}{\qaparindent}\noindent\ignorespaces
-}
+	\setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
+}%
 {%
-    \strut\end{minipage}%
+	\strut\end{minipage}%
 }%
 
 % Answer.
@@ -160,10 +161,10 @@
 		\qanda@answerlabel
 	\end{minipage}
     \begin{minipage}[t]{\qandatextwidth}
-    \setlength{\parindent}{\qaparindent}\noindent\ignorespaces
+    \setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
 }
 {%
-    \strut\end{minipage}%
+	\strut\end{minipage}%
 }%
 
 % ENVIRONMENT
@@ -180,14 +181,14 @@
 		\vspace{\qaspacebetweenqanda}
 	}
 	\ifthenelse{\boolean{qanda@usenumbering}}
-	{
-		\noindent\begin{minipage}[t]{\qanda@numberwidth}
-			\thequestionnumber
-		\end{minipage}
-		\noindent\begin{minipage}[t]{\textwidth-\qanda@numberwidth}
-	}
-	{
-		\noindent\begin{minipage}[t]{\textwidth}
+	{%
+		\noindent\begin{minipage}[t]{\qanda@numberwidth}%
+			\thequestionnumber%
+		\end{minipage}%
+		\noindent\begin{minipage}[t]{\textwidth-\qanda@numberwidth}%
+	}%
+	{%
+		\noindent\begin{minipage}[t]{\textwidth}%
 	}%
 }%
 {%

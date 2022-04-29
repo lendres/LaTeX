@@ -5,6 +5,8 @@
 \RequirePackage{lastpage}
 \usepackage{lecontactinfo}
 \usepackage{lefonts}
+
+\usepackage[letterspace=175]{letterspace}
 %\usepackage{lefontsizes}
 
 % HEADERS AND FOOTERS (pg. 345)
@@ -204,13 +206,13 @@
 	\renewcommand*{\@oddhead}
 	{
 		\begin{minipage}{\textwidth}
-			L a n c e \ A. \ E n d r e s \hfill {Page \thepage}\vspace*{-10pt}
+			{\lsstyle Lance\ }A.{\lsstyle\ Endres} \hfill {Page \thepage}\vspace*{-10pt}
 			\rule{\textwidth}{1pt}
 		\end{minipage}
 	}
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}{}
-	\renewcommand*{\@evenfoot}{}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
 
@@ -403,4 +405,4 @@
 		\end{minipage}
 	}
 	\renewcommand*{\@evenfoot}{\@oddfoot}
-}
+} 
