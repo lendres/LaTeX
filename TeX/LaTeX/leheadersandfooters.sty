@@ -6,7 +6,7 @@
 \usepackage{lecontactinfo}
 \usepackage{lefonts}
 
-\usepackage[letterspace=175]{letterspace}
+%\usepackage[letterspace=175]{letterspace}
 %\usepackage{lefontsizes}
 
 % HEADERS AND FOOTERS (pg. 345)
@@ -201,12 +201,28 @@
 % Single horizontal line.
 % -----------------------------------------------------------
 %
+% Extra space between letters and spaces.
+\newcommand*{\wideletterspacing}{\hspace*{1.6pt}}
+\newcommand*{\widespace}{\ \hspace*{0.25pt}}
+
+% Adds a small space after every letter and space.
+\def\gobblechar{\let\xchar= }
+\def\assignthencheck{\afterassignment\xloop\gobblechar}
+\def\xloop{%
+  \ifx\relax\xchar
+      \let\next=\relax
+    \else
+      \xchar\wideletterspacing{}\let\next=\assignthencheck
+  \fi
+  \next}
+\def\markletters#1{\assignthencheck#1\relax}
+
 \newcommand*{\ps@lehorizontallinewpagenumber}
 {
 	\renewcommand*{\@oddhead}
 	{
 		\begin{minipage}{\textwidth}
-			{\lsstyle Lance\ }A.{\lsstyle\ Endres} \hfill {Page \thepage}\vspace*{-10pt}
+			\markletters{Lance}\widespace{}A.\wideletterspacing{}\widespace{}\markletters{Endres} \hfill {Page \thepage}\vspace*{-10pt}
 			\rule{\textwidth}{1pt}
 		\end{minipage}
 	}
