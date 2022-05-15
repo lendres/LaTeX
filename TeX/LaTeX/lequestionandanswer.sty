@@ -112,15 +112,15 @@
 % Double space before starting a new question.
 \newboolean{qanda@usedoublespacing}
 \setboolean{qanda@usedoublespacing}{false}
-\newcommand*{\useqandadoublespacing}{\setboolean{qanda@usedoublespacing}{true}}
-
-% Spacing between the question and the answer.
-\newlength{\qaspacebetweenqanda}
-\setlength{\qaspacebetweenqanda}{0pt}
+\newcommand*{\useqandaspacing}{\setboolean{qanda@usedoublespacing}{true}}
 
 % Spacing between question and answer sets.
 \newlength{\qaspacebetweenquestions}
 \setlength{\qaspacebetweenquestions}{\baselineskip}
+
+% Spacing between the question and the answer.
+\newlength{\qaspacebetweenqanda}
+\setlength{\qaspacebetweenqanda}{0pt}
 
 % Provide the text width to use externally or internally.
 \newlength{\qandatextwidth}
