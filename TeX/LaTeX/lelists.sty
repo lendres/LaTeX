@@ -63,18 +63,27 @@
 		% Lists that are sub-lists of items on a higher level list.
 		% For sub-lists, the list is enclosed in a box that is already indented by \leftmargin. No need to further indent it.
 		% The \listlevelleftindent is used to indent sub lists a little more.
-		\setlength{\leftmargin}{\leftmargin+\listlevelleftindent}
+		\setlength{\leftmargin}{\leftmargin+\listlevelleftindent+\plainlist@levelleftindent}
 	
 		% Since we are starting a new list, we need to adjust the \topsep so it looks like the same spacing as between other list items.
 		\vspace*{\parsep}
 		\setlength{\parskip}{0pt}
 	}
+
+	% After consuming the plain list indent, we reset it so it doesn't affect sublists.
+	\setlength{\plainlist@levelleftindent}{0cm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PLAIN LIST
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Plain lists don't have a label.  Therefore, any sub lists start at the same left margin as the plain list.  This
+% looks like they are at the same level, rather than the second being a sub list.  Therefore, we need to add a little
+% indent.
+\newlength{\plainlistlevelleftindent}
+\setlength{\plainlistlevelleftindent}{0.5cm}
+\newlength{\plainlist@levelleftindent}
+\setlength{\plainlist@levelleftindent}{0cm}
 \newenvironment{plainlist}
 {
 	\stepcounter{listlevel}
@@ -83,10 +92,13 @@
 	{
 		\setlength{\labelwidth}{0pt}
 		\standardlistparams{}
+		% Must be done after setting the standard parameters.  Sets an additional indent for a sublist of a plain list.
+		\setlength{\plainlist@levelleftindent}{\plainlistlevelleftindent}
 	}
 }
 {
 	\end{list}
+	\setlength{\plainlist@levelleftindent}{0cm}
 	\addtocounter{listlevel}{-1}
 }
 
