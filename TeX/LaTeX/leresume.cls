@@ -12,7 +12,7 @@
 % Notes:
 % Any page numbers in parenthesis refer to:
 % "A Guide to LaTeX", 3rd Edition
-% by Helmut Kopka & Patrick W. Daly 
+% by Helmut Kopka & Patrick W. Daly
 
 \def\update{2004/01/23 v1.0}
 \NeedsTeXFormat{LaTeX2e}
@@ -148,6 +148,25 @@
 	\noindent\begin{minipage}[t]{\textwidth}
 		\begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}} - #4\hspace{0pt}\\ \emph{\textbf{#2}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
 	\end{minipage}\vspace{4pt}%
+}
+
+% Projects
+% Arguments: Title, Description, Skills
+\newcounter{projectentries}
+\newcommand{\project}[3]
+{
+	\stepcounter{projectentries}
+	\ifthenelse{\equal{\value{projectentries}}{1}}
+	{
+		% First entry, do nothing.
+	}
+	{
+		% Add a little space between the end of the last entry and the beginning of this one.
+		\vspace*{6pt}
+	}
+	\textbf{#1}\\
+	#2\\
+	\textbf{Skills}:\ #3%
 }
 
 % Education
