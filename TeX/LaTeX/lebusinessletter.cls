@@ -20,6 +20,8 @@
 \ProvidesClass{lebusinessletter}[]
 
 \usepackage{calc}
+\usepackage{legraphicextensions}
+\graphicspath{{Figures/}}
 
 % SIGNITURE SPACE OPTIONS
 % Option to shorten the space between the closing and name.
@@ -32,6 +34,12 @@
 \DeclareOption{SmallSignatureSpace}
 {
     \setlength{\signaturespace}{4\medskipamount}
+}
+
+\let\signaturegraphic\@empty
+\DeclareOption{UseSignature}
+{
+    \renewcommand{\signaturegraphic}{\noindent\raggedright\parbox[t][4\medskipamount][c]{\textwidth}{\includegraphics[width=2.5in]{signature}}}
 }
 
 % LETTER HEAD HEADERS AND FOOTERS
@@ -151,7 +159,14 @@
     \ifx\@empty\fromaddress\else
         %\hspace*{\longindentation}
     \fi
-    \parbox{\textwidth}{\raggedright \ignorespaces #1\\[\signaturespace]
+    \parbox{\textwidth}{\raggedright \ignorespaces #1
+    	% Option to include a signature graphic.  See DeclareOption.
+        \ifx\@empty\signaturegraphic
+            \\[\signaturespace]
+    	\else
+    		\signaturegraphic \\
+    	\fi
+    	% The signature.
         \ifx\@empty\fromsig
             \fromname
         \else \fromsig
@@ -160,5 +175,3 @@
     }
     \par
 }
-
-%6\medskipamount
