@@ -40,9 +40,6 @@
 \ProcessOptions \LoadClass[12pt, oneside, letterpaper]{lebusinessletter}
 
 \usepackage{legraphicextensions}
-% Set the search path for figures.  This way we can change it if required without having to modified
-% all of the \includegraphics calls.
-\graphicspath{{Figures/}}
 
 % CONTACT INFO
 \usepackage{lecontactinfo}
