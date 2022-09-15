@@ -21,7 +21,6 @@
 
 \usepackage{calc}
 \usepackage{legraphicextensions}
-\graphicspath{{Figures/}}
 
 % SIGNITURE SPACE OPTIONS
 % Option to shorten the space between the closing and name.
@@ -39,6 +38,7 @@
 \let\signaturegraphic\@empty
 \DeclareOption{UseSignature}
 {
+	% The signature image is saved in my custom LaTeX TexMF directory.  You must update the file name database to use it.
     \renewcommand{\signaturegraphic}{\noindent\raggedright\parbox[t][4\medskipamount][c]{\textwidth}{\includegraphics[width=2.5in]{signature}}}
 }
 
