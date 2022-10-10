@@ -1,0 +1,1 @@
+This folder constains a directory structure template for figures.  Copy it to a new project location for easy setup.
