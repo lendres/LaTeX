@@ -1,0 +1,1 @@
+This file is here to cause Github to add the folder.  If the folder is empty, it is ignored.  Delete this file once the first image is added and the folder is no longer empty.
