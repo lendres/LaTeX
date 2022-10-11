@@ -3,9 +3,6 @@ echo.
 echo.
 echo MANUALMAKEDOCUMENT
 
-rem Use this file to process the document without WinEdt.
-rem It can be double clicked or run from the command line.
-
 rem This file can automatically attempt to find the file name by extracting it from the WinEdt project file name.  For this to work,
 rem the main LaTeX document must have the same root file name as the project file.  If this is not the case, the root file name must be
 rem manually entered.
