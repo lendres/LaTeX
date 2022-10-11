@@ -28,11 +28,6 @@
 	linktocpage=false
 }
 
-\SetupKeyvalOptions{
-	family=lehyp,
-	prefix=lehyp@
-}
-
 \newcommand*{\lehyp@colorlinks}
 {
 	\renewcommand*{\coloroptions}
@@ -45,23 +40,30 @@
 	}
 }
 
+% Used by the "kvoptions" package to name macros.
+% Example: \DeclareStringOption[]{pdftitle} creates a marco \lehyp@pdftitle which stores the value passed as an argument.
+\SetupKeyvalOptions{
+	family=lehyp,
+	prefix=lehyp@
+}
+
 % Create colored links.
 \DeclareVoidOption{lecolorlinks}{\lehyp@colorlinks}
 
-% PDF author and title.	 To use macros (commands) use \hypersetup{} after \usepackage{hyperlink} instead.
-%\DeclareStringOption{pdfauthor}[Lance A. Endres]
-%\DeclareStringOption{pdftitle}[]
-\newcommand*{\lehyp@pdfauthor}{Lance A. Endres}
-\newcommand*{\lepdfauthor}[1]{\renewcommand*{\lehyp@pdfauthor}{#1}}
-\newcommand*{\lehyp@pdftitle}{}
-\newcommand*{\lepdftitle}[1]{\renewcommand*{\lehyp@pdftitle}{#1}}
+% PDF author and title.  Use brackets({}) around multiple word entries or the spaces will get eaten.
+% Example: \usepackage[pdfauthor={Jack O'Neill}, pdftitle={Unoriginal Title of this Book}]{lehyperlink}
+% https://tex.stackexchange.com/questions/239416/spaces-and-commata-in-stringoptions-as-possible-in-hyperref
+% https://groups.google.com/g/comp.text.tex/c/qSnVo_VaTNo
+\DeclareStringOption[Lance A. Endres]{pdfauthor}
+\DeclareStringOption[]{pdftitle}
 
 \ProcessKeyvalOptions*
+
 
 % Package to decide if we are creating a dvi or a pdf.
 \usepackage{ifpdf}
 
-% Be able to use hypertext references.
+% Be able to use hypertext references.  We need different commands based on if a PDF or DVI is being created.
 \ifpdf
 	% Options for a pdf.
 	\usepackage[\baseoptions,\coloroptions,\tocoptions,pdftex,pdfauthor={\lehyp@pdfauthor},pdftitle={\lehyp@pdftitle}]{hyperref}
@@ -72,10 +74,4 @@
 	% messy we are going to override the linktocpage option at all times.  This will force
 	% the links to occur as the numbers and prevent the entire title from being underlined.
 	\usepackage[\baseoptions,\coloroptions,linktocpage=true]{hyperref}
-\fi
-
-\ifpdf
-	 \newcommand*{\lehypersetup}{\hypersetup{pdftex,\lehyp@baseoptions,\lehyp@coloroptions,\lehyp@tocoptions,pdfauthor={\lehyp@pdfauthor},pdftitle={\lehyp@pdftitle}}}
-\else
-	\newcommand*{\lehypersetup}{\hypersetup{hypertex,\lehyp@baseoptions,\lehyp@coloroptions,linktocpage=true}}
 \fi
