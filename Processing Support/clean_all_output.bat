@@ -9,4 +9,4 @@ del *.dvi
 del .\Figures\*.eps
 del .\Figures\*.jpg
 
-call cleantempfiles.bat
+call clean_temp_files.bat
