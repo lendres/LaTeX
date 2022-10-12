@@ -10,6 +10,7 @@
 
 % LIST OF NOTATIONS.
 % Short cut to print chapter header, add a label, and add the chapter to the table of contents.
+% The "\notationsname" marco is defined in the "lecaptions" package.
 \newcommand{\printlistofnotationschapterheader}
 {
     \chapter*{\notationsname}
@@ -63,4 +64,4 @@
 %
 % The [length] at the end of line puts extra spacing after the title heading.  The star form prevents a page
 % break.  See section 3.5.2 on pg 48.
-\newcommand*{\addnotationtitle}[1]{\rule{0pt}{\@headinglinesize}\noindent{\large\textbf{#1}}\\*[4pt]} 
+\newcommand*{\addnotationtitle}[1]{\rule{0pt}{\@headinglinesize}\noindent{\large\textbf{#1}}\\*[4pt]}
