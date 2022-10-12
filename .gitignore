@@ -24,6 +24,9 @@ Example/*.aux
 Example/*.bbl
 Example/*.blg
 Example/*.dvi
+Example/*.idx
+Example/*.ilg
+Example/*.ind
 Example/*.lof
 Example/*.log
 Example/*.lot
