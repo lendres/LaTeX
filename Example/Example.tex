@@ -1,6 +1,6 @@
 	\documentclass{lebook}
 	\usepackage{amsmath}
-    \usepackage{hyperref}
+    \usepackage[pdfauthor={Lance A. Endres}, pdftitle={Example}]{lehyperlink}
     \usepackage{lecode}
 
     % Note on YAK previewer and fonts not rendering.
@@ -15,12 +15,16 @@
 	\bibliographystyle{leplain}
 
 	% INCLUDE AN INDEX.
-%	\makeindex
+	\makeindex{}
 
 	\begin{document}
 
 	% MAKE A TITLE PAGE.
+	% Prevents warning because the title page is not numbered, so the hyper reference cannot be setup.
+	\hypersetup{pageanchor=false}
  	\printtitlepage{Title}{Lance A. Endres\index{Endres, Lance A.}}{Organization}{February 202x}
+ 	% Restore hyper reference anchoring.
+ 	\hypersetup{pageanchor=true}
 
 
 	\pagestyle{leplainheader}

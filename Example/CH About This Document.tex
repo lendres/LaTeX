@@ -23,16 +23,18 @@ This document was built from many files.  The files or file types are listed bel
         \item Graphic files included by the \LaTeX{} files (see below for more information).
     \end{bulletedlist}
 
-This file was built using the \class{\MakeUppercase makedocument.bat} batch file.  The batch file was created to allow passing additional parameters to \LaTeX{} and \emph{BibTeX}\@ that would otherwise require manually adding each time a build was performed.  (\emph{WinEdt} does not seem to provide this functionality.)  The parameter to include the directory for common files like \class{lebook.cls}, \class{le.bib}, and \class{leplain.bst} is passed this way.  These files were kept separate so that this manual and others can both access them (without keeping multiple copies).
+This file was built using the \class{makedocument.bat} batch file.  The batch file was created to allow passing additional parameters to \LaTeX{} and \emph{BibTeX}\@ that would otherwise require manually adding each time a build was performed.  (\emph{WinEdt} does not seem to provide this functionality.)  The parameter to include the directory for common files like \class{lebook.cls}, \class{le.bib}, and \class{leplain.bst} is passed this way.  These files were kept separate so that this manual and others can both access them (without keeping multiple copies).
 
     \subsection*{Additional Graphics Information}
     \addcontentsline{toc}{subsection}{Additional Graphics Information}
 
 The \LaTeX{} file has been set up to produce both \class{.dvi} and \class{.pdf} formats as output.  There are a few issues that are associated with using graphics with both \class{.dvi} and \class{.pdf} files.
 
-The graphics used to generate the \class{.pdf} format must be in either \class{.pdf} or \class{.jpg} format.  Some figures are of the \class{.eps} format (they are small, in vector format, and work well with \LaTeX) and as a result need to be converted to work in the \class{.pdf} output file.  Versions of the \class{.eps} files in \class{.pdf} format can be created the batch file \class{manual\ul{}convert\ul{}all\ul{}images.bat-} located in the same directory as the figures.  See the batch file itself for more details.
+The graphics used to generate the \class{.pdf} format must be in either \class{.pdf} or \class{.jpg} format.  Some figures are of the \class{.eps} format (they are small, in vector format, and work well with \LaTeX) and as a result need to be converted to work in the \class{.pdf} output file.  Versions of the \class{.eps} files in \class{.pdf} format can be created the batch file 
+	\begin{plainlist}
+		\item \class{manual\ul{}convert\ul{}all\ul{}images.bat}
+	\end{plainlist}
+located in the same directory as the figures.  See the batch file itself for more details.
 
-%    \section*{Nomenclature Used in This Manual}
-%    \addcontentsline{toc}{section}{Nomenclature Used in This Manual}
-\vspace{\baselineskip}
-\noindent Lance A. Endres\index{Endres, Lance A.} \\February 202x 
+\vspace{\baselineskip}%
+\noindent Lance A. Endres\index{Endres, Lance A.} \\February 202x%
