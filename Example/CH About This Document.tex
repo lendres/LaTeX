@@ -12,12 +12,11 @@ This document was created using \LaTeX\index{Latex@\LaTeX}\@.  \LaTeX{} is stand
 
 This document was built from many files.  The files or file types are listed below, along with a description.
     \begin{bulletedlist}
-        \item The class file \class{hccbook.cls} which contains common formatting.
+        \item The class file \class{book.cls} which contains common formatting.
         \item A main \LaTeX{} file, \class{\documenttitle.tex}, that initializes the document and inputs the remaining source files.
         \item A bibliography file, \class{le.bib}, that contains references in a format \LaTeX{} understands.
-        \item A bibliography formatting file, \class{hccplain.bst}.
         \item A \emph{WinEdt}\index{WinEdt} project file, \class{\documentshorttitle.prj} (not required to build the document), used by \emph{WinEdt} to store project settings.
-        \item A batch file, \class{{\MakeUppercase makedocument}.bat}, used to build the file (but not required), see below for more information.
+        \item Batch files, \class{run\ul{}make\ul{}document.bat} and \class{run\ul{}manual\ul{}make\ul{}document.bat}, used to build the file (but not required), see below for more information.
         \item \LaTeX{} chapter files, (\class{.tex} files prefixed with \class{CH}), included by the main file.
         \item \LaTeX{} section files, (\class{.tex} files prefixed with \class{SC}), included by the chapter files.
         \item Additional miscellaneous \LaTeX{} files used as needed, (\class{.tex, .sty}).  See comments in the source for explanations.
@@ -31,13 +30,9 @@ This file was built using the \class{\MakeUppercase makedocument.bat} batch file
 
 The \LaTeX{} file has been set up to produce both \class{.dvi} and \class{.pdf} formats as output.  There are a few issues that are associated with using graphics with both \class{.dvi} and \class{.pdf} files.
 
-The first issue is that \LaTeX{} needs to know the size of graphics before it can include them.  With \class{.eps} files this is not an issue because the size (referred to as a ``bounding box'') is included in the graphic file.  However, to include other graphics files, the bounding box information is required.  A simple solution exists; generate the bounding box information using the batch file \class{bounding\ul{}box.bat}.  See the batch file itself for more details.
-
-The \class{.dvi} format does not seem to handle \class{.jpg} files very well.  As a result all raster images are generated as both \class{.bmp} and \class{.jpg} formats.  The \class{.dvi} file uses the \class{.bmp} format and the \class{.pdf} files uses the \class{.jpg} format (to reduce file size).  Moreover, the \class{.pdf} files seem to require the \class{.jpg}s to be exactly 96 dpi so that they appear the correct size (without being stretched).  If needed, convert the \class{.jpg}s to 96 dpi using an image editor.  A free, versatile program \href{http://www.irfanview.com/}{IrfanView} works well (from the IrfanView menubar select Image, Resize/Resample to convert images).
-
-The graphics used to generate the \class{.pdf} format must be in either \class{.pdf} or \class{.jpg} format.  Many of the figures used are of the \class{.eps} format (they are small, in vector format, and work well with \LaTeX) and as a result need to be converted to work in the \class{.pdf} output file.  Versions of the \class{.eps} files in \class{.pdf} format can be created the batch file \class{convert\ul{}eps\ul{}pdf.bat} located in the same directory as the figures. See the batch file itself for more details.
+The graphics used to generate the \class{.pdf} format must be in either \class{.pdf} or \class{.jpg} format.  Some figures are of the \class{.eps} format (they are small, in vector format, and work well with \LaTeX) and as a result need to be converted to work in the \class{.pdf} output file.  Versions of the \class{.eps} files in \class{.pdf} format can be created the batch file \class{manual\ul{}convert\ul{}all\ul{}images.bat-} located in the same directory as the figures.  See the batch file itself for more details.
 
 %    \section*{Nomenclature Used in This Manual}
 %    \addcontentsline{toc}{section}{Nomenclature Used in This Manual}
-
-\noindent Lance A. Endres\index{Endres, Lance A.} \\February 202x
+\vspace{\baselineskip}
+\noindent Lance A. Endres\index{Endres, Lance A.} \\February 202x 
