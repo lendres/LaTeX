@@ -19,3 +19,16 @@ Temporary Items
 .apdisk
 *.bak
 *.sav
+
+Example/*.aux
+Example/*.bbl
+Example/*.blg
+Example/*.dvi
+Example/*.lof
+Example/*.log
+Example/*.lot
+Example/*.out
+Example/*.pdf
+Example/*.bak
+Example/*.synctex
+Example/*.toc
