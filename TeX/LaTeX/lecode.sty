@@ -17,7 +17,6 @@
 \newcommand{\codesize}[1]{{\@codefontsize#1}}
 \newcommand{\textcode}[1]{{\@codefonttype\@codefontsize#1}}
 
-
 % XML.
 
 % Commands of the form \xmlwrite* do all the do not write themselves on a new line. They do handle
@@ -168,11 +167,11 @@
 % SIMPLE CODE FORMATTING.
 % Code formatting for short or inline text.
 % Special formatting for specific items like class names.
-\newcommand*{\codetext}[1]{\codesize{\codefont{#1}}}
-\newcommand*{\class}[1]{\codetext{\codeisusertype{#1}}}
+\newcommand{\codetext}{\PackageError{lecode}{The {\protect\textcode} command is no longer supported}{ Rename the {\protect\textcode} command to {\protect\textcode} }}
+\newcommand*{\class}[1]{\textcode{\codeisusertype{#1}}}
 \newcommand*{\abstractclass}[1]{\class{\emph{\codeisusertype{#1}}}}
-\newcommand*{\directory}[1]{\codetext{#1}}
-\newcommand*{\filename}[1]{\codetext{#1}}
+\newcommand*{\directory}[1]{\textcode{#1}}
+\newcommand*{\filename}[1]{\textcode{#1}}
 
 
 % KEYWORDS.
@@ -512,4 +511,4 @@
     #1
 	\end{list}
 	\setlength{\codeindent}{\codeindentstore}
-} 
+}
