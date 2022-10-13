@@ -25,10 +25,9 @@
 %		\end{question}
 %		\begin{answer}
 %			Part of the answer.
-%		\end{answer}
 %\newline{}
-%
-% More of the answer.}
+% 			More of the answer.
+%		\end{answer}
 %    \end{qanda}
 %
 %
@@ -54,18 +53,13 @@
 \usepackage{nameref}
 \usepackage{ifthen}
 
-% Used to prevent LaTeX from trying to force stretch the last line of the paragraph to fill it.  When it does, it also adds a line return.
-%\usepackage[skip=0pt, indent, parfill]{parskip}
-%\usepackage[parfill]{parskip}
-\setlength{\parfillskip}{30pt plus 1fil}
-
 
 % NUMBERING
 % Counter for numbering questions.
 \newcounter{questionnumber}
 \newcommand*{\resetquestioncounter}{\setcounter{questionnumber}{0}}
 
-% Space on the left used used for numbering questions.
+% Space on the left used for numbering questions.
 \newlength{\qanda@numberwidth}
 \setlength{\qanda@numberwidth}{0.29in}
 \newcommand*{\qandanumberwidth}[1]
@@ -142,45 +136,45 @@
 % QUESTION AND ANSWER COMMANDS
 % Question.
 \newenvironment{question}
-{
-	\begin{minipage}[t]{\qanda@labelwidth}
-		\qanda@questionlabel
-	\end{minipage}
-    \begin{minipage}[t]{\qandatextwidth}
-	\setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
-}%
 {%
+	\begin{minipage}[t]{\qanda@labelwidth}%
+		\qanda@questionlabel%
+	\end{minipage}%
+    \begin{minipage}[t]{\qandatextwidth}%
+	\setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
+}
+{
 	\strut\end{minipage}%
-}%
+}
 
 % Answer.
 \newenvironment{answer}
-{
-	\vspace{\qaspacebetweenqanda}
-	\begin{minipage}[t]{\qanda@labelwidth}
-		\qanda@answerlabel
-	\end{minipage}
-    \begin{minipage}[t]{\qandatextwidth}
+{%
+	\vspace{\qaspacebetweenqanda}%
+	\begin{minipage}[t]{\qanda@labelwidth}%
+		\qanda@answerlabel%
+	\end{minipage}%
+    \begin{minipage}[t]{\qandatextwidth}%
     \setlength{\parindent}{\qaparindent}\noindent\ignorespaces%
 }
-{%
+{
 	\strut\end{minipage}%
-}%
+}
 
 % ENVIRONMENT
 \newlength{\qaparindent}
 \newenvironment{qanda}
-{
-	\setlength{\qaparindent}{\parindent}
-	\stepcounter{questionnumber}
-	\ifthenelse{\boolean{qanda@usedoublespacing}}
-	{
-		\vspace{\qaspacebetweenquestions}
-	}
-	{
-		\vspace{\qaspacebetweenqanda}
-	}
-	\ifthenelse{\boolean{qanda@usenumbering}}
+{%
+	\setlength{\qaparindent}{\parindent}%
+	\stepcounter{questionnumber}%
+	\ifthenelse{\boolean{qanda@usedoublespacing}}%
+	{%
+		\vspace{\qaspacebetweenquestions}%
+	}%
+	{%
+		\vspace{\qaspacebetweenqanda}%
+	}%
+	\ifthenelse{\boolean{qanda@usenumbering}}%
 	{%
 		\noindent\begin{minipage}[t]{\qanda@numberwidth}%
 			\thequestionnumber%
@@ -190,7 +184,7 @@
 	{%
 		\noindent\begin{minipage}[t]{\textwidth}%
 	}%
-}%
+}
 {%
 	\end{minipage}\ignorespaces%
-}% 
+}
