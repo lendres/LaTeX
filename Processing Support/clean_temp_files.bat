@@ -22,7 +22,10 @@ del *.sav
 del *.stn
 del *.ist
 del *.glsdefs
+
 del *.synctex
+del *.run.xml
+del *.bcf
 
 rem Additional acronym files.  The ".alg" file is deleted by the command to capture all glossary output.
 del *.acn
