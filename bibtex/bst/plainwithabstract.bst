@@ -280,7 +280,7 @@ FUNCTION {format.isbn}
 FUNCTION {format.abstract}
 { abstract empty$
     { "" }
-    { write$ "\\ \\ \textbf{Abstract}\\" abstract * }
+    { write$ ". \\ \\ \textbf{Abstract}\\" abstract * }
   if$
 }
 
@@ -705,32 +705,27 @@ FUNCTION {format.incoll.inproc.crossref}
   " \citet{" * crossref * "}" *
 }
 
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
-  author format.key output
   new.block
   format.title "title" output.check
   new.block
   crossref missing$
     { journal emphasize "journal" output.check
-      eid empty$
-        { format.vol.num.pages output }
-        { format.vol.num.eid output }
-      if$
+      format.vol.num.pages output
       format.date "year" output.check
     }
     { format.article.crossref output.nonnull
-      eid empty$
-        { format.pages output }
-        { format.eid output }
-      if$
+      format.pages output
     }
   if$
   new.block
-  format.abstract "abstract" output.check
+  note output
   fin.entry
 }
+
 
 FUNCTION {book}
 { output.bibitem
@@ -761,13 +756,10 @@ FUNCTION {book}
   if$
   format.edition output
   format.date "year" output.check
-  format.isbn output
-  format.doi output
-  format.url output
-  new.block
-  note output
+  format.abstract output
   fin.entry
 }
+
 
 FUNCTION {booklet}
 { output.bibitem
@@ -868,10 +860,8 @@ FUNCTION {inproceedings}
         { organization publisher new.sentence.checkb
           organization output
           publisher output
-          format.date "year" output.check
         }
         { address output.nonnull
-          format.date "year" output.check
           new.sentence
           organization output
           publisher output
@@ -882,9 +872,8 @@ FUNCTION {inproceedings}
       format.pages output
     }
   if$
-  new.sentence
+  format.date output
   format.abstract output
-  new.sentence
   fin.entry
 }
 
