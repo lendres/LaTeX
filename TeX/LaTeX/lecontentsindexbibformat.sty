@@ -62,6 +62,12 @@ bibliography, list of figures, list of tables, list of notations, glossary, inde
     \renewcommand{\cftchapdotsep}{\cftsecdotsep}
 }
 
+\newcommand*{\addbibtotableofcontents}{\addcontentsline{toc}{chapter}{\bibname}}
+\DeclareOption{nobib}
+{
+	\renewcommand*{\addbibtotableofcontents}{}
+}
+
 \ProcessOptions
 
 % Base line stretch commands.
@@ -119,12 +125,12 @@ bibliography, list of figures, list of tables, list of notations, glossary, inde
 \let\le@bibliography=\bibliography
 \renewcommand*{\bibliography}
 {
-     \clearpage{}
-     \renewcommand*{\chaptertitle}{\bibname}
-     \addcontentsline{toc}{chapter}{\bibname}
-     \pushbaselinestretch{\@bibbaselinestretch}
-     \le@bibliography
-     % Don't seem to be able to call any commands here (after \le@bibliography) without screwing up bibliography.
+	\clearpage{}
+	\renewcommand*{\chaptertitle}{\bibname}
+	\addbibtotableofcontents{}
+	\pushbaselinestretch{\@bibbaselinestretch}
+	\le@bibliography
+	% Don't seem to be able to call any commands here (after \le@bibliography) without screwing up bibliography.
 }
 
 % LIST OF FIGURES.
@@ -205,4 +211,4 @@ bibliography, list of figures, list of tables, list of notations, glossary, inde
 
 \addtocontents{lof}{\noindent{}\lofleftlabel{} \hfill Page\vspace*{\lofskip}\endgraf}
 
-\addtocontents{lot}{\noindent{}\lotleftlabel{} \hfill Page\vspace*{\lofskip}\endgraf} 
+\addtocontents{lot}{\noindent{}\lotleftlabel{} \hfill Page\vspace*{\lofskip}\endgraf}

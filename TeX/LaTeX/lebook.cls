@@ -13,7 +13,7 @@
 %
 % Any page numbers in parenthesis refer to:
 % "A Guide to LaTeX", 3rd Edition
-% by Helmut Kopka & Patrick W. Daly 
+% by Helmut Kopka & Patrick W. Daly
 
 \def\update{2004/04/28 v1.0}
 \NeedsTeXFormat{LaTeX2e}
@@ -26,6 +26,12 @@
 \DeclareOption{useleftjustifiedchapterstyle}
 {
 	\renewcommand*{\sectionoptions}{useleftjustifiedchapterstyle}
+}
+
+\newcommand*{\contentsindexbiboptions}{chapterdottedleaders}
+\DeclareOption{nobib}
+{
+	\edef\contentsindexbiboptions{\contentsindexbiboptions,nobib}
 }
 
 \ProcessOptions
@@ -59,7 +65,7 @@
 
 % TABLE OF CONTENTS, INDEX, AND BIBLIOGRAPHY.
 %\usepackage[hrefbib]{lecontentsindexbibformat}
-\usepackage[chapterdottedleaders]{lecontentsindexbibformat}
+\usepackage[\contentsindexbiboptions]{lecontentsindexbibformat}
 
 \tocbaselinestretch{1.0}
 \bibbaselinestretch{1.0}
