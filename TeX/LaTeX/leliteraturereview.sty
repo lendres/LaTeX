@@ -3,13 +3,23 @@
 \ProvidesPackage{leliteraturereview}[2006/05/09 Provides setup to create a literature review document.]
 
 
-% INCLUDE A BIBLIOGRAPHY.
+% IN TEXT BIBLIOGRAPHY
 \usepackage{natbib}
 \usepackage{bibentry}
 \bibliographystyle{literaturereview}
 %\bibliographystyle{plainnat}
 
-% Used to cite/reference other notes.  For example, \notename~\ref{note:brett1998a:a}.
+% LISTS
+\usepackage{lelists}
+\setlength{\listtopsep}{0pt}
+\setlength{\leftlistindent}{0pt}
+\setlength{\rightlistindent}{0pt}
+
+% NOTES
+% Used to cite/reference other notes.
+% Example:
+%     \item Lorum ispum. \label{note:lorum2022a:a}
+%     \item As see in \notename~\ref{note:lorum2022a:a}.
 \newcommand*{\notename}{Note}
 
 \newenvironment{review}[1]
