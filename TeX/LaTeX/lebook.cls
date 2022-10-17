@@ -31,6 +31,8 @@
 \newcommand*{\contentsindexbiboptions}{chapterdottedleaders}
 \DeclareOption{nobib}
 {
+	% Use expanded definition to expand the previous defintion first. Otherwise, it doesn't get
+	% passed as an option correctly.
 	\edef\contentsindexbiboptions{\contentsindexbiboptions,nobib}
 }
 
