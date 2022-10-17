@@ -729,7 +729,7 @@ FUNCTION {article}
     }
   if$
   new.block
-  note output
+  format.abstract output
   fin.entry
 }
 
