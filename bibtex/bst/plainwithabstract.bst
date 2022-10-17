@@ -1,4 +1,11 @@
-%% File: `plainnat.bst'
+%% File: `plainwithabstract.bst'
+%% Modified from: `plainnat.bst'
+%%
+%% A modification of `plainnat.bst' to allow printing of abstracts.  This
+%% modification was originally for use with the `bibentry' package for adding
+%% references to the body of a document.
+%%
+%% Original header below.
 %% A modification of `plain.bst' for use with natbib package
 %%
 %% Copyright 1993-2007 Patrick W Daly
