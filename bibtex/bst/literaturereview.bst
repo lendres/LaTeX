@@ -1,4 +1,4 @@
-%% File: `plainwithabstract.bst'
+%% File: `literaturereview.bst'
 %% Modified from: `plainnat.bst'
 %%
 %% A modification of `plainnat.bst' to allow printing of abstracts.  This
