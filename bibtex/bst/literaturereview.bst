@@ -285,10 +285,10 @@ FUNCTION {format.isbn}
 
 % Added by Lance A. Endres to add abstract output.
 FUNCTION {format.abstract}
-{ abstract empty$
-    { "" }
-    { write$ ". \\ \\ \textbf{Abstract}\\" abstract * }
-  if$
+{% abstract empty$
+%    { "" }
+%    { write$ ". \\ \\ \textbf{Abstract}\\" abstract * }
+%  if$
 }
 
 FUNCTION {format.issn}

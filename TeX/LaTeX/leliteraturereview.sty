@@ -6,22 +6,22 @@
 % INCLUDE A BIBLIOGRAPHY.
 \usepackage{natbib}
 \usepackage{bibentry}
-\bibliographystyle{literaturereview}
-
+%\bibliographystyle{literaturereview}
+\bibliographystyle{plainnat}
 
 
 
 \newenvironment{review}[1]
-{
-	\vspace{12pt plus 2pt minus 2pt}
-	\noindent{\large\textbf{Reference}}\\
+{%
+%	\vspace{12pt plus 2pt minus 2pt}%
+%	\noindent{\large\textbf{Reference}}\\%
 	% Bibentry removes the final period (it really shouldn't, it should be handled by the bst).  So we have to put it back.
-	\noindent\bibentry{#1}.
-	\vspace{0.5\baselineskip}\\
-	\noindent{\large\textbf{Notes}}
-	\begin{bulletedlist}
+	\noindent\bibentry{#1}.%
+%	\vspace{0.5\baselineskip}\\%
+%	\noindent{\large\textbf{Notes}}%
+%	\begin{bulletedlist}%
 }
 {
-	\end{bulletedlist}
-	\vspace{6pt plus 1pt minus 1pt}
+%	\end{bulletedlist}%
+%	\vspace{6pt plus 1pt minus 1pt}%
 }
