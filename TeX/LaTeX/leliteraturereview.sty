@@ -9,7 +9,8 @@
 \bibliographystyle{literaturereview}
 %\bibliographystyle{plainnat}
 
-
+% Used to cite/reference other notes.  For example, \notename~\ref{note:brett1998a:a}.
+\newcommand*{\notename}{Note}
 
 \newenvironment{review}[1]
 {
@@ -19,9 +20,9 @@
 	\noindent\bibentry{#1}.
 	\vspace{0.5\baselineskip}\newline{}
 	\noindent{\large\textbf{Notes}}
-	\begin{bulletedlist}
+	\begin{numberedlist}
 }
 {
-	\end{bulletedlist}
+	\end{numberedlist}
 	\vspace{6pt plus 1pt minus 1pt}
 }
