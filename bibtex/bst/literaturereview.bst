@@ -967,11 +967,8 @@ FUNCTION {proceedings}
   new.sentence
   organization output
   publisher output
-  format.isbn output
-  format.doi output
-  format.url output
   new.block
-  note output
+  format.abstract output
   fin.entry
 }
 
