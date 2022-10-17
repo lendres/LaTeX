@@ -47,11 +47,11 @@
 \newcommand*{\ps@leplainheader}
 {
 	\renewcommand*{\@oddhead}
-	{
+	{%
 		\begin{minipage}{\textwidth}\bfseries
 			\chaptertitle\ \hfill  \thepage
 			\vspace{-10pt} \rule{\textwidth}{0.6pt}
-		\end{minipage}
+		\end{minipage}%
 	}
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}{}
