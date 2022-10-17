@@ -62,6 +62,8 @@ bibliography, list of figures, list of tables, list of notations, glossary, inde
     \renewcommand{\cftchapdotsep}{\cftsecdotsep}
 }
 
+% Option for using or no using a bibliography.  Really just turns on and off the adding
+% of the bibliography page to the table of contents.
 \newcommand*{\addbibtotableofcontents}{\addcontentsline{toc}{chapter}{\bibname}}
 \DeclareOption{nobib}
 {
