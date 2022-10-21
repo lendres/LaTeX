@@ -124,6 +124,48 @@
 }%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UPPER CASE LETTERED LIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{theupperletteredlist}
+\newenvironment{upperletteredlist}
+{
+	\stepcounter{listlevel}
+	\begin{list}
+	{\Alph{theupperletteredlist}.\hfill} % Label used is our counter.
+	{
+		\usecounter{theupperletteredlist}
+		\setlength{\labelwidth}{0.75cm}
+		\standardlistparams{}
+	}%
+}%
+{%
+	\end{list}%
+	\addtocounter{listlevel}{-1}%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% lOWER CASE LETTERED LIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{thelowerletteredlist}
+\newenvironment{lowerletteredlist}
+{
+	\stepcounter{listlevel}
+	\begin{list}
+	{\alph{thelowerletteredlist}.\hfill} % Label used is our counter.
+	{
+		\usecounter{thelowerletteredlist}
+		\setlength{\labelwidth}{0.75cm}
+		\standardlistparams{}
+	}%
+}%
+{%
+	\end{list}%
+	\addtocounter{listlevel}{-1}%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % COUNT DOWN LIST
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -323,4 +365,4 @@
 	\renewcommand*{\nextoutlinefunction}{\setlevelvi}
 	\renewcommand*{\previousoutlinefunction}{\setlevelv}
 	\formatvi{}
-} 
+}
