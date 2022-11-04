@@ -1,7 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 % Templates.
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Use author's name as they appear in the article!
@@ -23,11 +21,14 @@
 %	abstract		= {}
 %}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Regular Expressions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Find periods followed by a single character that is not a newline or space.
+\.^[^\n ]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% TEXTBOOKS.
-%
+% Textbooks
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 @book{ref:ammeraal2000a,
@@ -343,7 +344,7 @@
 }
 
 @article{ref:briggs1969a,
-	author			= {M. D. Briggs and Chetham, Jr., J. B.},
+	author			= {M. D. Briggs and  J. B. Chetham, Jr.},
 	title			= {Theoretical Forces for Prescribed Motion of a Roller Bit},
 	journal			= SPEJ,
 	volume			= {9},
@@ -396,7 +397,6 @@
 	year			= {1980},
 	pages			= {19--26}
 }
-
 
 @inproceedings{ref:dupriest2022a,
 	author			= {Fred Dupriest and Paul Pastusek and Stephen Lai and Bob Best and Michael Behounek and Bryan Cook and Wendell Basarath and Chris Cutts and Jared Collins and Mohammadreza Kamyab and Dennis Moore and Eric Pulpan and Austin Jeske and JJ Wilson and Jamie Sheets},
@@ -889,6 +889,20 @@
 	pages			= {67--94}
 }
 
+@inproceedings{ref:matthews2021a,
+	author			= {Oliver Matthews and Xu Huang and John Abhishek Bomidi},
+	title			= {3D Simulation Workflow for Performance of Sharp and Worn PDC Drill Bits},
+	volume			= {Day 5 Fri, March 12, 2021},
+	series			= {SPE/IADC Drilling Conference and Exhibition},
+	year			= {2021},
+	month			= {03},
+	doi				= {10.2118/204031-MS},
+	url				= {https://doi.org/10.2118/204031-MS},
+	eprint			= {https://onepetro.org/SPEDC/proceedings-pdf/21DC/5-21DC/D051S022R004/2415553/spe-204031-ms.pdf},
+	speid			= {D051S022R004},
+	abstract		= {This paper describes the development of an improved polycrystalline diamond cutter (PDC) drilling performance simulation in 3D which includes worn cutters. A polygonal mesh model is used to improve the geometric data needed for the drilling performance model calculations. Methods for active face identification have been developed to consistently identify a variety of polygonal face types. The simple wear flat definition used for data input is shown to adequately capture the geometry compared to field worn bit scans and provide valuable insights with active face identification. Drilling performance calculation and results from the calibration to laboratory drilling data and validation to both laboratory and field data are shown. Additionally, including a velocity parameter in the drilling performance model reduced model error.},
+}
+
 @inproceedings{ref:pastusek1992a,
 	author			= {P. E. Pastusek and C. H. Cooley and L. A. Sinor and Mark Anderson},
 	title			= {Directional and Stability Characteristics of Anti-Whirl Bits With Non-Axisymmetric Loading},
@@ -899,6 +913,20 @@
 	address			= {Washington, D.C.},
 	pages			= {727--740},
 	speid			= {24614}
+}
+
+@inproceedings{ref:pastusek2019a,
+	author			= {Paul Pastusek and Greg Payette and Roman Shor and Eric Cayeux and Ulf Jakob Aarsnes and John Hedengren and St\'{e}phane Menand and John Macpherson and Raju Gandikota and Michael Behounek and Richard Harmer and Emmanuel Detournay and Roland Illerhaus and Yu Liu},
+	title			= {Creating Open Source Models, Test Cases, and Data for Oilfield Drilling Challenges},
+	volume			= {Day 3 Thu, March 07, 2019},
+	series			= SPEIADCDRILLINGCONFERENCEEXHBITION,
+	year			= {2019},
+	month			= {03},
+	doi				= {10.2118/194082-MS},
+	url				= {https://doi.org/10.2118/194082-MS},
+	note			= {D031S016R001},
+	eprint			= {https://onepetro.org/SPEDC/proceedings-pdf/19DC/3-19DC/D031S016R001/1164608/spe-194082-ms.pdf},
+	abstract		= {The drilling industry has substantially improved performance based on knowledge from physics-based, statistical, and empirical models of components and systems.  However, most models and source code have been recreated multiple times, which requires significant effort and energy with little additional benefit or step-wise improvements.  The authors propose that it is time to form a coalition of industry and academic leaders to support an open source effort for drilling, to encourage the reuse of continuously improving models and coding efforts.  The vision for this guiding coalition is to 1) set up a repository for source code, data, benchmarks, and documentation, 2) encourage good coding practices, 3) review and comment on the models and data submitted, 4) test, use and improve the code, 5) propose and collect anonymized real data, 6) attract talent and support to the effort, and 7) mentor those getting started.  Those interested to add their time and talent to the cause may publish their results through peer-reviewed literature.  Several online meetings are planned to create this coalition, establish a charter, and layout the guiding principles.  Multiple support avenues are proposed to sustain the effort such as: annual user group meetings, create a SPE Technical Section, and initiating a Joint Industry Program (JIP).  The Open Porous Media Initiative is just one example of how this could be organized and maintained.  As a starting point, this paper reviews existing published drilling models and highlights the similarities and differences for commonly used drillstring hydraulics, dynamics, directional, and bit-rock interaction models.  The key requirements for re-usability of the models and code are: 1) The model itself must be available as open source, well documented with the objective and expected outcomes, include commented code, and shared in a publicly available repository which can be updated, 2) A user's guide must include how to run the core software, how to extend software capabilities, i.e., plug in new features or elements, 3) Include a "theory" manual to explain the fundamental principles, the base equations, any assumptions, and the known limitations, 4) Data examples and formatting requirements to cover a diversity of drilling operations, and 5) Test cases to benchmark the performance and output of different proposed models.  In May 2018 at "The 4th International Colloquium on Non-linear dynamics and control of deep drilling systems," the keynote question was, "Is it time to start using open source models?" The answer is "yes".  Modeling the drilling process is done to help drill a round, ledge free hole, without patterns, with minimum vibration, minimum unplanned dog legs, that reaches all geological targets, in one run per section, and in the least time possible.  An open source repository for drilling will speed up the rate of learning and automation efforts to achieve this goal throughout the entire well execution workflow, including planning, BHA design, real-time operations, and post well analysis.},
 }
 
 @inproceedings{ref:payne1994a,
@@ -982,6 +1010,20 @@
 	year			= {1990},
 	pages			= {267--275},
 	speid			= {SPE 19572-PA}
+}
+
+@inproceedings{ref:willerth2021a,
+	author			= {Marc Willerth and Briana Dodson and Kelton McCue and Mahmoud Farrag},
+	title			= {When Slick is Not Smooth: Bottom-Hole Assembly Selection and Its Impact on Wellbore Quality},
+	volume			= {Day 5 Fri, March 12, 2021},
+	series			= SPEIADCDRILLINGCONFERENCEEXHBITION,
+	year			= {2021},
+	month			= {03},
+	doi				= {10.2118/204129-MS},
+	url				= {https://doi.org/10.2118/204129-MS},
+	note			= {D051S023R001},
+	eprint			= {https://onepetro.org/SPEDC/proceedings-pdf/21DC/5-21DC/D051S023R001/2415283/spe-204129-ms.pdf},
+	abstract		= {Appropriate selection of a bottom-hole assembly (BHA) is critical to the success of a drilling operation.  In US Land drilling, these assemblies are often selected using local heuristics rather than rigorous analysis. These heuristics are frequently derived from the incentives of the directional contractor as opposed to incentives for the operator. Large motor bends enable more rotation though the curve and reduce the possibility of tripping for build rates. Unstabilized motors are believed to aid sliding and tool face control. Both of these practices lead to drilling a more tortuous wellbore and may cause problems later in the well’s life. This study quantifies the impact of these practices and proposes alternatives that can balance the needs of directional companies with the desire of operators for high-quality wellbores. Over 60 conventional motor assemblies used to drill curves in the Eagle Ford and Permian were analyzed for directional performance using commercial drillstring analysis software. The sliding and rotary tendencies were modelled through the curve across a range of potential drilling conditions. Expected build-rate models were validated by comparison to the maximum achieved doglegs in the directional surveys. When available, additional validation was performed using motor yields calculated from slide sheets. The validated models were compared to the dogleg severity requirements for each assembly’s respective well plan. Comparisons of slide ratios and slide/rotate tendencies of the BHAs were used to estimate the impact on wellbore quality using the tortuosity metric proposed by Jamieson (2019).Typical well plans for both basins had curves of 10 degrees/100ft with no well plan greater than 12 degrees/100ft. Typical bottom hole assemblies were capable of $>$15 degrees/100ft under normal sliding conditions, with some assemblies capable of $>$20 degrees/100ft of build. Predicted build rates were validated by slide sheets and observed dogleg severities. Common characteristics among assemblies with excess capacity were high bend angles ($>=$2 degrees) and minimal stabilization. These slick assemblies also had a strong drop tendency in rotation at low inclinations. The combination of high-build rate with rotary drop greatly increases tortuosity, particularly in the early stages of well. A minority of the assemblies used a lower motor bend angle ($<$2 degrees) combined with multiple stabilizers. These assemblies had a more consistent directional capability throughout the curve and held angle in rotation. The success of these assemblies confirms that a higher quality wellbore with an improved BHA design is technically achievable.As increasing attention is afforded to the topic of wellbore quality it is important to have methods available to technically achieve high-quality wellbores.  In addition to the management of drilling practices, it is also important to have an appropriate BHA design that can enable those practices},
 }
 
 @inproceedings{ref:winters1987a,
