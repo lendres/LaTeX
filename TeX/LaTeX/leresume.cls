@@ -124,8 +124,8 @@
 {section}%                                           % The name.
 {1}%                                                 % The level.
 {\z@}%
-{-0pt plus 2pt minus 12pt}%                          % The beforeskip.  Negative: 1st paragraph is not indented.
-{+1pt plus 1pt minus  2pt}%                          % The afterskip.
+{-1pt plus 2pt minus 8pt}%                           % The beforeskip.  Negative: 1st paragraph is not indented.
+{+1pt plus 1pt minus 2pt}%                           % The afterskip.
 {\center\large\ArialBold}}%                          % The font style.
 
 \newlength{\datewidth}
