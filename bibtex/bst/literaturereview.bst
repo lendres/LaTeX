@@ -442,7 +442,7 @@ FUNCTION {format.date}
       " " * swap$ *
     }
   if$
-  extra.label *
+%  extra.label *
 }
 
 FUNCTION {format.btitle}
@@ -728,7 +728,8 @@ FUNCTION {article}
       format.pages output
     }
   if$
-  new.block
+% Causes an extra space before the final period for some reason.
+%  new.block
   format.abstract output
   fin.entry
 }
