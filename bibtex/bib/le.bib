@@ -25,9 +25,12 @@
 % Regular Expressions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Find periods followed by a single character that is not a newline or space.
-\.^[^\n ]
+%\.^[^\n ]
 % Finds periods followed by a character.  This will ignore newlines, spaces, and numbers after the period.
-\.[a-zA-Z]
+%\.[a-zA-Z]
+
+% Finds periods followed by one or more letter that is not the string "org", "pdf", et cetera.
+%\.+[a-zA-Z]{\#~{{org}|{pdf}|{net}|{com}|{xml}|{html}|{codeproject}|{w3}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Textbooks
@@ -60,6 +63,20 @@
 	edition			= {Third},
 	address			= {New York, NY},
 	isbn			= {0-471-84788-7}
+}
+
+@inproceedings{ref:esmaeili2013a,
+	author			= {Esmaeili, Abdolali  and Elahifar, Behzad  and Fruhwirth, Rudolf K. and Thonhauser, Gerhard },
+	title			= {Formation Prediction Model based on Drill String Vibration Measurements Using Laboratory Scale Rig},
+	volume			= {All Days},
+	series			= {SPE/IADC Middle East Drilling Technology Conference and Exhibition},
+	year			= {2013},
+	month			= {October},
+	doi				= {10.2118/166793-MS},
+	url				= {https://doi.org/10.2118/166793-MS},
+	note			= {SPE-166793-MS},
+	eprint			= {https://onepetro.org/SPEMEDT/proceedings-pdf/13MEDT/All-13MEDT/SPE-166793-MS/1590971/spe-166793-ms.pdf},
+	abstract		= {Characteristics of formations usually cause changes in the drilling parameters such as weight on bit and drill string rotational speed as well as drill string dynamic behavior. When the drill bit breaks up formations, some of the energy dedicated to drilling is transmitted to the drill string as axial, lateral and torsional vibrations. Although these vibrations are affected by the drilling parameters, it has been experienced that vibration measurements can be used to evaluate formations during drilling a well. For this purpose a laboratory scale drilling rig was used to perform numerous experiments. During the drilling operations, several drilling parameters as well as vibrations with three-component accelerometers attached to the drill string were recorded continuously. Numerous uniform concrete and rock samples were drilled by a double roller cone bit. The uniaxial compressive strength of all concretes and rocks were measured prior to the experiments. The tests were executed using different combinations of weight on bit and rotary speed.  For a subsequent evaluation statistical features were extracted in a first step from the recorded data in both, the time domain and the frequency domain. Those features formed the base for the formation classification by linear and non-linear models. Although linear models like Bayesian inference are not suited for that challenge, it turned out that non-linear models like neural networks provide excellent results in both, the training and the test data-set. Finally, the application of parameter selection methods showed that mechanical specific energy and rate of penetration in combination with higher order frequency moments of all recorded vibration types play the major role in the formation classification.},
 }
 
 @book{ref:frey2000a,
@@ -145,6 +162,18 @@
 	edition			= {Third},
 	isbn			= {0-201-39825-7},
 	abstract		= {Describes how to use the text-preparation system to create documents, covering such topics as inputting text, symbols, graphics, and mathematics}
+}
+
+@inproceedings{ref:liu2010a,
+	author			= {Liu, Wei and Zhou, Yingcao and Zhao, Qing},
+	title			= {A New Analytical Model On Lateral Vibration And Impact of Drill String},
+	volume			= {All Days},
+	series			= {International Ocean and Polar Engineering Conference},
+	year			= {2010},
+	month			= {June},
+	note			= {ISOPE-I-10-483},
+	eprint			= {https://onepetro.org/ISOPEIOPEC/proceedings-pdf/ISOPE10/All-ISOPE10/ISOPE-I-10-483/1714709/isope-i-10-483.pdf},
+	abstract		= {The severe lateral vibration and impact of drill string will not only cause the damage of drill string but also have bad effects on the quality of directional drilling operation. It is difficult to control lateral vibration amplitude and impact intensity even with advanced measurement apparatus. So it is feasible to use a theoretic method to analyze and predict lateral vibration in order to adjust drilling parameters in realtime. On the basis of beam-column series and spring-concentrated mass model, a new analytical model is established to realize the control of lateral vibration and impact.  The severe lateral vibration and impact of drill string will not only cause the fatigue and fracture of drill string [1–2], but also broaden hole and change side force and bending angle of bit which lead to damage quality of a directional well [3]. But it is difficult to control lateral vibration amplitude and impact intensity because the phenomenon of lateral vibration and impact of drill string can not be observed at surface without the expensive MWD (measurement while drilling) apparatus [4–5]. In order to improve the control and prediction method of lateral vibration comparatively, this paper tries to attest the feasibility to use a theoretic method to analyze and predict lateral vibration and impact. The present drill string dynamic methods mainly use finite element method [6–7] which needs too complex calculation to be used in drilling field. Consequently, it is necessary to establish a simple analytical model of lateral vibration and impact to design and adjust drilling parameters in real-time. On the basis of beam-column series and spring-concentrated mass model, a new analytical model is established which consider many factors, such as: BHA (bottom-hole assemble), WOB (weight on bit) fluctuation, ROB (rotation of bit).},
 }
 
 @book{ref:ma1996a,
@@ -276,8 +305,20 @@
 	speid			= {114635},
 	abstract		= {This paper presents the results of a study showing that the most harmful polycrystalline-diamond-compact (PDC) bit vibrations can be attributed to a phenomenon called 'bit whirl.'  During whirl, the instantaneous center of rotation moves around the face of the bit, and the bit whirls backward around the hole. Cutters on a whirling bit can move sideways, backward, and much faster than those on a true rotating bit. The impact loads associated with this motion cause PDC cutters to chip, which, in turn, accelerates wear. Laboratory and field results show the detrimental effects of whirl on PDC bit rate of penetration (ROP) and life.}
 }
-%	 pages		 = {521--536},
 
+@inproceedings{ref:ambrus2017a,
+	author			= {Ambrus, A.  and Ashok, P.  and Chintapalli, A.  and Ramos, D.  and Behounek, M.  and Thetford, T. S. and Nelson, B.},
+	title			= {A Novel Probabilistic Rig Based Drilling Optimization Index to Improve Drilling Performance},
+	volume			= {Day 1 Tue, September 05, 2017},
+	series			= {SPE Offshore Europe Conference and Exhibition},
+	year			= {2017},
+	month			= {September},
+	doi				= {10.2118/186166-MS},
+	url				= {https://doi.org/10.2118/186166-MS},
+	note			= {D011S001R002},
+	eprint			= {https://onepetro.org/SPEOE/proceedings-pdf/17OE/1-17OE/D011S001R002/1312825/spe-186166-ms.pdf},
+	abstract		= {Currently, real-time adjustments to drilling parameters such as weight on bit (WOB), drillstring revolutions per minute (RPM), flow rate, etc., are based primarily on experience. This is mainly due to the uncertain nature of information (both downhole and surface) available and inability of humans to aggregate multiple data streams in real-time to make optimal decisions. The objective therefore is to build a decision support tool that can overcome these limitations by automatically aggregating this data, identifying drilling inefficiency and suggesting optimal drilling parameters.  The methodology presented in this paper uses a Bayesian network to represent the drilling process and is capable of representing uncertainty in a way that is robust to bad sensor data. The model is updated in real-time and tracks variations in drilling conditions. Various dysfunctions such as bit balling, bit bounce, whirl, torsional vibrations, high mechanical specific energy (MSE), auto-driller erratic behavior, etc., are identified by tracking the movement characteristics of various sensor data in relation to model predicted values. A holistic drilling optimization index is thus derived by aggregating all this information. This index coupled with the drilling dysfunction prediction ultimately enables recommendation of drilling parameter corrections.  The drilling optimization index has been integrated into a drilling rig data aggregation system currently in operation on twenty rigs in North America. The system has access to real-time data, both at low frequency (less than 1 Hz) as well as data in the 1 to 10 Hz range, and also contextual data (such as data typically available in a tour sheet or well plan). In deploying the system, human factors aspects were given significant consideration. A typical driller is not familiar with concepts such as Bayesian networks, MSE, etc. By displaying the effectiveness of drilling as a single, dimensionless parameter, an index that varies between 0 and 1, with 0 representing inefficient drilling and 1 representing optimal drilling, the message is effectively communicated to the driller. The index is currently depicted in a very intuitive "speedometer" type of visual. Values are low and closer to 0 when dysfunctions occur, and when that happens suggestions are provided on how to mitigate the dysfunctions. These suggestions are visually presented in the form of operational cones in the WOB-RPM space. Additionally, the variation of the index with drilling depth is displayed to enable the driller to identify how formation changes impact drilling performance. This was found to be useful to drilling engineers who are generally tasked with optimizing the drilling process.},
+}
 
 @inproceedings{ref:behr1991a,
 	author			= {Behr, S. M. and Warren, T. M. and Sinor, L. A. and Brett, J. F.},
@@ -694,6 +735,20 @@
 	pages			= {215--365}
 }
 
+@inproceedings{ref:jain2011a,
+	author			= {Jain, Jayesh R. and Ledgerwood, L. W. and Hoffmann, Olivier J. and Schwefe, Thorsten  and Fuselier, Danielle M.},
+	title			= {Mitigation of Torsional Stick-Slip Vibrations in Oil Well Drilling through PDC Bit Design: Putting Theories to the Test},
+	volume			= {All Days},
+	series			= {SPE Annual Technical Conference and Exhibition},
+	year			= {2011},
+	month			= {October},
+	doi				= {10.2118/146561-MS},
+	url				= {https://doi.org/10.2118/146561-MS},
+	note			= {SPE-146561-MS},
+	eprint			= {https://onepetro.org/SPEATCE/proceedings-pdf/11ATCE/All-11ATCE/SPE-146561-MS/1665460/spe-146561-ms.pdf},
+	abstract		= {Stick-slip vibrations of drillstrings have been studied by researchers for several decades. The subject is gaining renewed interest as operating parameters for PDC bits have shifted to the stick-slip regime of higher bit weight and lower rotary speed for enhanced drilling performance. In Ledgerwood et al. (2010), stick-slip was identified as a primary cause of bit damage. The main objective of the current investigation is to answer the longstanding question: Do bit designs influence stick-slip behavior of the drilling system? Five prevailing industry perceptions reported in the literature are that anti-whirl bits, reduced exposure bits, and bits with bit-rock interaction number $\beta>1$ are less prone to stick-slip, while highly aggressive bits and worn bits are more prone to stick-slip. Although the phenomenological basis of these theories has been provided, validation in most cases is based on anecdotal evidence from the field. Data with diagnosis based on downhole measurements in a controlled environment are scarce. Consequently, conflicting opinions continue to exist about whether any of these theories work in reality.To assess their validity, the five leading theories were reviewed and pairs of PDC bits were designed and manufactured. Each pair consisted of a bit with a standard design and a bit that embodied one of the theories. The bits were first tested in the laboratory to characterize their response. Full-scale wells were then drilled under controlled conditions using a research drill rig in Oklahoma. In these wells, only the operating parameters were varied while BHA, formation, and other variables were unchanged for a given bit pair. The downhole vibrations were measured with a new in-bit device and an industry-proven MWD vibration monitoring service.The most important conclusion emerging from this study is that PDC bit design has a significant effect on stick-slip vibrations. While some of the theories held true, evidence from this study did not support others. The details of test results are provided and various aspects of bit design are discussed in an attempt to enhance the understanding of stick-slip mitigation.},
+}
+
 @inproceedings{ref:kenner1994a,
 	author			= {J. V. Kenner and M. R. Isbell},
 	title			= {Dynamic Analysis Reveals Stability of Roller Cone Rock Bits},
@@ -780,6 +835,36 @@
 	year			= {1991},
 	organization	= ASME,
 	address			= {New Orleans, LA}
+}
+
+@inproceedings{ref:ledgerwood2010a,
+	author			= {Ledgerwood, L. W. and Hoffmann, Olivier J. and Jain, Jayesh R. and El Hakam, Carmel  and Herbig, Christian  and Spencer, Reed W.},
+	title			= {Downhole Vibration Measurement, Monitoring, and Modeling Reveal Stick/Slip as a Primary Cause of PDC-Bit Damage in Today},
+	volume			= {All Days},
+	series			= {SPE Annual Technical Conference and Exhibition},
+	year			= {2010},
+	month			= {September},
+	doi				= {10.2118/134488-MS},
+	url				= {https://doi.org/10.2118/134488-MS},
+	note			= {SPE-134488-MS},
+	eprint			= {https://onepetro.org/SPEATCE/proceedings-pdf/10ATCE/All-10ATCE/SPE-134488-MS/1725923/spe-134488-ms.pdf},
+	abstract		= {Since backward whirl was discovered as a severe cause of PDC bit failure, our industry has made great strides toward creating whirl-resistant bits and operating practices. But is whirl still the major cause of PDC bit damage in today's applications? This paper reports on a recent field study in which downhole vibrations were measured using a newly available in-bit vibration-monitoring device. The focus of this study was to understand today's North American vertical conventional rotary applications. In addition, four wells were also drilled using a research drill rig in Oklahoma. In these tests, PDC bits, BHAs, and operating parameters were varied to document their effect on downhole vibrations. In these four wells, vibration measurements from the new in-bit measuring device were validated against a commercially available and industry-proven MWD vibration monitoring service. Also, a computer model that accounts for the coupled response of bits and BHAs was run for selected tests in field wells and the research drilling rig. The models agreed well with the measured cases in both whirl and stick-slip. The model also allowed the authors to confirm that high-frequency torsional oscillations (4-9 Hz) which we observed were, as a previous industry paper suggests, due to BHA torsional resonance.The results of this study indicate that the most common field vibration today in hard rock PDC drilling is stick-slip, not whirl, in the target test region. In field tests, stick-slip was almost exclusively observed. For typical field applications with a surface rotary speed of about 70, we have measured peak downhole RPM during the slip phase as high as 500. This paper will report on these findings, document damage resulting from stick-slip, and suggest potential solutions to mitigate downhole vibrations.},
+}
+
+@article{ref:ledgerwood2013a,
+	author 			= {Ledgerwood, L.W.. W. and Jain, Jayesh R. and Hoffmann, Olivier J. and Spencer, Reed W.},
+	title			= {Downhole Measurement and Monitoring Lead to an Enhanced Understanding of Drilling Vibrations and Polycrystalline Diamond Compact Bit Damage},
+	journal			= SPEDRILLCOMP,
+	volume			= {28},
+	number			= {03},
+	pages 			= {254-262},
+	year			= {2013},
+	month 			= {July},
+	abstract		= {Since backward whirl was discovered as a severe cause of polycrystalline diamond compact (PDC) bit failure, the oil and gas industry has made great strides toward creating whirl-resistant bits and operating practices. But is whirl still the major cause of PDC bit damage in conventional rotary applications? This paper reports on a recent field study in which downhole vibrations were measured by use of a newly available in-bit vibration-monitoring device. The focus of this study was to understand the primary source of bit damage. In addition, four wells were also drilled by use of a research drilling rig in Oklahoma. In these tests, the PDC bits, bottomhole assemblies (BHAs), and operating parameters were varied to document their effect on downhole vibrations. In these four wells, vibration measurements from the new in-bit measuring device were validated against a commercially available and industry-proven measurement-while-drilling (MWD) vibration-monitoring service.The results of this study indicate that the most common field vibration in hard-rock vertical conventional rotary drilling is stick/slip, not whirl. In field tests, stick/slip was observed almost exclusively. For typical field applications with a surface rotary speed of approximately 70 rpm, the team measured a peak downhole rpm as high as 500 during the slip phase. Stick/slip was identified as the primary cause of bit damage in these applications. Lateral vibration occurring during the slip phase correlated well with the observed damage and is proposed as a new mode of damage during stick/slip. The characterization of the lateral vibrations coupled with stick/slip is presented on the basis of downhole measurements.},
+	issn			= {1064-6671},
+	doi				= {10.2118/134488-PA},
+	url				= {https://doi.org/10.2118/134488-PA},
+	eprint			= {https://onepetro.org/DC/article-pdf/28/03/254/2091983/spe-134488-pa.pdf},
 }
 
 @inproceedings{ref:lee2005a,
@@ -955,6 +1040,20 @@
 	address			= {Washington, D.C.},
 	pages			= {727--740},
 	speid			= {24614}
+}
+
+@inproceedings{ref:pastusek2007a,
+	author			= {Pastusek, Paul and Sullivan, Eric and Harris, Tommy},
+	title			= {Development and Utilization of a Bit-Based Data-Acquisition System in Hard-Rock PDC Applications},
+	volume			= {All Days},
+	series			= SPEIADCDRILLINGCONFERENCEEXHBITION,
+	year			= {2007},
+	month			= {February},
+	doi				= {10.2118/105017-MS},
+	url				= {https://doi.org/10.2118/105017-MS},
+	note			= {SPE-105017-MS},
+	eprint			= {https://onepetro.org/SPEDC/proceedings-pdf/07DC/All-07DC/SPE-105017-MS/2766913/spe-105017-ms.pdf},
+	abstract		= {Drill bits are iteratively developed for specific applications to meet performance objectives such as aggressiveness, durability, stability, steerability, etc. The transition from one iteration to the next occurs when dull bits are examined, run data is analyzed and the inferences are implemented as revisions to the bit design and/or the operating parameters. Experience has shown that the efficiency of the process depends strongly upon the appropriateness and significance of the data collected. If, for example, a dominant cutter failure mechanism is incorrectly characterized as abrasive wear and is, in fact, impact wear, then the proposed solution and the development time will both be significantly affected.One method for improving the significance of the data collected is to implement a special-purpose data-acquisition system within the bit. Such a device has at least three significant advantages over available sub-based data-acquisition systems: (1) its bit-based sensors will more accurately detect bit-based events, (2) it can be economically deployed over many bits and (3) it is relatively transparent to the user.The paper describes an effort to develop, validate, and utilize a bit-based module designed to monitor accelerometer and magnetometer sensors and to record selected data. The authors also describe the effort to infer dynamic dysfunction(s) from the data in the fast-growing hard rock PDC bit application and to mitigate them via modifications to drilling parameters and bit designs.},
 }
 
 @inproceedings{ref:pastusek2019a,
