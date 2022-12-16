@@ -36,48 +36,6 @@
 % Textbooks
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-@book{ref:ammeraal2000a,
-	author			= {Leendert Ammeraal},
-	title			= {C++ for Programmers},
-	publisher		= JOHNWILEY,
-	year			= {2000},
-	edition			= {Third},
-	isbn			= {0-471-60697-9}
-}
-
-@book{ref:baker1994a,
-	author			= {Ron Baker},
-	title			= {A Primer of Oilwell Drilling},
-	publisher		= PETEX,
-	year			= {1994},
-	edition			= {Fifth},
-	address			= {Austin, TX},
-	isbn			= {0-88698-159-X}
-}
-
-@book{ref:cook1989a,
-	author			= {R. D. Cook and D. S. Malkus and M. E. Plesha},
-	title			= {Concepts and Applications of Finite Element Analysis},
-	publisher		= JOHNWILEY,
-	year			= {1989},
-	edition			= {Third},
-	address			= {New York, NY},
-	isbn			= {0-471-84788-7}
-}
-
-@inproceedings{ref:esmaeili2013a,
-	author			= {Esmaeili, Abdolali  and Elahifar, Behzad  and Fruhwirth, Rudolf K. and Thonhauser, Gerhard },
-	title			= {Formation Prediction Model based on Drill String Vibration Measurements Using Laboratory Scale Rig},
-	volume			= {All Days},
-	series			= {SPE/IADC Middle East Drilling Technology Conference and Exhibition},
-	year			= {2013},
-	month			= {October},
-	doi				= {10.2118/166793-MS},
-	url				= {https://doi.org/10.2118/166793-MS},
-	note			= {SPE-166793-MS},
-	eprint			= {https://onepetro.org/SPEMEDT/proceedings-pdf/13MEDT/All-13MEDT/SPE-166793-MS/1590971/spe-166793-ms.pdf},
-	abstract		= {Characteristics of formations usually cause changes in the drilling parameters such as weight on bit and drill string rotational speed as well as drill string dynamic behavior. When the drill bit breaks up formations, some of the energy dedicated to drilling is transmitted to the drill string as axial, lateral and torsional vibrations. Although these vibrations are affected by the drilling parameters, it has been experienced that vibration measurements can be used to evaluate formations during drilling a well. For this purpose a laboratory scale drilling rig was used to perform numerous experiments. During the drilling operations, several drilling parameters as well as vibrations with three-component accelerometers attached to the drill string were recorded continuously. Numerous uniform concrete and rock samples were drilled by a double roller cone bit. The uniaxial compressive strength of all concretes and rocks were measured prior to the experiments. The tests were executed using different combinations of weight on bit and rotary speed.  For a subsequent evaluation statistical features were extracted in a first step from the recorded data in both, the time domain and the frequency domain. Those features formed the base for the formation classification by linear and non-linear models. Although linear models like Bayesian inference are not suited for that challenge, it turned out that non-linear models like neural networks provide excellent results in both, the training and the test data-set. Finally, the application of parameter selection methods showed that mechanical specific energy and rate of penetration in combination with higher order frequency moments of all recorded vibration types play the major role in the formation classification.},
-}
 
 @book{ref:frey2000a,
 	author			= {Pascal Jean Frey and Paul-Louis George},
@@ -162,18 +120,6 @@
 	edition			= {Third},
 	isbn			= {0-201-39825-7},
 	abstract		= {Describes how to use the text-preparation system to create documents, covering such topics as inputting text, symbols, graphics, and mathematics}
-}
-
-@inproceedings{ref:liu2010a,
-	author			= {Liu, Wei and Zhou, Yingcao and Zhao, Qing},
-	title			= {A New Analytical Model On Lateral Vibration And Impact of Drill String},
-	volume			= {All Days},
-	series			= {International Ocean and Polar Engineering Conference},
-	year			= {2010},
-	month			= {June},
-	note			= {ISOPE-I-10-483},
-	eprint			= {https://onepetro.org/ISOPEIOPEC/proceedings-pdf/ISOPE10/All-ISOPE10/ISOPE-I-10-483/1714709/isope-i-10-483.pdf},
-	abstract		= {The severe lateral vibration and impact of drill string will not only cause the damage of drill string but also have bad effects on the quality of directional drilling operation. It is difficult to control lateral vibration amplitude and impact intensity even with advanced measurement apparatus. So it is feasible to use a theoretic method to analyze and predict lateral vibration in order to adjust drilling parameters in realtime. On the basis of beam-column series and spring-concentrated mass model, a new analytical model is established to realize the control of lateral vibration and impact.  The severe lateral vibration and impact of drill string will not only cause the fatigue and fracture of drill string [1–2], but also broaden hole and change side force and bending angle of bit which lead to damage quality of a directional well [3]. But it is difficult to control lateral vibration amplitude and impact intensity because the phenomenon of lateral vibration and impact of drill string can not be observed at surface without the expensive MWD (measurement while drilling) apparatus [4–5]. In order to improve the control and prediction method of lateral vibration comparatively, this paper tries to attest the feasibility to use a theoretic method to analyze and predict lateral vibration and impact. The present drill string dynamic methods mainly use finite element method [6–7] which needs too complex calculation to be used in drilling field. Consequently, it is necessary to establish a simple analytical model of lateral vibration and impact to design and adjust drilling parameters in real-time. On the basis of beam-column series and spring-concentrated mass model, a new analytical model is established which consider many factors, such as: BHA (bottom-hole assemble), WOB (weight on bit) fluctuation, ROB (rotation of bit).},
 }
 
 @book{ref:ma1996a,
@@ -320,6 +266,25 @@
 	abstract		= {Currently, real-time adjustments to drilling parameters such as weight on bit (WOB), drillstring revolutions per minute (RPM), flow rate, etc., are based primarily on experience. This is mainly due to the uncertain nature of information (both downhole and surface) available and inability of humans to aggregate multiple data streams in real-time to make optimal decisions. The objective therefore is to build a decision support tool that can overcome these limitations by automatically aggregating this data, identifying drilling inefficiency and suggesting optimal drilling parameters.  The methodology presented in this paper uses a Bayesian network to represent the drilling process and is capable of representing uncertainty in a way that is robust to bad sensor data. The model is updated in real-time and tracks variations in drilling conditions. Various dysfunctions such as bit balling, bit bounce, whirl, torsional vibrations, high mechanical specific energy (MSE), auto-driller erratic behavior, etc., are identified by tracking the movement characteristics of various sensor data in relation to model predicted values. A holistic drilling optimization index is thus derived by aggregating all this information. This index coupled with the drilling dysfunction prediction ultimately enables recommendation of drilling parameter corrections.  The drilling optimization index has been integrated into a drilling rig data aggregation system currently in operation on twenty rigs in North America. The system has access to real-time data, both at low frequency (less than 1 Hz) as well as data in the 1 to 10 Hz range, and also contextual data (such as data typically available in a tour sheet or well plan). In deploying the system, human factors aspects were given significant consideration. A typical driller is not familiar with concepts such as Bayesian networks, MSE, etc. By displaying the effectiveness of drilling as a single, dimensionless parameter, an index that varies between 0 and 1, with 0 representing inefficient drilling and 1 representing optimal drilling, the message is effectively communicated to the driller. The index is currently depicted in a very intuitive "speedometer" type of visual. Values are low and closer to 0 when dysfunctions occur, and when that happens suggestions are provided on how to mitigate the dysfunctions. These suggestions are visually presented in the form of operational cones in the WOB-RPM space. Additionally, the variation of the index with drilling depth is displayed to enable the driller to identify how formation changes impact drilling performance. This was found to be useful to drilling engineers who are generally tasked with optimizing the drilling process.},
 }
 
+@book{ref:ammeraal2000a,
+	author			= {Leendert Ammeraal},
+	title			= {C++ for Programmers},
+	publisher		= JOHNWILEY,
+	year			= {2000},
+	edition			= {Third},
+	isbn			= {0-471-60697-9}
+}
+
+@book{ref:baker1994a,
+	author			= {Ron Baker},
+	title			= {A Primer of Oilwell Drilling},
+	publisher		= PETEX,
+	year			= {1994},
+	edition			= {Fifth},
+	address			= {Austin, TX},
+	isbn			= {0-88698-159-X}
+}
+
 @inproceedings{ref:behr1991a,
 	author			= {Behr, S. M. and Warren, T. M. and Sinor, L. A. and Brett, J. F.},
 	title			= {Three-Dimensional Modeling of PDC Bits},
@@ -433,6 +398,16 @@
 	speid			= {23868}
 }
 
+@book{ref:cook1989a,
+	author			= {R. D. Cook and D. S. Malkus and M. E. Plesha},
+	title			= {Concepts and Applications of Finite Element Analysis},
+	publisher		= JOHNWILEY,
+	year			= {1989},
+	edition			= {Third},
+	address			= {New York, NY},
+	isbn			= {0-471-84788-7}
+}
+
 @inproceedings{ref:cooley1992a,
 	author			= {C. H. Cooley and P. E. Pastusek and L. A. Sinor},
 	title			= {The Design and Testing of Anti-Whirl Bits},
@@ -453,6 +428,19 @@
 	number			= {1},
 	year			= {1992},
 	pages			= {13--23}
+}
+
+@article{ref:dong2016a,
+	author			= {Dong, Guangjian and Chen, Ping},
+	year			= {2016},
+	month			= {January},
+	pages			= {1-34},
+	title			= {A Review of the Evaluation, Control, and Application Technologies for Drill String Vibrations and Shocks in Oil and Gas Well},
+	volume			= {2016},
+	journal			= SHOCKANDVIB,
+	doi				= {10.1155/2016/7418635},
+	publisher		= HINDAWI,
+	abstract		= {Drill string vibrations and shocks (V&S) can limit the optimization of drilling performance, which is a key problem for trajectory optimizing, wellbore design, increasing drill tools life, rate of penetration, and intelligent drilling. The directional wells and other special trajectory drilling technologies are often used in deep water, deep well, hard rock, and brittle shale formations.  In drilling these complex wells, the cost caused by V&S increases. According to past theories, indoor experiments, and field studies, the relations among ten kinds of V&S, which contain basic forms, response frequency, and amplitude, are summarized and discussed. Two evaluation methods are compared systematically, such as theoretical and measurement methods. Typical vibration measurement tools are investigated and discussed. The control technologies for drill string V&S are divided into passive control, active control, and semiactive control. Key methods for and critical equipment of three control types are compared. Based on the past development, a controlling program of drill string V&S is devised. Application technologies of the drill string V&S are discussed, such as improving the rate of penetration, controlling borehole trajectory, finding source of seismic while drilling, and reducing the friction of drill string. Related discussions and recommendations for evaluating, controlling, and applying the drill string V&S are made.}
 }
 
 @article{ref:dormand1980a,
@@ -620,6 +608,20 @@
 	pages			= {356--361},
 	issn			= {0195-0738},
 	abstract		= {A kinematic model of a roller cone bit is developed and integrated with a rock fracture description to simulate test data from a study on the effects of bit offset. The model predicted bit tooth patterns on the rock face similar to those in the experiment. Larger cutter offsets induced increased dragging action to the motion of the bit teeth.}
+}
+
+@inproceedings{ref:esmaeili2013a,
+	author			= {Esmaeili, Abdolali  and Elahifar, Behzad  and Fruhwirth, Rudolf K. and Thonhauser, Gerhard },
+	title			= {Formation Prediction Model based on Drill String Vibration Measurements Using Laboratory Scale Rig},
+	volume			= {All Days},
+	series			= {SPE/IADC Middle East Drilling Technology Conference and Exhibition},
+	year			= {2013},
+	month			= {October},
+	doi				= {10.2118/166793-MS},
+	url			 	= {https://doi.org/10.2118/166793-MS},
+	note			= {SPE-166793-MS},
+	eprint			= {https://onepetro.org/SPEMEDT/proceedings-pdf/13MEDT/All-13MEDT/SPE-166793-MS/1590971/spe-166793-ms.pdf},
+	abstract		= {Characteristics of formations usually cause changes in the drilling parameters such as weight on bit and drill string rotational speed as well as drill string dynamic behavior. When the drill bit breaks up formations, some of the energy dedicated to drilling is transmitted to the drill string as axial, lateral and torsional vibrations. Although these vibrations are affected by the drilling parameters, it has been experienced that vibration measurements can be used to evaluate formations during drilling a well. For this purpose a laboratory scale drilling rig was used to perform numerous experiments. During the drilling operations, several drilling parameters as well as vibrations with three-component accelerometers attached to the drill string were recorded continuously. Numerous uniform concrete and rock samples were drilled by a double roller cone bit. The uniaxial compressive strength of all concretes and rocks were measured prior to the experiments. The tests were executed using different combinations of weight on bit and rotary speed.For a subsequent evaluation statistical features were extracted in a first step from the recorded data in both, the time domain and the frequency domain. Those features formed the base for the formation classification by linear and non-linear models. Although linear models like Bayesian inference are not suited for that challenge, it turned out that non-linear models like neural networks provide excellent results in both, the training and the test data-set. Finally, the application of parameter selection methods showed that mechanical specific energy and rate of penetration in combination with higher order frequency moments of all recorded vibration types play the major role in the formation classification.},
 }
 
 @techreport{ref:glowka1986a,
@@ -852,7 +854,7 @@
 }
 
 @article{ref:ledgerwood2013a,
-	author 			= {Ledgerwood, L.W.. W. and Jain, Jayesh R. and Hoffmann, Olivier J. and Spencer, Reed W.},
+	author 			= {Ledgerwood, L.W. and Jain, Jayesh R. and Hoffmann, Olivier J. and Spencer, Reed W.},
 	title			= {Downhole Measurement and Monitoring Lead to an Enhanced Understanding of Drilling Vibrations and Polycrystalline Diamond Compact Bit Damage},
 	journal			= SPEDRILLCOMP,
 	volume			= {28},
@@ -885,6 +887,35 @@
 	number			= {2},
 	year			= {2002},
 	pages			= {209--220}
+}
+
+@article{ref:li2021a,
+	author			= {Li, Lixin and Wang, Jin and Yu, Yingmei and Xing, Yifei and Zhang, Fengyan and Zhang, Yi and Li, Yanyan},
+	editor			= {Alfano, Marco},
+	year			= {2021},
+	month			= {June},
+	day				= {28},
+	title			= {A Review of the Research and Development of High-Frequency Measurement Technologies Used for Nonlinear Dynamics of Drillstring},
+	id				= {8821986},
+	volume			= {2021},
+	%SN  - 1070-9622
+	url				= {https://doi.org/10.1155/2021/8821986},
+	doi 			= {10.1155/2021/8821986},
+	journal			= SHOCKANDVIB,
+	publisher		= HINDAWI,
+	abstract		= {High-frequency measurements can provide much more new insights for drillstring dynamics compared to traditional instruments, leading to a new realm of understanding of drillstring behaviors in great detail than before. In this paper, data acquisition tools with high-frequency sample rates and the data processing are introduced. Based on high-frequency data, progress of drilling dynamics is summarized, including new understandings of low-frequency drillstring dynamics, high-frequency torsional oscillations (HFTOs), and high-frequency axial oscillations (HFAOs) and new findings for the coupling of vibrations and motions, as well as models and simulation methods to deeply comprehend high-frequency dynamics of drillstring. High-frequency measurements have been used for enabling drillers to improve drill performance, especially for field decision making, BHA selection, and bit design, usually through the ways of minimizing vibrations to obtain high-efficient drilling conditions, the high-frequency response near bit can also be used for lithology identification during drilling. Though there still exists a gap between research perspective and drilling practice, the industry of high-frequency measurements has gotten off a good start, which has huge potential to avoid nonproductive time thereupon reducing drilling cost in the future.}
+}
+
+@inproceedings{ref:liu2010a,
+	author			= {Liu, Wei and Zhou, Yingcao and Zhao, Qing},
+	title			= {A New Analytical Model On Lateral Vibration And Impact of Drill String},
+	volume			= {All Days},
+	series			= {International Ocean and Polar Engineering Conference},
+	year			= {2010},
+	month			= {June},
+	note			= {ISOPE-I-10-483},
+	eprint			= {https://onepetro.org/ISOPEIOPEC/proceedings-pdf/ISOPE10/All-ISOPE10/ISOPE-I-10-483/1714709/isope-i-10-483.pdf},
+	abstract		= {The severe lateral vibration and impact of drill string will not only cause the damage of drill string but also have bad effects on the quality of directional drilling operation. It is difficult to control lateral vibration amplitude and impact intensity even with advanced measurement apparatus. So it is feasible to use a theoretic method to analyze and predict lateral vibration in order to adjust drilling parameters in realtime. On the basis of beam-column series and spring-concentrated mass model, a new analytical model is established to realize the control of lateral vibration and impact.  The severe lateral vibration and impact of drill string will not only cause the fatigue and fracture of drill string [1–2], but also broaden hole and change side force and bending angle of bit which lead to damage quality of a directional well [3]. But it is difficult to control lateral vibration amplitude and impact intensity because the phenomenon of lateral vibration and impact of drill string can not be observed at surface without the expensive MWD (measurement while drilling) apparatus [4–5]. In order to improve the control and prediction method of lateral vibration comparatively, this paper tries to attest the feasibility to use a theoretic method to analyze and predict lateral vibration and impact. The present drill string dynamic methods mainly use finite element method [6–7] which needs too complex calculation to be used in drilling field. Consequently, it is necessary to establish a simple analytical model of lateral vibration and impact to design and adjust drilling parameters in real-time. On the basis of beam-column series and spring-concentrated mass model, a new analytical model is established which consider many factors, such as: BHA (bottom-hole assemble), WOB (weight on bit) fluctuation, ROB (rotation of bit).},
 }
 
 @article{ref:liu2014a,
