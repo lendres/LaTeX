@@ -917,7 +917,7 @@ FUNCTION {mastersthesis}
   format.date "year" output.check
   format.url output
   new.block
-  note output
+  format.abstract output
   fin.entry
 }
 
@@ -951,7 +951,7 @@ FUNCTION {phdthesis}
   format.date "year" output.check
   format.url output
   new.block
-  note output
+  format.abstract output
   fin.entry
 }
 
