@@ -284,10 +284,11 @@ FUNCTION {format.isbn}
 }
 
 % Added by Lance A. Endres to add abstract output.
+% Requires the command "\reviewheading" to be defined.  The command is the font formating.
 FUNCTION {format.abstract}
 { abstract empty$
     { "" }
-    { write$ ". \vspace{\baselineskip}\newline{} \textbf{Abstract}\newline{}" abstract * }
+    { write$ ". \vspace{\reviewheadingspacing}\newline{} \reviewheading{Abstract}\newline{}" abstract * }
   if$
 }
 
