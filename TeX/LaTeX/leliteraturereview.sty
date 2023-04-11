@@ -4,6 +4,7 @@
 
 
 % IN TEXT BIBLIOGRAPHY
+\usepackage{ifthen}
 \usepackage{natbib}
 \usepackage{bibentry}
 \bibliographystyle{literaturereview}
@@ -15,21 +16,38 @@
 \setlength{\leftlistindent}{0pt}
 \setlength{\rightlistindent}{0pt}
 
+% Fonts
+\newcommand*{\review@headingfont}{\bfseries}
+\newcommand*{\reviewheading}[1]{{\review@headingfont #1}}
+\newcommand*{\review@titlesize}{\fontsize{15pt}{19pt}\selectfont}
+
 % NOTES
 % Used to cite/reference other notes.
 % Example:
 %     \item Lorum ispum. \label{note:lorum2022a:a}
 %     \item As see in \notename~\ref{note:lorum2022a:a}.
 \newcommand*{\notename}{Note}
+\newlength{\reviewheadingspacing}
+\setlength{\reviewheadingspacing}{0.40\baselineskip}
 
-\newenvironment{review}[1]
+\newenvironment{review}[2][]
 {
 	\vspace{12pt plus 2pt minus 2pt}
-	\noindent{\large\textbf{Reference}}\newline{}
+	\noindent{\review@titlesize\textbf{Review}}
+	\ifthenelse{\equal{#1}{}}%
+	{%
+	}%
+	{%
+		\vspace{\reviewheadingspacing}\newline{}
+		\noindent{\reviewheading{Summary}}\newline%
+		#1%
+	}
 	% Bibentry removes the final period (it really shouldn't, it should be handled by the bst).  So we have to put it back.
-	\noindent\bibentry{#1}.
-	\vspace{0.5\baselineskip}\newline{}
-	\noindent{\large\textbf{Notes}}
+	\vspace{\reviewheadingspacing}\newline{}
+	\noindent{\reviewheading{Reference}}\newline{}
+	\noindent\bibentry{#2}.%
+	\vspace{\reviewheadingspacing}\newline{}
+	\noindent{\reviewheading{Notes}}
 	\begin{numberedlist}
 }
 {
