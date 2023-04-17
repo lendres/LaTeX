@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Regular Expressions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Find periods followed by a single character that is not a newline or space.
+%\.^[^\n ]
+% Finds periods followed by a character.  This will ignore newlines, spaces, and numbers after the period.
+%\.[a-zA-Z]
+
+% Finds periods followed by one or more letters and/or period that is not exclusion strings ("org", "pdf", et cetera).
+% @[UDi]                  - Matches 0 or 1 of the characters in the brackets.  Needed to match "i.e.", "U.S.", "D.C.", et cetera.
+% \.{+[a-zA-Z]@[0-9]@\.}  - Finds period followed by strings matching the expression in brackets.
+% +[a-zA-Z]               - Matches 1 or more letters.
+% @[0-9]                  - Matches 0 or 1 number (required for ".w3")
+% @\.                     - Matches 0 or 1 periods.  Required to capture the trailing period for strings like U.S. so that we can include the "S." in the ignore
+%                                list.  That is, if we don't capture the ending period, we would only be able to ignore "S".
+@\/                       - Matches 0 or 1 forward slash.  Required to capture ".ar/" but not things like "end.Arkasas".
+% \#~{}                   - Don't match strings that meet the patterns in the brackets.
+% {org@\.}                - Don't match either "org" or "org.".  This is required because we may have both cases.
+%                               I.g. "Example www.test.org string" or "Example string www.test.org.".
+%@[UDi]\.{+[a-zA-Z]@[0-9]@\.}{\#~{{org@\.}|{google@\.}|{wolfram@\.}|{pdf@\.}|{net@\.}|{NET@\.}|{com@\.}|{ar/}|{xml@\.}|{html@\.}|{codeproject@\.}|{w3@\.}|{lsu@\.}|{edu@\.}|{doi@\.}|U\.S\.|D\.C\.|i\.e\.}}
+@[UDi]\.{+[a-zA-Z]@[0-9]@\.@\/}{\#~{{org@\.@\/}|{ar\/}|{google@\.}|{wolfram@\.}|{pdf@\.}|{net@\.}|{NET@\.}|{com@\.@\/}|{ar/}|{xml@\.}|{html@\.}|{codeproject@\.}|{w3@\.}|{lsu@\.}|{edu@\.@\/}|{doi@\.}|U\.S\.|D\.C\.|i\.e\.}}
+
+%test.com this i.e. is test of U.F. U.FF test.This a test test.That is.com. a test.
+%test.com this is a test of U.S. U.SS test.This is a test.
+%test.com this is a test U.S. test.This is U.S2 a test U.SU a test.
