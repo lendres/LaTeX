@@ -79,6 +79,7 @@ ENTRY
     url
     volume
     year
+    logline
     abstract
   }
   {}
@@ -260,7 +261,7 @@ FUNCTION {format.key}
 FUNCTION {format.authors}
 { author empty$
     { "" }
-    { author format.names }
+    {write$ "\noindent\reviewheading{Reference}\newline{}" author format.names }
   if$
 }
 
@@ -284,11 +285,21 @@ FUNCTION {format.isbn}
 }
 
 % Added by Lance A. Endres to add abstract output.
-% Requires the command "\reviewheading" to be defined.  The command is the font formating.
+% Requires the commands "\reviewheading" and "\reviewheadingspacing" to be defined.  The command is the font formating.
+% Requires the "\relax{}" at the end to prevent the last period from being eaten for some reason.
 FUNCTION {format.abstract}
 { abstract empty$
     { "" }
-    { write$ ". \vspace{\reviewheadingspacing}\newline{} \reviewheading{Abstract}\newline{}" abstract * }
+    { "\vspace{\reviewheadingspacing}\newline{}\reviewheading{Abstract}\newline{}" abstract * "\relax{}" * write$ }
+  if$
+}
+
+% Added by Lance A. Endres to add logline (one-stentence summary) output.
+% Requires the commands "\reviewheading" and "\reviewheadingspacing" to be defined.  The command is the font formating.
+FUNCTION {format.logline}
+{ logline empty$
+    { "" }
+    { "\reviewheading{Logline}\newline{}" logline * "\vspace{\reviewheadingspacing}\newline{}" * write$ }
   if$
 }
 
@@ -716,6 +727,7 @@ FUNCTION {format.incoll.inproc.crossref}
 
 FUNCTION {article}
 { output.bibitem
+  format.logline new.sentence
   format.authors "author" output.check
   new.block
   format.title "title" output.check
@@ -729,9 +741,10 @@ FUNCTION {article}
       format.pages output
     }
   if$
+  fin.entry
 % Causes an extra space before the final period for some reason.
 %  new.block
-  format.abstract output
+  format.abstract
   fin.entry
 }
 
@@ -829,6 +842,7 @@ FUNCTION {inbook}
 
 FUNCTION {incollection}
 { output.bibitem
+  format.logline new.sentence
   format.authors "author" output.check
   author format.key output
   new.block
@@ -855,6 +869,7 @@ FUNCTION {incollection}
 
 FUNCTION {inproceedings}
 { output.bibitem
+  format.logline new.sentence
   format.authors "author" output.check
   author format.key output
   new.block
@@ -882,7 +897,8 @@ FUNCTION {inproceedings}
     }
   if$
   format.date output
-  format.abstract output
+  fin.entry
+  format.abstract
   fin.entry
 }
 
@@ -907,6 +923,7 @@ FUNCTION {manual}
 
 FUNCTION {mastersthesis}
 { output.bibitem
+  format.logline new.sentence
   format.authors "author" output.check
   author format.key output
   new.block
@@ -917,8 +934,9 @@ FUNCTION {mastersthesis}
   address output
   format.date "year" output.check
   format.url output
-  new.block
-  format.abstract output
+%  new.block
+  fin.entry
+  format.abstract
   fin.entry
 }
 
@@ -941,6 +959,7 @@ FUNCTION {misc}
 
 FUNCTION {phdthesis}
 { output.bibitem
+  format.logline new.sentence
   format.authors "author" output.check
   author format.key output
   new.block
@@ -951,13 +970,15 @@ FUNCTION {phdthesis}
   address output
   format.date "year" output.check
   format.url output
-  new.block
-  format.abstract output
+  %new.block
+  fin.entry
+  format.abstract
   fin.entry
 }
 
 FUNCTION {proceedings}
 { output.bibitem
+  format.logline new.sentence
   format.editors output
   editor format.key output
   new.block
@@ -969,8 +990,9 @@ FUNCTION {proceedings}
   new.sentence
   organization output
   publisher output
-  new.block
-  format.abstract output
+  %new.block
+  fin.entry
+  format.abstract
   fin.entry
 }
 
@@ -1031,48 +1053,6 @@ MACRO {nov} {"November"}
 
 MACRO {dec} {"December"}
 
-
-
-MACRO {acmcs} {"ACM Computing Surveys"}
-
-MACRO {acta} {"Acta Informatica"}
-
-MACRO {cacm} {"Communications of the ACM"}
-
-MACRO {ibmjrd} {"IBM Journal of Research and Development"}
-
-MACRO {ibmsj} {"IBM Systems Journal"}
-
-MACRO {ieeese} {"IEEE Transactions on Software Engineering"}
-
-MACRO {ieeetc} {"IEEE Transactions on Computers"}
-
-MACRO {ieeetcad}
- {"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
-
-MACRO {ipl} {"Information Processing Letters"}
-
-MACRO {jacm} {"Journal of the ACM"}
-
-MACRO {jcss} {"Journal of Computer and System Sciences"}
-
-MACRO {scp} {"Science of Computer Programming"}
-
-MACRO {sicomp} {"SIAM Journal on Computing"}
-
-MACRO {tocs} {"ACM Transactions on Computer Systems"}
-
-MACRO {tods} {"ACM Transactions on Database Systems"}
-
-MACRO {tog} {"ACM Transactions on Graphics"}
-
-MACRO {toms} {"ACM Transactions on Mathematical Software"}
-
-MACRO {toois} {"ACM Transactions on Office Information Systems"}
-
-MACRO {toplas} {"ACM Transactions on Programming Languages and Systems"}
-
-MACRO {tcs} {"Theoretical Computer Science"}
 
 
 READ
