@@ -30,24 +30,13 @@
 \newlength{\reviewheadingspacing}
 \setlength{\reviewheadingspacing}{0.40\baselineskip}
 
-\newenvironment{review}[2][]
+\newenvironment{review}[1]
 {
-	\vspace{12pt plus 2pt minus 2pt}
-	\noindent{\review@titlesize\textbf{Review}}
-	\ifthenelse{\equal{#1}{}}%
-	{%
-	}%
-	{%
-		\vspace{\reviewheadingspacing}\newline{}
-		\noindent{\reviewheading{Summary}}\newline%
-		#1%
-	}
-	% Bibentry removes the final period (it really shouldn't, it should be handled by the bst).  So we have to put it back.
-	\vspace{\reviewheadingspacing}\newline{}
-	\noindent{\reviewheading{Reference}}\newline{}
-	\noindent\bibentry{#2}.%
-	\vspace{\reviewheadingspacing}\newline{}
-	\noindent{\reviewheading{Notes}}
+	\vspace{\reviewheadingspacing}
+	\noindent{\review@titlesize\textbf{Review}}\newline{}%
+	\noindent\bibentry{#1}%
+	\vspace{\reviewheadingspacing}\newline{}%
+	\noindent\reviewheading{Notes}%
 	\begin{numberedlist}
 }
 {
