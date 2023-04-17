@@ -30,11 +30,19 @@
 \newlength{\reviewheadingspacing}
 \setlength{\reviewheadingspacing}{0.40\baselineskip}
 
-\newenvironment{review}[1]
+\newenvironment{review}[2]
 {
 	\vspace{\reviewheadingspacing}
 	\noindent{\review@titlesize\textbf{Review}}\newline{}%
 	\noindent\bibentry{#1}%
+	\ifthenelse{\equal{#2}{}}
+	{}
+	{
+		% When both arguments are supplied, we assume the reference is in the first one and the impression is in the second one.
+		\vspace{\reviewheadingspacing}\newline{}%
+		\noindent\reviewheading{Impression}\newline{}%
+		#2
+	}
 	\vspace{\reviewheadingspacing}\newline{}%
 	\noindent\reviewheading{Notes}%
 	\begin{numberedlist}
