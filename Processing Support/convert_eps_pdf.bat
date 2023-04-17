@@ -33,8 +33,8 @@ for %%x in (.\EPS\*.eps) do call process.bat %%x
 
 echo.
 echo.
-echo Run batch file that processes directories.
-rem Directories are processed last under the assumption that most figures are added to the root directory and,
+echo Run batch file that processes subdirectories.
+rem Subdirectories are processed last under the assumption that most figures are added to the root directory and,
 rem therefore, the newest figures are more likely to have been added to that directory.
 for /F %%x in ('call dir .\EPS /ad /b') do call processdir.bat %%x %%y
 
@@ -53,11 +53,16 @@ copy /Y .\EPS\*.eps ..\
 
 echo.
 echo.
-echo Move pdfs in sub directories.
+echo Create any subdirectories if they do not exist.  Otherwise the copy/moves will not work correctly.
+for /F %%x in ('call dir .\EPS /ad /b') do if not exist ..\%%x mkdir ..\%%x
+
+echo.
+echo.
+echo Move pdfs in subdirectories.
 for /F %%x in ('call dir .\EPS /ad /b') do call move /Y .\EPS\%%x\*.pdf ..\%%x
 echo.
 echo.
-echo Copy epss in sub directories.
+echo Copy epss in subdirectories.
 for /F %%x in ('call dir .\EPS /ad /b') do call copy /Y .\EPS\%%x\*.eps ..\%%x
 
 
