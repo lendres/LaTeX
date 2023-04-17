@@ -18,6 +18,7 @@ set FILEROOTNAME=%~1
 
 echo Root file name: %FILEROOTNAME%
 echo Main Tex file name: "%FILEROOTNAME%.tex"
+echo Glossary package processing option: %~2
 
 echo.
 echo.
