@@ -6,6 +6,10 @@
 \usepackage{lecontactinfo}
 \usepackage{lefonts}
 
+% Create a version number of the form of the date.
+\def\versiondate{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+
 %\usepackage[letterspace=175]{letterspace}
 %\usepackage{lefontsizes}
 
@@ -300,6 +304,28 @@
 		\begin{minipage}{\textwidth}
 			\Tiny\raggedleft
 			Compiled on \today{}
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+% HEADER
+% Empty (blank).
+%
+% FOOTER
+% Single horizontal line with date.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@ledateversioninfooter}
+{
+	\renewcommand*{\@oddhead}{}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{%
+		\begin{minipage}{\textwidth}
+			\Tiny\raggedleft
+			Version \versiondate{}
 		\end{minipage}%
 	}
 	\renewcommand*{\@evenfoot}{\@oddfoot}
