@@ -17,8 +17,13 @@
 % \#~{}                   - Don't match strings that meet the patterns in the brackets.
 % {org@\.}                - Don't match either "org" or "org.".  This is required because we may have both cases.
 %                               I.g. "Example www.test.org string" or "Example string www.test.org.".
-@[UDi]\.{+[a-zA-Z]@[0-9]@\.@\/}{\#~{{org@\.@\/}|{ar\/}|{google@\.}|{wolfram@\.}|{pdf@\.}|{net@\.}|{NET@\.}|{com@\.@\/}|{ar/}|{xml@\.}|{html@\.}|{codeproject@\.}|{w3@\.}|{lsu@\.}|{edu@\.@\/}|{doi@\.}|U\.S\.|D\.C\.|i\.e\.|e\.g\.|L\.W\.|R\.I\.|D\.H\.|W\.J\.|J\.G\.}}
+@[UDie]\.{+[a-zA-Z]@[0-9]@\.@\/}{\#~{{org@\.@\/}|{ar\/}|{google@\.}|{wolfram@\.}|{pdf@\.}|{net@\.}|{NET@\.}|{com@\.@\/}|{ar/}|{xml@\.}|{html@\.}|{codeproject@\.}|{w3@\.}|{lsu@\.}|{edu@\.@\/}|{doi@\.}|U\.S\.|D\.C\.|i\.e\.|e\.g\.|L\.W\.|R\.I\.|D\.H\.|W\.J\.|J\.G\.}}
 
-%test.com this i.e. is test of U.F. U.FF test.This a test test.That is.com. a test.
-%test.com this is a test of U.S. U.SS test.This is a test.
-%test.com this is a test e.g. U.S. test.This is U.S2 a test U.SU a test.
+test.com this i.e. is test of U.F. U.FF test.This a test test.That is.com. a test.
+test.com this is a test of U.S. U.SS test.This is a test.
+test.com this is a test e.g. U.S. test.This is U.S2 a test U.SU a test.
+
+
+
+% Find text of the form "\\&aaa;" such as "\\&amp;"
+\\&+[a-zA-Z];
