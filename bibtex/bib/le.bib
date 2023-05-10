@@ -21,12 +21,6 @@
 %	abstract		= {}
 %}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% BOOKS / PAPERS IN JOURNALS / PAPERS IN CONFERENCE PROCEEDINGS.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 @article{ref:abbassian1998a,
 	author			= {Fereidoun Abbassian and V. A. Dunayevsky},
 	title			= {Application of Stability Approach to Torsional and Lateral Bit dynamics},
@@ -74,6 +68,23 @@
 	url				= {https://doi.org/10.2118/212514-MS},
 	logline			= {},
 	abstract		= {A major challenge that is being occasionally faced during the well construction phase is to cement the formations holding narrow pressure margins between the pore and fracture gradients without inducing losses. Losses can commonly occur in these cases, compromising the integrity of the cement barrier. Designed slurry densities generally lead to high equivalent circulating density (ECD) levels during the cementing operations. This condition, combined with mud weights conventionally designed to be above pore pressure, usually results in downhole pressures which approach or exceed the fracture limit. Commonly, operators implement strategies to mitigate losses during the cementing phase, however, in most cases the losses are unavoidable using a conventional cementing approach. Managed pressure cementing (MPC) is an important technique for primary cementing operations in wells with such narrow pressure margins.  This paper presents the design considerations, methodology and results of a land well where high-pressure influx was encountered while drilling an 8-3/8-in hole across a water-bearing formation. Narrow pressure gradient persuaded to utilize managed pressure drilling (MPD) to continue the drilling. The well was drilled to the target depth using 138-lbm/ft3 oil-based drilling fluid while maintaining the ECD from 146.5 to 149.5 lbm/ft3. Careful attention was paid to estimate the bottom hole circulating temperature, using the temperature modeling simulator. A 150-lbm/ft3 slurry was designed to keep the ECD intact. The slurry was batch-mixed to ensure the homogeneity of the final slurry mixture. A special spacer system was designed to reduce the losses while cementing. Additionally, the spacer was loaded with optimum amounts of surfactant package to serve as an aid to remove the mud and to water-wet the formation and pipe for better cement bonding. The centralizers placement plan was optimized, and additionally the liner was rotated during the cement job to achieve the required displacement efficiency yet staying within the torque and drag (T\&D) limits. The cement treatment was performed as designed and met all zonal isolation objectives.  The managed pressure cementing (MPC) system provides safe isolation of problematic zones in cost effective manner even in challenging narrow pressure window scenarios. The system provides precise control of the pressure and flow during and after the cement job. Constant pressure can be achieved at weak zones, preventing losses to the formation.  This case study presents an overview of the engineering process used to plan and design the MPC operations and the results obtained. This paper reviews a successful MPC operation and presents findings and lessons learnt. After the successful results on this job and subsequent operations, this technique is now being adopted to optimize cementing, where losses during cementing operations in the past had forced to modify the well construction.}
+}
+
+@inproceedings{ref:ali2023b,
+	author			= {Ali, Abdulbaset and Singh, Harnoor and Kelly, Daniel and Hender, Donald and Clarke, Alan and Ghiasi, Mohammad Mahdi and Haynes, Ronald and James, Lesley},
+	affiliation		= {Memorial University of Newfoundland and Memorial University of Newfoundland and Memorial University of Newfoundland and Memorial University of Newfoundland and ACBBtech and Memorial University of Newfoundland and Memorial University of Newfoundland and Memorial University of Newfoundland},
+	title			= {},
+	booktitle		= SPEIADCDRILLINGCONFERENCEEXHBITION,
+	month			= {March},
+	year			= {2023},
+	volume			= {Day 2 Tue, March 08, 2023},
+	organization	= IADCSPE,
+	address			= {Stavanger, Norway},
+	speid			= {IADC/SPE-212503-MS},
+	doi				= {10.2118/212503-MS},
+	url				= {https://doi.org/10.2118/212503-MS},
+	logline			= {},
+	abstract		= {There is considerable value in automatically quantifying cutter damage from drill bit pictures. Current approaches do not classify cutter damage by type, i.e., broken, chipped, lost, etc. We, therefore, present a computer vision model using deep learning neural networks to automate multi-type damage detection in Polycrystalline Diamond Compact (PDC) drill bit cutters.The automated bit damage detection approach presented in this paper is based on training a computer vision model on different cutter damage types aimed at detecting and classifying damaged cutters directly. Prior approaches detected cutters first and then classified the damage type for the detected cutters. The You Only Look Once version 5 (YOLOv5) algorithm was selected based on the findings of an earlier published study. Different models of YOLOv5 were trained with different architecture sizes with various optimizers using two-dimensional (2D) drill bit images provided by the SPE Drilling Uncertainty Prediction technical section (DUPTS) and labeled by the authors with training from industry subject matter experts. To achieve the modeling goal, the images were first annotated and labeled to create training, validation, and testing sub-datasets. Then, by changing brightness and color, the images allocated for the training phase were augmented to generate more samples for the model development. The categories defined for labeling the DUPTS dataset were bond failure, broken cutter, chipped cutter, lost cutter, worn cutter, green cutter, green gauge, core out, junk damage, ring out, and top view. These categories can be updated once the IADC upgrade committee finishes upgrading IADC dull bit grading cones.Trained models were validated using the validation dataset of 2D images. It showed that the large YOLOv5 with stochastic gradient descent (SGD) optimizer achieved the highest metrics with a short training cycle compared to the Adam optimizer. In addition, the model was tested using an unseen data set collected from the local office of a drill bit supplier. Testing results illustrated a high level of performance. However, it was observed that inconsistency and quality of rig site drill bit photos reduce model accuracy. Therefore, it is suggested that companies produce large sets of quality images for developing better models. This study successfully demonstrates the integration of computer vision and machine learning for drill bit grading by categorizing/classifying damaged cutters by type directly in one stage rather than detecting the cutters first and then classifying them in a second stage. To guarantee the deployed model's robustness and consistency the model deployment has been tested in different environments that include cloud platform, container on a local machine, and cloud platform as a service (PaaS) with an online web app. In addition, the model can detect ring out and cored damages from the top view drill bit images, and to the best of the authors’ knowledge, this has not been addressed by any study before.The novelty of the developed deep learning computer vision algorithm is the ability to detect different cutter damage types in a fast and efficient process compared to the current lengthy manual damage evaluation practice. Furthermore, the trained model can detect damages that frequently take place in more than one blade of the bit such as ring outs and coring. In addition, a user-friendly interface was developed that generates results in pdf and CSV file formats for further data analysis, visualization, and documentation. Also, all the technologies used in the development of the model are open source and we made our web app implementation open access.}
 }
 
 @inproceedings{ref:alqasim2023a,
@@ -410,6 +421,23 @@
 	url				= {https://ssrn.com/abstract=2999185},
 	doi				= {http://dx.doi.org/10.2139/ssrn.2999185},
 	abstract		= {It is commonly believed that every contributor to a free and open source software project owns copyright in their incremental contribution to the project, and owns it solely.  It is also commonly believed that one must avoid a legal conclusion that the project code is jointly authored—and therefore jointly owned—even though the legal concept of joint authorship is strongly consistent with the social construct of free software. This view is based on a belief that the application of the existing copyright law of joint authorship will undermine the intended operation of the free software license and thus fail to support the goals of the free software movement.  This article takes the position that, under U.S. law, joint authorship is a legal framework for copyright ownership in a free and open source software project that presents no greater risk than those risks inherent in the concept of sequential ownership and may even be superior, providing some benefits that are not available under the current commonly-accepted theory of ownership.}
+}
+
+@inproceedings{ref:chu2023a,
+	author			= {Chu, Jian and Ashok, Pradeepkumar and Chen, Dongmei and van Oort, Eric},
+	affiliation		= {University of Texas at Austin and University of Texas at Austin and University of Texas at Austin and University of Texas at Austin},
+	title			= {Automatic Drill Bit Dull Grading Report Generation to Address the Revised IADC Dull Grading Schema},
+	booktitle		= SPEIADCDRILLINGCONFERENCEEXHBITION,
+	month			= {March},
+	year			= {2023},
+	volume			= {Day 2 Tue, March 08, 2023},
+	organization	= IADCSPE,
+	address			= {Stavanger, Norway},
+	speid			= {IADC/SPE-212458-MS},
+	doi				= {10.2118/212458-MS},
+	url				= {https://doi.org/10.2118/212458-MS},
+	logline			= {},
+	abstract		= {The current IADC bit dull grading process has served the drilling industry well for over 30 years, and it has helped the industry achieve significant improvements in drill bit selection and design. With rapid development of computational techniques such as computer vision and machine learning, the general consensus is that the previous grading process can now be updated to capture additional information about the bits that was previously discarded to enhance the grading process and the information is delivers while keeping it simple. An IADC committee is currently working on finalizing this new schema.In comparison to the previous bit dull grading process, more details about the drill bit such as cutter damage type have been added to the new schema. Additionally, capturing pre-run and post-run bit images is recommended to enable detailed bit forensic analysis into root causes of observed damage. For the bit dull grading process at rig site, a preliminary grading report needs to be filled out and rig site bit photos also need to be captured.The objective of the work reported here was to develop an algorithm to automatically analyze 2D bit images and quickly generate are port that fulfills the new IADC dull grading requirements. Several deep learning models and classic machine learning algorithms were developed to automate the bit dull grading process. Given a set of high-quality bit images, the proposed set of algorithms will process and analyze the images automatically and generate a dull grading report. Different sets of bit images were tested with the proposed algorithms, and the results show that they are able to achieve good performance under standard scenarios. A discussion on hurdles that remain to be tackled is also included.}
 }
 
 @inproceedings{ref:clegg1992a,
@@ -1775,18 +1803,6 @@
 	abstract		= {Drilling automation technology has been successfully deployed and in operation for several years. While the technologies covered in this paper had already been deployed separately in other regions, this case study is not only Malaysia's first drilling automation project but also the world's first deployment that includes the automation platform combined with two third-party closed-loop control applications (Apps). The study details the technologies, their implementation approach, and key performance indicators (KPIs) to measure the success of the project.  Technical and procedural measures necessary to ensure the safe and efficient use of the system are explained. The project's measured KPIs were collected and analyzed throughout multiple wells and are presented in the paper to measure the performance and success of the project.  Throughout the execution of the project, the automation platform successfully coordinated control ownership of the two Apps. A comparison by the drilling contractor of KPIs with and without the automation technology successfully validates the benefits in performance and consistency.}
 }
 
-@inproceedings{ref:schwefe2014a,
-	author			= {T. Schwefe and L. W. Ledgerwood III and J. R. Jain and D. M. Fuselier and L. Endres and H. Oueslati},
-	title			= {Development and Testing of Stick/Slip-Resistant {PDC} Bits},
-	booktitle		= SPEDRILLINGCONFERENCEEXHBITION,
-	month			= {March},
-	year			= {2014},
-	pages			= {},
-	address			= {Fort Worth, TX},
-	speid			= {},
-	abstract		= {}
-}
-
 @inproceedings{ref:samdani2023a,
 	author			= {Samdani, Ganesh Arunkumar and Rao, Sai Sashankh and Moganaradjou, Yashwant and Almeida, Mauricio A. and Kunju, Mahendra K. and Santos, Otto and Gupta, Vishwas Paul},
 	affiliation		= {ExxonMobil Services and Technology Pvt.\ Ltd and ExxonMobil Upstream Research Company and ExxonMobil Services and Technology Pvt\. Ltd and Louisiana State University and Louisiana State University and Louisiana State University and ExxonMobil Upstream Research Company},
@@ -1802,6 +1818,18 @@
 	url				= {https://doi.org/10.2118/212477-MS},
 	logline			= {},
 	abstract		= {Bullheading involves pumping produced fluids back into the formation using a kill-fluid. A key operational parameter is the required bullheading rate which depends on surface pressure, available horsepower, and erosion limits. There is wide variation in current guidelines for bullheading rates, especially for large-diameter wellbores. Therefore, a well-scale bullheading test program was conducted using a 5200-ft-deep vertical well with 9-5/8''x2-7/8'' casing/tubing annulus located at LSU test well facility. The tubing was instrumented with 4 downhole pressure gauges and fiber optic DTS/DAS to obtain data on the downhole flow dynamics and determine bullheading efficiencies. In a typical test, a large nitrogen cap placed at the top of the annulus was bullheaded by pumping fluid in annulus with continuous returns taken from the tubing side. Tests were conducted with varying fluid rates (50 to 500 gpm), initial gas-cap size (30-60 bbl), gas pressurization method and kill fluids (water and synthetic base mud). It was observed that the bullheading process involves simultaneous gas compression, gas bubble breakage, gas dispersion, and gas displacement, unlike the typical assumption of bullheading a large gas slug. The breakage of the initial gas slug depended on the surface pressure and the extent of gas-liquid mixing. The minimum water flowrate required for gas bullheading matched to water velocity just above small bubble velocity in water. Increase in water flowrate increased the bullheading efficiency, e.g., bullheading with 350 gpm required $<$50\% water volume compared to 150 gpm water flowrate. Experiments with a highly pressurized initial gas cap and a larger initial gas cap volume resulted in relatively more efficient bullheading due to lower slip velocity resulting from higher average gas-holdup in the gas-swarm. In one test, the gas was bullheaded for some time and then allowed to migrate upward in a shut-in well. It was observed that the gas migration velocity (0.71 ft/sec) was higher than the gas slip velocity during bullheading (0.3-0.6 ft/sec). Contrary to the popular belief, the gas also did not carry its pressure while migrating in a shut in well. The experimental observation of bubbly flow instead of slug flow during bullheading under sufficiently higher surface pressure helped understand the multiphase flow dynamics of bullheading and it can help provide realistic bullheading guidelines based on well conditions.}
+}
+
+@inproceedings{ref:schwefe2014a,
+	author			= {T. Schwefe and L. W. Ledgerwood III and J. R. Jain and D. M. Fuselier and L. Endres and H. Oueslati},
+	title			= {Development and Testing of Stick/Slip-Resistant {PDC} Bits},
+	booktitle		= SPEDRILLINGCONFERENCEEXHBITION,
+	month			= {March},
+	year			= {2014},
+	pages			= {},
+	address			= {Fort Worth, TX},
+	speid			= {},
+	abstract		= {}
 }
 
 @inproceedings{ref:sevillano2023a,
@@ -1851,6 +1879,16 @@
 	year			= {1991},
 	pages			= {19--52},
 	issn			= {0029-5981}
+}
+
+@phdthesis{ref:singh2019a,
+	author			= {Kriti Singh},
+	title			= {Determination of Threshold Conditions Leading to Whirling Motion of Rotating Shafts in Casing Drilling},
+	school			= {University of Tulsa},
+	year			= {2019},
+	address			= {Tulsa, OK},
+	month			= {},
+	abstract		= {With Casing drilling, the casing movement creates interaction with the formation that positively affects how the well is drilled. The casing works as a mechanical tool to plaster the cuttings into the formation face and further harden it by physical contact. The small annulus and pipe rotation creates a powerful centrifugal force that helps distribute the cuttings and seals pore spaces which helps in reducing fluid losses.  Therefore, the uniform orbital motion of casing is a crucial factor to obtain smearing effect. Hence, the current study was undertaken to determine the drilling conditions that lead to a uniform whirling motion for simulating plastering effect while also avoiding conditions that may lead to detrimental vibrations encountered in backward whirling. This study consists of analytical modelling, numerical simulations and preliminary experimental investigations.  A comprehensive analytical model was developed to predict the whirling motion of a rotating casing. The model is close to realistic condition as it considers the effect of different factors of whirling motion including eccentricity, gravity, contact forces and fluid interaction. This model was used to perform a parametric study to determine how different factors affect the whirling speed, also known as the critical speed, of casing drilling assembly.  An energy method was used to develop expressions for critical whirling speed. A parametric study was performed using the kinematic model as well as the energy method to see how different factors affect whirling motion.  Based on the parametric study, it was seen that the critical factors that affect backward whirling motion are contact forces or friction forces. Therefore, it is very important to have an estimate of the side force and coefficient of friction values in order to predict the critical whirling speed of backward whirling phenomena. A simulator based on the transfer matrix method was developed to determine the side forces and contact forces of a complex BHA, which are quite often the sweet spots of backward whirling. The simulator can also be used to get the static deflection profile which can be used to compute the critical whirling speed.  In addition to the static state vectors, we need to find the dynamic state vectors that describe the response of the BHA assembly to the specified excitation for the specified RPM, WOB and other operating parameters. These state vectors can be used for designing BHA so that they are less prone to backward whirling. Therefore, a transfer matrix model was developed for the dynamic Euler equation. Some preliminary experimental tests were performed to evaluate the analytical model.}
 }
 
 @inproceedings{ref:skoff2023a,
@@ -1961,6 +1999,26 @@
 	year			= {1989},
 	edition			= {Sixth},
 	isbn			= {978-0070725416}
+}
+
+@inproceedings{ref:zamanipour2018a,
+	author			= {Zamanipour, Z. and Miska, S. Z. and Hariharan, P. R.},
+	affiliation		= {},
+	title			= {Dynamic Axially-Stiff String Model for Tripping Operations in Directional Wellbores},
+	booktitle		= SPEIADCDRILLINGCONFERENCEEXHBITION,
+	month			= {03},
+	year			= {2018},
+	volume			= {Day 1 Tue, March 06, 2018},
+	pages			= {},
+	organization	= {},
+	address			= {},
+	speid			= {},
+	doi				= {10.2118/189620-MS},
+	url				= {https://doi.org/10.2118/189620-MS},
+	href			= {https://onepetro.org/SPEDC/proceedings-pdf/18DC/1-18DC/D012S022R007/1220059/spe-189620-ms.pdf},
+	note			= {D012S022R007},
+	logline			= {},
+	abstract		= {The soft string model has been widely used for torque and drag calculations. Although several modifications have been developed, the standard model in the oil and gas industry is the static soft string model, in which the string is assumed to be motionless and its stiffness is neglected. In order to estimate more realistic and accurate calculation of drillstring loading, not only the acceleration, but also axial stiffness of the string must be considered in force calculations. In this paper, a dynamic, axially-stiff string model is presented for force calculations of drillstring in tripping operations.  The mathematical model is developed to include axial stiffness of the drillstring and acceleration into the soft string model by coupling mass-spring system with the soft string model. Moreover, static friction and drilling fluid drag are taken into account. The drillstring is considered to be a system of coupled oscillators subject to external forces. Then, the motion of the individual oscillator is governed by external forces and the forces applied by its two neighboring elements. In this model, the static friction effect is included as a constraint for initiation of motion.  The drillstring configuration is considered to be drillpipe, drillcollar, and directional assembly. The developed model ("new model") is implemented for tripping-out one stand in two ideal directional wellbores plus one field case wellbore trajectory. Axial force behavior shows a trend of acceleration that is similar to that observed with the previous dynamic soft string model ("previous model": SPE-173084-MS), and the first peak contains the effect of static friction. Displacement at the end of the string shows that the whole drillstring is in motion after few seconds. The axial force using the new model is compared to that (axial force) calculated using the previous model for two different cases. In the acceleration part of the motion, the new model shows a peak about 12\\% higher than the maximum load in the previous model which is due to the static friction force. In the constant velocity part of the motion, depending on the amount of damping, the new model can show a result similar to that of the previous model.  The new dynamic axially-stiff string model provides a more realistic prediction of hookload, and consequently more realistic loading of the hoisting equipment and fatigue life of the drillstring. Other applications of this model are for wellbore planning, drillstring design, optimization and automation of tripping operations.}
 }
 
 @article{ref:zanna2001a,
