@@ -1011,6 +1011,8 @@ FUNCTION {techreport}
   new.block
   note output
   fin.entry
+  format.abstract output
+  fin.entry
 }
 
 FUNCTION {unpublished}
