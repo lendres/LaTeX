@@ -10,6 +10,8 @@
 \def\versiondate{\leavevmode\hbox{\the\year\twodigits\month\twodigits\day}}
 \def\twodigits#1{\ifnum#1<10 0\fi\the#1}
 
+\newcommand*{\ps@storethechapter}{}
+
 %\usepackage[letterspace=175]{letterspace}
 %\usepackage{lefontsizes}
 
@@ -346,7 +348,6 @@
 % FOOTER
 % Single horizontal line.
 % --------------------------------------------------------------
-%
 \newcommand*{\ps@leletterheadb}
 {
 	\renewcommand*{\@oddhead}
@@ -380,7 +381,6 @@
 %
 % FOOTER
 % Empty (blank).
-%
 \newcommand*{\ps@leletterheadc}
 {
 	\renewcommand*{\@oddhead}
@@ -398,53 +398,60 @@
 
 
 % HEADER
-% HCC technology logo in the left, the text "HCC Technology" on the right.
-%
-% LOGO                                                                       HCC Technology
+% LOGO                                                                       Name
 %
 % FOOTER
-% Two lines of text.  On the first line a copyright notice on the left, the page number in
-% the middle, and Hughes Christensen on the right.  On the second line is the confidential
-% notice on the left and report revision notice on the right.
-%
-% (C)2009 Baker Hughes, Inc                 Page 1 of 23                 Hughes Christensen
-% Company Confidential -- For Internal Use Only          Technology Research Report Rev 0.1
-%
-
-\newcommand*{\lecopyrightyear}{2010}
-\newcommand*{\copyrightyear}[1]{\renewcommand*{\lecopyrightyear}{#1}}
-\newcommand*{\ps@hccreportpagestyle}
+% This footer does not work with Glossaries package.
+% Chapter name and title on left, page number one right.  An rule stretches the width of the page.
+% -----------------------------------------------------------
+% Chapter 1: Title of Chapter                               2
+\newcommand*{\cnpctopbottommargins}
 {
-	\renewcommand*{\@oddhead}
-	{%
-		\begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
-		\hfill \ArialBold HCC Technology
-		\end{minipage}%
-	}
+	\setlength{\voffset}{-40pt}
+	\setlength{\headheight}{0.6in}
+	\setlength{\footmargin}{0.75in}
+	\calctextheight{}
+	\calcfootskip{}
+}
+\newcommand*{\cnpclogoheader}
+{
+	\begin{minipage}[c]{\textwidth-2.5pt}%
+		\begin{minipage}[c]{1.0in}\vspace{0pt}\includegraphics[height=0.55in]{cnpclogo}\end{minipage}
+		\hfill
+		\begin{minipage}[c]{\textwidth-1.75in}\vspace{0pt}\raggedleft\normalsize\bfseries{}CNPC\\USA\end{minipage}
+	\end{minipage}\\
+}
+\newcommand*{\ps@cnpcusareport}
+{
+	\renewcommand*{\@oddhead}{\cnpclogoheader}
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}
 	{%
-		\begin{minipage}{\textwidth}
-			\small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill Hughes Christensen \\ Company Confidential -- For Internal Use Only \hfill Technology Research Report Rev 0.1
-		\end{minipage}%
-	}
-	\renewcommand*{\@evenfoot}{\@oddfoot}
+        \begin{minipage}{\textwidth}\bfseries
+        		\rule{\textwidth}{0.6pt} \vspace{-10pt}
+                \chaptername\ \ps@storethechapter{} \protect\thechapter : \chaptertitle\ \hfill \thepage
+        \end{minipage}%
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
-\newcommand*{\ps@hccpagestyle}
+% HEADER
+% LOGO                                                                       Name
+%
+% FOOTER
+% Chapter name and title on left, page number one right.  An rule stretches the width of the page.
+% -----------------------------------------------------------
+% Title of Chapter                                          2
+\newcommand*{\ps@cnpcusareportothermatter}
 {
-	\renewcommand*{\@oddhead}
-	{%
-		\begin{minipage}{\textwidth} \includegraphics[width=1.00in]{hcctechnology}
-			\hfill% \ArialBold HCC Technology
-		\end{minipage}%
-	}
+	\renewcommand*{\@oddhead}{\cnpclogoheader}
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}
 	{%
-		\begin{minipage}{\textwidth}
-			\small\copyright{} \lecopyrightyear{} Baker Hughes, Inc \hfill Page \thepage{} of \pageref*{LastPage} \hfill  Company Confidential \\ Drilling \& Evaluation $|$ Research \hfill For Internal Use Only
-		\end{minipage}%
-	}
-	\renewcommand*{\@evenfoot}{\@oddfoot}
+        \begin{minipage}{\textwidth}\bfseries
+        		\rule{\textwidth}{0.6pt} \vspace{-10pt}
+                \chaptertitle\ \hfill \thepage
+        \end{minipage}%
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
 }
