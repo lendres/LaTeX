@@ -407,18 +407,25 @@
 % Chapter 1: Title of Chapter                               2
 \newcommand*{\cnpctopbottommargins}
 {
-	\setlength{\voffset}{-40pt}
+	\setlength{\voffset}{-61pt}
 	\setlength{\headheight}{0.6in}
-	\setlength{\footmargin}{0.75in}
+	\setlength{\headsep}{30pt}
+	\setlength{\footmargin}{0.68in}
 	\calctextheight{}
 	\calcfootskip{}
 }
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{background}{gray}{0.92}
+%\colorbox{background}{}
+%\raggedleft\normalsize\bfseries{}CNPC\\USA\
+
 \newcommand*{\cnpclogoheader}
 {
-	\begin{minipage}[c]{\textwidth-2.5pt}%
-		\begin{minipage}[c]{1.0in}\vspace{0pt}\includegraphics[height=0.55in]{cnpclogo}\end{minipage}
+	\begin{minipage}[t]{\textwidth-2.5pt}%
+		\begin{minipage}[c]{1.0in}\includegraphics[height=0.50in]{cnpclogo}\end{minipage}
 		\hfill
-		\begin{minipage}[c]{\textwidth-1.75in}\vspace{0pt}\raggedleft\normalsize\bfseries{}CNPC\\USA\end{minipage}
+		\begin{minipage}[c]{\textwidth-1.75in}\raggedleft\includegraphics[height=0.32in]{cncpcusatext}\end{minipage}
 	\end{minipage}\\
 }
 \newcommand*{\ps@cnpcusareport}
