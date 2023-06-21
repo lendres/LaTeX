@@ -855,7 +855,6 @@ FUNCTION {inproceedings}
     }
   if$
   new.block
-  note output
   fin.entry
 }
 
