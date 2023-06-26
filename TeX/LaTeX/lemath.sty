@@ -22,6 +22,9 @@
 %        \mathdefitem{(\langle a,b,c\rangle )}{a vector parallel to the line.}
 %    \end{mathwhere}
 
+\newlength{\mathwhereparsep}
+\setlength{\mathwhereparsep}{\topsep}
+
 % The initial space on a definition line that uses a \mathdefitem* command.  It is set as a separate length so it can be changed and so if it is used
 % in another environment that changes the size of \parindent, it doesn't overwrite the value.
 \newlength{\mathwhereinitialindent}
@@ -43,6 +46,7 @@
 % between the {#1}\begin seems to result in an extra line spacing in the document.
 \newenvironment{mathwhere}[1][\parindent]
 {
+	\setlength{\topsep}{\mathwhereparsep}
     \setlength{\mathwhereindent}{#1}\begin{tabbing} \pushtabs{} \hspace*{\mathwhereinitialindent}\= \hspace*{\mathwhereindent}\= \hspace*{1.75pc}\= \kill
     where \\*[0pt]
 }
@@ -87,4 +91,4 @@
 %\newcommand*{\doubleeqspace}[1]{\renewcommand*{\doubleeqspaceval}{#1}}
 \newcommand*{\firstdeq}[2]{#1 & = #2 &}
 \newcommand*{\seconddeq}[2]{\doubleeqspaceval #1 & = #2}
-\newcommand*{\doubleeqitem}[4]{\firstdeq{#1}{#2} \seconddeq{#3}{#4}} 
+\newcommand*{\doubleeqitem}[4]{\firstdeq{#1}{#2} \seconddeq{#3}{#4}}
