@@ -43,9 +43,6 @@
 % SECTIONING COMMANDS.
 \usepackage[\sectionoptions]{lesections}
 
-% Can use this while writing to make sections that need to be completed.
-\newcommand*{\notfinished}{\large \begin{center} \textbf{********** N O T\ \ \ F I N I S H E D **********} \end{center} \normalsize}
-\newcommand*{\editorsnote}[1]{\large \begin{center} \textbf{****** #1 ******} \end{center} \normalsize}
 
 % Used to calculated lengths.
 \usepackage{calc}
