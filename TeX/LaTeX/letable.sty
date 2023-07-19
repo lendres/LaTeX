@@ -54,6 +54,13 @@
 
 \newcommand*{\tabledoublecline}[2]{\cline{#1-#2} \multicolumn{#2}{c}{\vspace*{\tabledoublelinespace}} \\ \cline{#1-#2}}
 
+
+% Thicker horizontal lines.
+\newlength{\thicklinewidth}
+\setlength{\thicklinewidth}{2pt}
+\newcommand{\thickhline}{\hlinewd{\thicklinewidth}}
+
+
 % Environment to allow the vertical spacing between the caption and the table to be the same as between
 % the caption in a float when the caption for the table is placed above the table and the caption for
 % the float is placed below the float.
@@ -72,9 +79,10 @@
     \setlength{\belowcaptionskip}{0pt}
 }
 
+
 % Used to create a variable width horizontal line.
 \makeatletter
 \def\hlinewd#1{%
 \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
 \reserved@a\@xhline}
-\makeatother 
+\makeatother
