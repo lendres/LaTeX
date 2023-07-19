@@ -1,0 +1,74 @@
+\usepackage{amsmath}
+\usepackage[pdfauthor={Lance A. Endres}, pdftitle={Example}]{lehyperlink}
+
+% Note on YAK previewer and fonts not rendering.
+% https://tex.stackexchange.com/questions/130414/error-viewing-dvi-file-postscript-specials-could-not-be-rendered
+
+% Commands for titles.
+\newcommand*{\documentshorttitle}{ShortTitle}
+\newcommand*{\documenttitle}{Document Title}
+
+% GRAPHICS/FIGURES
+\usepackage{legraphicextensions}
+
+% Packages added by DY,% pseudo-algorithm
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+
+% Set the search path for figures.  This way we can change it if required without having to modified all of the \includegraphics calls.
+\graphicspath{{Figures/}}
+
+% Tweaks to the amount of space floats can occupy on a page.
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\floatpagefraction}{0.85}
+
+
+% HEADERS AND FOOTERS
+\usepackage{leheadersandfooters}
+
+
+% FONTS
+\usepackage{times}
+
+
+% MATH
+\usepackage{lemath}
+
+
+% LISTS
+\usepackage{lelists}
+\setlength{\listtopsep}{0pt}
+\setlength{\leftlistindent}{0pt}
+\setlength{\rightlistindent}{0pt}
+
+
+% LIST OF NOTATIONS
+%\usepackage{lelistofnotations}
+%\spacingbetweennotations{0.5\baselineskip}
+%\notationheadinglinesize{16pt}
+
+
+% TABLES
+% Hypothesis test table.
+% Table package.
+\usepackage{letable}
+\setlength{\tablerowheight}{6mm}
+\setlength{\tabledoublelinespace}{-13pt}
+\tablecolumnheaderfont{\bfseries}
+
+
+% CODE
+\usepackage{lecode}
+
+
+% MARKUP
+\usepackage{lemarkup}
+
+
+%INCLUDE A BIBLIOGRAPHY.
+\bibliographystyle{leplain}
+
+% INCLUDE AN INDEX.
+\makeindex{} 
