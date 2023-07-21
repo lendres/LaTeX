@@ -56,11 +56,67 @@
 				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="^[0]*12$" replacement="December">
 					<tags><tag>month</tag></tags>
 				</tagprocessor>
+				
 			</tagprocessors>
 		</tagprocessorgroup>
 
+		<tagprocessorgroup name="Convert Month Numbers to Text">
+			<tagprocessors>
+				<!-- Change month abbreviations to full names. -->
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="jan" replacement="January">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="feb" replacement="February">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="mar" replacement="March">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="apr" replacement="April">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="may" replacement="May">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="jun" replacement="June">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="jul" replacement="July">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="aug" replacement="August">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="sep" replacement="September">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="oct" replacement="October">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="nov" replacement="November">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor" tagstoprocess="OnlySpecified" pattern="dec" replacement="December">
+					<tags><tag>month</tag></tags>
+				</tagprocessor>
+				
+			</tagprocessors>
+		</tagprocessorgroup>
+		
 		<tagprocessorgroup name="HTML Characters">
 			<tagprocessors>
+				
 				<!-- HTML characters. -->
 				<tagprocessor xsi:type="StringReplacementTagProcessor"
 					tagstoprocess="All"
@@ -68,11 +124,13 @@
 					replacement="\&amp;">
 					<tags></tags>
 				</tagprocessor>
+				
 			</tagprocessors>
 		</tagprocessorgroup>
 
 		<tagprocessorgroup name="Capitol Letters and Acronyms">
 			<tagprocessors>
+				
 				<!-- Capital words/acronyms. -->
 				<tagprocessor xsi:type="StringReplacementTagProcessor"
 					tagstoprocess="OnlySpecified"
@@ -91,11 +149,13 @@
 						<tag>title</tag>
 					</tags>
 				</tagprocessor>
+				
 			</tagprocessors>
 		</tagprocessorgroup>
 		
 		<tagprocessorgroup name="Sepcialized Processors">
 			<tagprocessors>
+				
 				<!-- Do not modify the pattern unless you really know what you are doing. -->
 				<tagprocessor xsi:type="SentanceEndingSpacesTagProcessor"
 					tagstoprocess="OnlySpecified"
@@ -123,7 +183,19 @@
 					pattern="^{[\s\S]*}$">
 					<tags></tags>
 				</tagprocessor>
-			
+
+				<!-- Change titles from UPPPER CASE to Title Case. -->
+				<tagprocessor xsi:type="StringCaseTagProcessor" tagstoprocess="OnlySpecified" pattern="^[A-Z\s\p{P}]*$" tocase="TitleCase">
+					<tags><tag>title</tag></tags>
+				</tagprocessor>
+
+				<!-- Change quotes to LaTeX quotes. -->
+				<tagprocessor xsi:type="QuoteTagProcessor" tagstoprocess="All" pattern="&quot;.*&quot;">
+					<tags>
+						<tag>title</tag>
+					</tags>
+				</tagprocessor>
+				
 			</tagprocessors>
 		</tagprocessorgroup>
 		
