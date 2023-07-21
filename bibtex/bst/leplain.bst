@@ -8,12 +8,16 @@
     % This restriction helps ensure that all standard styles are identical.
     % The file btxbst.doc has the documentation for this style.
 
+% This version has been modified by Lance A. Endres and renamed to comply
+    % with the requirement number 2 above.
+
 ENTRY
   { address
     assignee
     author
     booktitle
     chapter
+    day
     edition
     editor
     filedday
@@ -23,7 +27,7 @@ ENTRY
     institution
     journal
     key
-    day
+    license
     month
     note
     number
@@ -34,9 +38,10 @@ ENTRY
     series
     title
     type
+    url
+    version
     volume
     year
-    url
     websitename
   }
   {}
@@ -582,6 +587,20 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 
+% Format, star combines strings, have to apply after 2 strings, i.e.
+% similar to LISP programming.
+FUNCTION {format.urlhref}
+{ "\href{" url * "}{" * url * "}" *
+}
+
+FUNCTION {format.url}
+{ url
+}
+
+FUNCTION {format.version}
+{ "v" version *
+}
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
@@ -600,12 +619,6 @@ FUNCTION {article}
   new.block
   note output
   fin.entry
-}
-
-% Format, star combines strings, have to apply after 2 strings, i.e.
-% similar to LISP programming.
-FUNCTION {format.urlhref}
-{ "\textless" "\href{" * url * "}{" * url * "}" * "\textgreater" *
 }
 
 FUNCTION {webhref}
@@ -627,11 +640,6 @@ FUNCTION {webhref}
   note output
   fin.entry
 }
-
-FUNCTION {format.url}
-{ "\textless" url * "\textgreater" *
-}
-
 
 FUNCTION {webplain}
 { output.bibitem
@@ -921,6 +929,19 @@ FUNCTION {misc}
   note output
   fin.entry
   empty.misc.check
+}
+
+FUNCTION {software}
+{ output.bibitem
+  format.authors output
+  new.block
+  format.title output
+  new.block
+  format.version output
+  format.date output
+  new.block
+  format.urlhref output
+  fin.entry
 }
 
 FUNCTION {phdthesis}
