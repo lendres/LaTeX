@@ -12,12 +12,13 @@
 \newcommand*{\warning}[1]{\textcolor{warningcolor}{\bfseries#1}}
 
 % A reminder to go back and add a missing citation.
-\newcommand*{\needscitation}{\textcolor{warningcolor}{\bfseries [NEEDS CITATION]}}
+\newcommand*{\needscitation}{\textcolor{warningcolor}{\bfseries ~[NEEDS CITATION]~}}
+
+\newcommand*{\reviewcomment}[1]{\textcolor{warningcolor}{\bfseries ~[#1]~}}
 
 % Notes.
 % This macro just eats the input.  This allows notes or comments to be added without them being output to the document.
 \newcommand{\note}[1]{}
-
 
 % Can use this while writing to make sections that need to be completed.
 \newcommand*{\notfinished}{\large \begin{center} \textbf{********** N O T\ \ \ F I N I S H E D **********} \end{center} \normalsize}
