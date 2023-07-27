@@ -1,0 +1,64 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{leparskip}[2023/07/27 Saving and restoring commands for parskip.  Allows environments, et cetera, to alter the parskip temporarily.]
+
+% This package is for temporarily changing the parkip.  Changing the parskip keeps the spacing between preceeding, following, and internal paragraphs
+% consistant.  If you try to use something akin to
+%\newenvironment{newenv}
+%{
+%	\vspace{\somespace}
+%}
+%{
+%	\vspace{\somespace}
+%}
+% in order to add spacing before and after an enivornment, you get "\somespace" before the first environment and after the last environment.  However,
+% between two environments you get 2\somespace.
+
+
+% Used to calculated lengths.
+\usepackage{calc}
+\usepackage{etoolbox}
+
+% Be able to save and restore paragraph spacing.
+\newlength{\@parskipsave}
+
+
+% An alternate parskip that can be set once for a document.
+%
+% Example:
+%\globalalternateparskip{0.5\baselineskip plus 2pt minus 2pt}
+\newlength{\@globalalternateparskip}
+\newlength{\@laspalternateparskip}
+\setlength{\@globalalternateparskip}{2.0\baselineskip plus 2pt minus 2pt}
+
+\newcommand*{\globalalternateparskip}[1]
+{
+	\setlength{\@globalalternateparskip}{#1}
+}
+
+
+% Save the current parskip and set a new one.
+%
+% Example:
+% To use the default parskip defined by "\globalalternateparskip".
+% \pushparskip{}
+%
+% Example:
+% To define a parskip for a single push/pop cycle.
+% \pushparskip[0.5\baselineskip plus 2pt minus 2pt]{}
+\newcommand*{\pushparskip}[1][\@globalalternateparskip]
+{
+	\global\deflength{\@parskipsave}{\parskip}
+	\setlength{\parskip}{#1}
+	\global\deflength{\@laspalternateparskip}{#1}
+}
+
+\newcommand*{\popparskip}
+{
+	\setlength{\parskip}{\@parskipsave}
+}
+
+\newcommand*{\uselastparskip}
+{
+	\vspace*{\@laspalternateparskip}
+}
