@@ -2,19 +2,24 @@
 
 \ProvidesPackage{lemarkup}[2023/07/13 Provides common notations and markup commands.]
 
+% For strike through text.
+\usepackage[normalem]{ulem}
 
 % Define colors for use with fonts.
 \usepackage{color}
-\definecolor{warningcolor}{rgb}{0.753,0,0}	
+\definecolor{warningcolor}{rgb}{0.753,0,0}
+\definecolor{reviewcolor}{rgb}{0.85,0,0}
 
 % Special font formatting commands.
 \newcommand*{\important}[1]{\textbf{\textit{#1}}}
 \newcommand*{\warning}[1]{\textcolor{warningcolor}{\bfseries#1}}
 
 % A reminder to go back and add a missing citation.
-\newcommand*{\needscitation}{\textcolor{warningcolor}{\bfseries ~[NEEDS CITATION]~}}
+\newcommand*{\needscitation}{\textcolor{reviewcolor}{\bfseries ~[NEEDS CITATION]~}}
+\newcommand*{\reviewcomment}[1]{\textcolor{reviewcolor}{\bfseries ~[#1]~}}
+\newcommand*{\removetext}[1]{\textcolor{reviewcolor}{\bfseries\sout{#1}}}
 
-\newcommand*{\reviewcomment}[1]{\textcolor{warningcolor}{\bfseries ~[#1]~}}
+
 
 % Notes.
 % This macro just eats the input.  This allows notes or comments to be added without them being output to the document.
