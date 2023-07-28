@@ -85,8 +85,8 @@
 % Override the \def\newchapter in lesections.sty to make use of the different chapter
 % header style.
 %\usepackage{lesections}
-\usepackage[usechapterstyleb, addlofchapterds]{lesections}
-%\usepackage[usechapterstyleb]{lesections}
+\usepackage[usechapterstyleucsd, addlofchapterds]{lesections}
+%\usepackage[usechapterstyleucsd]{lesections}
 \setchapterheadingpagestyle{pagenumbercenteredinfooter}
 \setusechapterheaderfront{1}
 \setusechapterheadermain{1}
