@@ -22,10 +22,15 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
+% Section options.
 \newcommand*{\sectionoptions}{}
 \DeclareOption{useleftjustifiedchapterstyle}
 {
 	\renewcommand*{\sectionoptions}{useleftjustifiedchapterstyle}
+}
+\DeclareOption{usechapterstylenumberandname}
+{
+	\renewcommand*{\sectionoptions}{usechapterstylenumberandname}
 }
 
 \newcommand*{\contentsindexbiboptions}{chapterdottedleaders}

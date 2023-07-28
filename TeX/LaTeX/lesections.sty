@@ -16,7 +16,7 @@
 % Prints:
 % "Chapter #"
 % Chapter Title
-\newcommand*{\printchapterstyleb}[1]
+\newcommand*{\printchapterstyleucsd}[1]
 {
     \vspace*{50\p@}
     \parindent \z@ \raggedright \normalfont
@@ -31,6 +31,37 @@
     \let\baselinestretch=\@storebaselinestretch
     \vskip 40\p@
 }
+
+% Prints:
+% "Chapter #"
+% Chapter Title
+% Similar to UCSD style but different spacing.
+\newcommand*{\printchapterstylenumberandname}[1]
+{
+    \vspace*{30\p@}
+    \parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter % Bold font "Chapter ##" where ## is chapter number.
+        \par\nobreak
+        \vskip 10\p@
+    \fi
+    \let\@storebaselinestretch=\baselinestretch
+    \renewcommand{\baselinestretch}{1}
+    \Huge \bfseries #1\par\nobreak
+    \let\baselinestretch=\@storebaselinestretch
+    \vskip 30\p@
+}
+\newcommand*{\printchapterstylesnumberandname}[1]
+{
+    \vspace*{30\p@}
+    \parindent \z@ \raggedright \normalfont
+    \let\@storebaselinestretch=\baselinestretch
+    \renewcommand{\baselinestretch}{1}
+    \Huge \bfseries #1\par\nobreak
+    \let\baselinestretch=\@storebaselinestretch
+    \vskip 30\p@
+}
+
 
 % Creates Arial chapter titles that are left justified.
 \newcommand*{\printleftarialchapterheading}[1]
@@ -74,22 +105,38 @@
 % If this option is used, the chapter titles in the main matter will print with a large "Chapter ##" where
 % the ## is the chapter number, followed by the name of the chapter (used as an argument to the \chapter
 % command) printed below.
-\DeclareOption{usechapterstyleb}
+\DeclareOption{usechapterstyleucsd}
 {
-    \renewcommand*{\printchapterheading}[1]{\printchapterstyleb{#1}}
+    \renewcommand*{\printchapterheading}[1]{\printchapterstyleucsd{#1}}
+}
+
+% Similar to the UCSD chapter style but with different spacing.
+\DeclareOption{usechapterstylenumberandname}
+{
+    % Un-starred.
+    \renewcommand*{\printchapterheading}[1]{\printchapterstylenumberandname{#1}}
+
+    % Starred.
+    \renewcommand*{\printschapterheading}[1]{\printchapterstylesnumberandname{#1}}
+
 }
 
 % Remove the spacing between chapters in the list of figures and the list of tables.
-% Only works with the usechapterstylbeb style.
+% Only works with the usechapterstylenumberandname and usechapterstyleucsd style.
 %
 % I.e. do EITHER
 %
-% \usepackage[usechapterstyleb, addofchapterds]{lesections}
-% \usepackage[addofchapterds]{contentsindexbibformat}
+% \usepackage[usechapterstylenumberandname, addlofchapterds]{lesections}
+% \usepackage[addlofchapterds]{contentsindexbibformat}
 %
 % OR
 %
-% \usepackage[usechapterstyleb]{lesections}
+% \usepackage[usechapterstyleucsd, addlofchapterds]{lesections}
+% \usepackage[addlofchapterds]{contentsindexbibformat}
+%
+% OR
+%
+% \usepackage[usechapterstyleucsd]{lesections}
 % \usepackage{contentsindexbibformat}
 %
 % OR
