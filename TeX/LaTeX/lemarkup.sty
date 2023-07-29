@@ -5,26 +5,55 @@
 % For strike through text.
 \usepackage[normalem]{ulem}
 
+% Conditional tests.
+\usepackage{ifthen}
+
+% COLORS
 % Define colors for use with fonts.
 \usepackage{color}
 \definecolor{warningcolor}{rgb}{0.753,0,0}
 \definecolor{reviewcolor}{rgb}{0.85,0,0}
 
+% FORMATTING FOR USE IN TEXT
 % Special font formatting commands.
 \newcommand*{\important}[1]{\textbf{\textit{#1}}}
 \newcommand*{\warning}[1]{\textcolor{warningcolor}{\bfseries#1}}
 
+% FORMATTING FOR REVIEWING
+% Base formatting for other commands.
+\newcommand*{\@reviewbase}[1]{\textcolor{reviewcolor}{\bfseries#1}}
+\newcommand*{\@commentstart}{~[}
+\newcommand*{\@commentend}{]~}
+
+% Mark the text for deletion.
+\newcommand*{\removetext}[1]{\@reviewbase{\sout{#1}}}
+
+% A general review comment.
+\newcommand*{\reviewcomment}[1]{\@reviewbase{\@commentstart{}#1\@commentend{}}}
+
 % A reminder to go back and add a missing citation.
-\newcommand*{\needscitation}{\textcolor{reviewcolor}{\bfseries ~[NEEDS CITATION]~}}
-\newcommand*{\reviewcomment}[1]{\textcolor{reviewcolor}{\bfseries ~[#1]~}}
-\newcommand*{\removetext}[1]{\textcolor{reviewcolor}{\bfseries\sout{#1}}}
+\newcommand*{\needscitation}{\reviewcomment{NEEDS CITATION}}
+
+% A note that the text needs to be clarified or improved upon.
+\newcommand*{\needsclarification}[1][]
+{
+	\@reviewbase{\@commentstart{}Needs clarification}%
+	\ifthenelse{\equal{#1}{}}%
+	{%
+		\@reviewbase{.}%
+	}%
+	{%
+		\@reviewbase{: #1}%
+	}%
+	\@reviewbase{\@commentend{}}
+}
 
 
-
-% Notes.
+% NOTES FOR USE WHILE WRITTING
 % This macro just eats the input.  This allows notes or comments to be added without them being output to the document.
 \newcommand{\note}[1]{}
 
 % Can use this while writing to make sections that need to be completed.
-\newcommand*{\notfinished}{\large \begin{center} \textbf{********** N O T\ \ \ F I N I S H E D **********} \end{center} \normalsize}
-\newcommand*{\editorsnote}[1]{\large \begin{center} \textbf{****** #1 ******} \end{center} \normalsize}
+\newcommand*{\stars}{**********}
+\newcommand*{\notfinished}{\begin{center} \textbf{\textcolor{reviewcolor}{\large \stars{} N O T\ \ \ F I N I S H E D \stars{}}} \end{center}}
+\newcommand*{\editorsnote}[1]{\large \begin{center} \textbf{\stars{} #1 \stars{}} \end{center} \normalsize}
