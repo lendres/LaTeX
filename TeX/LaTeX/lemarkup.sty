@@ -14,14 +14,38 @@
 \definecolor{warningcolor}{rgb}{0.753,0,0}
 \definecolor{reviewcolor}{rgb}{0.85,0,0}
 
+
 % FORMATTING FOR USE IN TEXT
 % Special font formatting commands.
 \newcommand*{\important}[1]{\textbf{\textit{#1}}}
 \newcommand*{\warning}[1]{\textcolor{warningcolor}{\bfseries#1}}
 
+
+% TURN ON AND OFF MARKUP
+\newcommand*{\@usemarkup}{0}
+\newcommand*{\usemarkup}{\renewcommand*{\@usemarkup}{1}}
+
+
+% MARK UP NOTES
+% This can be used to add text while mark up mode is active and have it removed when mark
+% up mode is not active.
+\newcommand{\markupnote}[1]
+{%
+	\ifthenelse{\equal{\@usemarkup}{1}}%
+	{#1}%
+	{}%
+}
+
 % FORMATTING FOR REVIEWING
 % Base formatting for other commands.
-\newcommand*{\@reviewbase}[1]{\textcolor{reviewcolor}{\bfseries#1}}
+\newcommand*{\@reviewbase}[1]
+{%
+	\ifthenelse{\equal{\@usemarkup}{1}}%
+	{\textcolor{reviewcolor}{\bfseries#1}}%
+	{}%
+}
+
+% Comment starting and ending strings.
 \newcommand*{\@commentstart}{ [}
 \newcommand*{\@commentend}{] }
 
@@ -55,5 +79,5 @@
 
 % Can use this while writing to make sections that need to be completed.
 \newcommand*{\stars}{**********}
-\newcommand*{\notfinished}{\begin{center} \textbf{\textcolor{reviewcolor}{\large \stars{} N O T\ \ \ F I N I S H E D \stars{}}} \end{center}}
-\newcommand*{\editorsnote}[1]{\large \begin{center} \textbf{\stars{} #1 \stars{}} \end{center} \normalsize}
+\newcommand*{\notfinished}{\editorsnote{N O T\ \ \ F I N I S H E D}}
+\newcommand*{\editorsnote}[1]{\@reviewbase{\begin{center} \large \stars{} #1 \stars{}\end{center}}}
