@@ -46,8 +46,8 @@
 }
 
 % Comment starting and ending strings.
-\newcommand*{\@commentstart}{ [}
-\newcommand*{\@commentend}{] }
+\newcommand*{\@commentstart}{[}
+\newcommand*{\@commentend}{]}
 
 % Mark the text for deletion.
 \newcommand*{\removetext}[1]{\@reviewbase{\sout{#1}}}
@@ -71,6 +71,9 @@
 	}%
 	\@reviewbase{\@commentend{}}
 }
+
+% A note to rework the wording.
+\newcommand*{\wording}{\reviewcomment{Wording.}}
 
 
 % NOTES FOR USE WHILE WRITTING
