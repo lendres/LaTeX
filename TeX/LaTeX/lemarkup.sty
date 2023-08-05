@@ -60,7 +60,14 @@
 \newcommand*{\removetext}[1]{\@reviewbase{\sout{#1}}}
 
 % A general review comment.
-\newcommand*{\reviewcomment}[1]{\@reviewbase{\@commentstart{}#1\@commentend{}}}
+\newcommand*{\reviewcomment}[2][]
+{%
+	\@reviewbase{\@commentstart{}}%
+	\ifthenelse{\equal{#1}{}}%
+	{}%
+	{\@reviewbase{#1: }}%
+	\@reviewbase{#2\@commentend{}}%
+}
 
 % A reminder to go back and add a missing citation.
 \newcommand*{\needscitation}{\reviewcomment{NEEDS CITATION}}
