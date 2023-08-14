@@ -20,18 +20,20 @@ Temporary Items
 *.bak
 *.sav
 
-Example/*.aux
-Example/*.bbl
-Example/*.blg
-Example/*.dvi
-Example/*.idx
-Example/*.ilg
-Example/*.ind
-Example/*.lof
-Example/*.log
-Example/*.lot
-Example/*.out
-Example/*.pdf
-Example/*.bak
-Example/*.synctex
-Example/*.toc
+Installation and Usage/*.aux
+Installation and Usage/*.bbl
+Installation and Usage/*.blg
+Installation and Usage/*.dvi
+Installation and Usage/*.idx
+Installation and Usage/*.ilg
+Installation and Usage/*.ind
+Installation and Usage/*.lof
+Installation and Usage/*.log
+Installation and Usage/*.lot
+Installation and Usage/*.out
+Installation and Usage/*.bak
+Installation and Usage/*.synctex
+Installation and Usage/*.toc
+
+Installation and Usage/Figures/*.jpg
+Installation and Usage/Figures/*.eps
