@@ -1,0 +1,29 @@
+% MAKE A TITLE PAGE.
+
+% Prevents warning because the title page is not numbered, so the hyper reference cannot be setup.
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\thispagestyle{ledateinfooter}
+\begin{center}
+\bfseries
+
+%\Large A Guide to\\
+\LARGE A Guide to\\
+\vspace{10pt}
+\includegraphics[height=0.5in]{lelatexlogo}\\
+\LARGE Installation and Usage\\
+
+\vfill
+
+\large Written By\\
+\Large Lance A. Endres\\
+
+\vfill
+
+\normalsize Copyright \copyright\ 2023 Lance A. Endres
+
+\end{center}
+\end{titlepage}
+
+% Restore hyper reference anchoring.
+\hypersetup{pageanchor=true} 

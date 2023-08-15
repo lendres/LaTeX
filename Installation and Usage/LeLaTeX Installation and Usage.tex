@@ -4,17 +4,11 @@
 \input{"Setup.tex"}
 
 
-
 \begin{document}
-
 \input{"Title Page"}
-
-
 
 \pagestyle{leplainheader}
 \frontmatter{}
-
-\input{"About This Document"}
 
 % GENERATE THE TABLE OF CONTENTS AND LIST OF FIGURES.
 \tableofcontents{}
@@ -24,17 +18,11 @@
 \mainmatter{}
 \pagestyle{lemainheader}
 
-%INCLUDE CHAPTERS.
+\input{"Introduction"}
+\input{"Installation"}
+\input{"Working with LeLaTeX"}
 \input{"Style and Syntax"}
 \input{"LaTeX Examples"}
-
-%	\begin{figure}
-%		\centering \includegraphics[width=5.0in]{imagename}
-%		\caption{Caption.}
-%		\label{fig:imagename}
-%	\end{figure}
-%\editorsnote{Do we want this figure?  If not delete from figures directory.}
-
 
 % Include Items in the bibliography that are not specifically cited.
 \nocite{ref:ammeraal2000a}
@@ -44,9 +32,7 @@
 \pagestyle{leplainheader}
 
 % BIBLIOGRAPHY INFO.
-   % Remove temp after moving its text into le.bib.
-\bibliography{strings,le,temp}
-
+\bibliography{strings,le}
 
 % INDEX CROSS REFERENCES.
 %\index{Name|see{othername}}
