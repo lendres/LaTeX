@@ -34,6 +34,12 @@ The \figurename~\ref{fig:lelatexlogo} shows the CNPC logo.  Note, don't add the 
 	\caption[Short title for list of figures]{Longer title.  This is descriptive and can be multiple sentences.}
 	\label{fig:lelatexlogo}
 \end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[height=2.5in]{exampleepsfigure}
+	\caption[EPS example]{An example EPS image used as a figure.}
+	\label{fig:exampleepsfigure}
+\end{figure}
 
 % LISTS
 \section{Lists}
@@ -52,8 +58,8 @@ The \figurename~\ref{fig:lelatexlogo} shows the CNPC logo.  Note, don't add the 
 	\end{numberedlist}
 \end{bulletedlist}
 
- %DY: uncomment
- MATH
+
+\section{MATH}
 The (fake) calculation can be done using \equationname~\ref{eq:example}
 \begin{equation}
 	\alpha = 2\beta\sum \left( \frac{\gamma}{\sigma} \right)
@@ -65,7 +71,7 @@ The (fake) calculation can be done using \equationname~\ref{eq:example}
 	\mathdefitem{\gamma}{the third variable;}
 	\mathdefitem{\sigma}{the final variable.}
 \end{mathwhere}
-This example demonstrates specially written \textcode{mathwhere} environment define the variables.  The \textcode{mathwhere} environment uses an optional argument to specify where the equal sign is placed.  See the source code for more information.  The environment takes the form of the following.
+This example demonstrates specially written \textcode{mathwhere} environment define the variables.  The \textcode{mathwhere} environment uses an optional argument to specify where the equal sign is placed.  See the source code for more information.  The environment takes the form of
 \begin{plainlist}
 	\item \textcode{\tbs{}begin\{mathwhere\}[distance]}
 	\begin{plainlist}
@@ -76,7 +82,7 @@ This example demonstrates specially written \textcode{mathwhere} environment def
 \begin{mathwhere}[0.85in]
 	\mathdefitem{\textrm{distance}}{the space allowed for the item being defined (location of the equal sign);}
 	\mathdefitem{\textrm{math}}{a variable to define;}
-	\mathdefitem{\textrm{definition}}{the definition of the variable;}
+	\mathdefitem{\textrm{definition}}{the definition of the variable.}
 \end{mathwhere}
 
 

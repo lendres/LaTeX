@@ -1,0 +1,66 @@
+\chapter{Working with \lelatex}
+
+\section{Graphics}
+\lelatex{} has been set up to produce both \textcode{.dvi} and \textcode{.pdf} formats as output.
+
+\subsection{Historical Use}
+There are a few issues that are associated with using graphics with both \textcode{.dvi} and \textcode{.pdf} files.  The graphics used to generate the \textcode{.pdf} format must be in either \textcode{.pdf} or \textcode{.jpg} format.  Some figures are of the \textcode{.eps} format (they are small, in vector format, and work well with \LaTeX) and as a result need to be converted to work in the \textcode{.pdf} output file.  Versions of the \textcode{.eps} files in \textcode{.pdf} format can be created the batch file
+\begin{plainlist}
+	\item \textcode{manual\ul{}convert\ul{}all\ul{}images.bat}
+\end{plainlist}
+located in the same directory as the figures.  See the batch file itself for more details.
+
+\subsection{Current Use}
+Advances in either \LaTeX{} and/or \miktex{} seem to have
+
+\subsection{Figures}
+You can add figures in either JPG or EPS format.
+\begin{numberedlist}
+	\item Add the figure in the appropriate folder.
+	\begin{plainlist}
+		\item \textcode{.\tbs{}Figures\tbs{}Image Sources\tbs{}Eps}
+		\item \textcode{.\tbs{}Figures\tbs{}Image Sources\tbs{}Jpg}
+	\end{plainlist}
+	\item Then run \textcode{.\tbs{}Figures\tbs{}Image Sources\tbs{}manual\_convert\_all\_images.bat}.
+\end{numberedlist}
+
+
+\section{Notes on Running}
+\subsection{Compiling}
+\begin{bulletedlist}
+	\item To compile use \textcode{run\_manual\_make\_document.bat}.
+\end{bulletedlist}
+
+
+\section{Batch Files}
+The "Processing Support" directory contains a series of files to help with processing \LaTeX{} files.  It provides a few features that are not provided by WinEdt.  Mostly it works like "Texify" but allows for glossary support.  It also allows for additional customization like opening or closing files.
+
+These support files are designed to work with WinEdt or stand alone.  To use with WinEdt, custom buttons or menu items are needed.  See the "Custom Program Files\tbs{}WinEdt" directory for information about how to do this.
+
+To use, copy the project files (found in the "Examples" directory) into the document working directory (with the LaTeX files).
+
+A short description of the files is below.  Additional comments and instructions can be found inside the individual files.
+
+File in this directory:
+ - makedocument.bat
+	Main processing file.  The root file name and additional arguments are passed to this file.
+
+ - clean*.bat
+	Clean up batch files used to delete temporary and output files.
+
+ - close.exe
+	A small app that can close a Window (running software application) based on its name in the title bar.
+	Useful for forcing Adobe Reader to close, for example.
+
+Project files:
+ - runmakedocument.bat
+	A small batch file used to call "makedocument.bat" with the specific arguments required for a specific document.
+	Used by WinEdt.  WinEdt passes the document name to this file.  That is passed along with the additional arguments to "makedocument."
+	This file must be edited to set the additional arguments.
+
+ - manualakedocument.bat
+	A small batch file used to manually call "makedocument.bat."  It passes the file name to "runmakedocument.bat."
+	This file has an option automatically detect the main \LaTeX{} file.
+		To work, the \LaTeX{} file must have the same root file name as WinEdt project.
+		If the file name is different, this file must be edited to manually enter the file name.
+	Technically, this file can actually be called anything as it is not externally referenced. 

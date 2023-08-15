@@ -1,3 +1,0 @@
-This folder constains a directory structure template for figures.  Copy it to a new project location for easy setup.
-Some dummy.txt files are used to ensure the directory structured is stored on Github.  They can be deleted after adding
-the first figure in the directory.
