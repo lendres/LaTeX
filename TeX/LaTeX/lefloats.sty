@@ -13,6 +13,13 @@
 % per default only allows a part of the top of a text-page (70%) to contain figures, and requires at least 20%
 % of a page to be text when text and figures share a page. These parameters should be set to more reasonable
 % values, for example 85% and 10%.
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.1} 
+
+% Tweaks to the amount of space floats can occupy on a page.
+%\textfraction       minimum fraction of page for text	0.2
+%\topfraction        maximum fraction of page for floats at top	0.7
+%\bottomfraction     maximum fraction of page for floats at bottom	0.3
+%\floatpagefraction	 minimum fraction of floatpage that should have floats	0.5
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\floatpagefraction}{0.85}
