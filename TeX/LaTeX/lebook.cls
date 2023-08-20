@@ -66,16 +66,6 @@
 
 % FLOATS
 \usepackage{lefloats}
-% Tweaks to the amount of space floats can occupy on a page.
-%\textfraction       minimum fraction of page for text	0.2
-%\topfraction        maximum fraction of page for floats at top	0.7
-%\bottomfraction     maximum fraction of page for floats at bottom	0.3
-%\floatpagefraction	 minimum fraction of floatpage that should have floats	0.5
-\renewcommand{\textfraction}{0.05}
-\renewcommand{\topfraction}{0.95}
-\renewcommand{\bottomfraction}{0.95}
-\renewcommand{\floatpagefraction}{0.85}
-
 
 % TABLE OF CONTENTS, INDEX, AND BIBLIOGRAPHY.
 %\usepackage[hrefbib]{lecontentsindexbibformat}

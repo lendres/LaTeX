@@ -26,6 +26,8 @@
 
 \LoadClass[12pt, titlepage, oneside, letterpaper, usechapterstylenumberandname]{lebook}
 
+\usepackage{cnpcheadersandfooters}
+
 % HEADERS AND FOOTERS
 % Use this to use the CNPC header with the logo and a bottom footer with line and page number.
 \pagestyle{cnpcusareportothermatter}
