@@ -1,0 +1,75 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{leheadersandfooters}[2006/08/16 Provides sets of headers and footers.]
+
+\RequirePackage{lastpage}
+\usepackage{lecontactinfo}
+\usepackage{lefonts}
+
+\newcommand*{\ps@storethechapter}{}
+
+% HEADER
+% LOGO                                                                       Name
+%
+% FOOTER
+% This footer does not work with Glossaries package.
+% Chapter name and title on left, page number one right.  An rule stretches the width of the page.
+% -----------------------------------------------------------
+% Chapter 1: Title of Chapter                               2
+\newcommand*{\cnpctopbottommargins}
+{
+	\setlength{\voffset}{-61pt}
+	\setlength{\headheight}{0.6in}
+	\setlength{\headsep}{30pt}
+	\setlength{\footmargin}{0.68in}
+	\calctextheight{}
+	\calcfootskip{}
+}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{background}{gray}{0.92}
+%\colorbox{background}{}
+%\raggedleft\normalsize\bfseries{}CNPC\\USA\
+
+\newcommand*{\cnpclogoheader}
+{
+	\begin{minipage}[t]{\textwidth-2.5pt}%
+		\begin{minipage}[c]{1.0in}\includegraphics[height=0.50in]{cnpclogo}\end{minipage}
+		\hfill
+		\begin{minipage}[c]{\textwidth-1.75in}\raggedleft\includegraphics[height=0.32in]{cncpcusatext}\end{minipage}
+	\end{minipage}\\
+}
+\newcommand*{\ps@cnpcusareport}
+{
+	\renewcommand*{\@oddhead}{\cnpclogoheader}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{%
+        \begin{minipage}{\textwidth}\bfseries
+        		\rule{\textwidth}{0.6pt} \vspace{-10pt}
+                \chaptername\ \ps@storethechapter{} \protect\thechapter : \chaptertitle\ \hfill \thepage
+        \end{minipage}%
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+% HEADER
+% LOGO                                                                       Name
+%
+% FOOTER
+% Chapter name and title on left, page number one right.  An rule stretches the width of the page.
+% -----------------------------------------------------------
+% Title of Chapter                                          2
+\newcommand*{\ps@cnpcusareportothermatter}
+{
+	\renewcommand*{\@oddhead}{\cnpclogoheader}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{%
+        \begin{minipage}{\textwidth}\bfseries
+        		\rule{\textwidth}{0.6pt} \vspace{-10pt}
+                \chaptertitle\ \hfill \thepage
+        \end{minipage}%
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
