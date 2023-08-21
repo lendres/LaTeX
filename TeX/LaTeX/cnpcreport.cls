@@ -18,13 +18,13 @@
 \def\update{2023/07/30 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lecnpcreport}[\update\ Lance A. Endres]
+\ProvidesClass{cnpcreport}[\update\ Lance A. Endres]
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebook}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebookbase}}
 
 \ProcessOptions
 
-\LoadClass[12pt, titlepage, oneside, letterpaper, usechapterstylenumberandname]{lebook}
+\LoadClass[12pt, titlepage, oneside, letterpaper, usechapterstylenumberandname]{lebookbase}
 
 \usepackage{cnpcheadersandfooters}
 
