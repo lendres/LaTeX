@@ -1,12 +1,19 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{leheadersandfooters}[2006/08/16 Provides sets of headers and footers.]
+\ProvidesPackage{cnpcheadersandfooters}[2006/08/16 Provides sets of headers and footers.]
 
-\RequirePackage{lastpage}
-\usepackage{lecontactinfo}
 \usepackage{lefonts}
+\usepackage{legraphicextensions}
+\usepackage{leheadersandfooters}
 
-\newcommand*{\ps@storethechapter}{}
+\usepackage{color}
+\definecolor{lightgrey}{rgb}{0.35,0.35,0.35}
+\definecolor{addressgrey}{rgb}{0.251,0.251,0.251}
+\definecolor{webred}{rgb}{0.6824,0.1725,0.1647}
+
+% You must manually refresh the file name database after intalling the "transparent" package.
+% You need to compile a document twice for transparency chages to take effect.
+%\usepackage{transparent}
 
 % HEADER
 % LOGO                                                                       Name
@@ -25,11 +32,6 @@
 	\calctextheight{}
 	\calcfootskip{}
 }
-
-\usepackage[dvipsnames]{xcolor}
-\definecolor{background}{gray}{0.92}
-%\colorbox{background}{}
-%\raggedleft\normalsize\bfseries{}CNPC\\USA\
 
 \newcommand*{\cnpclogoheader}
 {
@@ -66,33 +68,32 @@
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}
 	{%
-        \begin{minipage}{\textwidth}\bfseries
-        		\rule{\textwidth}{0.6pt} \vspace{-10pt}
-                \chaptertitle\ \hfill \thepage
-        \end{minipage}%
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+		\begin{minipage}{\textwidth}\bfseries
+			\rule{\textwidth}{0.6pt} \vspace{-10pt}
+			\chaptertitle\ \hfill \thepage
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
 
 \newcommand*{\ps@cnpcletterheadA}
 {
-	\renewcommand*{\@oddhead}{
+	\renewcommand*{\@oddhead}{%
 		\begin{minipage}[t]{\textwidth-2.5pt}%
-			\begin{minipage}[c]{1.0in}\includegraphics[height=0.50in]{cnpclogo}\end{minipage}
-			\hfill
-			\begin{minipage}[c]{\textwidth-1.75in}\raggedleft\includegraphics[height=0.32in]{cncpcusatext}\end{minipage}
+			\begin{minipage}[c]{1.0in}\includegraphics[height=0.65in]{cnpclogo}\end{minipage}
 		\end{minipage}
 	}
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}
 	{%
-        \begin{minipage}{\textwidth}\bfseries
-			2901 Wilcrest Drive
-			Houston, TX \ 77042
-			\vspace*{6pt}
-			www.cnpcusa.com
-        \end{minipage}%
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
+		\begin{minipage}{\textwidth}\Arial{}\small{}
+			\begin{minipage}[c]{1.0in}\includegraphics[height=0.350in]{cnpcusacorp}\end{minipage} \vspace*{13pt} \\
+			{\color{addressgrey}2901 Wilcrest Drive \\
+			Houston, TX \ 77042 \\
+			713.972.6600 \vspace*{7pt} \\}
+			{\color{webred}www.cnpcusa.com}
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
 }

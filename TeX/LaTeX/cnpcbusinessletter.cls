@@ -14,37 +14,25 @@
 % "A Guide to LaTeX", 3rd Edition
 % by Helmut Kopka & Patrick W. Daly
 
-\def\update{2004/01/23 v1.0}
+\def\update{2023/08/20 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{cnpcbusinessletter}[]
 
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebusinessletterbase}}
+\ProcessOptions
+\LoadClass[12pt, oneside, letterpaper]{lebusinessletterbase}
+
+\setlength{\headsep}{0.65in}
+\setlength{\bottommargin}{2.0in}
+\setlength{\footmargin}{\bottommargin-1in}
+\calctextheight{}
+\calcfootskip{}
 
 % LETTER HEAD HEADERS AND FOOTERS
-\usepackage{ikosyheadersandfooters}
-\newcommand*{\ik@letterheadstyle}{\ps@cnpcletterheadA}
-%\DeclareOption{HeaderStyleC}
-%{
-%	\renewcommand{\ik@letterheadstyle}{\ps@ikosybusinessletterA}
-%}
-%\DeclareOption{HorizontalLineHeaderFooter}
-%{
-%	\renewcommand{\ik@letterheadstyle}{\ps@lehorizontalline}
-%}
-%\DeclareOption{BlankLetterHead}
-%{
-%	\renewcommand{\ik@letterheadstyle}{\ps@leempty}
-%}
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebusinessletter}}
-\ProcessOptions \LoadClass[12pt, oneside, letterpaper]{lebusinessletter}
-
-\usepackage{legraphicextensions}
-
-% CONTACT INFO
-%\usepackage{lecontactinfo}
-%\telephone{\phone{}}
+\usepackage{cnpcheadersandfooters}
+\newcommand*{\cnpc@letterheadstyle}{\ps@cnpcletterheadA}
 
 % PAGE FORMATTING
-\let\ps@empty\ik@letterheadstyle
-\let\ps@firstpage\ik@letterheadstyle
+\let\ps@empty\cnpc@letterheadstyle
+\let\ps@firstpage\cnpc@letterheadstyle

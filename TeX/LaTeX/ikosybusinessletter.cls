@@ -19,25 +19,9 @@
 
 \ProvidesClass{ikosybusinessletter}[]
 
-
-% LETTER HEAD HEADERS AND FOOTERS
-\usepackage{ikosyheadersandfooters}
-\newcommand*{\ik@letterheadstyle}{\ps@ikosybusinessletterA}
-%\DeclareOption{HeaderStyleC}
-%{
-%	\renewcommand{\ik@letterheadstyle}{\ps@ikosybusinessletterA}
-%}
-%\DeclareOption{HorizontalLineHeaderFooter}
-%{
-%	\renewcommand{\ik@letterheadstyle}{\ps@lehorizontalline}
-%}
-%\DeclareOption{BlankLetterHead}
-%{
-%	\renewcommand{\ik@letterheadstyle}{\ps@leempty}
-%}
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebusinessletter}}
-\ProcessOptions \LoadClass[12pt, oneside, letterpaper]{lebusinessletter}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebusinessletterbase}}
+\ProcessOptions
+\LoadClass[12pt, oneside, letterpaper]{lebusinessletterbase}
 
 \usepackage{legraphicextensions}
 
@@ -45,6 +29,8 @@
 %\usepackage{lecontactinfo}
 %\telephone{\phone{}}
 
-% PAGE FORMATTING
+% LETTER HEAD HEADERS AND FOOTERS
+\usepackage{ikosyheadersandfooters}
+\newcommand*{\ik@letterheadstyle}{\ps@ikosybusinessletterA}
 \let\ps@empty\ik@letterheadstyle
 \let\ps@firstpage\ik@letterheadstyle
