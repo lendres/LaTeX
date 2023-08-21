@@ -20,6 +20,9 @@ Temporary Items
 *.bak
 *.sav
 
+TeX/LaTeX/Figures/*.jpg
+TeX/LaTeX/Figures/*.eps
+
 Installation and Usage/*.aux
 Installation and Usage/*.bbl
 Installation and Usage/*.blg
