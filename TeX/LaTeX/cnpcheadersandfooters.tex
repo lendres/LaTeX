@@ -73,3 +73,26 @@
     }
     \renewcommand*{\@evenfoot}{\@oddfoot}
 }
+
+
+\newcommand*{\ps@cnpcletterheadA}
+{
+	\renewcommand*{\@oddhead}{
+		\begin{minipage}[t]{\textwidth-2.5pt}%
+			\begin{minipage}[c]{1.0in}\includegraphics[height=0.50in]{cnpclogo}\end{minipage}
+			\hfill
+			\begin{minipage}[c]{\textwidth-1.75in}\raggedleft\includegraphics[height=0.32in]{cncpcusatext}\end{minipage}
+		\end{minipage}
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{%
+        \begin{minipage}{\textwidth}\bfseries
+			2901 Wilcrest Drive
+			Houston, TX \ 77042
+			\vspace*{6pt}
+			www.cnpcusa.com
+        \end{minipage}%
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}

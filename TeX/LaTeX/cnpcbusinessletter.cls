@@ -17,12 +17,12 @@
 \def\update{2004/01/23 v1.0}
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{ikosybusinessletter}[]
+\ProvidesClass{cnpcbusinessletter}[]
 
 
 % LETTER HEAD HEADERS AND FOOTERS
 \usepackage{ikosyheadersandfooters}
-\newcommand*{\ik@letterheadstyle}{\ps@ikosybusinessletterA}
+\newcommand*{\ik@letterheadstyle}{\ps@cnpcletterheadA}
 %\DeclareOption{HeaderStyleC}
 %{
 %	\renewcommand{\ik@letterheadstyle}{\ps@ikosybusinessletterA}
