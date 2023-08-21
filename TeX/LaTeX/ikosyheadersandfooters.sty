@@ -12,21 +12,20 @@
 % FOOTER
 % Single horizontal line.
 % -----------------------------------------------------------
-%
 \newcommand*{\ps@ikosybusinessletterA}
 {
-    \renewcommand*{\@oddhead}
-    {
-        \begin{minipage}{\textwidth} \hfill \includegraphics[width=2.00in]{ikosylogo1} \hfill\vspace*{-6pt}\\%
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenhead}{\@oddhead}
-    \renewcommand*{\@oddfoot}
-    {
-        \begin{minipage}{\textwidth}
-                 \rule{\textwidth}{1pt}
-        \end{minipage}
-    }
-    \renewcommand*{\@evenfoot}{\@oddfoot}
-} 
+	\renewcommand*{\@oddhead}%
+	{%
+		\begin{minipage}{\textwidth} \hfill \includegraphics[width=2.00in]{ikosylogo1} \hfill\vspace*{-6pt}\\%
+			\rule{\linewidth-3pt}{1pt}%
+		\end{minipage}%
+	}%
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}%
+	{%
+		\begin{minipage}{\textwidth}%
+			\rule{\linewidth}{1pt}%
+		\end{minipage}%
+	}%
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}

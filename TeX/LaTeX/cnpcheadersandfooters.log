@@ -1,0 +1,53 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.20)  20 AUG 2023 17:56
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./cnpcheadersandfooters.tex
+(cnpcheadersandfooters.tex
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-06-30>
+
+LaTeX Warning: You have requested package `',
+               but the package provides `leheadersandfooters'.
+
+Package: leheadersandfooters 2006/08/16 Provides sets of headers and footers.
+(C:\Users\Lance\AppData\Roaming\MiKTeX\2.9\tex/latex/lastpage\lastpage.sty
+Package: lastpage 2023/07/24 v2.0c lastpage: 2.09 or 2e? (HMM)
+
+(C:\Users\Lance\AppData\Roaming\MiKTeX\2.9\tex/latex/lastpage\lastpage2e.sty
+Package: lastpage2e 2023/07/24 v2.0c Decide which 2e lastpage version to use (H
+MM)
+
+(C:\Users\Lance\AppData\Roaming\MiKTeX\2.9\tex/latex/lastpage\lastpagemodern.st
+y
+Package: lastpagemodern 2023-07-24 v2.0c Refers to last page's name (HMM; JPG)
+) 
+))
+
+! LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \usepackage{
+                lecontactinfo}
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.6 \usepackage{
+                lecontactinfo}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+ 
+Here is how much of TeX's memory you used:
+ 106 strings out of 475550
+ 2935 string characters out of 5770420
+ 1916238 words of memory out of 5000000
+ 21416 multiletter control sequences out of 15000+600000
+ 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 70i,0n,65p,181b,17s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
