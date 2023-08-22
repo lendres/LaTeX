@@ -23,16 +23,22 @@
 \ProcessOptions
 \LoadClass[12pt, oneside, letterpaper]{lebusinessletterbase}
 
-\setlength{\headsep}{0.65in}
-\setlength{\bottommargin}{2.0in}
-\setlength{\footmargin}{\bottommargin-1in}
+% Alter page setup.
+\setlength{\voffset}{-52pt}
+\setlength{\headheight}{0.65in}
+\setlength{\headsep}{14pt}
+\setlength{\footmargin}{0.35in}
+\setlength{\bottommargin}{1.6in}
+\setlength{\addressskip}{0\parskip}
 \calctextheight{}
 \calcfootskip{}
 
 % LETTER HEAD HEADERS AND FOOTERS
 \usepackage{cnpcheadersandfooters}
-\newcommand*{\cnpc@letterheadstyle}{\ps@cnpcletterheadA}
 
-% PAGE FORMATTING
-\let\ps@empty\cnpc@letterheadstyle
-\let\ps@firstpage\cnpc@letterheadstyle
+% In the letter document class, \opening issues \thispagestyle{firstpage}, where \ps@firstpage is defined in letter.cls for the first page of a letter.
+\let\ps@empty\ps@cnpcletterheadA
+\let\ps@firstpage\ps@cnpcletterheadA
+
+% Remaining page styles.
+\pagestyle{cnpcletterheadA}

@@ -39,7 +39,7 @@
 \DeclareOption{UseSignature}
 {
 	% The signature image is saved in my custom LaTeX TexMF directory.  You must update the file name database to use it.
-    \renewcommand{\signaturegraphic}{\noindent\raggedright\parbox[t][4\medskipamount][c]{\textwidth}{\includegraphics[width=2.5in]{signature}}}
+    \renewcommand{\signaturegraphic}{\noindent\raggedright\parbox[t][4\medskipamount]{\textwidth}{\includegraphics[height=4\medskipamount]{signature}}}
 }
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{letter}}
@@ -50,7 +50,8 @@
 \usepackage{lefontsizes}
 
 % Single (1) or double (2) spaced.
-\renewcommand{\baselinestretch}{1}
+\setlength{\parskip}{8.25pt plus 1pt minus 1pt}
+%\renewcommand{\baselinestretch}{1}
 
 
 % PAGE FORMATTING COMMANDS (See pg. 35 for a diagram on page layout parameters).
@@ -64,7 +65,7 @@
 % Vertical spacing.
 \setlength{\voffset}{-0.45in}                           % Reduce some of the 1 in standard margin.
 \setlength{\headheight}{24pt}
-\setlength{\headsep}{20pt+\addressskip}
+\setlength{\headsep}{28pt}
 \setlength{\topskip}{12pt}
 \setlength{\bottommargin}{1.0in}
 \setlength{\footmargin}{\bottommargin-24pt}

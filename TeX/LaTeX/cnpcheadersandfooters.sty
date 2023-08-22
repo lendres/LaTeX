@@ -8,7 +8,8 @@
 
 \usepackage{color}
 \definecolor{lightgrey}{rgb}{0.35,0.35,0.35}
-\definecolor{addressgrey}{rgb}{0.251,0.251,0.251}
+\definecolor{addressgrey}{rgb}{0.2,0.2,0.2}
+%\definecolor{addressgrey}{rgb}{0.25,0.25,0.25}
 \definecolor{webred}{rgb}{0.6824,0.1725,0.1647}
 
 % You must manually refresh the file name database after intalling the "transparent" package.
@@ -76,23 +77,22 @@
 	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
-
 \newcommand*{\ps@cnpcletterheadA}
 {
-	\renewcommand*{\@oddhead}{%
-		\begin{minipage}[t]{\textwidth-2.5pt}%
-			\begin{minipage}[c]{1.0in}\includegraphics[height=0.65in]{cnpclogo}\end{minipage}
-		\end{minipage}
+	\renewcommand*{\@oddhead}%
+	{%
+		\begin{minipage}[t]{\textwidth}%
+			\includegraphics[height=0.65in]{cnpclogo}%
+		\end{minipage}%
 	}
 	\renewcommand*{\@evenhead}{\@oddhead}
-	\renewcommand*{\@oddfoot}
-	{%
-		\begin{minipage}{\textwidth}\Arial{}\small{}
-			\begin{minipage}[c]{1.0in}\includegraphics[height=0.350in]{cnpcusacorp}\end{minipage} \vspace*{13pt} \\
+	\renewcommand*{\@oddfoot}{%
+		\begin{minipage}[b]{\textwidth}\Arial{}\Tiny{}%
+			\begin{minipage}[t]{1.0in}\includegraphics[height=0.350in]{cnpcusacorp}\end{minipage} \vspace*{6pt} \\%
 			{\color{addressgrey}2901 Wilcrest Drive \\
 			Houston, TX \ 77042 \\
-			713.972.6600 \vspace*{7pt} \\}
-			{\color{webred}www.cnpcusa.com}
+			713.972.6600 \vspace*{4pt} \\}
+			{\color{webred}\bfseries{}www.cnpcusa.com}
 		\end{minipage}%
 	}
 	\renewcommand*{\@evenfoot}{\@oddfoot}
