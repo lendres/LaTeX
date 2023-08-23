@@ -77,22 +77,31 @@
 	\renewcommand*{\@evenfoot}{\@oddfoot}
 }
 
+% To shift the header and footer into the margin, this length is used.  It is not a pretty method,
+% but it seems to work.  It requires the \hspace to be inside of an enclosing minipage to prevent
+% bad boxes from forming.  Although, this seems like a technicallity.
+% Alternate method may be to use the fancyhdr package and \addtolength{\headwidth}{\marginparsep} \addtolength{\headwidth}{\marginparwidth}
+% https://groups.google.com/g/comp.text.tex/c/kxMJ0bnSIS0
+\newlength{\@marginincursion}
+\setlength{\@marginincursion}{-0.5in}
 \newcommand*{\ps@cnpcletterheadA}
 {
 	\renewcommand*{\@oddhead}%
 	{%
 		\begin{minipage}[t]{\textwidth}%
-			\includegraphics[height=0.65in]{cnpclogo}%
+			\hspace*{\@marginincursion}\includegraphics[height=0.65in]{cnpclogo}%
 		\end{minipage}%
 	}
 	\renewcommand*{\@evenhead}{\@oddhead}
 	\renewcommand*{\@oddfoot}{%
-		\begin{minipage}[b]{\textwidth}\Arial{}\Tiny{}%
-			\begin{minipage}[t]{1.0in}\includegraphics[height=0.350in]{cnpcusacorp}\end{minipage} \vspace*{6pt} \\%
-			{\color{addressgrey}2901 Wilcrest Drive \\
-			Houston, TX \ 77042 \\
-			713.972.6600 \vspace*{4pt} \\}
-			{\color{webred}\bfseries{}www.cnpcusa.com}
+		\begin{minipage}[b]{\textwidth}%
+			\hspace*{\@marginincursion}\begin{minipage}[b]{1.0in}\Arial{}\Tiny{}%
+				\includegraphics[height=0.350in]{cnpcusacorp} \vspace*{6pt} \\%
+				{\color{addressgrey}2901 Wilcrest Drive \\%
+				Houston, TX \ 77042 \\%
+				713.972.6600 \vspace*{4pt} \\}%
+				{\color{webred}\bfseries{}www.cnpcusa.com}%
+			\end{minipage}%
 		\end{minipage}%
 	}
 	\renewcommand*{\@evenfoot}{\@oddfoot}
