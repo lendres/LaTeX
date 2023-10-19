@@ -23,7 +23,8 @@
 \ProcessOptions
 \LoadClass[12pt, oneside, letterpaper]{lebusinessletterbase}
 
-% Alter page setup.
+% PAGE SETUP
+% See lepageformat.sty for definitions.
 \setlength{\voffset}{-52pt}
 \setlength{\headheight}{0.65in}
 \setlength{\headsep}{14pt}
@@ -33,7 +34,7 @@
 \calctextheight{}
 \calcfootskip{}
 
-% LETTER HEAD HEADERS AND FOOTERS
+% HEADERS AND FOOTERS
 \usepackage{cnpcheadersandfooters}
 
 % In the letter document class, \opening issues \thispagestyle{firstpage}, where \ps@firstpage is defined in letter.cls for the first page of a letter.

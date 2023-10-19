@@ -31,4 +31,13 @@
 % HEADERS AND FOOTERS
 % Use this to use the CNPC header with the logo and a bottom footer with line and page number.
 \pagestyle{cnpcusareportothermatter}
-\cnpctopbottommargins{}
+
+% PAGE SETUP
+% See lepageformat.sty for definitions.
+\setlength{\voffset}{-61pt}
+\setlength{\headheight}{0.6in}
+\setlength{\headsep}{30pt}
+\setlength{\bottommargin}{0.98in}
+\setlength{\footmargin}{0.68in}
+\calctextheight{}
+\calcfootskip{}
