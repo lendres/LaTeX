@@ -393,11 +393,12 @@
 \setlength{\datewidth}{1.5in}
 \newcommand{\catentry}[3]
 {
-    \noindent\begin{minipage}[t]{\textwidth}
+    \noindent\begin{minipage}[t]{\linewidth}
         \begin{minipage}[t]{\datewidth}
             \emph{#1}
         \end{minipage}
-        \begin{minipage}[t]{\textwidth-\datewidth}
+        \hfill
+        \begin{minipage}[t]{\linewidth-\datewidth-2pt}
             \emph{#2}\\#3
         \end{minipage}
     \end{minipage}
@@ -413,9 +414,10 @@
 \newcommand{\publication}[2]
 {
     \noindent
-    \begin{minipage}[t]{\textwidth}
+    \begin{minipage}[t]{\linewidth}
         \begin{minipage}[t]{\pubcountwidth} #1 \end{minipage}
-        \begin{minipage}[t]{\textwidth-\pubcountwidth} #2 \end{minipage}
+        \hfill
+        \begin{minipage}[t]{\linewidth-\pubcountwidth-2pt} #2 \end{minipage}
     \end{minipage}
     \vspace*{8pt}
 }
