@@ -71,7 +71,13 @@
     \setlength{\abovecaptionskipstore}{\abovecaptionskip}
     \setlength{\belowcaptionskip}{\abovecaptionskip}
     \setlength{\abovecaptionskip}{0pt}
-    \begin{table}[#1]
+    \ifthenelse{\equal{#1}{}}
+    {
+    	\begin{table}
+    }
+    {
+    	\begin{table}[#1]
+    }
 }
 {
     \end{table}
