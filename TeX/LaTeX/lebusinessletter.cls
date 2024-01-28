@@ -19,10 +19,11 @@
 
 \ProvidesClass{lebusinessletter}[]
 
+\usepackage{leheadersandfooters}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{lebusinessletterbase}}
 
 % LETTER HEAD HEADERS AND FOOTERS
-\usepackage{leheadersandfooters}
 \newcommand*{\bl@letterheadstyle}{\ps@leletterheada}
 \DeclareOption{HeaderStyleC}
 {
