@@ -5,10 +5,10 @@
 \newcommand*{\@name}{Name}
 
 % Some packages may provide a \name command (for example, letter), so we use TeX commands to test if it is defined and act accordingly.
-\ifx\name\undefined
-	\newcommand*{\name}[1]{\renewcommand*{\@name}{#1}}
+\ifx\titlename\undefined
+	\newcommand*{\titlename}[1]{\renewcommand*{\@name}{#1}}
 \else
-	\renewcommand*{\name}[1]{\renewcommand*{\@name}{#1}}
+	\renewcommand*{\titlename}[1]{\renewcommand*{\@name}{#1}}
 \fi
 
 % Addresses.
