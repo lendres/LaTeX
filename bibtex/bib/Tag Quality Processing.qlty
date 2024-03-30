@@ -137,6 +137,7 @@
 					replacement="{PDC}">
 					<tags>
 						<tag>title</tag>
+						<tag>abstract</tag>
 					</tags>
 				</tagprocessor>
 
@@ -146,9 +147,30 @@
 					replacement="{3D}">
 					<tags>
 						<tag>title</tag>
+						<tag>abstract</tag>
 					</tags>
 				</tagprocessor>
-				
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor"
+					tagstoprocess="OnlySpecified"
+					pattern="FEA"
+					replacement="{FEA}">
+					<tags>
+						<tag>title</tag>
+						<tag>abstract</tag>
+					</tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor"
+					tagstoprocess="OnlySpecified"
+					pattern="CFD"
+					replacement="{CFD}">
+					<tags>
+						<tag>title</tag>
+						<tag>abstract</tag>
+					</tags>
+				</tagprocessor>
+
 			</tagprocessors>
 		</tagprocessorgroup>
 
