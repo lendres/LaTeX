@@ -63,4 +63,10 @@
 	\vspace{6pt plus 1pt minus 1pt}
 }
 
-\newcommand{\noreview}[1]{\begin{referencewithoutreview}{#1}\end{referencewithoutreview}}
+\newcommand{\noreview}[1]
+{
+	\vspace{\reviewheadingspacing}
+	\noindent{\review@titlesize\textbf{Reviewless Reference}}\newline{}%
+	\noindent\bibentry{#1}\par%
+	\vspace{6pt plus 1pt minus 1pt}
+}
