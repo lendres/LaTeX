@@ -148,9 +148,29 @@
 					</tags>
 				</tagprocessor>
 
+				<tagprocessor xsi:type="StringReplacementTagProcessor"
+					tagstoprocess="OnlySpecified"
+					pattern="\\\\&amp;lt;"
+					replacement="\textless{}">
+					<tags>
+						<tag>title</tag>
+						<tag>abstract</tag>
+					</tags>
+				</tagprocessor>				
+				
+				<tagprocessor xsi:type="StringReplacementTagProcessor"
+					tagstoprocess="OnlySpecified"
+					pattern="\\\\&amp;gt;"
+					replacement="\textgreater{}">
+					<tags>
+						<tag>title</tag>
+						<tag>abstract</tag>
+					</tags>
+				</tagprocessor>
+
 			</tagprocessors>
 		</tagprocessorgroup>
-		
+	
 		<tagprocessorgroup name="HTML Characters">
 			<tagprocessors>
 				
