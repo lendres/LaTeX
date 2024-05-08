@@ -228,6 +228,16 @@
 					</tags>
 				</tagprocessor>
 
+				<tagprocessor xsi:type="StringReplacementTagProcessor"
+				tagstoprocess="OnlySpecified"
+				pattern="FPSO"
+				replacement="{FPSO}">
+				<tags>
+					<tag>title</tag>
+					<tag>abstract</tag>
+				</tags>
+			</tagprocessor>
+
 			</tagprocessors>
 		</tagprocessorgroup>
 
