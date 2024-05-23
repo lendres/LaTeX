@@ -50,8 +50,11 @@ rem del *.gls
 rem del *.sts
 rem et cetera
 
-del *.??s
-
+rem Delete files with 3 letter extensions ending is "s" except ones ending in "cls".
+for %%a in (.\*.??s) do (
+    if /i not "%%~xa"==".cls" del "%%a"
+)
+rem del *.??s
 
 rem Delete glossary output files.
 rem del *.glo
@@ -59,3 +62,5 @@ rem del *.sto
 rem et cetera
 
 del *.??o
+
+pause
