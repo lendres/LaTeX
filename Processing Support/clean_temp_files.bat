@@ -62,5 +62,3 @@ rem del *.sto
 rem et cetera
 
 del *.??o
-
-pause
