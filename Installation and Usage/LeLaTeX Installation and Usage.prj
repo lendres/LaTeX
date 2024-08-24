@@ -1,22 +1,19 @@
-36 Patch Control
+45 Patch Control
 
 1
 1
 1
 LeLaTeX Installation and Usage.tex
-19
+15
 8
-0
+6
 
 LeLaTeX Installation and Usage.tex
 TeX
-403714043 1 -1 98 -1 78 200 200 1570 822 0 1 37 64 -1 0 0 255 35 -1 -1 0 1 0 78 -1  0 -1 0
+135278587 0 -1 98 -1 24 200 200 1570 822 0 1 37 16 -1 0 0 255 35 -1 -1 0 1 0 24 -1  0 -1 0
 :\Custom Program Files\LaTeX\TeX\LaTeX\lebook.cls
 DATA
-5243058 0 30 1 48 40 22 29 1036 535 1 1 359 352 -1 0 0 23 0 0 23 1 1 0 40 48  0 0 0
-:\Custom Program Files\LaTeX\TeX\LaTeX\leaddress.sty
-TeX:STY
-1060850 0 21 27 21 52 78 78 1200 494 1 0 428 336 -1 -1 0 0 25 0 0 25 1 0 52 21  0 0 0
+5243058 0 30 1 48 40 22 29 1036 535 1 1 359 768 -1 0 0 23 0 0 23 1 1 0 40 48  0 0 0
 Style and Syntax.tex
 TeX
 1060859 0 -1 102 -1 280 130 130 1556 546 1 1 86 192 -1 -1 0 0 44 -1 -1 44 1 0 280 -1  0 -1 0
@@ -28,16 +25,16 @@ TeX:STY
 1060850 0 47 32 54 33 130 130 1252 546 1 0 295 256 -1 -1 0 0 25 0 0 25 1 0 33 54  0 0 0
 Installation.tex
 TeX
-17838075 0 -1 4784 -1 4864 104 104 1226 520 1 1 744 512 -1 -1 0 0 22 -1 -1 22 1 0 4864 -1  0 -1 0
+17838075 0 -1 4781 -1 4622 104 104 1226 520 1 0 288 688 -1 -1 0 0 22 -1 -1 22 1 0 4622 -1  0 0 0
+Working with LeLaTeX.tex
+TeX
+269496315 0 -1 1580 -1 1611 78 78 1200 494 1 1 471 448 -1 -1 0 0 31 -1 -1 31 1 0 1611 -1  0 -1 0
 :\Custom Program Files\LaTeX\TeX\LaTeX\lelists.sty
 TeX:STY
 1060850 1 261 63 261 1 104 104 1226 520 1 0 71 288 -1 -1 0 0 14 0 0 14 1 0 1 261  0 0 0
 LaTeX Examples.tex
 TeX
 269496315 1 -1 1654 -1 1429 156 156 1582 572 1 0 71 320 -1 -1 0 0 27 -1 -1 27 1 0 1429 -1  0 0 0
-Working with LeLaTeX.tex
-TeX
-269496315 0 -1 950 -1 966 78 78 1200 494 1 1 380 224 -1 -1 0 0 31 -1 -1 31 1 0 966 -1  0 -1 0
 Title Page.tex
 TeX
 269496315 0 -1 288 -1 288 182 182 1602 598 1 1 156 176 -1 -1 0 0 20 -1 -1 20 1 0 288 -1  0 -1 0
@@ -50,21 +47,12 @@ TeX:DTX
 LeLaTeX Installation and Usage.log
 DATA:UNIX
 38895858 0 757 63 756 1 182 182 1304 598 1 0 71 288 -1 -1 0 0 -1 -1 -1 -1 1 0 1 756  0 0 0
-:\Users\lance.endres\AppData\Roaming\WinEdt Team\WinEdt 11\ConfigEx\MainMenu.ini
-DATA:INI:EDT
-1049594 0 3537 14 3545 47 0 0 1122 416 1 1 408 320 -1 -1 0 0 83 0 0 83 1 0 47 3545  0 -1 0
-:\Users\lance.endres\AppData\Roaming\WinEdt Team\WinEdt 11\ConfigEx\Toolbar.ini
-DATA:INI:EDT
-269485050 0 0 1 0 1 182 182 1304 598 1 1 86 -4512 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0  0 -1 0
 :\Custom Program Files\LaTeX\TeX\LaTeX\lefontsizes.sty
 TeX:STY
 269496306 0 16 41 15 44 26 26 1452 442 1 1 387 240 -1 -1 0 0 -1 -1 -1 -1 1 0 44 15  0 0 0
 :\Custom Program Files\LaTeX\TeX\LaTeX\lefonts.sty
 TeX:STY
 269496306 0 0 1 0 1 0 0 1426 416 1 0 71 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0  0 0 0
-:\Users\lance.endres\AppData\Roaming\WinEdt Team\WinEdt 11\ConfigEx\Paragraphs.ini
-DATA:INI:EDT
-269485050 0 13 18 18 33 52 52 972 417 1 1 310 288 -1 -1 0 0 83 0 0 83 1 0 33 18  0 -1 0
 
 *LeLaTeX Installation and Usage.tex
 >

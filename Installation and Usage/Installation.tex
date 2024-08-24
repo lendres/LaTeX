@@ -29,6 +29,7 @@ To completely install \lelatex{} takes several steps.  In the images that follow
 		\item Open the \miktex{} Console.
 		\item Go to \emph{Settings$\rightarrow$Directories}
 		\item Add the directory to as a TEXMF directory in the \miktex{} Console (see \figurename~\ref{fig:addastexmlroot}).
+        \item Run \textcode{Tasks$\rightarrow$Refresh file name database}.
 		\item Close the \miktex{} Console.
 	\end{outline}
 	\item Add the \textcode{Processing Support} directory to the \textcode{Path} environmental variable.
@@ -36,27 +37,25 @@ To completely install \lelatex{} takes several steps.  In the images that follow
 		\item Open Windows System properties.
 		\item Go to \emph{Advanced$\rightarrow$Environmental Variables} to open the environmental variables dialog box (see \figurename~\ref{fig:enironmentalvariables}).  You may need admin rights to edit the environmental variables.
 		\item Edit the environmental variables and add the \textcode{./Processing Support} directory to the \textcode{Path} variable.
-		\item Add the path the \textcode{.\tbs{}Processing Support\tbs{}} directory to the path.
 	\end{outline}
 	\item Install \emph{Strawberry Perl}
 	\begin{outline}
 		\item Download the installer from \href{https://strawberryperl.com/}{https://strawberryperl.com/}.
-		\item Run the installer.
-		\item Restart the computer.
+		\item Run the installer.  Currently, \emph{Strawberry Perl} needs to be installed in a path that does \textbf{\emph{not}} contain spaces.  However, it does not have to be the default directory.
 	\end{outline}
+	\item Restart the computer.
 \end{outline}
-
 
 \begin{figure}
 	\centering
-	\includegraphics[height=3.0in]{addastexmlroot}
+	\includegraphics[height=3.5in]{addastexmlroot}
 	\caption[Adding the library as a TEXMF root directory]{Adding the library as a TEXMF root directory.}
 	\label{fig:addastexmlroot}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[height=3.0in]{enironmentalvariables}
+	\includegraphics[height=3.5in]{enironmentalvariables}
 	\caption[The environmental variable dialog box]{The environmental variable dialog box.}
 	\label{fig:enironmentalvariables}
 \end{figure}
@@ -64,22 +63,21 @@ To completely install \lelatex{} takes several steps.  In the images that follow
 
 \begin{figure}
 	\centering
-	\includegraphics[height=2.5in]{githubwebsite}
+	\includegraphics[height=3.5in]{githubwebsite}
 	\caption[Github website root directory]{Github website root directory for \lelatex{}.}
 	\label{fig:githubwebsite}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[height=3.0in]{latexroottexmfdirectory}
+	\includegraphics[height=3.5in]{latexroottexmfdirectory}
 	\caption[Local installation root directory for \lelatex{}]{Local installation root directory for \lelatex{}.}
 	\label{fig:latexroottexmfdirectory}
 \end{figure}
 
-
 \begin{figure}
 	\centering
-	\includegraphics[height=3.0in]{pathenvironmentalvariable}
+	\includegraphics[height=3.5in]{pathenvironmentalvariable}
 	\caption[\pathenvvar{} environmental variable with the \emph{Processing Support Directory} installed]{\pathenvvar{} environmental variable with the \emph{Processing Support Directory} installed.}
 	\label{fig:pathenvironmentalvariable}
 \end{figure}
@@ -93,7 +91,7 @@ To completely install \lelatex{} takes several steps.  In the images that follow
 
 \begin{figure}
 	\centering
-	\includegraphics[height=3.0in]{strawberryperlpaths}
+	\includegraphics[height=3.5in]{strawberryperlpaths}
 	\caption[The \strawberryperl{} paths installed to the \pathenvvar{} environmental variable]{The \strawberryperl{} paths installed to the \pathenvvar{} environmental variable.  These paths should be automatically installed from the \strawberryperl{} installer.}
 	\label{fig:strawberryperlpaths}
-\end{figure}
+\end{figure} 
