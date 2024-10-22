@@ -38,7 +38,7 @@
 % XML: <purchaseorder>
 % Command: \xmlelement{purchaseorder}
 % Result: <purchaseorder>
-\newcommand*{\xmlelement}[1]{\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{>}}
+\newcommand*{\xmlelement}[1]{\textcolor{xmlbracket}{\textless}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{\textgreater}}
 
 % Start an element that does not contain attributes, but will contain other elements (it's not short).
 %
@@ -46,7 +46,7 @@
 % XML: <purchaseorder> <item>pen</item> </purchaseorder>
 % Command: \xmlstartelement{purchaseorder}
 % Result: <purchaseorder>
-\newcommand*{\xmlstartelement}[1]{\codeitem\makexmllabel{#1}{start}\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{>}\stepcodelevel{}}
+\newcommand*{\xmlstartelement}[1]{\codeitem\makexmllabel{#1}{start}\textcolor{xmlbracket}{\textless}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{\textgreater}\stepcodelevel{}}
 
 % Write an element that does not contain attributes or elements.
 %
@@ -54,7 +54,7 @@
 % XML: <today/>
 % Command: \xmlshortelement{today}
 % Result: <today/>
-\newcommand*{\xmlshortelement}[1]{\codeitem\makexmllabel{#1}{}\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{/>}}
+\newcommand*{\xmlshortelement}[1]{\codeitem\makexmllabel{#1}{}\textcolor{xmlbracket}{\textless}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{/\textgreater}}
 
 % Start an element that will contain attributes. Since at least one attributes is required, it takes the name
 % and value of the first attribute as the second and third arguments.
@@ -63,7 +63,7 @@
 % XML: <purchaseorder id="1234"> <item>pen</item> </purchaseorder>
 % Command: \xmlopenelement{purchaseorder}{id}{1234}
 % Result: <purchaseorder id="1234"
-\newcommand*{\xmlopenelement}[3]{\codeitem\makexmllabel{#1}{start}\makexmllabel{#1}{start}\textcolor{xmlbracket}{<}\textcolor{xmlelement}{#1} \xmlwriteattribute{#2}{#3}\stepcodelevel{}}
+\newcommand*{\xmlopenelement}[3]{\codeitem\makexmllabel{#1}{start}\makexmllabel{#1}{start}\textcolor{xmlbracket}{\textless}\textcolor{xmlelement}{#1} \xmlwriteattribute{#2}{#3}\stepcodelevel{}}
 
 % Closes and open start element tag (one created with the \xmlopenelement command) for an element that contains
 % both attributes and elements.
@@ -74,7 +74,7 @@
 % Result: <purchaseorder id="1234">
 % Command: \xmlcloseelement{}
 % Result: >
-\newcommand*{\xmlcloseelement}{\textcolor{xmlbracket}{>}}
+\newcommand*{\xmlcloseelement}{\textcolor{xmlbracket}{\textgreater}}
 
 % Closes and open start element tag (one created with the \xmlopenelement command) for an element that contains
 % attributes but not elements.
@@ -85,7 +85,7 @@
 % Result: <pen scew="1234"/>
 % Command: \xmlcloseshortelement{}
 % Result: />
-\newcommand*{\xmlendshortelement}{\textcolor{xmlbracket}{/>}\prevcodelevel{}}
+\newcommand*{\xmlendshortelement}{\textcolor{xmlbracket}{/\textgreater}\prevcodelevel{}}
 
 % End an element. There are two ways to end an element, on a new line (\xmlendelement) or on
 % the current line (\xmlwriteendelement).
@@ -102,7 +102,7 @@
 % </purchaseorder>
 \newcommand*{\xmlendelement}[1]{\prevcodelevel{}\codeitem\makexmllabel{#1}{end}\xmlendelementtext{#1}}
 \newcommand*{\xmlwriteendelement}[1]{\prevcodelevel{}\xmlendelementtext{#1}}
-\newcommand*{\xmlendelementtext}[1]{\textcolor{xmlbracket}{</}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{>}}
+\newcommand*{\xmlendelementtext}[1]{\textcolor{xmlbracket}{\textless/}\textcolor{xmlelement}{#1}\textcolor{xmlbracket}{\textgreater}}
 
 % Write attributes. The command \xmlattribute writes an attribute on a new line and the command \xmlwriteattribute
 % writes the attribute by itself.
