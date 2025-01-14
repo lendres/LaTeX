@@ -1,0 +1,98 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{osdcheadersandfooters}[2006/08/16 Provides sets of headers and footers.]
+
+\usepackage{lefonts}
+\usepackage{legraphicextensions}
+\usepackage{leheadersandfooters}
+
+\usepackage{color}
+\definecolor{lightgrey}{rgb}{0.35,0.35,0.35}
+\definecolor{addressgrey}{rgb}{0.2,0.2,0.2}
+%\definecolor{addressgrey}{rgb}{0.25,0.25,0.25}
+\definecolor{webred}{rgb}{0.6824,0.1725,0.1647}
+
+% You must manually refresh the file name database after intalling the "transparent" package.
+% You need to compile a document twice for transparency chages to take effect.
+%\usepackage{transparent}
+
+% HEADER
+% LOGO                                                                       Name
+%
+% FOOTER
+% This footer does not work with Glossaries package.
+% Chapter name and title on left, page number one right.  An rule stretches the width of the page.
+% -----------------------------------------------------------
+% Chapter 1: Title of Chapter                               2
+\newcommand*{\osdclogoheader}
+{
+	\begin{minipage}[t]{\textwidth-2.5pt}%
+		\begin{minipage}[c]{1.0in}\includegraphics[height=0.50in]{osdcdrillbitlogo}\end{minipage}
+		\hfill
+		\begin{minipage}[c]{\textwidth-1.75in}\raggedleft\includegraphics[height=0.32in]{osdctextlogo}\end{minipage}
+	\end{minipage}\\
+}
+\newcommand*{\ps@cnpcusareport}
+{
+	\renewcommand*{\@oddhead}{\cnpclogoheader}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{%
+        \begin{minipage}{\textwidth}\bfseries
+        		\rule{\textwidth}{0.6pt} \vspace{-10pt}
+                \chaptername\ \ps@storethechapter{} \protect\thechapter : \chaptertitle\ \hfill \thepage
+        \end{minipage}%
+    }
+    \renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+% HEADER
+% LOGO                                                                       Name
+%
+% FOOTER
+% Chapter name and title on left, page number one right.  An rule stretches the width of the page.
+% -----------------------------------------------------------
+% Title of Chapter                                          2
+\newcommand*{\ps@osdcreportothermatter}
+{
+	\renewcommand*{\@oddhead}{\osdclogoheader}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}
+	{%
+		\begin{minipage}{\textwidth}\bfseries
+			\rule{\textwidth}{0.6pt} \vspace{-10pt}
+			\chaptertitle\ \hfill \thepage
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+% To shift the header and footer into the margin, this length is used.  It is not a pretty method,
+% but it seems to work.  It requires the \hspace to be inside of an enclosing minipage to prevent
+% bad boxes from forming.  Although, this seems like a technicallity.
+% Alternate method may be to use the fancyhdr package and \addtolength{\headwidth}{\marginparsep} \addtolength{\headwidth}{\marginparwidth}
+% https://groups.google.com/g/comp.text.tex/c/kxMJ0bnSIS0
+\newlength{\@marginincursion}
+\setlength{\@marginincursion}{-0.5in}
+\newcommand*{\ps@osdcletterheadA}
+{
+	\renewcommand*{\@oddhead}%
+	{%
+		\begin{minipage}[t]{\textwidth}%
+			\hspace*{\@marginincursion}\includegraphics[height=0.65in]{cnpclogo}%
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{%
+		\begin{minipage}[b]{\textwidth}%
+			\hspace*{\@marginincursion}\begin{minipage}[b]{1.0in}\Arial{}\Tiny{}%
+				\includegraphics[height=0.350in]{cnpcusacorp} \vspace*{6pt} \\%
+				{\color{addressgrey}2901 Wilcrest Drive \\%
+				Houston, TX \ 77042 \\%
+				713.972.6600 \vspace*{4pt} \\}%
+				{\color{webred}\bfseries{}www.cnpcusa.com}%
+			\end{minipage}%
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}
