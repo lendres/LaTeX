@@ -229,14 +229,24 @@
 				</tagprocessor>
 
 				<tagprocessor xsi:type="StringReplacementTagProcessor"
-				tagstoprocess="OnlySpecified"
-				pattern="FPSO"
-				replacement="{FPSO}">
-				<tags>
-					<tag>title</tag>
-					<tag>abstract</tag>
-				</tags>
-			</tagprocessor>
+					tagstoprocess="OnlySpecified"
+					pattern="FPSO"
+					replacement="{FPSO}">
+					<tags>
+						<tag>title</tag>
+						<tag>abstract</tag>
+					</tags>
+				</tagprocessor>
+
+				<tagprocessor xsi:type="StringReplacementTagProcessor"
+					tagstoprocess="OnlySpecified"
+					pattern="BHA"
+					replacement="{BHA}">
+					<tags>
+						<tag>title</tag>
+						<tag>abstract</tag>
+					</tags>
+				</tagprocessor>
 
 			</tagprocessors>
 		</tagprocessorgroup>
