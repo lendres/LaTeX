@@ -129,7 +129,7 @@
 {\center\large\ArialBold}}%                          % The font style.
 
 \newlength{\datewidth}
-\setlength{\datewidth}{1.6in}
+\setlength{\datewidth}{1.4in}
 
 % Experience
 % Arguments: Date, Position Tile, Company Name, Company Address
