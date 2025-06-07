@@ -130,6 +130,8 @@
 
 \newlength{\datewidth}
 \setlength{\datewidth}{1.4in}
+\newlength{\yeardatewidth}
+\setlength{\yeardatewidth}{0.65in}
 
 % Experience
 % Arguments: Date, Position Tile, Company Name, Company Address
@@ -174,7 +176,7 @@
 \newcommand{\catentryeducation}[3]
 {
 	\noindent\begin{minipage}[t]{\textwidth}
-		\begin{minipage}[t]{\textwidth-\datewidth} \textbf{\MakeUppercase{#3}}\\ \emph{\textbf{#2}} \end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+		\begin{minipage}[t]{\textwidth-\yeardatewidth} \textbf{\MakeUppercase{#3}}\\ \emph{\textbf{#2}} \end{minipage}\begin{minipage}[t]{\yeardatewidth}\hfill{}#1\end{minipage}
 	\end{minipage} \vspace{4pt}
 }
 
@@ -183,7 +185,7 @@
 \newcommand{\catentrycertification}[3]
 {
 	\noindent\begin{minipage}[t]{\textwidth}
-		\begin{minipage}[t]{\textwidth-\datewidth}#2, #3\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+		\begin{minipage}[t]{\textwidth-\yeardatewidth}#2, #3\end{minipage}\begin{minipage}[t]{\yeardatewidth}\hfill{}#1\end{minipage}
 	\end{minipage}%
 }
 
@@ -192,7 +194,7 @@
 \newcommand{\catentrymembership}[3]
 {
 	\noindent\begin{minipage}[t]{\textwidth}
-		\begin{minipage}[t]{\textwidth-\datewidth}\textbf{#2} \ifthenelse{\equal{#3}{}}{\\ \vspace*{-0.5\baselineskip}}{\\#3\vspace*{0.5\baselineskip}}\end{minipage}\begin{minipage}[t]{\datewidth}\hfill{}#1\end{minipage}
+		\begin{minipage}[t]{\textwidth-\yeardatewidth}\textbf{#2} \ifthenelse{\equal{#3}{}}{\\ \vspace*{-0.5\baselineskip}}{\\#3\vspace*{0.5\baselineskip}}\end{minipage}\begin{minipage}[t]{\yeardatewidth}\hfill{}#1\end{minipage}
 	\end{minipage}%
 }
 
