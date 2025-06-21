@@ -61,12 +61,12 @@
 \usepackage{lepageformat}
 
 % Vertical spacing.
-\setlength{\voffset}{-0.15in}                       % Reduce some of the 1 in standard margin.
+\setlength{\voffset}{-0.20in}                       % Reduce some of the 1 in standard margin.
 \setlength{\topmargin}{0pt}                         % There is already a 1 in space by default (reduced by above).
 \setlength{\headheight}{12pt}
 \setlength{\headsep}{0.15in}
 \setlength{\topskip}{0.15in}
-\setlength{\bottommargin}{1.0in}
+\setlength{\bottommargin}{0.9in}
 \setlength{\footmargin}{0.85in}
 \calctextheight{}
 \calcfootskip{}
@@ -108,7 +108,7 @@
 	\noindent \@name \mdseries \normalsize \vspace*{-9pt} \\
 	\noindent \horline \vspace*{-5pt}\\
 	\noindent{\normalsize \@email{} \contactspace{} \@website{} \contactspace{} \@websitetwo{} \contactspace{} \@phone{}}\\
-	\vspace*{-16pt}
+	\vspace*{-18pt}
 }
 
 %This command will defer commands until the call to begin document is made.
