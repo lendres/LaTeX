@@ -74,11 +74,11 @@
 % Horizontal spacing.
 \setlength{\oddsidemargin}{-0.04in}                 % Reduce 1 inch left margin.
 \setlength{\evensidemargin}{-0.04in}                % Reduce 1 inch left margin.
-\setlength{\textwidth}{6.58in}                       % Reduce right margin by setting page width.
+\setlength{\textwidth}{6.58in}                      % Reduce right margin by setting page width.
 
 
 % DEFINITIONS.
-\newcommand*{\horline}[1][0pt]{\rule[#1]{6.5in}{1pt}}
+\newcommand*{\horline}[1][0pt]{\rule[#1]{\textwidth}{1pt}}
 \newcommand*{\makeresumeheaderA}
 {
 	\begin{center}
