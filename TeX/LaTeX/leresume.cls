@@ -71,6 +71,11 @@
 \calctextheight{}
 \calcfootskip{}
 
+% Horizontal spacing.
+\setlength{\oddsidemargin}{-0.04in}                 % Reduce 1 inch left margin.
+\setlength{\evensidemargin}{-0.04in}                % Reduce 1 inch left margin.
+\setlength{\textwidth}{6.58in}                       % Reduce right margin by setting page width.
+
 
 % DEFINITIONS.
 \newcommand*{\horline}[1][0pt]{\rule[#1]{6.5in}{1pt}}
@@ -164,7 +169,7 @@
 	}
 	{
 		% Add a little space between the end of the last entry and the beginning of this one.
-		\vspace*{6pt}
+		\vspace{6pt}
 	}
 	\textbf{#1}\\
 	#2\\
