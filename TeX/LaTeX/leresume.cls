@@ -46,7 +46,7 @@
 \setlength{\largefontsize}{12pt}
 %\renewcommand{\normalsize}{\Small}
 
-%Small caps bold times new roman for use with catagory headers.
+% Small caps bold times new roman for use with catagory headers.
 \newfont{\timesbc}{ptmbc7t at \largefontsize}
 %\newfont{\helveticb}{phvb at \largefontsize}
 \newfont{\helveticbc}{phvbc7t at 16pt}
