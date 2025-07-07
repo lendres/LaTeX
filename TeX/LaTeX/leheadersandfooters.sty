@@ -238,6 +238,33 @@
 
 
 % HEADER
+% Name and page number.
+% Single horizontal line.
+%
+% Lance A. Endres                          Page XX
+% -----------------------------------------------------------
+%
+% FOOTER
+% Single horizontal line.
+% -----------------------------------------------------------
+%
+\newcommand*{\ps@lenamewithpagenumber}
+{
+	\renewcommand*{\@oddhead}
+	{%
+		\begin{minipage}{\linewidth}
+			Lance A. Endres \hfill {Page \thepage}\vspace*{-10pt}
+			\rule{\textwidth}{1pt}
+		\end{minipage}%
+	}
+	\renewcommand*{\@evenhead}{\@oddhead}
+	\renewcommand*{\@oddfoot}{}
+	\renewcommand*{\@evenfoot}{\@oddfoot}
+}
+
+
+
+% HEADER
 % Empty (blank).
 %
 % FOOTER
