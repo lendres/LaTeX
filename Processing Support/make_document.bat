@@ -54,12 +54,13 @@ echo.
 echo.
 echo Do LaTeX (again)...
 rem This pass will collect table of contents entries from the index, bibliography, and glossaries.
-latex "%FILEROOTNAME%.tex" -output-format dvi --src
+rem latex "%FILEROOTNAME%.tex" -output-format dvi --src
+pdflatex --synctex=-1 "%FILEROOTNAME%"
 
 echo.
 echo.
 echo Do pdf...
-rem A final pass to incorporate the table of contents entries into the main body.  This pass for PDF output.
+rem A final pass to incorporate the table of contents entries into the main body.  This pass is for PDF output.
 pdflatex --synctex=-1 "%FILEROOTNAME%"
 
 echo.
