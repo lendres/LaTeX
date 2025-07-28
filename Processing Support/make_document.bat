@@ -23,8 +23,8 @@ echo Glossary package processing option: %~2
 echo.
 echo.
 echo Do LaTeX...
-rem This pass will do the initial processing of  the document.  It will output data needed for the index, bibliography, and glossaries.
-latex "%FILEROOTNAME%.tex" -output-format dvi --src
+rem This pass will do the initial processing of the document.  It will output data needed for the index, bibliography, and glossaries.
+pdflatex --synctex=-1 "%FILEROOTNAME%"
 
 echo.
 echo.
@@ -60,12 +60,12 @@ echo.
 echo.
 echo Do pdf...
 rem A final pass to incorporate the table of contents entries into the main body.  This pass for PDF output.
-pdflatex "%FILEROOTNAME%"
+pdflatex --synctex=-1 "%FILEROOTNAME%"
 
 echo.
 echo.
 echo Do LaTeX (again, again)...
 rem A final pass to incorporate the table of contents entries into the main body.  This pass for DVI output.
-latex "%FILEROOTNAME%.tex" -output-format dvi --src
+rem latex "%FILEROOTNAME%.tex" -output-format dvi --src
 
 rem pause
