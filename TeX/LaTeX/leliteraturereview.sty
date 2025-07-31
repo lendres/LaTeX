@@ -2,6 +2,7 @@
 
 \ProvidesPackage{leliteraturereview}[2006/05/09 Provides setup to create a literature review document.]
 
+\usepackage{lelists}
 
 % IN TEXT BIBLIOGRAPHY
 \usepackage{ifthen}
@@ -59,3 +60,37 @@
 	\noindent\bibentry{#1}\par%
 	\vspace{6pt plus 1pt minus 1pt}
 }
+
+% label and Reference Commands
+\newenvironment{seealsoreviews}
+{
+	\vspace{\reviewheadingspacing}
+	\noindent{\review@titlesize\textbf{See Also}}%
+	\begin{bulletedlist}
+}
+{
+	\end{bulletedlist}
+	\vspace{6pt plus 1pt minus 1pt}
+}
+
+
+% A hyperlink version of a custom label that allows specifying the text to display.
+% Useage:
+%    \customlabel{lab:name}{Text to display}
+\def\customlabel#1#2{%
+ \@bsphack
+  \begingroup
+    \def\label@name{#1}%
+    \label@hook
+    \protected@write\@auxout{}{%
+      \string\newlabel{#1}{%
+        {#2}%
+        {\thepage}%
+        {\@currentlabelname}%
+        {\@currentHref}{}%
+      }%
+    }%
+  \endgroup
+  \@esphack
+}%
+%\makeatother
