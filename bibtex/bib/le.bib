@@ -20,6 +20,28 @@
 %	abstract		= {}
 %}
 
+@article{ref:nguyen2020a,
+	author			= {Khac-Long Nguyen and Quang-Thinh Tran and Marie-Ange Andrianoely and Lionel Manin and S\'{e}bastien Baguet and R\'{e}gis Dufour and Mohamed Mahjoub and St\'{e}phane Menand},
+	title			= {Nonlinear rotordynamics of a drillstring in curved wells: Models and numerical techniques},
+	journal			= {International Journal of Mechanical Sciences},
+	volume			= {166},
+	number			= {},
+	day				= {},
+	month			= {},
+	year			= {2020},
+	pages			= {105225},
+	organization	= {},
+	speid			= {},
+	issn			= {0020-7403},
+	doi				= {https://doi.org/10.1016/j.ijmecsci.2019.105225},
+	url				= {https://www.sciencedirect.com/science/article/pii/S0020740319327444},
+	href			= {},
+	eprint			= {},
+	logline			= {},
+	abstract		= {The drilling operations for oil or geothermic extraction use a slender structure introduced inside the drill well, hanging from a derrick and driven by a rotary table at the surface. The drilling structure consists in a series of drill-pipes and some heavy pipes at the well bottom. The drilling process involves nonlinear dynamic phenomena such as bit-bounce, stick-slip due to the well-drillstring multi-contacts and the pulsating mud flow. The drillstring vibrations may yield, the rate of penetration decrease, the premature wears and damages of drilling equipment. Many numerical models have been proposed to study the dynamics of drillstring to improve the reliability of drilling operations. However, the numerical models of drilling structures representing several kilometers length require a huge amount of computer memory storage and yield a too long computational time. The reduction technique proposed by Craig-Bampton (CB) has been developed for modelling the nonlinear dynamics of rotating machines to save the computational time but still limited in the context of rotordynamics. The paper focuses on the implementation of the CB method in the case of long drillstring assembly modelled by beam finite elements. The pre-loaded states of the drillstring due to the well curvature, well-structure contacts and fluid-structure interactions are determined and taken into account in the dynamic computation. The drillstring transient dynamics is simulated and the orbital motion of several nodes are analyzed. The result convergence and the reduction of computational time obtained by the CB method are investigated and discussed.},
+	keywords		= {Drillstring dynamics, Transient response, Reduction technique, Rotor dynamics, Fluid-structure interactions, Contact}
+}
+
 @inproceedings{ref:menand2017a,
 	author			= {S. Menand and K. A. Mills},
 	affiliation		= {DrillScan and DrillScan},
@@ -57,7 +79,7 @@
 	href			= {},
 	note			= {},
 	logline			= {},
-	abstract		= {}
+	abstract		= {Studies have shown that both the design of individual {PDC} cutters and their arrangement on a {PDC} bit significantly influence a bit's mechanical efficiency, ROP, and dynamic behavior. This paper reintroduces a simulation platform for {PDC}, roller cone, and hybrid drill bits that enables the analysis, optimization, and prediction of bit performance. The high-fidelity bit dynamics application was custom- built from the ground up to model bit-rock interaction and drilling dynamics with high efficiency. The application is implemented as object-oriented C++ code and employs a {3D} triangulated surface mesh to accurately represent complex topology. A toolkit was developed to automate the extraction of tessellation data from {3D} CAD models and export it to a structured XML format for use in the software. Unlike using unstructured formats such as STLs, this process preserves both the hierarchical structure and surface designation information in the CAD model and transfers it to the software. This allows for detailed component and sub- component analysis, enabling the simulator to provide insights beyond the reach of physical testing. For instance, the geometric interactions between the bit and rock can be analyzed to compute contact areas, volumes of removed material, and forces at the sub- cutter level (e.g., chamfers, faces). As a demonstration, the WOB is decomposed into contributions from the cutter chamfers and cutter faces, providing a level of resolution unattainable through laboratory or field measurements. To assess the performance and behavior of proprietary drill bit designs, laboratory tests were conducted in Pau, France. These results were used to validate the computer simulations. ROP and RPM from the lab were input into the model, while WOB and TOB were compared as outputs. To improve quantitative agreement between simulation and lab measurements, a novel optimization framework was introduced. This method uses post-processed results as a global fitting to align simulation outputs with measured values. The method drastically reduces optimization time by avoiding repeated simulation runs for each parameter update. The optimized fit is then implemented into the simulation framework to improve the predictive capability for new formations.}
 }
 
 @article{ref:stoxreiter2019a,
