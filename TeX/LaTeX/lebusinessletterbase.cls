@@ -63,7 +63,7 @@
 \setlength{\addressskip}{\parskip}
 
 % Vertical spacing.
-\setlength{\voffset}{-0.45in}                           % Reduce some of the 1 in standard margin.
+\setlength{\voffset}{0in}                           % Reduce some of the 1 in standard margin.
 \setlength{\headheight}{24pt}
 \setlength{\headsep}{28pt}
 \setlength{\topskip}{12pt}
