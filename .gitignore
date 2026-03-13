@@ -23,6 +23,9 @@ Temporary Items
 TeX/LaTeX/Figures/*.jpg
 TeX/LaTeX/Figures/*.eps
 
+TeX/LaTeX/leaddress.sty
+TeX/LaTeX/leaddress.sty
+
 Installation and Usage/*.aux
 Installation and Usage/*.bbl
 Installation and Usage/*.blg
@@ -37,9 +40,9 @@ Installation and Usage/*.out
 Installation and Usage/*.bak
 Installation and Usage/*.synctex
 Installation and Usage/*.toc
+Installation and Usage/*.pdf
+Installation and Usage/*.prj
 
 Installation and Usage/Figures/*.jpg
 Installation and Usage/Figures/*.eps
-TeX/LaTeX/leaddress.sty
-TeX/LaTeX/leaddress.sty
-Installation and Usage/LeLaTeX Installation and Usage.prj
+Installation and Usage/Figures/*.pdf
