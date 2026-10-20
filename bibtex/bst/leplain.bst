@@ -12,19 +12,28 @@
     % with the requirement number 2 above.
 
 ENTRY
-  { address
+  {
+    abstract
+  	address
     assignee
     author
     booktitle
     chapter
     day
+    doi
+    eid
     edition
     editor
     filedday
     filedmonth
     filedyear
     howpublished
+    issuedday
+    issuedmonth
+    issuedyear
     institution
+    isbn
+    issn
     journal
     key
     license
@@ -33,6 +42,9 @@ ENTRY
     number
     organization
     pages
+    pubday
+    pubmonth
+    pubyear
     publisher
     school
     series
