@@ -1244,8 +1244,6 @@ MACRO {nov} {"November"}
 
 MACRO {dec} {"December"}
 
-
-
 READ
 
 FUNCTION {sortify}
