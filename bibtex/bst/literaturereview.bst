@@ -52,35 +52,51 @@
  %   citation key, to preserve any natural sequence.
  %
 ENTRY
-  { address
+  {
+    abstract
+    address
+    assignee
     author
     booktitle
     chapter
+    day
     doi
     eid
     edition
     editor
+    filedday
+    filedmonth
+    filedyear
     howpublished
+    issuedday
+    issuedmonth
+    issuedyear
     institution
     isbn
     issn
     journal
     key
+    license
     month
+    nationality
     note
     number
     organization
     pages
+    pubday
+    pubmonth
+    pubyear
     publisher
     school
     series
     title
     type
     url
+    version
     volume
     year
+    websitename
     logline
-    abstract
   }
   {}
   { label extra.label sort.label short.list }
@@ -261,7 +277,7 @@ FUNCTION {format.key}
 FUNCTION {format.authors}
 { author empty$
     { "" }
-    {write$ "\noindent\reviewheading{Reference}\newline{}" author format.names }
+    { "\noindent\reviewheading{Reference}\newline{}" author format.names * }
   if$
 }
 
@@ -290,7 +306,7 @@ FUNCTION {format.isbn}
 FUNCTION {format.abstract}
 { abstract empty$
     { "" }
-    { "\vspace{\reviewheadingspacing}\newline{}\reviewheading{Abstract}\newline{}" abstract * "\relax{}" * write$ }
+    { "\vspace{\reviewheadingspacing}\newline{}\reviewheading{Abstract}\newline{}" abstract * "\relax{}" * }
   if$
 }
 
@@ -298,7 +314,7 @@ FUNCTION {format.abstract}
 % Requires the commands "\reviewheading" and "\reviewheadingspacing" to be defined.  The command is the font formating.
 FUNCTION {format.logline}
 { logline empty$
-    { "" }
+    'skip$
     { "\reviewheading{Logline}\newline{}" logline * "\vspace{\reviewheadingspacing}\newline{}" * write$ }
   if$
 }
@@ -457,6 +473,99 @@ FUNCTION {format.date}
 %  extra.label *
 }
 
+% Patent dates accept numeric months or literal month names.
+FUNCTION {format.patent.month.1}
+{ duplicate$ "1" = { pop$ "January" } 'skip$ if$
+  duplicate$ "2" = { pop$ "February" } 'skip$ if$
+  duplicate$ "3" = { pop$ "March" } 'skip$ if$
+  duplicate$ "4" = { pop$ "April" } 'skip$ if$
+  duplicate$ "5" = { pop$ "May" } 'skip$ if$
+  duplicate$ "6" = { pop$ "June" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month.2}
+{ duplicate$ "7" = { pop$ "July" } 'skip$ if$
+  duplicate$ "8" = { pop$ "August" } 'skip$ if$
+  duplicate$ "9" = { pop$ "September" } 'skip$ if$
+  duplicate$ "10" = { pop$ "October" } 'skip$ if$
+  duplicate$ "11" = { pop$ "November" } 'skip$ if$
+  duplicate$ "12" = { pop$ "December" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month.3}
+{ duplicate$ "01" = { pop$ "January" } 'skip$ if$
+  duplicate$ "02" = { pop$ "February" } 'skip$ if$
+  duplicate$ "03" = { pop$ "March" } 'skip$ if$
+  duplicate$ "04" = { pop$ "April" } 'skip$ if$
+  duplicate$ "05" = { pop$ "May" } 'skip$ if$
+  duplicate$ "06" = { pop$ "June" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month.4}
+{ duplicate$ "07" = { pop$ "July" } 'skip$ if$
+  duplicate$ "08" = { pop$ "August" } 'skip$ if$
+  duplicate$ "09" = { pop$ "September" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month}
+{ format.patent.month.1
+  format.patent.month.2
+  format.patent.month.3
+  format.patent.month.4
+}
+
+STRINGS { patent.day patent.month patent.year patent.date.label }
+
+% Takes day, month, year, and label; always returns one string.
+FUNCTION {format.patent.date}
+{ 'patent.date.label :=
+  'patent.year :=
+  'patent.month :=
+  'patent.day :=
+  patent.year empty$
+    { patent.month empty$ patent.day empty$ and
+        'skip$
+        { "incomplete " patent.date.label * " date in " * cite$ * warning$ }
+      if$
+      ""
+    }
+    { patent.date.label " " *
+      patent.month empty$
+        { patent.year * }
+        { patent.month format.patent.month *
+          patent.day empty$
+            { " " * }
+            { " " * patent.day * ", " * }
+          if$
+          patent.year *
+        }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.fileddate}
+{ filedday field.or.null filedmonth field.or.null filedyear field.or.null
+  "filed" format.patent.date
+}
+
+FUNCTION {format.publisheddate}
+{ pubday field.or.null pubmonth field.or.null pubyear field.or.null
+  "published" format.patent.date
+}
+
+FUNCTION {format.issueddate}
+{ issuedday field.or.null issuedmonth field.or.null issuedyear field.or.null
+  "issued" format.patent.date
+}
+
+% Prefer a usable issue date; otherwise retain the publication date.
+FUNCTION {format.patent.event.date}
+{ issuedyear empty$
+    'format.publisheddate
+    'format.issueddate
+  if$
+}
 FUNCTION {format.btitle}
 { title emphasize
 }
@@ -724,7 +833,6 @@ FUNCTION {format.incoll.inproc.crossref}
   " \citet{" * crossref * "}" *
 }
 
-
 FUNCTION {article}
 { output.bibitem
   format.logline new.sentence
@@ -744,8 +852,7 @@ FUNCTION {article}
   fin.entry
 % Causes an extra space before the final period for some reason.
 %  new.block
-  format.abstract
-  fin.entry
+  format.abstract write$ newline$
 }
 
 
@@ -782,6 +889,93 @@ FUNCTION {book}
   fin.entry
 }
 
+% Keep the final period when bibentry removes a bare trailing period.
+FUNCTION {fin.patent.entry}
+{ add.period$ "{}" * write$ newline$ }
+
+FUNCTION {format.patent.number}
+{ nationality empty$
+    { "Patent" }
+    { nationality " Patent" * }
+  if$
+  number empty$
+    'skip$
+    { " " * number * }
+  if$
+}
+FUNCTION {format.patent.application.number}
+{ nationality empty$
+    { "Application" }
+    { nationality " Application" * }
+  if$
+  number empty$
+    'skip$
+    { " " * number * }
+  if$
+}
+FUNCTION {patent}
+{ output.bibitem
+  author empty$
+    { format.editors "author and editor" output.check }
+    { format.authors output.nonnull
+      crossref missing$
+    { "author and editor" editor either.or.check }
+    'skip$
+      if$
+    }
+  if$
+  new.block
+  format.btitle "title" output.check
+  crossref missing$
+    { format.bvolume output
+      new.block
+      new.sentence
+    }
+    { new.block
+      format.book.crossref output.nonnull
+    }
+  if$
+  new.block
+  format.patent.number output
+  format.fileddate output
+  format.patent.event.date output
+  new.block
+  new.sentence
+  note output
+  fin.patent.entry
+}
+
+FUNCTION {patentapplication}
+{ output.bibitem
+  author empty$
+    { format.editors "author and editor" output.check }
+    { format.authors output.nonnull
+      crossref missing$
+    { "author and editor" editor either.or.check }
+    'skip$
+      if$
+    }
+  if$
+  new.block
+  format.btitle "title" output.check
+  crossref missing$
+    { format.bvolume output
+      new.block
+      new.sentence
+    }
+    { new.block
+      format.book.crossref output.nonnull
+    }
+  if$
+  new.block
+  format.patent.application.number output
+  format.fileddate output
+  format.patent.event.date output
+  new.block
+  new.sentence
+  note output
+  fin.patent.entry
+}
 
 FUNCTION {booklet}
 { output.bibitem
@@ -898,8 +1092,7 @@ FUNCTION {inproceedings}
   if$
   format.date output
   fin.entry
-  format.abstract
-  fin.entry
+  format.abstract write$ newline$
 }
 
 FUNCTION {conference} { inproceedings }
@@ -936,8 +1129,7 @@ FUNCTION {mastersthesis}
   format.url output
 %  new.block
   fin.entry
-  format.abstract
-  fin.entry
+  format.abstract write$ newline$
 }
 
 FUNCTION {misc}
@@ -972,8 +1164,7 @@ FUNCTION {phdthesis}
   format.url output
   %new.block
   fin.entry
-  format.abstract
-  fin.entry
+  format.abstract write$ newline$
 }
 
 FUNCTION {proceedings}
@@ -992,8 +1183,7 @@ FUNCTION {proceedings}
   publisher output
   %new.block
   fin.entry
-  format.abstract
-  fin.entry
+  format.abstract write$ newline$
 }
 
 FUNCTION {techreport}
@@ -1011,8 +1201,7 @@ FUNCTION {techreport}
   new.block
   note output
   fin.entry
-  format.abstract output
-  fin.entry
+  format.abstract write$ newline$
 }
 
 FUNCTION {unpublished}
@@ -1054,8 +1243,6 @@ MACRO {oct} {"October"}
 MACRO {nov} {"November"}
 
 MACRO {dec} {"December"}
-
-
 
 READ
 
@@ -1167,12 +1354,28 @@ FUNCTION {calc.short.authors}
   'short.list :=
 }
 
+% Patent records may supply event years instead of the standard year field.
+FUNCTION {citation.year}
+{ year empty$
+  type$ "patent" = type$ "patentapplication" = or and
+    { issuedyear empty$
+        { pubyear empty$
+            { filedyear field.or.null }
+            { pubyear }
+          if$
+        }
+        { issuedyear }
+      if$
+    }
+    { year field.or.null }
+  if$
+}
 FUNCTION {calc.label}
 { calc.short.authors
   short.list
   "("
   *
-  year duplicate$ empty$
+  citation.year duplicate$ empty$
   short.list key field.or.null = or
      { pop$ "" }
      'skip$
@@ -1308,7 +1511,7 @@ FUNCTION {presort}
   if$
   "    "
   *
-  year field.or.null sortify
+  citation.year sortify
   *
   "    "
   *

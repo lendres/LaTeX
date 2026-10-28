@@ -38,6 +38,7 @@ ENTRY
     key
     license
     month
+    nationality
     note
     number
     organization
@@ -305,44 +306,99 @@ FUNCTION {format.date}
 
 STRINGS { temp }
 
-FUNCTION {format.fileddate}
-{ filedyear empty$
-    { filedmonth empty$
-    { "" }
-    { "there's a month but no year in " cite$ * warning$
-      filedmonth
-    }
+% Patent dates accept numeric months or literal month names.
+FUNCTION {format.patent.month.1}
+{ duplicate$ "1" = { pop$ "January" } 'skip$ if$
+  duplicate$ "2" = { pop$ "February" } 'skip$ if$
+  duplicate$ "3" = { pop$ "March" } 'skip$ if$
+  duplicate$ "4" = { pop$ "April" } 'skip$ if$
+  duplicate$ "5" = { pop$ "May" } 'skip$ if$
+  duplicate$ "6" = { pop$ "June" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month.2}
+{ duplicate$ "7" = { pop$ "July" } 'skip$ if$
+  duplicate$ "8" = { pop$ "August" } 'skip$ if$
+  duplicate$ "9" = { pop$ "September" } 'skip$ if$
+  duplicate$ "10" = { pop$ "October" } 'skip$ if$
+  duplicate$ "11" = { pop$ "November" } 'skip$ if$
+  duplicate$ "12" = { pop$ "December" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month.3}
+{ duplicate$ "01" = { pop$ "January" } 'skip$ if$
+  duplicate$ "02" = { pop$ "February" } 'skip$ if$
+  duplicate$ "03" = { pop$ "March" } 'skip$ if$
+  duplicate$ "04" = { pop$ "April" } 'skip$ if$
+  duplicate$ "05" = { pop$ "May" } 'skip$ if$
+  duplicate$ "06" = { pop$ "June" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month.4}
+{ duplicate$ "07" = { pop$ "July" } 'skip$ if$
+  duplicate$ "08" = { pop$ "August" } 'skip$ if$
+  duplicate$ "09" = { pop$ "September" } 'skip$ if$
+}
+
+FUNCTION {format.patent.month}
+{ format.patent.month.1
+  format.patent.month.2
+  format.patent.month.3
+  format.patent.month.4
+}
+
+STRINGS { patent.day patent.month patent.year patent.date.label }
+
+% Takes day, month, year, and label; always returns one string.
+FUNCTION {format.patent.date}
+{ 'patent.date.label :=
+  'patent.year :=
+  'patent.month :=
+  'patent.day :=
+  patent.year empty$
+    { patent.month empty$ patent.day empty$ and
+        'skip$
+        { "incomplete " patent.date.label * " date in " * cite$ * warning$ }
       if$
+      ""
     }
-    { filedmonth empty$
-    'filedyear
-    { "filed " filedmonth * " " * filedday * ", " * filedyear * }
+    { patent.date.label " " *
+      patent.month empty$
+        { patent.year * }
+        { patent.month format.patent.month *
+          patent.day empty$
+            { " " * }
+            { " " * patent.day * ", " * }
+          if$
+          patent.year *
+        }
       if$
     }
   if$
+}
+
+FUNCTION {format.fileddate}
+{ filedday field.or.null filedmonth field.or.null filedyear field.or.null
+  "filed" format.patent.date
 }
 
 FUNCTION {format.publisheddate}
-{ year empty$
-    { month empty$
-    { "" }
-    { "there's a month but no year in " cite$ * warning$
-      month
-    }
-      if$
-    }
-    { month empty$
-    'year
-    { "Application" =
-        { " and published " month * " " * day * ", " * year * }
-        { " and issued " month * " " * day * ", " * year * }
-        if$
-    }
-      if$
-    }
-  if$
+{ pubday field.or.null pubmonth field.or.null pubyear field.or.null
+  "published" format.patent.date
 }
 
+FUNCTION {format.issueddate}
+{ issuedday field.or.null issuedmonth field.or.null issuedyear field.or.null
+  "issued" format.patent.date
+}
+
+% Prefer a usable issue date; otherwise retain the publication date.
+FUNCTION {format.patent.event.date}
+{ issuedyear empty$
+    'format.publisheddate
+    'format.issueddate
+  if$
+}
 FUNCTION {format.btitle}
 { title emphasize
 }
@@ -707,6 +763,30 @@ FUNCTION {book}
 
 STRINGS  { testinfo }
 
+% Keep the final period when bibentry removes a bare trailing period.
+FUNCTION {fin.patent.entry}
+{ add.period$ "{}" * write$ newline$ }
+
+FUNCTION {format.patent.number}
+{ nationality empty$
+    { "Patent" }
+    { nationality " Patent" * }
+  if$
+  number empty$
+    'skip$
+    { " " * number * }
+  if$
+}
+FUNCTION {format.patent.application.number}
+{ nationality empty$
+    { "Application" }
+    { nationality " Application" * }
+  if$
+  number empty$
+    'skip$
+    { " " * number * }
+  if$
+}
 FUNCTION {patent}
 { output.bibitem
   author empty$
@@ -730,13 +810,13 @@ FUNCTION {patent}
     }
   if$
   new.block
-  publisher " " * number * output
+  format.patent.number output
   format.fileddate output
-  format.publisheddate output
+  format.patent.event.date output
   new.block
   new.sentence
   note output
-  fin.entry
+  fin.patent.entry
 }
 
 FUNCTION {patentapplication}
@@ -762,13 +842,13 @@ FUNCTION {patentapplication}
     }
   if$
   new.block
-  publisher " Application " * number * output
+  format.patent.application.number output
   format.fileddate output
-  "Application" format.publisheddate output
+  format.patent.event.date output
   new.block
   new.sentence
   note output
-  fin.entry
+  fin.patent.entry
 }
 
 FUNCTION {booklet}
@@ -1058,47 +1138,6 @@ MACRO {nov} {"November"}
 
 MACRO {dec} {"December"}
 
-MACRO {acmcs} {"ACM Computing Surveys"}
-
-MACRO {acta} {"Acta Informatica"}
-
-MACRO {cacm} {"Communications of the ACM"}
-
-MACRO {ibmjrd} {"IBM Journal of Research and Development"}
-
-MACRO {ibmsj} {"IBM Systems Journal"}
-
-MACRO {ieeese} {"IEEE Transactions on Software Engineering"}
-
-MACRO {ieeetc} {"IEEE Transactions on Computers"}
-
-MACRO {ieeetcad}
- {"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
-
-MACRO {ipl} {"Information Processing Letters"}
-
-MACRO {jacm} {"Journal of the ACM"}
-
-MACRO {jcss} {"Journal of Computer and System Sciences"}
-
-MACRO {scp} {"Science of Computer Programming"}
-
-MACRO {sicomp} {"SIAM Journal on Computing"}
-
-MACRO {tocs} {"ACM Transactions on Computer Systems"}
-
-MACRO {tods} {"ACM Transactions on Database Systems"}
-
-MACRO {tog} {"ACM Transactions on Graphics"}
-
-MACRO {toms} {"ACM Transactions on Mathematical Software"}
-
-MACRO {toois} {"ACM Transactions on Office Information Systems"}
-
-MACRO {toplas} {"ACM Transactions on Programming Languages and Systems"}
-
-MACRO {tcs} {"Theoretical Computer Science"}
-
 READ
 
 FUNCTION {sortify}
@@ -1214,6 +1253,21 @@ FUNCTION {editor.organization.sort}
   if$
 }
 
+FUNCTION {citation.year}
+{ year empty$
+  type$ "patent" = type$ "patentapplication" = or and
+    { issuedyear empty$
+        { pubyear empty$
+            { filedyear field.or.null }
+            { pubyear }
+          if$
+        }
+        { issuedyear }
+      if$
+    }
+    { year field.or.null }
+  if$
+}
 FUNCTION {presort}
 { type$ "book" =
   type$ "inbook" =
@@ -1231,7 +1285,7 @@ FUNCTION {presort}
   if$
   "    "
   *
-  year field.or.null sortify
+  citation.year sortify
   *
   "    "
   *
